@@ -14,19 +14,22 @@ private:
 public:
     Raz(int n);
     Raz(int n, int d);
-    ~Raz();
     int getNum(){return num;}
     int getDen(){return den;}
+    int getMCD(int, int);
     Raz reciproco();
-    double converti() const;
+    explicit operator double() const;
     void semplifica();
 
     Raz& operator= (const Raz&);
     Raz operator+ (const Raz&);
     Raz operator- (const Raz&);
     Raz operator* (const Raz&);
-    Raz operator/ (Raz&);
+    Raz operator/ (Raz);
     Raz operator^ (int);
+
+    Raz(double d);
+
 };
 
 #endif //KALK_RAZ_H
