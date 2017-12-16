@@ -5,22 +5,19 @@
 #ifndef KALK_RAZ_H
 #define KALK_RAZ_H
 
-#include "numero.h"
+#include <iostream>
+using std::cout;
 
-class Raz : public Numero {
+class Raz {
 private:
-    int num;
-    int den;
+    long num;
+    long den;
 public:
     Raz(int n);
-    Raz(int n, int d);
-    int getNum(){return num;}
-    int getDen(){return den;}
-    int getMCD(int, int);
-    Raz reciproco();
-    explicit operator double() const;
-    void semplifica();
+    Raz(long n, long d);
+    Raz(double d);
 
+    explicit operator double() const;
     Raz& operator= (const Raz&);
     Raz operator+ (const Raz&);
     Raz operator- (const Raz&);
@@ -28,8 +25,13 @@ public:
     Raz operator/ (Raz);
     Raz operator^ (int);
 
-    Raz(double d);
-
+    long getNum()const {return num;}
+    long getDen()const {return den;}
+    int getMCD(long, long)const ;
+    Raz reciproco()const ;
+    void semplifica();
+    long double radice_quadrata()const ;
+    long double radice_cubica()const ;
 };
 
 #endif //KALK_RAZ_H
