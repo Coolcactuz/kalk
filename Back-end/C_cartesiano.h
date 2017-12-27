@@ -15,6 +15,7 @@ private:
     double immaginaria;
 public:
     C_cartesiano(double,double);
+    C_cartesiano(const C_cartesiano&);
 
     C_cartesiano* operator+ (const Numero&)const;
     C_cartesiano* operator- (const Numero&)const;

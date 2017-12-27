@@ -15,6 +15,20 @@ C_polare::C_polare(double m=0, double f=0) {
     fase=f;
 }
 
+C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
+
+C_polare* C_polare::operator+ (const Numero& n)const{
+
+}
+C_polare* C_polare::operator- (const Numero& n)const{
+
+}
+C_polare* C_polare::operator* (const Numero& n)const{
+
+}
+C_polare* C_polare::operator/ (const Numero& n)const{
+
+}
 
 Complesso* C_polare::converti() {
     double reale=modulo*cos(deg_to_rad(fase));

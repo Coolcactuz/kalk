@@ -15,6 +15,7 @@ private:
 
 public:
     C_polare(double, double);
+    C_polare(const C_polare&);
 
     C_polare* operator+ (const Numero&)const;
     C_polare* operator- (const Numero&)const;
