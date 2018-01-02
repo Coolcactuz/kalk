@@ -22,9 +22,10 @@ public:
     C_polare* operator* (const Numero&)const;
     C_polare* operator/ (const Numero&)const;
 
-    Complesso* converti();
-    double getModulo() const {return modulo;}
-    double getFase() const {return fase;}
+    Complesso* converti() const;
+    Complesso* coniugato() const;
+    double getModulo() const;
+    double getFase() const;
     void stampa(std::ostream&)const ;
 };
 

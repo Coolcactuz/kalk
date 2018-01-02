@@ -23,10 +23,11 @@ public:
     C_cartesiano* operator/ (const Numero&)const;
 
 
-    double getReale() const {return reale;}
-    double getImmaginaria() const {return immaginaria;}
+    double getReale() const;
+    double getImmaginaria() const;
+    Complesso* coniugato() const;
 
-    Complesso* converti()override;
+    Complesso* converti()const override;
     void stampa(std::ostream&)const override ;
 };
 

@@ -23,8 +23,8 @@ public:
     Raz *operator/ (const Numero &) const;
     Raz *operator^ (int) const;
 
-    long getNum () const { return num; }
-    long getDen () const { return den; }
+    long getNum () const;
+    long getDen () const;
     int getMCD (long, long) const;
     Raz *reciproco () const;
     void semplifica ();

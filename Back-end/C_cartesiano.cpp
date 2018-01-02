@@ -27,7 +27,14 @@ C_cartesiano* C_cartesiano::operator/ (const Numero& n)const {
     return new C_cartesiano(reale/c.reale-immaginaria/c.immaginaria,immaginaria/c.reale+reale/c.immaginaria);
 }
 
-Complesso* C_cartesiano::converti() {
+double C_cartesiano::getReale() const {return reale;}
+double C_cartesiano::getImmaginaria() const {return immaginaria;}
+
+Complesso* C_cartesiano::coniugato() const{
+    return new C_cartesiano(reale, immaginaria*-1);
+}
+
+Complesso* C_cartesiano::converti() const{
     double fase=sqrt(pow(reale,2)+pow(immaginaria,2));
     double modulo=(immaginaria<0)?rad_to_deg(atan(immaginaria/reale)+pi):rad_to_deg(atan(immaginaria/reale));
     return new C_polare(fase,modulo);

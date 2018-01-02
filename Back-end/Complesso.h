@@ -9,13 +9,8 @@
 
 class Complesso : public Numero{
 public:
-
-    //virtual Complesso* operator+ (const Numero&)const =0;
-    //virtual Complesso* operator- (const Numero&)const =0;
-    //virtual Complesso* operator* (const Numero&)const =0;
-    //virtual Complesso* operator/ (const Numero&)const =0;
-
-    virtual Complesso* converti()=0;
+    virtual Complesso* converti() const =0;
+    virtual Complesso* coniugato() const =0;
     virtual void stampa(std::ostream&)const =0;
 
 };

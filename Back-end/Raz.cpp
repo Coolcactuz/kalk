@@ -62,6 +62,10 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 
 
 //metodi
+long Raz::getNum () const { return num; }
+
+long Raz::getDen () const { return den; }
+
 Raz* Raz::reciproco() const {return new Raz(den,num);}
 
 int Raz::getMCD(long a, long b) const {
