@@ -39,22 +39,14 @@ C_polare* C_polare::operator* (const Numero& n)const{
     C_polare cp= dynamic_cast<const C_polare&>(n);
     double m=modulo*cp.modulo;
     double f=rad_to_deg(atan(deg_to_rad(fase))+atan(deg_to_rad(cp.fase)));
-    while(f>=360)
-        f=f-360;
     return new C_polare(m,f);
 }
 C_polare* C_polare::operator/ (const Numero& n)const{
     C_polare cp= dynamic_cast<const C_polare&>(n);
     double m=modulo/cp.modulo;
     double f=rad_to_deg(atan(deg_to_rad(fase))-atan(deg_to_rad(cp.fase)));
-    while(f<0)
-        f=f+360;
     return new C_polare(m,f);
 }
-
-double C_polare::getModulo() const {return modulo;}
-
-double C_polare::getFase() const {return fase;}
 
 Complesso* C_polare::converti() const{
     double reale=modulo*cos(deg_to_rad(fase));
@@ -65,6 +57,10 @@ Complesso* C_polare::converti() const{
 Complesso* C_polare::coniugato() const {
     return new C_polare(modulo,fase*-1);
 }
+
+double C_polare::getModulo() const {return modulo;}
+
+double C_polare::getFase() const {return fase;}
 
 void C_polare::stampa(std::ostream& os)const {
     std::cout<<modulo<<"∟"<<fase<<"°";

@@ -25,7 +25,7 @@ public:
 
     double getReale() const;
     double getImmaginaria() const;
-    Complesso* coniugato() const;
+    Complesso* coniugato() const override;
 
     Complesso* converti()const override;
     void stampa(std::ostream&)const override ;
