@@ -5,13 +5,15 @@
 #ifndef KALK_COMPONENTE_H
 #define KALK_COMPONENTE_H
 
-#include "Circuito.h"
+#include "Macro.h"
+#include "C_cartesiano.h"
 
 class Componente {
 public:
+    virtual std::string getName() const=0;
     virtual C_cartesiano impedenza() const=0;
-    virtual double ddp_ai_capi() const=0;
-    virtual double potenza() const=0;
+
+
 };
 
 

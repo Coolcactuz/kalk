@@ -14,7 +14,7 @@ private:
     double fase;
 
 public:
-    C_polare(double, double);
+    C_polare(double =0, double =0);
     C_polare(const C_polare&);
 
     C_polare* operator+ (const Numero&)const;

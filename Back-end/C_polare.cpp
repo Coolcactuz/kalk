@@ -5,7 +5,7 @@
 #include "C_polare.h"
 #include <cmath>
 
-C_polare::C_polare(double m=0, double f=0) {
+C_polare::C_polare(double m, double f) {
     if(m<0) throw (0);    //GESTIRE ECCEZIONE
     else
         modulo=m;

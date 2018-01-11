@@ -10,13 +10,13 @@
 
 class Resistore : public Componente{
 private:
-    C_cartesiano resistenza;
-private:
-    Resistore(C_cartesiano);
+    std::string nome;
+    double resistenza;
+public:
+    Resistore(std::string ="NoName", double =0);
 
+    std::string getName() const ;
     C_cartesiano impedenza() const ;
-    double ddp_ai_capi() const;
-    double potenza() const;
 };
 
 

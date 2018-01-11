@@ -5,7 +5,7 @@
 #include "C_cartesiano.h"
 #include <cmath>
 
-C_cartesiano::C_cartesiano(double r=0, double i=0):reale(r),immaginaria(i){};
+C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
 C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
 

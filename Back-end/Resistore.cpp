@@ -4,16 +4,12 @@
 
 #include "Resistore.h"
 
-Resistore::Resistore(C_cartesiano r):resistenza(r){}
+Resistore::Resistore(std::string n, double r):nome(n),resistenza(r){}
+
+std::string Resistore::getName() const{
+    return nome;
+}
 
 C_cartesiano Resistore::impedenza() const{
-    return resistenza;
-}
-
-double Resistore::ddp_ai_capi() const{
-
-}
-
-double Resistore::potenza() const{
-
+    return C_cartesiano(resistenza);
 }
