@@ -5,7 +5,6 @@
 #ifndef KALK_COMPONENTE_H
 #define KALK_COMPONENTE_H
 
-#include "Macro.h"
 #include "C_cartesiano.h"
 
 class Componente {

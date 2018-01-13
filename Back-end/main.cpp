@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Raz.h"
 #include "C_cartesiano.h"
-#include "Macro.h"
 #include "Resistore.h"
 
 
@@ -19,7 +18,7 @@ int main() {
     C_polare*g=new C_polare(*(*f-*d));
     cout<<*g<<endl;*/
     Componente* c= new Resistore("r1",12);
-    Macro* inizio=new Macro(c);
+
 
     return 0;
 }
