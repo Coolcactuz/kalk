@@ -8,12 +8,12 @@
 
 #include "Componente.h"
 
-class Induttanza: public Componente{
+class Induttore: public Componente{
 private:
     std::string nome;
-    double induttivita;
+    double induttanza;
 public:
-    Induttanza(std::string ="NoName", double =0);
+    Induttore(std::string ="NoName", double =0);
 
     std::string getName() const ;
     C_cartesiano impedenza() const ;

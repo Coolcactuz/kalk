@@ -12,6 +12,6 @@ std::string Condensatore::getName() const{
 }
 
 C_cartesiano Condensatore::impedenza() const{
-    //calcoli
-    return C_cartesiano(,/*calcoli*/);
+    double xc=1/(2*Numero::pi*Circuito::freq*capacita);
+    return C_cartesiano(0,-xc);
 }

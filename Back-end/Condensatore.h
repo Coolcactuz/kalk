@@ -15,8 +15,8 @@ private:
 public:
     Condensatore(std::string ="NoName", double =0);
 
-    std::string getName() const ;
-    C_cartesiano impedenza() const ;
+    std::string getName() const override;
+    C_cartesiano impedenza() const override;
 };
 
 #endif //KALK_CONDENSATORE_H

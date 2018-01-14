@@ -6,6 +6,7 @@
 #define KALK_COMPONENTE_H
 
 #include "C_cartesiano.h"
+#include "Circuito.h"
 
 class Componente {
 public:
