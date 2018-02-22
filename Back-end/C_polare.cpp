@@ -54,7 +54,7 @@ Complesso* C_polare::converti() const{
     return new C_cartesiano(reale,immaginaria);
 }
 
-Complesso* C_polare::coniugato() const {
+C_polare* C_polare::coniugato() const {
     return new C_polare(modulo,fase*-1);
 }
 

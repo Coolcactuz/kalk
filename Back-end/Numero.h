@@ -6,6 +6,7 @@
 #define KALK_NUMERO_H
 
 #include <iostream>
+#include <cmath>
 
 class Numero {
 public:

@@ -3,3 +3,11 @@
 //
 
 #include "Componente.h"
+
+C_cartesiano Componente::operator+ (const Componente & c) const {
+    return *( impedenza()+ c.impedenza());
+}
+
+C_cartesiano Componente::operator/ (const Componente & c) const {
+    return *(*(impedenza()*c.impedenza()) / *(impedenza()+c.impedenza()));
+}

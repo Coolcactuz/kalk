@@ -7,6 +7,7 @@
 
 
 #include "Componente.h"
+#include "Circuito.h"
 
 class Condensatore: public Componente{
 private:
@@ -14,6 +15,7 @@ private:
     double capacita;
 public:
     Condensatore(std::string ="NoName", double =0);
+    //~Condensatore ();
 
     std::string getName() const override;
     C_cartesiano impedenza() const override;

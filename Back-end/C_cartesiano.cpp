@@ -3,7 +3,7 @@
 //
 
 #include "C_cartesiano.h"
-#include <cmath>
+
 
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
@@ -30,7 +30,7 @@ C_cartesiano* C_cartesiano::operator/ (const Numero& n)const {
 double C_cartesiano::getReale() const {return reale;}
 double C_cartesiano::getImmaginaria() const {return immaginaria;}
 
-Complesso* C_cartesiano::coniugato() const{
+C_cartesiano* C_cartesiano::coniugato() const{
     return new C_cartesiano(reale, immaginaria*-1);
 }
 
@@ -42,7 +42,8 @@ Complesso* C_cartesiano::converti() const{
 
 void C_cartesiano::stampa(std::ostream& os)const {
     std::cout<<reale;
-    (immaginaria<0)?std::cout<<immaginaria:std::cout<<"+"<<immaginaria;
+    if(immaginaria<0)std::cout<< immaginaria;
+    else std::cout<<"+"<<immaginaria;
     std::cout<<"i";
 }
 

@@ -7,6 +7,7 @@
 
 
 #include "Componente.h"
+#include "Circuito.h"
 
 class Induttore: public Componente{
 private:
@@ -14,9 +15,10 @@ private:
     double induttanza;
 public:
     Induttore(std::string ="NoName", double =0);
+    //~Induttore();
 
-    std::string getName() const ;
-    C_cartesiano impedenza() const ;
+    std::string getName() const override;
+    C_cartesiano impedenza() const override;
 };
 
 #endif //KALK_INDUTTANZA_H

@@ -6,13 +6,16 @@
 #define KALK_COMPONENTE_H
 
 #include "C_cartesiano.h"
-#include "Circuito.h"
 
 class Componente {
 public:
     virtual std::string getName() const=0;
     virtual C_cartesiano impedenza() const=0;
 
+    virtual ~Componente () = default;
+
+    C_cartesiano operator+(const Componente&) const;
+    C_cartesiano operator/(const Componente&) const;
 
 };
 
