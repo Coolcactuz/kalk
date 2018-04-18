@@ -11,6 +11,7 @@ class Raz : public Numero {
 private:
     long num;
     long den;
+    static Raz* parse(std::string);
 public:
     Raz (int);
     Raz (long, long);
