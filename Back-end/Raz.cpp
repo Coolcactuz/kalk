@@ -98,8 +98,7 @@ static Raz* Raz::parse(std::string s){
     it--;
     if(*it=='}'){
       it--;
-      int p_den=0;
-      int p_num=0;
+      int p_num=0, p_den=0;
       for(int esp=0; *it!=',' && it!=s.begin(); --it, ++esp)
           p_den=p_den+(*it - '0')*pow(10,esp);
       int--;
@@ -107,6 +106,5 @@ static Raz* Raz::parse(std::string s){
           p_num=p_num+(*it - '0')*pow(10,esp);
       return new Raz(p_num,p_den);
     }
-    else
-      return nullptr;
+    return nullptr;
 }

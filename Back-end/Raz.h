@@ -12,7 +12,6 @@ private:
     long num;
     long den;
 
-    static Raz* parse(std::string);
 public:
     Raz (int);
     Raz (long, long);
@@ -25,6 +24,8 @@ public:
     Raz *operator/ (const Numero &) const;
     Raz *operator^ (int) const;
 
+    static Raz* parse(std::string);
+    
     long getNum () const;
     long getDen () const;
     int getMCD (long, long) const;

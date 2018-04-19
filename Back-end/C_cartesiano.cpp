@@ -4,7 +4,6 @@
 
 #include "C_cartesiano.h"
 
-
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
 C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
@@ -51,4 +50,14 @@ std::ostream& operator<<(std::ostream& os, const Numero& n){
     C_cartesiano cc= static_cast<const C_cartesiano&>(n);
     cc.stampa(os);
     return os;
+}
+
+static C_cartesiano* C_cartesiano::parse(std::string s){
+    if(*(s.cbegin())=='['){
+      std::size_t pos = s.find(",");
+      double p_real=Numero::subparse(s.substr(2,pos-2));
+      double p_img=Numero::subparse(s.substr(pos+1),(s.find("]")-pos-2);
+      return new C_cartesiano(p_real,p_img);
+    }
+    return nullptr;
 }
