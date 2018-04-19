@@ -7,6 +7,7 @@
 
 //costruttori
 Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
+
 Raz::Raz(long n, long d){ //2 parametri interi
     if(d==0) throw(0);  //GESTIRE ECCEZIONE
     else if(n==0){num=0,den=1;}
@@ -90,4 +91,22 @@ long double Raz::radice_quadrata()const {
 
 long double Raz::radice_cubica()const {
     return cbrt(getNum())/cbrt(getDen());
+}
+
+static Raz* Raz::parse(std::string s){
+    auto it = s.cend();
+    it--;
+    if(*it=='}'){
+      it--;
+      int p_den=0;
+      int p_num=0;
+      for(int esp=0; *it!=',' && it!=s.begin(); --it, ++esp)
+          p_den=p_den+(*it - '0')*pow(10,esp);
+      int--;
+      for(int esp=0; *it!=',' && it!=s.begin(); --it, ++esp)
+          p_num=p_num+(*it - '0')*pow(10,esp);
+      return new Raz(p_num,p_den);
+    }
+    else
+      return nullptr;
 }
