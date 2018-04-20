@@ -6,8 +6,9 @@
 #define KALK_COMPONENTE_H
 
 #include "C_cartesiano.h"
+#include "Dato.h"
 
-class Componente {
+class Componente : public Dato {
 public:
     virtual std::string getName() const=0;
     virtual C_cartesiano impedenza() const=0;

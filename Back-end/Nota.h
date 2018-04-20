@@ -1,6 +1,7 @@
 #include "Raz.h"
+#include "Dato.h"
 
-class Nota{
+class Nota: public Dato{
 private:
     int note;
     std::string tono;
