@@ -7,8 +7,9 @@
 
 #include <iostream>
 #include <cmath>
+#include"Dato.h"
 
-class Numero {
+class Numero : public Dato{
 protected:
   static double subparse(std::string s);
 

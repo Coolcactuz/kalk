@@ -54,9 +54,14 @@ std::ostream& operator<<(std::ostream& os, const Numero& n){
 
 static C_cartesiano* C_cartesiano::parse(std::string s){
     if(*(s.cbegin())=='['){
-      std::size_t pos = s.find(",");
-      double p_real=Numero::subparse(s.substr(2,pos-2));
-      double p_img=Numero::subparse(s.substr(pos+1),(s.find("]")-pos-2);
+      double p_real=0, p_img=0;
+      std::size_t pos = s.find(',');
+      if(pos!=-1){
+        p_real=Numero::subparse(s.substr(1,pos-1));
+        p_img=Numero::subparse(s.substr((pos+1),(s.lenght()-pos-2));
+      }
+      else
+        p_real=Numero::subparse(s.substr(1,(s.lenght()-1));
       return new C_cartesiano(p_real,p_img);
     }
     return nullptr;

@@ -33,7 +33,6 @@ public:
     void stampa(std::ostream&)const override ;
 };
 
-
 std::ostream& operator<<(std::ostream&, const Numero&);
 
 #endif //KALK_C_CARTESIANO_H

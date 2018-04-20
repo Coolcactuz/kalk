@@ -94,17 +94,16 @@ long double Raz::radice_cubica()const {
 }
 
 static Raz* Raz::parse(std::string s){
-    auto it = s.cend();
-    it--;
-    if(*it=='}'){
-      it--;
-      int p_num=0, p_den=0;
-      for(int esp=0; *it!=',' && it!=s.begin(); --it, ++esp)
-          p_den=p_den+(*it - '0')*pow(10,esp);
-      int--;
-      for(int esp=0; *it!=',' && it!=s.begin(); --it, ++esp)
-          p_num=p_num+(*it - '0')*pow(10,esp);
-      return new Raz(p_num,p_den);
+  if(*(s.cbegin())=='{'){
+    double p_num=0, p_den=0;
+    std::size_t pos = s.find(",");
+    if(pos!=-1){
+      p_num=Numero::subparse(s.substr(1,pos-1));
+      p_den=Numero::subparse(s.substr((pos+1),(s.lenght()-pos-2));
     }
-    return nullptr;
+    else
+      p_num=Numero::subparse(s.substr(1,(s.lenght()-1));
+    return new Raz(p_num,p_den);
+  }
+  return nullptr;
 }

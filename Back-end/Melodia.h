@@ -1,4 +1,5 @@
 #include "Nota.h"
+
 #include<vector>
 
 
