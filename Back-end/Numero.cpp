@@ -16,14 +16,14 @@ double Numero::deg_to_rad(double g) {
 }
 
 static double Numero::subparse(std::string s){
-  if(*(s.cbegin()=='-'))
+  if(*(s.cbegin())=='-')
     return subparse(s.substr(1))*(-1);
-  std::size_t pos = s.find(".");
+  std::size_t pos = s.find('.');
   double p_int=0, p_dec=0;
   if(pos!=-1){
     for(auto it=s[pos-1], int esp=0; it!=s.cbegin(); --it, ++esp)
       p_int=p_int+(*it-'0')*pow(10,esp);
-    for(auto it=s[pos+1], int esp=0; it!=s.cend(); ++it, --esp)
+    for(auto it=s[pos+1], int esp=-1; it!=s.cend(); ++it, --esp)
       p_dec=p_dec+(*it-'0')*pow(10,esp);
   }
   else{
