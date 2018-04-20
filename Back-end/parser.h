@@ -11,8 +11,9 @@ private:
   class node{
 
   private:
-    static node* copy(node*);
-    static void destroy(node*);
+
+    static node* copy(node*);   //copia in modo profondo una struttura di node
+    static void destroy(node*); //libera
 
   public:
 
@@ -47,13 +48,19 @@ private:
     return res;
   }
 
-  static std::list <Dato* (*) (string)>  p_list;
-  static std::list <char> operator_list;
+  static node* find_father(node*, node*);
+  static Dato* indentify_literal(std::string::const_iterator,
+    std::string::const_iterator);
+
+
+  static std::list <const Dato* (*) (string)>  p_list;
+  static std::list <const char> operator_list;
+
 
 public:
 
-  void add_operator(char) const;
-  void add_parser_pointer(Dato* (*) (string)) const;
+  void add_operator(const char&) const;
+  void add_parser_pointer(const Dato* (*) (string) &) const;
 
   node* parse(std::string) const;
 };
