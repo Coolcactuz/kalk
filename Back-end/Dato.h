@@ -8,6 +8,7 @@
 class Dato {
 public:
   virtual ~Dato() = default;
+  virtual void stampa(std::ostream &) const = 0;
 };
 
 
