@@ -15,7 +15,7 @@ double Numero::deg_to_rad(double g) {
     return g*pi/180;
 }
 
-static double Numero::subparse(std::string s){
+double Numero::subparse(std::string s){
   if(*(s.cbegin())=='-')
     return subparse(s.substr(1))*(-1);
   std::size_t pos = s.find('.');

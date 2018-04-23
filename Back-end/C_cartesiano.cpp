@@ -9,19 +9,19 @@ C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
 
 
-C_cartesiano* C_cartesiano::operator+ (const Numero& n)const {
+C_cartesiano* C_cartesiano::operator+ (const C_cartesiano& n)const {
     C_cartesiano c= static_cast<const C_cartesiano&>(n);
     return new C_cartesiano(reale+c.reale,immaginaria+c.immaginaria);
 }
-C_cartesiano* C_cartesiano::operator- (const Numero& n)const {
+C_cartesiano* C_cartesiano::operator- (const C_cartesiano& n)const {
     C_cartesiano c= static_cast<const C_cartesiano&>(n);
     return new C_cartesiano(reale-c.reale,immaginaria-c.immaginaria);
 }
-C_cartesiano* C_cartesiano::operator* (const Numero& n)const {
+C_cartesiano* C_cartesiano::operator* (const C_cartesiano& n)const {
     C_cartesiano c= static_cast<const C_cartesiano&>(n);
     return new C_cartesiano(reale*c.reale-immaginaria*c.immaginaria,immaginaria*c.reale+reale*c.immaginaria);
 }
-C_cartesiano* C_cartesiano::operator/ (const Numero& n)const {
+C_cartesiano* C_cartesiano::operator/ (const C_cartesiano& n)const {
     C_cartesiano c= static_cast<const C_cartesiano&>(n);
     return new C_cartesiano(reale/c.reale-immaginaria/c.immaginaria,immaginaria/c.reale+reale/c.immaginaria);
 }

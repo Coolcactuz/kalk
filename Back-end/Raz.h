@@ -24,8 +24,8 @@ public:
     Raz *operator/ (const Numero &) const;
     Raz *operator^ (int) const;
 
-    static Raz* parse(std::string);
-    
+    static const Dato* parse(std::string);
+
     long getNum () const;
     long getDen () const;
     int getMCD (long, long) const;

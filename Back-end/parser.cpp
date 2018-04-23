@@ -2,6 +2,11 @@
 
 //inizializza qui le liste statiche
 
+parser::operator_list = std::list<const char&>({'(', ')', '+', '-', '*', '/',
+'^', '#'});
+
+parser::p_list = std::list<const Dato* (*) (string)&>({});
+
 //------NODE--------
 
 //distruttore di node
@@ -41,9 +46,10 @@ parser::node* parser::node::copy(parser::node* p){
 parser::node& parser::node::operator =(const parser::node& n) {
   if(this != &n){
     destroy(this);
+    delete this;
     this = copy(&n);
   }
-  return this;
+  return *this;
 }
 
 
@@ -57,12 +63,12 @@ parser::node::node(const parser::node& n){
 
 //---------PARSER----------------
 
-void parser::add_operator(char c) const{
+void parser::add_operator(char c){
   if(!find(c, operator_list))
     operator_list.push_back(c);
 }
 
-void parser::add_parser_pointer(Dato* (*p) (string)) const{
+void parser::add_parser_pointer(Dato* (*p) (string)){
   if(!find(p, p_list))
     p_list.push_back(p);
 }

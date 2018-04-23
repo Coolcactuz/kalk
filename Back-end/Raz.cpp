@@ -8,7 +8,11 @@
 //costruttori
 Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
 
-Raz::Raz(long n, long d){ //2 parametri interi
+Raz::Raz(long n, long d){
+
+    parser::add_parser_pointer(&(Raz::parse));
+
+                        //2 parametri interi
     if(d==0) throw(0);  //GESTIRE ECCEZIONE
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
@@ -93,16 +97,16 @@ long double Raz::radice_cubica()const {
     return cbrt(getNum())/cbrt(getDen());
 }
 
-static Raz* Raz::parse(std::string s){
+const Dato* Raz::parse(std::string s){
   if(*(s.cbegin())=='{'){
     double p_num=0, p_den=0;
     std::size_t pos = s.find(",");
     if(pos!=-1){
       p_num=Numero::subparse(s.substr(1,pos-1));
-      p_den=Numero::subparse(s.substr((pos+1),(s.lenght()-pos-2));
+      p_den=Numero::subparse(s.substr((pos+1),(s.length()-pos-2)));
     }
     else
-      p_num=Numero::subparse(s.substr(1,(s.lenght()-1));
+      p_num=Numero::subparse(s.substr(1,(s.length()-1)));
     return new Raz(p_num,p_den);
   }
   return nullptr;

@@ -1,9 +1,10 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "Dato.h"
 #include <list>
 #include <string>
+
+class Dato;
 
 class parser{
 private:
@@ -39,9 +40,9 @@ private:
   };
 
   template <class T>
-  bool find(T item, std::list l){
+  bool find(T item, std::list<T> l){
     bool res = false;
-    for(std::list<T>::const_iterator it = l.begin(); it != l.end(); it++){
+    for(typename std::list<T>::const_iterator it = l.begin(); it != l.end(); it++){
       if(*it == item)
         res = true;
     }
@@ -53,14 +54,14 @@ private:
     std::string::const_iterator);
 
 
-  static std::list <const Dato* (*) (string)>  p_list;
+  static std::list <const Dato* (*) (std::string)>  p_list;
   static std::list <const char> operator_list;
 
 
 public:
 
-  void add_operator(const char&) const;
-  void add_parser_pointer(const Dato* (*) (string) &) const;
+  static void add_operator(const char&);
+  static void add_parser_pointer(const Dato* (*) (std::string) &);
 
   node* parse(std::string) const;
 };

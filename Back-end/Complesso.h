@@ -16,4 +16,4 @@ public:
 std::ostream& operator<< (std::ostream&, const Complesso&);
 
 
-#endif //KALK_COMPLESSO_H
+#endif

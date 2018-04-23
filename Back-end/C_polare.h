@@ -6,7 +6,6 @@
 #define KALK_C_POLARE_H
 
 #include "Complesso.h"
-#include "C_cartesiano.h"
 
 class C_polare: public Complesso {
 private:
