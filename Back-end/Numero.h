@@ -8,8 +8,6 @@
 #include <iostream>
 #include <cmath>
 #include "Dato.h"
-#include "Raz.h"
-
 
 class Numero : public Dato{
 protected:
