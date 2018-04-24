@@ -8,7 +8,7 @@ C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
 C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
 
-C_cartesiano::C_cartesiano(const Raz& r):reale(double(r)),immaginaria(0){};
+//C_cartesiano::C_cartesiano(const Raz& r):reale(double(r)),immaginaria(0){};
 
 
 C_cartesiano* C_cartesiano::operator+ (const Numero& n)const {
