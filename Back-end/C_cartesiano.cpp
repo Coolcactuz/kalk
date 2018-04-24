@@ -30,7 +30,7 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
     throw(0);    //gestire eccezione
 }
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
-    auto c= dynamic_cast<const C_cartesiano&>(n);
+    auto c= dynamic_cast<const C_cartesiano*>(n);
     if(c)
       return new C_cartesiano(reale/c->reale-immaginaria/c->immaginaria,immaginaria/c->reale+reale/c->immaginaria);
     throw(0);    //gestire eccezione
