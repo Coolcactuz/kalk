@@ -17,35 +17,50 @@ C_polare::C_polare(double m, double f) {
 
 C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
 
-C_polare* C_polare::operator+ (const Numero& n)const{
-    C_cartesiano* aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
-    C_polare cp= static_cast<const C_polare&>(n);
-    C_cartesiano* aux2= static_cast<C_cartesiano*>(cp.converti());
-    C_cartesiano* somma=new C_cartesiano(*(*aux1+*aux2));
-    delete aux1;
-    delete aux2;
-    return static_cast<C_polare*>(somma->converti());
+C_polare* C_polare::operator+ (const Numero* n)const{
+    auto aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
+    auto cp= dynamic_cast<const C_polare*>(n);
+    if(cp){
+      //auto aux2= dynamic_cast<C_cartesiano*>(cp->converti());
+      //delete cp;
+      C_cartesiano* somma=new C_cartesiano(*(aux1+cp->converti()));
+      delete aux1;
+      //delete aux2;
+      delete cp;
+      return static_cast<C_polare*>(somma->converti());
+    }
+    throw(0); //gestire eccezione
 }
-C_polare* C_polare::operator- (const Numero& n)const{
-    C_cartesiano* aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
-    C_polare cp= static_cast<const C_polare&>(n);
-    C_cartesiano* aux2= static_cast<C_cartesiano*>(cp.converti());
-    C_cartesiano* differenza=new C_cartesiano(*(*aux1-*aux2));
-    delete aux1;
-    delete aux2;
-    return static_cast<C_polare*>(differenza->converti());
+C_polare* C_polare::operator- (const Numero* n)const{
+    auto aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
+    auto cp= dynamic_cast<const C_polare*>(n);
+    if(cp){
+      auto aux2= static_cast<C_cartesiano*>(cp->converti());
+      delete cp;
+      C_cartesiano* differenza=new C_cartesiano(*(aux1-aux2));
+      delete aux1;
+      delete aux2;
+      return static_cast<C_polare*>(differenza->converti());
+    }
+    throw(0); // gestire eccezione
 }
-C_polare* C_polare::operator* (const Numero& n)const{
-    C_polare cp= dynamic_cast<const C_polare&>(n);
-    double m=modulo*cp.modulo;
-    double f=rad_to_deg(atan(deg_to_rad(fase))+atan(deg_to_rad(cp.fase)));
-    return new C_polare(m,f);
+C_polare* C_polare::operator* (const Numero* n)const{
+    auto cp= dynamic_cast<const C_polare*>(n);
+    if(cp){
+      double m=modulo*cp->modulo;
+      double f=rad_to_deg(atan(deg_to_rad(fase))+atan(deg_to_rad(cp->fase)));
+      return new C_polare(m,f);
+    }
+    throw(0); //gestire eccezione
 }
-C_polare* C_polare::operator/ (const Numero& n)const{
-    C_polare cp= dynamic_cast<const C_polare&>(n);
-    double m=modulo/cp.modulo;
-    double f=rad_to_deg(atan(deg_to_rad(fase))-atan(deg_to_rad(cp.fase)));
-    return new C_polare(m,f);
+C_polare* C_polare::operator/ (const Numero* n)const{
+    auto cp= dynamic_cast<const C_polare*>(n);
+    if(cp){
+      double m=modulo/cp->modulo;
+      double f=rad_to_deg(atan(deg_to_rad(fase))-atan(deg_to_rad(cp->fase)));
+      return new C_polare(m,f);
+    }
+    throw(0); //gestire eccezione
 }
 
 Complesso* C_polare::converti() const{
