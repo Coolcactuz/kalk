@@ -8,22 +8,32 @@ C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
 C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
 
+C_cartesiano::C_cartesiano(const Raz& r):reale(double(r)),immaginaria(0){};
 
-C_cartesiano* C_cartesiano::operator+ (const C_cartesiano& n)const {
-    C_cartesiano c= static_cast<const C_cartesiano&>(n);
-    return new C_cartesiano(reale+c.reale,immaginaria+c.immaginaria);
+
+C_cartesiano* C_cartesiano::operator+ (const Numero& n)const {
+    auto c= dynamic_cast<const C_cartesiano&>(n);
+    if(c)
+      return new C_cartesiano(reale+c.reale,immaginaria+c.immaginaria);
+    throw(0);    //gestire eccezione
 }
-C_cartesiano* C_cartesiano::operator- (const C_cartesiano& n)const {
-    C_cartesiano c= static_cast<const C_cartesiano&>(n);
-    return new C_cartesiano(reale-c.reale,immaginaria-c.immaginaria);
+C_cartesiano* C_cartesiano::operator- (const Numero& n)const {
+    auto c= dynamic_cast<const C_cartesiano&>(n);
+    if(c)
+      return new C_cartesiano(reale-c.reale,immaginaria-c.immaginaria);
+    throw(0);    //gestire eccezione
 }
-C_cartesiano* C_cartesiano::operator* (const C_cartesiano& n)const {
-    C_cartesiano c= static_cast<const C_cartesiano&>(n);
-    return new C_cartesiano(reale*c.reale-immaginaria*c.immaginaria,immaginaria*c.reale+reale*c.immaginaria);
+C_cartesiano* C_cartesiano::operator* (const Numero& n)const {
+    auto c= dynamic_cast<const C_cartesiano&>(n);
+    if(c)
+      return new C_cartesiano(reale*c.reale-immaginaria*c.immaginaria,immaginaria*c.reale+reale*c.immaginaria);
+    throw(0);    //gestire eccezione
 }
-C_cartesiano* C_cartesiano::operator/ (const C_cartesiano& n)const {
-    C_cartesiano c= static_cast<const C_cartesiano&>(n);
-    return new C_cartesiano(reale/c.reale-immaginaria/c.immaginaria,immaginaria/c.reale+reale/c.immaginaria);
+C_cartesiano* C_cartesiano::operator/ (const Numero& n)const {
+    auto c= dynamic_cast<const C_cartesiano&>(n);
+    if(c)
+      return new C_cartesiano(reale/c.reale-immaginaria/c.immaginaria,immaginaria/c.reale+reale/c.immaginaria);
+    throw(0);    //gestire eccezione
 }
 
 double C_cartesiano::getReale() const {return reale;}
@@ -52,7 +62,7 @@ std::ostream& operator<<(std::ostream& os, const Numero& n){
     return os;
 }
 
-static C_cartesiano* C_cartesiano::parse(std::string s){
+C_cartesiano* C_cartesiano::parse(std::string s){
     if(*(s.cbegin())=='['){
       double p_real=0, p_img=0;
       std::size_t pos = s.find(',');
