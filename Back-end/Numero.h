@@ -15,10 +15,10 @@ protected:
 
 public:
 
-    virtual Numero* operator+(const Numero&)const =0;
-    virtual Numero* operator-(const Numero&)const =0;
-    virtual Numero* operator*(const Numero&)const =0;
-    virtual Numero* operator/(const Numero&)const =0;
+    virtual Numero* operator+(const Numero*)const =0;
+    virtual Numero* operator-(const Numero*)const =0;
+    virtual Numero* operator*(const Numero*)const =0;
+    virtual Numero* operator/(const Numero*)const =0;
 
     static double pi;
     static double e;
