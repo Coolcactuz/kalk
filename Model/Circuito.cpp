@@ -14,10 +14,11 @@ Circuito::nodo::~nodo () {
     delete obj;
 }
 
-Circuito::nodo::nodo (Componente * c, Circuito::nodo *l, Circuito::nodo *r, std::string op){
+Circuito::nodo::nodo (Componente * c, Circuito::nodo *l, Circuito::nodo *r, Circuito::nodo *f, std::string op){
     obj=c;
     left=l;
     right=r;
+    father=f;
     if(op=="+" || op=="//" || op=="0")
         operation=op;
     else
