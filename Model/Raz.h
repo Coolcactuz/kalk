@@ -18,10 +18,10 @@ public:
     Raz (double);
 
     explicit operator double () const;
-    Raz *operator+ (const Numero &) const;
-    Raz *operator- (const Numero &) const;
-    Raz *operator* (const Numero &) const;
-    Raz *operator/ (const Numero &) const;
+    Raz *operator+ (const Numero *) const;
+    Raz *operator- (const Numero *) const;
+    Raz *operator* (const Numero *) const;
+    Raz *operator/ (const Numero *) const;
     Raz *operator^ (int) const;
 
     static const Dato* parse(std::string);
