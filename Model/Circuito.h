@@ -16,23 +16,25 @@ private:
         Componente* obj;
         nodo* left;
         nodo* right;
+        nodo* father;
         std::string operation;
     public:
-        nodo(Componente* =0, nodo* =0, nodo* =0, std::string ="0");
+        nodo(Componente* =0, nodo* =0, nodo* =0, nodo* =0, std::string ="0");
         ~nodo();
     };
     nodo*start;
 public:
-    Circuito(Componente* =0);
-    ~Circuito ();
     static double freq;
     static C_cartesiano volt;
+    Circuito(Componente* =0);
+    ~Circuito ();
 
     C_cartesiano impEquivalente(nodo*) const ;
     C_cartesiano Corrente_totale() const ;
 
     Circuito& operator=(const Circuito&);
-    nodo* copy(nodo*);
+
+    //nodo* copy(nodo*);
 
 };
 
