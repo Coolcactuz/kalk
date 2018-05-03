@@ -68,10 +68,10 @@ C_cartesiano* C_cartesiano::parse(std::string s){
       std::size_t pos = s.find(',');
       if(pos!=-1){
         p_real=Numero::subparse(s.substr(1,pos-1));
-        p_img=Numero::subparse(s.substr((pos+1),(s.lenght()-pos-2));
+        p_img=Numero::subparse(s.substr((pos+1),(s.length()-pos-2)));
       }
       else
-        p_real=Numero::subparse(s.substr(1,(s.lenght()-1));
+        p_real=Numero::subparse(s.substr(1,(s.length()-1)));
       return new C_cartesiano(p_real,p_img);
     }
     return nullptr;

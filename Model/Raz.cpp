@@ -32,21 +32,29 @@ Raz::Raz(double d){ //1 parametro decimale
 //
 
 //overloading operatori
-Raz* Raz::operator+ (const Numero &n)const {
-    Raz r= static_cast<const Raz&>(n);
-    return new Raz(num*r.den+r.num*den,(den*r.den));
+Raz* Raz::operator+ (const Numero *n)const {
+    auto r= dynamic_cast<const Raz*>(n);
+    if(r)
+      return new Raz(num*r->den+r->num*den,(den*r->den));
+    throw(0); //gestire eccezione
 }
-Raz* Raz::operator- (const Numero &n)const {
-    Raz r= static_cast<const Raz&>(n);
-    return new Raz(num*r.den-r.num*den,(den*r.den));
+Raz* Raz::operator- (const Numero *n)const {
+    auto r= dynamic_cast<const Raz*>(n);
+    if(r)
+      return new Raz(num*r->den-r->num*den,(den*r->den));
+    throw(0); //gestire eccezione
 }
-Raz* Raz::operator* (const Numero &n)const {
-    Raz r= static_cast<const Raz&>(n);
-    return new Raz(num*r.num,den*r.den);
+Raz* Raz::operator* (const Numero *n)const {
+    auto r= dynamic_cast<const Raz*>(n);
+    if(r)
+      return new Raz(num*r->num,den*r->den);
+    throw(0); //gestire eccezione
 }
-Raz* Raz::operator/ (const Numero &n)const {
-    Raz r= static_cast<const Raz&>(n);
-    return new Raz(num*r.den,den*r.num);
+Raz* Raz::operator/ (const Numero *n)const {
+    auto r= dynamic_cast<const Raz*>(n);
+    if(r)
+      return new Raz(num*r->den,den*r->num);
+    throw(0); //gestire eccezione
 }
 Raz* Raz::operator^ (int exp)const {
     if(exp==0) return new Raz(1,1);
