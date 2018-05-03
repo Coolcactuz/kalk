@@ -1,3 +1,7 @@
+#ifndef NOTA_H
+#define NOTA_H
+
+
 #include "Raz.h"
 
 class Nota{
@@ -25,3 +29,4 @@ public:
 
 
 std::ostream& operator<<(std::ostream&, const Nota&);
+#endif

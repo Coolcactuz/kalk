@@ -7,7 +7,7 @@
 
 
 #include "Complesso.h"
-#include "C_polare.h"
+
 
 
 class C_cartesiano: public Complesso {

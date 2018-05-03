@@ -7,7 +7,7 @@
 
 
 #include "Componente.h"
-#include "Circuito.h"
+
 
 class Resistore : public Componente{
 private:
