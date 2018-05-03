@@ -9,8 +9,10 @@
 #include <cmath>
 
 class Numero{
+/*
 protected:
   static double subparse(std::string s);
+*/
 
 public:
 

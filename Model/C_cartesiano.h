@@ -25,7 +25,7 @@ public:
     C_cartesiano* operator* (const Numero*)const;
     C_cartesiano* operator/ (const Numero*)const;
 
-    static C_cartesiano* parse(std::string);
+    //static C_cartesiano* parse(std::string);
 
     double getReale() const;
     double getImmaginaria() const;
