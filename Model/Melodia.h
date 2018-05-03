@@ -2,7 +2,6 @@
 
 #include<vector>
 
-
 class Melodia{
 private:
   std::vector<const Nota*> v;
