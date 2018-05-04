@@ -9,6 +9,8 @@
 #include "Complesso.h"
 
 
+class C_polare;
+
 
 class C_cartesiano: public Complesso {
 
@@ -32,7 +34,7 @@ public:
     C_cartesiano* coniugato() const override;
 
     Complesso* converti()const override;
-    void stampa(std::ostream&)const override ;
+    void stampa(std::ostream&)const;
 };
 
 std::ostream& operator<<(std::ostream&, const Numero&);

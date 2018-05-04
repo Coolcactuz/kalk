@@ -3,6 +3,7 @@
 //
 
 #include "C_cartesiano.h"
+#include "C_polare.h"
 
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
@@ -62,6 +63,7 @@ std::ostream& operator<<(std::ostream& os, const Numero& n){
     return os;
 }
 
+/*
 C_cartesiano* C_cartesiano::parse(std::string s){
     if(*(s.cbegin())=='['){
       double p_real=0, p_img=0;
@@ -76,3 +78,4 @@ C_cartesiano* C_cartesiano::parse(std::string s){
     }
     return nullptr;
 }
+*/

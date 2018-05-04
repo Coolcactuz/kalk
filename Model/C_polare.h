@@ -7,6 +7,8 @@
 
 #include "Complesso.h"
 
+class C_cartesiano;
+
 class C_polare: public Complesso {
 private:
     double modulo;

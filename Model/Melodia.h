@@ -6,7 +6,7 @@ class Melodia{
 private:
   std::vector<const Nota*> v;
 public:
-  Melodia(Nota*=0);
+  Melodia(Nota* =0);
   Melodia(const Melodia&);
   ~Melodia();
 
@@ -19,4 +19,4 @@ public:
   void increaseTiming();
   void clona();
   void stampa();
-}
+};
