@@ -8,14 +8,18 @@
 #include "C_cartesiano.h"
 
 class Componente{
-public:
-    virtual std::string getName() const=0;
-    virtual C_cartesiano impedenza() const=0;
+private:
+    C_cartesiano imp;
 
+public:
+    Componente(C_cartesiano&);
     virtual ~Componente () = default;
 
-    C_cartesiano operator+(const Componente&) const;
-    C_cartesiano operator/(const Componente&) const;
+    virtual std::string getName() const;
+    virtual C_cartesiano impedenza() const;
+
+    Componente operator+(const Componente&) const;
+    Componente operator/(const Componente&) const;
 
 };
 

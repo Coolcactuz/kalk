@@ -16,6 +16,7 @@ public:
     Raz (int);
     Raz (long, long);
     Raz (double);
+    ~Raz();
 
     explicit operator double () const;
     Raz *operator+ (const Numero *) const;

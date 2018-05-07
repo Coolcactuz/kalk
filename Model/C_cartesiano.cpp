@@ -11,6 +11,7 @@ C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.i
 
 //C_cartesiano::C_cartesiano(const Raz& r):reale(double(r)),immaginaria(0){};
 
+C_cartesiano::~C_cartesiano(){}
 
 C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     auto c= dynamic_cast<const C_cartesiano*>(n);

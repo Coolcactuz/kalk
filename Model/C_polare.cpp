@@ -22,30 +22,21 @@ C_polare* C_polare::operator+ (const Numero* n)const{
     auto aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
     auto cp= dynamic_cast<const C_polare*>(n);
     if(cp){
-
-
-      //auto aux2= dynamic_cast<C_cartesiano*>(cp->converti());
-      //delete cp;
-      C_cartesiano* somma=new C_cartesiano(*(aux1+cp->converti()));
+      C_cartesiano* somma=new C_cartesiano(*(aux1->operator+(static_cast<C_cartesiano*>(cp->converti()))));
       delete aux1;
-      //delete aux2;
-      delete cp;
       return static_cast<C_polare*>(somma->converti());
     }
     throw(0); //gestire eccezione
 }
 
+C_polare::~C_polare(){};
 
 C_polare* C_polare::operator- (const Numero* n)const{
     auto aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
     auto cp= dynamic_cast<const C_polare*>(n);
     if(cp){
-      auto aux2= static_cast<C_cartesiano*>(cp->converti());
-      delete cp;
-      C_cartesiano* differenza=new C_cartesiano(*(aux1-cp->converti()));
+      C_cartesiano* differenza=new C_cartesiano(*(aux1->operator-(static_cast<C_cartesiano*>(cp->converti()))));
       delete aux1;
-      //delete aux2;
-      delete cp;
       return static_cast<C_polare*>(differenza->converti());
     }
     throw(0); // gestire eccezione

@@ -4,10 +4,16 @@
 
 #include "Componente.h"
 
-C_cartesiano Componente::operator+ (const Componente & c) const {
-    return *( impedenza()+ c.impedenza());
+/*Componente Componente::operator+ (const Componente & c) const {
+    return new Componente(*( impedenza()+ c.impedenza()));
 }
 
-C_cartesiano Componente::operator/ (const Componente & c) const {
+Componente Componente::operator/ (const Componente & c) const {
     return *(*(impedenza()*c.impedenza()) / *(impedenza()+c.impedenza()));
+}*/
+
+Componente::Componente(C_cartesiano& c): imp(c){}
+
+C_cartesiano Componente::impedenza() const{
+  return imp;
 }

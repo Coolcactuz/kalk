@@ -29,6 +29,14 @@ Circuito::Circuito(Componente * c):start(new nodo(c)){}
 
 Circuito::~Circuito () {delete start;}
 
+bool Circuito::const_iterator::operator==(const const_iterator& cit) const {
+  return ptr == cit.ptr;
+}
+
+bool Circuito::const_iterator::operator!=(const const_iterator& cit) const {
+  return ptr != cit.ptr;
+}
+
 C_cartesiano Circuito::impEquivalente (nodo*n) const {
     if(!n)  return 0;
 
