@@ -8,7 +8,6 @@
 
 #include "Componente.h"
 
-
 class Condensatore: public Componente{
 private:
     std::string nome;
@@ -17,7 +16,7 @@ public:
     Condensatore(std::string ="NoName", double =0);
     //~Condensatore ();
 
-    std::string getName() const override;
+    std::string getName() const;
     C_cartesiano impedenza() const override;
 };
 

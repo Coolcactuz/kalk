@@ -5,7 +5,7 @@
 #include "Condensatore.h"
 
 
-Condensatore::Condensatore(std::string n, double c):nome(n),capacita(c){}
+Condensatore::Condensatore(std::string n, double c):nome(n),capacita(c), Componente(impedenza()){}
 
 std::string Condensatore::getName() const{
     return nome;

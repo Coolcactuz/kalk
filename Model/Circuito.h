@@ -9,7 +9,7 @@
 #include "Componente.h"
 
 class Circuito {
-  friend class const_iterator;
+  //friend class const_iterator;
 private:
     class nodo{
         friend class Circuito;
@@ -25,7 +25,7 @@ private:
     };
     nodo*start;
 public:
-    class const_iterator {
+    /*class const_iterator {
         friend class Circuito;
     private:
         const nodo* ptr;
@@ -35,9 +35,9 @@ public:
         bool operator!=(const const_iterator&) const;
         const_iterator operator++();
         const_iterator operator--();
-    }
+    }*/
     static double freq;
-    static C_cartesiano volt;
+    static double volt;
     Circuito(Componente* =0);
     ~Circuito ();
 

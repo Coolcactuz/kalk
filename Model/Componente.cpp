@@ -12,7 +12,7 @@ Componente Componente::operator/ (const Componente & c) const {
     return *(*(impedenza()*c.impedenza()) / *(impedenza()+c.impedenza()));
 }*/
 
-Componente::Componente(C_cartesiano& c): imp(c){}
+Componente::Componente(C_cartesiano c): imp(c){}
 
 C_cartesiano Componente::impedenza() const{
   return imp;
