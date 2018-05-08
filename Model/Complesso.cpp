@@ -5,6 +5,6 @@
 #include "Complesso.h"
 
 std::ostream& operator<< (std::ostream& os, const Complesso& c){
-    c.stampa(os);
+    //c.stampa(os);
     return os;
 }

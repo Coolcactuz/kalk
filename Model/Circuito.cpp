@@ -6,7 +6,7 @@
 
 
 double Circuito::freq=50;
-C_cartesiano Circuito::volt=24;
+double Circuito::volt=24;
 
 Circuito::nodo::~nodo () {
     delete left;
@@ -28,7 +28,7 @@ Circuito::nodo::nodo (Componente * c, Circuito::nodo *l, Circuito::nodo *r, Circ
 Circuito::Circuito(Componente * c):start(new nodo(c)){}
 
 Circuito::~Circuito () {delete start;}
-
+/*
 bool Circuito::const_iterator::operator==(const const_iterator& cit) const {
   return ptr == cit.ptr;
 }
@@ -36,14 +36,13 @@ bool Circuito::const_iterator::operator==(const const_iterator& cit) const {
 bool Circuito::const_iterator::operator!=(const const_iterator& cit) const {
   return ptr != cit.ptr;
 }
-
+*/
 C_cartesiano Circuito::impEquivalente (nodo*n) const {
-    if(!n)  return 0;
-
+  return 0;
 }
 
 C_cartesiano Circuito::Corrente_totale() const{
-    if(volt.getReale() != 0)
-        return *(impEquivalente(start)/volt);
+    if(volt != 0)
+        return impEquivalente(start)/volt;
     throw(0); //gestire ECCEZIONE
 }

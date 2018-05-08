@@ -11,6 +11,7 @@ class Complesso : public Numero{
 public:
     virtual Complesso* converti() const =0;
     virtual Complesso* coniugato() const =0;
+    //virtual void stampa(std::ostream&);
 };
 std::ostream& operator<< (std::ostream&, const Complesso&);
 

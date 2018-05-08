@@ -12,7 +12,7 @@ private:
     C_cartesiano imp;
 
 public:
-    Componente(C_cartesiano&);
+    Componente(C_cartesiano);
     virtual ~Componente () = default;
 
     virtual std::string getName() const;
@@ -22,6 +22,5 @@ public:
     Componente operator/(const Componente&) const;
 
 };
-
 
 #endif //KALK_COMPONENTE_H

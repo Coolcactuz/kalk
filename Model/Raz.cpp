@@ -33,7 +33,7 @@ Raz::Raz(double d){ //1 parametro decimale
 }
 //
 
-//overloading operatori
+//overloading operatori con puntatori
 Raz* Raz::operator+ (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
@@ -63,6 +63,36 @@ Raz* Raz::operator^ (int exp)const {
     if(exp<0)
         return new Raz(pow(den,exp*-1), pow(num,exp*-1));
     return new Raz(pow(num,exp), pow(den,exp));
+}
+
+Raz::operator double() const{  //NB: metodi const
+    return static_cast<double>(num)/static_cast<double>(den);
+}
+
+std::ostream& operator << (std::ostream& os, const Raz& r){
+    os<<r.getNum()<<"/"<<r.getDen();
+    return os;
+}
+//
+
+//overloading operatori con riferimenti
+Raz Raz::operator+ (const Raz &n)const {
+    return Raz(num*n.den+n.num*den,(den*n.den));
+}
+Raz Raz::operator- (const Raz &n)const {
+    return Raz(num*n.den-n.num*den,(den*n.den));
+}
+Raz Raz::operator* (const Raz &n)const {
+    return Raz(num*n.num,den*n.den);
+}
+Raz Raz::operator/ (const Raz &n)const {
+    return Raz(num*n.den,den*n.num);
+}
+Raz Raz::operator^ (int exp)const {
+    if(exp==0) return Raz(1,1);
+    if(exp<0)
+        return Raz(pow(den,exp*-1), pow(num,exp*-1));
+    return Raz(pow(num,exp), pow(den,exp));
 }
 
 Raz::operator double() const{  //NB: metodi const
