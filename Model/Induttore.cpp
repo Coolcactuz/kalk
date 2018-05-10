@@ -4,7 +4,9 @@
 
 #include "Induttore.h"
 
-Induttore::Induttore(std::string n, double i):nome(n),induttanza(i){}
+Induttore::Induttore(std::string n, double i):Componente(),nome(n),induttanza(i){
+  Componente::setImp(impedenza());
+}
 
 std::string Induttore::getName() const{
     return nome;

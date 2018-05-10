@@ -12,11 +12,13 @@ private:
     C_cartesiano imp;
 
 public:
-    Componente(C_cartesiano);
-    virtual ~Componente () = default;
+    Componente(C_cartesiano = 0);
+    virtual ~Componente ();
 
     virtual std::string getName() const;
     virtual C_cartesiano impedenza() const;
+
+    void setImp(const C_cartesiano& );
 
     Componente operator+(const Componente&) const;
     Componente operator/(const Componente&) const;

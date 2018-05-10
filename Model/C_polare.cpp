@@ -18,6 +18,8 @@ C_polare::C_polare(double m, double f) {
 
 C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
 
+C_polare::~C_polare(){};
+
 C_polare* C_polare::operator+ (const Numero* n)const{
     auto aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());
     auto cp= dynamic_cast<const C_polare*>(n);
@@ -28,8 +30,6 @@ C_polare* C_polare::operator+ (const Numero* n)const{
     }
     throw(0); //gestire eccezione
 }
-
-C_polare::~C_polare(){};
 
 C_polare* C_polare::operator- (const Numero* n)const{
     auto aux1= static_cast<C_cartesiano*>((new C_polare(*this))->converti());

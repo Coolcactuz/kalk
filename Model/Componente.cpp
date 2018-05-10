@@ -17,3 +17,7 @@ Componente::Componente(C_cartesiano c): imp(c){}
 C_cartesiano Componente::impedenza() const{
   return imp;
 }
+
+void Componente::setImp(const C_cartesiano& c ){
+  imp=c;
+}

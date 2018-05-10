@@ -65,7 +65,7 @@ Raz* Raz::operator^ (int exp)const {
     return new Raz(pow(num,exp), pow(den,exp));
 }
 
-Raz::operator double() const{  //NB: metodi const
+Raz::operator double() const{  //nb: metodi const
     return static_cast<double>(num)/static_cast<double>(den);
 }
 
@@ -75,7 +75,7 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 }
 //
 
-//overloading operatori con riferimenti
+/*
 Raz Raz::operator+ (const Raz &n)const {
     return Raz(num*n.den+n.num*den,(den*n.den));
 }
@@ -94,6 +94,7 @@ Raz Raz::operator^ (int exp)const {
         return Raz(pow(den,exp*-1), pow(num,exp*-1));
     return Raz(pow(num,exp), pow(den,exp));
 }
+*/
 
 Raz::operator double() const{  //NB: metodi const
     return static_cast<double>(num)/static_cast<double>(den);

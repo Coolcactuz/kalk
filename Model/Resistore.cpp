@@ -4,7 +4,9 @@
 
 #include "Resistore.h"
 
-Resistore::Resistore(std::string n, double r):nome(n),resistenza(r){}
+Resistore::Resistore(std::string n, double r):Componente(), nome(n),resistenza(r){
+  Componente::setImp(impedenza());
+}
 
 std::string Resistore::getName() const{
     return nome;

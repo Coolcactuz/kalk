@@ -36,13 +36,17 @@ public:
         const_iterator operator++();
         const_iterator operator--();
     }*/
-    static double freq;
-    static double volt;
     Circuito(Componente* =0);
     ~Circuito ();
 
+    static double freq;
+    static double volt;
+
     C_cartesiano impEquivalente(nodo*) const ;
     C_cartesiano Corrente_totale() const ;
+
+    //double getVolt() const;
+    //double getFreq() const;
 
     Circuito& operator=(const Circuito&);
 

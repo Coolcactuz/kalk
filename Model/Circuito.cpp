@@ -42,7 +42,17 @@ C_cartesiano Circuito::impEquivalente (nodo*n) const {
 }
 
 C_cartesiano Circuito::Corrente_totale() const{
-    if(volt != 0)
-        return impEquivalente(start)/volt;
+    if(volt != 0){
+        C_cartesiano v=C_cartesiano(volt);
+        C_cartesiano impEq=impEquivalente(start);
+        return *((&impEq)->operator/(&v));
+    }
     throw(0); //gestire ECCEZIONE
+}
+
+double Circuito::getVolt() const{
+  return volt;
+}
+double Circuito::getFreq() const{
+  return freq;
 }

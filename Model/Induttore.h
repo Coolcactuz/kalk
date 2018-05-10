@@ -7,7 +7,7 @@
 
 
 #include "Componente.h"
-
+#include "Circuito.h"
 
 class Induttore: public Componente{
 private:

@@ -7,7 +7,7 @@
 
 
 #include "Componente.h"
-
+#include "Circuito.h"
 
 class Resistore : public Componente{
 private:
@@ -20,6 +20,5 @@ public:
     std::string getName() const override ;
     C_cartesiano impedenza() const override;
 };
-
 
 #endif //KALK_RESISTORE_H
