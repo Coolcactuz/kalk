@@ -13,8 +13,8 @@ private:
     long den;
 
 public:
-    Raz (int);
-    Raz (long, long);
+    //Raz (int =0);
+    Raz (long=0, long=1);
     Raz (double);
     ~Raz();
 

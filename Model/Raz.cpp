@@ -6,13 +6,11 @@
 #include <cmath>
 
 //costruttori
-Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
+//Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
 
-Raz::Raz(long n, long d){
+Raz::Raz(long n, long d){   //2 parametri interi
 
-    parser::add_parser_pointer(&(Raz::parse));
-
-                        //2 parametri interi
+    //parser::add_parser_pointer(&(Raz::parse));
     if(d==0) throw(0);  //GESTIRE ECCEZIONE
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
@@ -96,17 +94,6 @@ Raz Raz::operator^ (int exp)const {
 }
 */
 
-Raz::operator double() const{  //NB: metodi const
-    return static_cast<double>(num)/static_cast<double>(den);
-}
-
-std::ostream& operator << (std::ostream& os, const Raz& r){
-    os<<r.getNum()<<"/"<<r.getDen();
-    return os;
-}
-//
-
-
 //metodi
 long Raz::getNum () const { return num; }
 
@@ -137,7 +124,7 @@ long double Raz::radice_quadrata()const {
 long double Raz::radice_cubica()const {
     return cbrt(getNum())/cbrt(getDen());
 }
-
+/*
 const Dato* Raz::parse(std::string s){
   if(*(s.cbegin())=='{'){
     double p_num=0, p_den=0;
@@ -152,3 +139,4 @@ const Dato* Raz::parse(std::string s){
   }
   return nullptr;
 }
+*/

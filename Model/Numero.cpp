@@ -14,7 +14,7 @@ double Numero::rad_to_deg(double r) {
 double Numero::deg_to_rad(double g) {
     return g*pi/180;
 }
-
+/*
 double Numero::subparse(std::string s){
   if(*(s.cbegin())=='-')
     return subparse(s.substr(1))*(-1);
@@ -33,3 +33,4 @@ double Numero::subparse(std::string s){
   }
   return p_int+p_dec;
 }
+*/

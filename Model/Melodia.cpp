@@ -1,17 +1,17 @@
 #include "Melodia.h"
 
-Melodia(Nota* s){
-  v.push_back(s)
-};
-Melodia(Melodia&);
-~Melodia();
+Melodia::Melodia(Nota* s){
+  v.push_back(s);
+}
+Melodia::Melodia(const Melodia&){}
+Melodia::~Melodia(){}
 
-Melodia* operator+(const Melodia*) const;
-Melodia* operator*(int) const;
+Melodia* Melodia::operator+(const Melodia*) const{}
+Melodia* Melodia::operator*(int) const{}
 
-Melodia* addNote();
-Melodia* removeNote();
-void increaseTono();
-void increaseTiming();
-void clona();
-void stampa();
+Melodia* Melodia::addNote(){}
+Melodia* Melodia::removeNote(){}
+void Melodia::increaseTono(){}
+void Melodia::increaseTiming(){}
+void Melodia::clona(){}
+void Melodia::stampa(){}

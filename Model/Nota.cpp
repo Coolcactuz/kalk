@@ -1,34 +1,32 @@
 #include "Nota.h"
 
-Nota(int n, std::string tune, Raz timing): note(n), tono(tune), tempo(timing){}
-Nota(const Nota&);
+Nota::Nota(int n, std::string tune, Raz timing): note(n), tono(tune), tempo(timing){}
+Nota::Nota(const Nota&){}
 
-Nota* operator+ (const Raz&){} //aumenta tempo
+Nota* Nota::operator+ (const Raz&){} //aumenta tempo
 
-}
-
-Nota* operator- (const Raz&){ //diminuisci tempo
+Nota* Nota::operator- (const Raz&){ //diminuisci tempo
 
 }
 
-Nota* operator++ (){ //aumenta tonalità
+Nota* Nota::operator++ (){ //aumenta tonalità
 
 }
 
-Nota* operator-- (){ //diminuisci tonalità
+Nota* Nota::operator-- (){ //diminuisci tonalità
 
 }
 
-int getNote() const{
+int Nota::getNote() const{
   return note;
 }
-std::string getTono() const{
+std::string Nota::getTono() const{
   return tono;
 }
-Raz getTempo() const{
+Raz Nota::getTempo() const{
   return tempo;
 }
 
-void stampa(std::ostream&)const{
-  
+void Nota::stampa(std::ostream&)const{
+
 }

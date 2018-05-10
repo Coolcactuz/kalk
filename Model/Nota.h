@@ -11,7 +11,7 @@ private:
     Raz tempo;
 
 public:
-    Nota(int =0, std::string ="", Raz=0);
+    Nota(int =0, std::string ="", Raz=long(0));
     Nota(const Nota&);
 
     Nota* operator+ (const Raz&); //aumenta tempo
