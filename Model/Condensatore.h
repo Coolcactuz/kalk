@@ -11,13 +11,11 @@
 
 class Condensatore: public Componente{
 private:
-    std::string nome;
     double capacita;
 public:
-    Condensatore(std::string ="NoName", double =0);
-    //~Condensatore ();
+    Condensatore(double =0,std::string ="NoName");
+    ~Condensatore ();
 
-    std::string getName() const;
     C_cartesiano impedenza() const override;
 };
 

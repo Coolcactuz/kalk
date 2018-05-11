@@ -11,13 +11,11 @@
 
 class Resistore : public Componente{
 private:
-    std::string nome;
     double resistenza;
 public:
-    Resistore(std::string ="NoName", double =0);
-    //~Resistore();
+    Resistore(double =0,std::string ="NoName");
+    ~Resistore();
 
-    std::string getName() const override ;
     C_cartesiano impedenza() const override;
 };
 

@@ -5,8 +5,8 @@
 #include "Circuito.h"
 
 
-double Circuito::freq=50;
-double Circuito::volt=24;
+double Circuito::freq=0;
+double Circuito::volt=0;
 
 Circuito::nodo::~nodo () {
     delete left;
@@ -50,9 +50,15 @@ C_cartesiano Circuito::Corrente_totale() const{
     throw(0); //gestire ECCEZIONE
 }
 
-double Circuito::getVolt() const{
-  return volt;
+void Circuito::setVolt(double v){
+  if(v>=0)
+    volt=v;
+  else
+    throw(0); //gestire eccezione
 }
-double Circuito::getFreq() const{
-  return freq;
+void Circuito::setFreq(double f){
+  if(f>=0)
+    freq=f;
+  else
+    throw(0); //gestire eccezione
 }

@@ -11,13 +11,11 @@
 
 class Induttore: public Componente{
 private:
-    std::string nome;
     double induttanza;
 public:
-    Induttore(std::string ="NoName", double =0);
-    //~Induttore();
+    Induttore(double =0,std::string ="NoName");
+    ~Induttore();
 
-    std::string getName() const override;
     C_cartesiano impedenza() const override;
 };
 

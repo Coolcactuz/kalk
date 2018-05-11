@@ -45,10 +45,10 @@ public:
     C_cartesiano impEquivalente(nodo*) const ;
     C_cartesiano Corrente_totale() const ;
 
-    //double getVolt() const;
-    //double getFreq() const;
+    void setVolt(double);
+    void setFreq(double);
 
-    Circuito& operator=(const Circuito&);
+    //Circuito& operator=(const Circuito&);
 
     //nodo* copy(nodo*);
 

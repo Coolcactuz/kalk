@@ -4,13 +4,11 @@
 
 #include "Induttore.h"
 
-Induttore::Induttore(std::string n, double i):Componente(),nome(n),induttanza(i){
+Induttore::Induttore(double i, std::string n):Componente(0,n),induttanza(i){
   Componente::setImp(impedenza());
 }
 
-std::string Induttore::getName() const{
-    return nome;
-}
+Induttore::~Induttore(){}
 
 C_cartesiano Induttore::impedenza() const{
     double xl=2*Numero::pi*Circuito::freq*induttanza;

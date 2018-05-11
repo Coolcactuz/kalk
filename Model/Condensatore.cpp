@@ -4,13 +4,11 @@
 
 #include "Condensatore.h"
 
-Condensatore::Condensatore(std::string n, double c):Componente(),nome(n),capacita(c){
+Condensatore::Condensatore(double c, std::string n):Componente(0,n),capacita(c){
   Componente::setImp(impedenza());
 }
 
-std::string Condensatore::getName() const{
-    return nome;
-}
+Condensatore::~Condensatore(){}
 
 C_cartesiano Condensatore::impedenza() const{
     double xc=1/(2*(Numero::pi)*(Circuito::freq)*capacita);
