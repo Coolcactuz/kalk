@@ -38,21 +38,6 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     throw(0);    //gestire eccezione
 }
 
-/*
-C_cartesiano C_cartesiano::operator+ (const C_cartesiano& n)const {
-    return C_cartesiano(reale+n.reale,immaginaria+n.immaginaria);
-}
-C_cartesiano C_cartesiano::operator- (const C_cartesiano& n)const {
-    return C_cartesiano(reale-n.reale,immaginaria-n.immaginaria);
-}
-C_cartesiano C_cartesiano::operator* (const C_cartesiano& n)const {
-    return C_cartesiano(reale*n.reale-immaginaria*n.immaginaria,immaginaria*n.reale+reale*n.immaginaria);
-}
-C_cartesiano C_cartesiano::operator/ (const C_cartesiano& n)const {
-    return C_cartesiano(reale/n.reale-immaginaria/n.immaginaria,immaginaria/n.reale+reale/n.immaginaria);
-}
-*/
-
 double C_cartesiano::getReale() const {return reale;}
 double C_cartesiano::getImmaginaria() const {return immaginaria;}
 
