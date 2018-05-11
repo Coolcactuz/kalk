@@ -13,11 +13,9 @@ class C_polare;
 
 
 class C_cartesiano: public Complesso {
-
 private:
     double reale;
     double immaginaria;
-
 public:
     C_cartesiano(double =0,double =0);
     C_cartesiano(const C_cartesiano&);
@@ -27,12 +25,6 @@ public:
     C_cartesiano* operator- (const Numero*)const;
     C_cartesiano* operator* (const Numero*)const;
     C_cartesiano* operator/ (const Numero*)const;
-
-    //C_cartesiano operator+ (const C_cartesiano&)const;
-    //C_cartesiano operator- (const C_cartesiano&)const;
-    //C_cartesiano operator* (const C_cartesiano&)const;
-    //C_cartesiano operator/ (const C_cartesiano&)const;
-    //static C_cartesiano* parse(std::string);
 
     double getReale() const;
     double getImmaginaria() const;
