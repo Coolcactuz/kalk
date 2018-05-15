@@ -1,0 +1,9 @@
+IDEE PER IL CONTROLLER
+
+-assumo che la codifica dei tipi avvenga tramite interi nel modo seguente:
+
+0->razionali
+1->complessi polari
+2->complessi cartesiani
+3->nota
+4->componente

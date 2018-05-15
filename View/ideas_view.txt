@@ -1,0 +1,19 @@
+IDEE PER LA PARTE DELLA VISTA
+
+
+-il ciclo che view_manager deve far rispettare è il seguente: funzione start()
+crea la vista startup, selezione del tipo e comunicazione al controller,
+invocazione di newSpecialized() che crea la vista specifica rispetto al tipo
+
+-la vista startup comunica al controller il tipo, il quale è codificato come un
+intero e memorizzato in un campo specifico
+
+-la funzione newSpecialized() riceve come input l'intero che rappresenta il
+tipo e consiste in uno switch che crea la vista più adatta e ne memorizza il
+puntatore polimorfo nel campo specialized
+
+-come organizzare la gerarchia delle viste? tutta collegata e con un padre in
+comune o speculare rispetto a quella del modello?(per il momento un unica
+gerarchia)
+
+-come sfruttare il polimorfismo delle viste?????
