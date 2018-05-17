@@ -1,6 +1,8 @@
 #ifndef VIEW_MANAGER_H
 #define VIEW_MANAGER_H
 
+
+#include "startup_view.h"
 #include <QObject>
 
 /* classe view_manager: deve gestire la vista iniziale (startup_view), e sulla
@@ -14,13 +16,15 @@ class view_manager: public QObject{ //QObject richiede un puntatore all'
                                     //eventuale padre
 private:
 
+  //controller* c;
+
   //ricordarsi di inizializzarle come figlie di view_manager
   //esiste una sola view_manager per esecuzione ed è una variabile automatica
   //il che significa che alla sua distruzione verranno distrutti anche gli
   //oggetti puntati
 
   startup_view* startup;
-  specialized_view* specialized;
+  //specialized_view* specialized;
 
   //----------------------gestione viste------------------------------------
 
@@ -31,12 +35,19 @@ private:
 
   /* newSpecialized() crea la vista specializzata sulla base del tipo
   comunicatogli dal controller */
-  void newSpecialized(int);
+  //void newSpecialized(int);
 
 public:
 
   //gestione oggetto view_manager
   view_manager(QObject* = 0);
+  ~view_manager();
+
+public signals:
+
+  void datatype_vm() {}
+
+  QObject::connect(startup, SIGNAL(datatype_su()), this, SIGNAL(datatype_vm()));
 
 };
 

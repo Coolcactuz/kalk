@@ -1,8 +1,14 @@
 #include "view_manager.h"
 
-view_manager::view_manager(QObject* parent): QObject(parent), startup(0),
-  specialized(0) {
+view_manager::view_manager(QObject* parent): QObject(parent), startup(0) /*,
+specialized(0)*/ {
       start();
+}
+
+
+view_manager::~view_manager(){
+  delete startup;
+  //delete specialized;
 }
 
 
@@ -12,15 +18,17 @@ void view_manager::start() {
   if(startup)
     delete startup;
 
+  /*
   if(specialized){
     delete specialized;
     specialized = 0;
-  }
+  }*/
 
-  startup = new startup_view(this);
+  startup = new startup_view();
+  startup->show();
 }
 
-
+/*
 void view_manager::newSpecialized(int type) {
 
   switch (type) {
@@ -40,5 +48,9 @@ void view_manager::newSpecialized(int type) {
       specialized = new vNota(this);
     break;
   }
-  
+
+  specialized->show();
+
 }
+
+*/
