@@ -1,8 +1,11 @@
 #include "view_manager.h"
 
-view_manager::view_manager(QObject* parent): QObject(parent), startup(0) /*,
+view_manager::view_manager(): startup(0) /*,
 specialized(0)*/ {
       start();
+
+      QObject::connect(startup, SIGNAL(exchange(int)), this, SIGNAL(datatype_vm(int)));
+
 }
 
 

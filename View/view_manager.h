@@ -14,6 +14,9 @@ puntatori alle stesse, che devono essere opportunamente gestiti */
 
 class view_manager: public QObject{ //QObject richiede un puntatore all'
                                     //eventuale padre
+
+Q_OBJECT
+
 private:
 
   //controller* c;
@@ -40,14 +43,12 @@ private:
 public:
 
   //gestione oggetto view_manager
-  view_manager(QObject* = 0);
+  view_manager();
   ~view_manager();
 
-public signals:
+signals:
 
-  void datatype_vm() {}
-
-  QObject::connect(startup, SIGNAL(datatype_su()), this, SIGNAL(datatype_vm()));
+  void datatype_vm(int);
 
 };
 

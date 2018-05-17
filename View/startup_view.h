@@ -7,11 +7,14 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QComboBox>
+#include <iostream>
 
 /* fornisce una interfaccia per la selezione del tipo, comunica l'informazione
 al controller e cede il controllo */
 
 class startup_view : public QWidget{
+
+Q_OBJECT
 
 private:
 
@@ -28,11 +31,14 @@ public:
   startup_view();
   ~startup_view();
 
-public signals:
+public slots:
 
-  void datatype_su() {}
+  void datatype_su();
 
-QObject::connect(nota, SIGNAL(clicked()), this, SIGNAL(datatype_su()));
+signals:
+
+  void exchange(int);
+
 };
 
 #endif

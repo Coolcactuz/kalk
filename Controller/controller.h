@@ -19,9 +19,8 @@ public:
   int getDatatype() const {return datatype;}
 
 public slots:
-  void setData();
+  void setData(int);
 
-  QObject::connect(vm, SIGNAL(datatype_vm()), this, SLOT(setData()));
 };
 
 #endif

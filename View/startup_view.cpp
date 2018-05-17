@@ -22,9 +22,26 @@ tipi_numerici->addItem("RAZIONALI");
 tipi_numerici->addItem("COMPLESSI POLARI");
 tipi_numerici->addItem("COMPLESSI CARTESIANI");
 
+QObject::connect(nota, SIGNAL(clicked()), this, SLOT(datatype_su()));
+
 }
 
 startup_view::~startup_view(){
   delete upper;
   delete lower;
+}
+
+void startup_view::datatype_su(){
+  selectTypeButton* button = qobject_cast<selectTypeButton*>(sender());
+
+  int info = -2;
+
+  if(button){
+    info = button->getDataNumber();
+    emit exchange(info);
+  }
+  else
+    std::cout <<"button è nullo"<< std::endl;
+
+
 }
