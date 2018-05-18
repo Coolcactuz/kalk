@@ -1,7 +1,7 @@
 #ifndef STARTUP_VIEW_H
 #define STARTUP_VIEW_H
 
-#include "selectTypeButton.h"
+#include "KalkButton.h"
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -22,8 +22,8 @@ private:
   QHBoxLayout* upper;
   QHBoxLayout* lower;
   QLabel* kalk_label;
-  selectTypeButton* nota;
-  selectTypeButton* circuito;
+  KalkButton* nota;
+  KalkButton* circuito;
   QComboBox* tipi_numerici;
 
 public:

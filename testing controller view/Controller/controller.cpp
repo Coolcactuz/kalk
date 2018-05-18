@@ -5,5 +5,11 @@ controller::controller(): datatype(-1), vm(new view_manager()){
 }
 
 void controller::setData(int info){
-  std::cout <<info<< std::endl;
+  // std::cout <<"parametro ricevuto: " << info<< std::endl;
+  datatype = info;
+  std::cout <<"valore del campo datatype : " << datatype<< std::endl;
+}
+
+controller::~controller(){
+  delete vm;
 }

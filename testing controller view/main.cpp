@@ -1,11 +1,12 @@
-#include "view_manager.h"
+#include "Controller/controller.h"
 #include <QApplication>
 
 int main(int argn, char ** args){
 
 	QApplication app(argn, args);
 
-	view_manager vm;
+	controller c;
+	std::cout << "inizio" << std::endl;
 
 	app.exec();
 

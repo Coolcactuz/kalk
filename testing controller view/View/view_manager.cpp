@@ -1,17 +1,15 @@
 #include "view_manager.h"
 
-view_manager::view_manager(): startup(0) /*,
-specialized(0)*/ {
+view_manager::view_manager(): startup(0), specialized(0){
       start();
 
       QObject::connect(startup, SIGNAL(exchange_datatype(int)), this, SIGNAL(datatype_vm(int)));
-
 }
 
 
 view_manager::~view_manager(){
   delete startup;
-  //delete specialized;
+  delete specialized;
 }
 
 
@@ -21,39 +19,34 @@ void view_manager::start() {
   if(startup)
     delete startup;
 
-  /*
   if(specialized){
     delete specialized;
     specialized = 0;
-  }*/
+  }
 
   startup = new startup_view();
   startup->show();
 }
 
-/*
+
 void view_manager::newSpecialized(int type) {
 
   switch (type) {
     case 0:
-      specialized = new vRaz(this);
+      specialized = new vRaz();
     break;
     case 1:
-      specialized = new vC_polari(this);
-    break;
     case 2:
-      specialized = new vC_cartesiani(this);
+      specialized = new vComplex();
     break;
     case 3:
-      specialized = new vComponente(this);
+      specialized = new vSymphony();
     break;
     case 4:
-      specialized = new vNota(this);
+      specialized = new vCircuit();
     break;
   }
 
   specialized->show();
 
 }
-
-*/
