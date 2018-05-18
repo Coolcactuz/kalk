@@ -24,6 +24,7 @@ public:
 
     void setVolt(double);
     void setFreq(double);
+    //bool checkName(std::string);
 };
 
 #endif //KALK_CIRCUITO_H
