@@ -1,3 +1,6 @@
+#ifndef MELODIA_H
+#define MELODIA_H
+
 #include "Nota.h"
 
 #include<vector>
@@ -20,3 +23,5 @@ public:
   void clona();
   void stampa();
 };
+
+#endif

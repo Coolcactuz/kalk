@@ -15,6 +15,7 @@ private:
 public:
     //Raz (int =0);
     Raz (long=0, long=1);
+    Raz (std::string ="");
     Raz (double);
     ~Raz();
 
@@ -25,18 +26,12 @@ public:
     Raz* operator/ (const Numero *) const;
     Raz* operator^ (int) const;
 
-    //Raz operator+ (const Raz&) const;
-    //Raz operator- (const Raz&) const;
-    //Raz operator* (const Raz&) const;
-    //Raz operator/ (const Raz&) const;
-    //Raz operator^ (int) const;
     //static const Dato* parse(std::string);
 
     long getNum () const;
     long getDen () const;
     int getMCD (long, long) const;
     Raz *reciproco () const;
-    //Raz reciproco () const;
     void semplifica ();
     long double radice_quadrata () const;
     long double radice_cubica () const;

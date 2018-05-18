@@ -1,7 +1,7 @@
 //
 // Created by luca on 07/12/17.
 //
-
+#include "parser.h"
 #include "Raz.h"
 #include <cmath>
 
@@ -9,13 +9,23 @@
 //Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
 
 Raz::Raz(long n, long d){   //2 parametri interi
-
-    //parser::add_parser_pointer(&(Raz::parse));
     if(d==0) throw(0);  //GESTIRE ECCEZIONE
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
     else{num=n; den=d;}
     semplifica();
+}
+
+Raz::Raz(std::string s){   //stringa
+  std::string::size_type size=0;
+  double number=std::stod(s,&size);
+  if(size==s.length() && size!=0){
+    Raz aux(number);
+    num=aux.getNum();
+    den=aux.getDen();
+  }
+  else
+    throw(0); //gestire eccezione syntax error
 }
 
 Raz::~Raz(){}

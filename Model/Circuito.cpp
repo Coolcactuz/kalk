@@ -45,3 +45,12 @@ void Circuito::setFreq(double f){
   else
     throw(0); //gestire eccezione
 }
+
+/*
+bool Circuito::checkName(std::string s){
+  for(auto cit=v.cbegin(); cit!=v.cend(); ++cit){
+    if(s==(*cit)->getName()) return true;
+  }
+  return false;
+}
+*/
