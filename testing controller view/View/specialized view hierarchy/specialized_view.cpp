@@ -22,7 +22,19 @@ lower(new QGridLayout()), display(new QPlainTextEdit(this)) {
   lower->addWidget(new KalkButton(2, "2", this), 2, 1);
   lower->addWidget(new KalkButton(3, "3", this), 2, 2);
   lower->addWidget(new KalkButton(0, "0", this), 3, 1);
+  lower->addWidget(new KalkButton(-2, "AC", this), 3, 0);
+  lower->addWidget(new KalkButton(-3, ".", this), 3, 2);
+  lower->addWidget(new KalkButton(-1, "E", this), 2, 3, 1, 2);
 
 
   //connect e altra roba qua
+}
+
+//ritorna il puntatore al KalkButton con testo s
+KalkButton* specialized_view::getKey(std::string s) const{
+  KalkButton* result = 0;
+
+  for(int idx = 0; idx < lower->count(); idx++){
+    
+  }
 }
