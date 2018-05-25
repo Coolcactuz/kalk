@@ -29,31 +29,41 @@ public:
 //metodi comuni a tutte le viste, posso gia definirli
 
 //costruttore e distruttore
-specialized_view(view_manager* = 0);
-virtual ~specialized_view();
+  specialized_view(view_manager* = 0);
+  virtual ~specialized_view();
 
 //chiama il metodo start() di view manager per poter ricominciare il ciclo
-  return()
+  void select_type();
 
+
+//DECIDERE SE FARE O MENO
+//vista contestuale: se la finestra è maximized appare il bottone per
+//unmaximizzare, altrimenti il contrario
+
+/*
 //ridimensiona la vista affinchè occupi il massimo dello schermo
-  resize_max()
+  void resize_max();
 
 //ridimensiona la vista affinchè occupi una certa percentuale dello schermo
-  resize_adaptive()
+  void unmaximize()
+*/
 
+
+//DA FARE UNA VOLTA SISTEMATO IL CONTROLLER
+/*
 //chiama la funzione di salvataggio del buffer di sessione e chiudi kalk
   save_and_quit()
-
+*/
 
 
 //metodi virtuali puri, servono ulteriori informazioni per poterli definire
 
 
 //plotta l'oggetto corrente
-  plot(current_object)
+  virtual plot() =0;
 
 //mostra un menù contestuale
-  show_menu()
+  virtual show_menu() =0;
 
 
 
@@ -62,5 +72,6 @@ signals:
 //segnale generico comune a tutte le viste, invia dati al controller
   void sendData(std::string);
 };
+
 
 #endif

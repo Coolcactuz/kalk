@@ -35,6 +35,22 @@ KalkButton* specialized_view::getKey(std::string s) const{
   KalkButton* result = 0;
 
   for(int idx = 0; idx < lower->count(); idx++){
-    
+    QLayoutItem* item = lower->itemAt(idx); //puntatore a oggetto QLayoutItem
+    if(qobject_cast<QWidgetItem*>(item)){  //se esiste è un QWidget
+      KalkButton* b = qobject_cast<KalkButton*>(item->widget());
+      if(b && b->text()==s) // b esiste e il testo coincide
+        result = b;
+    }
   }
+
+  return result;
+}
+
+specialized_view::~specialized_view(){
+  delete upper;
+  delete lower;
+}
+
+void specialized_view::select_type(){
+  vm->start();
 }
