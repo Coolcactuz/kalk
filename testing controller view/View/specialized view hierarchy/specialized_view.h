@@ -4,36 +4,33 @@
 #include "../KalkButton.h"
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPlainTextEdit>
 #include <string>
+#include <iostream>
 
-class view_manager;
 
 class specialized_view: public QWidget{
-private:
 
-  view_manager* vm;
+protected:
+
   QVBoxLayout* external_layout;
   QVBoxLayout* upper;
-  QGridLayout* lower;
+  QHBoxLayout* lower;
+
+private:
+
+  QGridLayout* keyboard;
   QPlainTextEdit* display;
-
-  //metodo di accesso ai KalkButton della tastiera mediante puntatore lower,
-  //magari virtuale
-
-  virtual KalkButton* getKey(std::string) const;
 
 public:
 
 //metodi comuni a tutte le viste, posso gia definirli
 
 //costruttore e distruttore
-  specialized_view(view_manager* = 0);
+  specialized_view();
   virtual ~specialized_view();
-
-//chiama il metodo start() di view manager per poter ricominciare il ciclo
-  void select_type();
 
 
 //DECIDERE SE FARE O MENO
@@ -60,10 +57,10 @@ public:
 
 
 //plotta l'oggetto corrente
-  virtual plot() =0;
+  //virtual plot() =0;
 
 //mostra un menù contestuale
-  virtual show_menu() =0;
+  //virtual show_menu() =0;
 
 
 

@@ -1,8 +1,11 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "../View/view_manager.h"
+#include "../View/startup_view.h"
+#include "../View/specialized view hierarchy/VCircuit.h"
 #include <QObject>
+#include <iostream>
+
 
 class controller: public QObject{
 
@@ -10,14 +13,17 @@ Q_OBJECT
 
 private:
   int datatype;
-  view_manager* vm;
+  startup_view* startup;
+  specialized_view* specialized;
+
 
 public:
-
   controller();
   ~controller();
 
-  int getDatatype() const {return datatype;}
+  void start();
+
+  //int getDatatype() const {return datatype;}
 
 public slots:
   void setData(int);

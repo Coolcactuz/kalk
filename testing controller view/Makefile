@@ -53,18 +53,18 @@ OBJECTS_DIR   = ./
 SOURCES       = main.cpp \
 		Controller/controller.cpp \
 		View/startup_view.cpp \
-		View/view_manager.cpp moc_controller.cpp \
-		moc_selectTypeButton.cpp \
-		moc_startup_view.cpp \
-		moc_view_manager.cpp
+		View/specialized\ view\ hierarchy/specialized_view.cpp \
+		View/specialized\ view\ hierarchy/VCircuit.cpp moc_controller.cpp \
+		moc_KalkButton.cpp \
+		moc_startup_view.cpp
 OBJECTS       = main.o \
 		controller.o \
 		startup_view.o \
-		view_manager.o \
+		specialized_view.o \
+		VCircuit.o \
 		moc_controller.o \
-		moc_selectTypeButton.o \
-		moc_startup_view.o \
-		moc_view_manager.o
+		moc_KalkButton.o \
+		moc_startup_view.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -145,12 +145,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		testing controller view.pro Controller/controller.h \
 		Controller/session_buffer.h \
-		View/selectTypeButton.h \
+		View/KalkButton.h \
 		View/startup_view.h \
-		View/view_manager.h main.cpp \
+		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/VCircuit.h main.cpp \
 		Controller/controller.cpp \
 		View/startup_view.cpp \
-		View/view_manager.cpp
+		View/specialized\ view\ hierarchy/specialized_view.cpp \
+		View/specialized\ view\ hierarchy/VCircuit.cpp
 QMAKE_TARGET  = testing\ controller\ view
 DESTDIR       = 
 TARGET        = testing\ controller\ view
@@ -342,8 +344,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Controller/controller.h Controller/session_buffer.h View/selectTypeButton.h View/startup_view.h View/view_manager.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp Controller/controller.cpp View/startup_view.cpp View/view_manager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Controller/controller.h Controller/session_buffer.h View/KalkButton.h View/startup_view.h View/specialized\ view\ hierarchy/specialized_view.h View/specialized\ view\ hierarchy/VCircuit.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp Controller/controller.cpp View/startup_view.cpp View/specialized\ view\ hierarchy/specialized_view.cpp View/specialized\ view\ hierarchy/VCircuit.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -375,34 +377,28 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -m64 -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_controller.cpp moc_selectTypeButton.cpp moc_startup_view.cpp moc_view_manager.cpp
+compiler_moc_header_make_all: moc_controller.cpp moc_KalkButton.cpp moc_startup_view.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_controller.cpp moc_selectTypeButton.cpp moc_startup_view.cpp moc_view_manager.cpp
-moc_controller.cpp: View/view_manager.h \
-		View/startup_view.h \
-		View/selectTypeButton.h \
+	-$(DEL_FILE) moc_controller.cpp moc_KalkButton.cpp moc_startup_view.cpp
+moc_controller.cpp: View/startup_view.h \
+		View/KalkButton.h \
+		View/specialized\ view\ hierarchy/VCircuit.h \
+		View/specialized\ view\ hierarchy/specialized_view.h \
 		Controller/controller.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/nick/Documents/kalk/testing controller view' -I'/home/nick/Documents/kalk/testing controller view' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Controller/controller.h -o moc_controller.cpp
 
-moc_selectTypeButton.cpp: View/selectTypeButton.h \
+moc_KalkButton.cpp: View/KalkButton.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/nick/Documents/kalk/testing controller view' -I'/home/nick/Documents/kalk/testing controller view' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/selectTypeButton.h -o moc_selectTypeButton.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/nick/Documents/kalk/testing controller view' -I'/home/nick/Documents/kalk/testing controller view' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/KalkButton.h -o moc_KalkButton.cpp
 
-moc_startup_view.cpp: View/selectTypeButton.h \
+moc_startup_view.cpp: View/KalkButton.h \
 		View/startup_view.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/nick/Documents/kalk/testing controller view' -I'/home/nick/Documents/kalk/testing controller view' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/startup_view.h -o moc_startup_view.cpp
-
-moc_view_manager.cpp: View/startup_view.h \
-		View/selectTypeButton.h \
-		View/view_manager.h \
-		moc_predefs.h \
-		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/nick/Documents/kalk/testing controller view' -I'/home/nick/Documents/kalk/testing controller view' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/view_manager.h -o moc_view_manager.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -419,37 +415,40 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 ####### Compile
 
 main.o: main.cpp Controller/controller.h \
-		View/view_manager.h \
 		View/startup_view.h \
-		View/selectTypeButton.h
+		View/KalkButton.h \
+		View/specialized\ view\ hierarchy/VCircuit.h \
+		View/specialized\ view\ hierarchy/specialized_view.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 controller.o: Controller/controller.cpp Controller/controller.h \
-		View/view_manager.h \
 		View/startup_view.h \
-		View/selectTypeButton.h
+		View/KalkButton.h \
+		View/specialized\ view\ hierarchy/VCircuit.h \
+		View/specialized\ view\ hierarchy/specialized_view.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o Controller/controller.cpp
 
 startup_view.o: View/startup_view.cpp View/startup_view.h \
-		View/selectTypeButton.h
+		View/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startup_view.o View/startup_view.cpp
 
-view_manager.o: View/view_manager.cpp View/view_manager.h \
-		View/startup_view.h \
-		View/selectTypeButton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o view_manager.o View/view_manager.cpp
+specialized_view.o: View/specialized\ view\ hierarchy/specialized_view.cpp View/specialized\ view\ hierarchy/specialized_view.h \
+		View/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o specialized_view.o View/specialized\ view\ hierarchy/specialized_view.cpp
+
+VCircuit.o: View/specialized\ view\ hierarchy/VCircuit.cpp View/specialized\ view\ hierarchy/VCircuit.h \
+		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VCircuit.o View/specialized\ view\ hierarchy/VCircuit.cpp
 
 moc_controller.o: moc_controller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_controller.o moc_controller.cpp
 
-moc_selectTypeButton.o: moc_selectTypeButton.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_selectTypeButton.o moc_selectTypeButton.cpp
+moc_KalkButton.o: moc_KalkButton.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkButton.o moc_KalkButton.cpp
 
 moc_startup_view.o: moc_startup_view.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_startup_view.o moc_startup_view.cpp
-
-moc_view_manager.o: moc_view_manager.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_view_manager.o moc_view_manager.cpp
 
 ####### Install
 

@@ -31,14 +31,22 @@ QObject::connect(tipi_numerici, SIGNAL(activated(int)), this, SIGNAL(exchange_da
 }
 
 startup_view::~startup_view(){
+
+  std::cout << "distruttore startup_view - inizio" << std::endl;
+
+
   delete upper;
   delete lower;
+
+  std::cout << "distruttore startup_view - fine" << std::endl;
+
 }
 
 void startup_view::datatype_su(){
+
   KalkButton* button = qobject_cast<KalkButton*>(sender());
 
-  int info = -2;
+  int info = 0;
 
   if(button){
     info = button->getDataNumber();
@@ -46,6 +54,4 @@ void startup_view::datatype_su(){
   }
   else
     std::cout <<"button è nullo"<< std::endl;
-
-
 }

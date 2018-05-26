@@ -1,56 +1,48 @@
 #include "specialized_view.h"
 
-specialized_view::specialized_view(view_manager* pointer): vm(pointer),
-external_layout(new QVBoxLayout(this)), upper(new QVBoxLayout()),
-lower(new QGridLayout()), display(new QPlainTextEdit(this)) {
+specialized_view::specialized_view(): external_layout(new QVBoxLayout(this)),
+upper(new QVBoxLayout()), lower(new QHBoxLayout()), keyboard(new QGridLayout()),
+display(new QPlainTextEdit(this)) {
 
   external_layout->addLayout(upper);
   external_layout->addLayout(lower);
+
+  lower->addLayout(keyboard);
 
   upper->addWidget(display);
 
 
   //riempire il QGridLayout con i KalkButton
 
-  lower->addWidget(new KalkButton(7, "7", this), 0, 0);
-  lower->addWidget(new KalkButton(8, "8", this), 0, 1);
-  lower->addWidget(new KalkButton(9, "9", this), 0, 2);
-  lower->addWidget(new KalkButton(4, "4", this), 1, 0);
-  lower->addWidget(new KalkButton(5, "5", this), 1, 1);
-  lower->addWidget(new KalkButton(6, "6", this), 1, 2);
-  lower->addWidget(new KalkButton(1, "1", this), 2, 0);
-  lower->addWidget(new KalkButton(2, "2", this), 2, 1);
-  lower->addWidget(new KalkButton(3, "3", this), 2, 2);
-  lower->addWidget(new KalkButton(0, "0", this), 3, 1);
-  lower->addWidget(new KalkButton(-2, "AC", this), 3, 0);
-  lower->addWidget(new KalkButton(-3, ".", this), 3, 2);
-  lower->addWidget(new KalkButton(-1, "E", this), 2, 3, 1, 2);
+  keyboard->addWidget(new KalkButton(7, "7", this), 0, 0);
+  keyboard->addWidget(new KalkButton(8, "8", this), 0, 1);
+  keyboard->addWidget(new KalkButton(9, "9", this), 0, 2);
+  keyboard->addWidget(new KalkButton(4, "4", this), 1, 0);
+  keyboard->addWidget(new KalkButton(5, "5", this), 1, 1);
+  keyboard->addWidget(new KalkButton(6, "6", this), 1, 2);
+  keyboard->addWidget(new KalkButton(1, "1", this), 2, 0);
+  keyboard->addWidget(new KalkButton(2, "2", this), 2, 1);
+  keyboard->addWidget(new KalkButton(3, "3", this), 2, 2);
+  keyboard->addWidget(new KalkButton(0, "0", this), 3, 1);
+  keyboard->addWidget(new KalkButton(-2, "AC", this), 0, 3);
+  keyboard->addWidget(new KalkButton(-2, "DEL", this), 1, 3);
+  keyboard->addWidget(new KalkButton(-3, ".", this), 2, 3);
+  keyboard->addWidget(new KalkButton(-1, "ENTER", this), 3, 3);
 
 
   //connect e altra roba qua
 }
 
-//ritorna il puntatore al KalkButton con testo s
-KalkButton* specialized_view::getKey(std::string s) const{
-  KalkButton* result = 0;
-
-  for(int idx = 0; idx < lower->count(); idx++){
-    QLayoutItem* item = lower->itemAt(idx); //puntatore a oggetto QLayoutItem
-    if(qobject_cast<QWidgetItem*>(item)){  //se esiste è un QWidget
-      KalkButton* b = qobject_cast<KalkButton*>(item->widget());
-      if(b && b->text()==s) // b esiste e il testo coincide
-        result = b;
-    }
-  }
-
-  return result;
-}
-
 specialized_view::~specialized_view(){
+
+  std::cout << "distruttore specialized - inizio" << std::endl;
+
+
   delete upper;
   delete lower;
-}
+  delete keyboard;
 
-void specialized_view::select_type(){
-  vm->start();
+
+  std::cout << "distruttore specialized - fine" << std::endl;
+
 }
