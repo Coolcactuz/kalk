@@ -148,6 +148,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		View/KalkButton.h \
 		View/startup_view.h \
 		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/testlayout.h \
 		View/specialized\ view\ hierarchy/VCircuit.h main.cpp \
 		Controller/controller.cpp \
 		View/startup_view.cpp \
@@ -344,7 +345,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Controller/controller.h Controller/session_buffer.h View/KalkButton.h View/startup_view.h View/specialized\ view\ hierarchy/specialized_view.h View/specialized\ view\ hierarchy/VCircuit.h $(DISTDIR)/
+	$(COPY_FILE) --parents Controller/controller.h Controller/session_buffer.h View/KalkButton.h View/startup_view.h View/specialized\ view\ hierarchy/specialized_view.h View/specialized\ view\ hierarchy/testlayout.h View/specialized\ view\ hierarchy/VCircuit.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp Controller/controller.cpp View/startup_view.cpp View/specialized\ view\ hierarchy/specialized_view.cpp View/specialized\ view\ hierarchy/VCircuit.cpp $(DISTDIR)/
 
 
@@ -384,6 +385,7 @@ moc_controller.cpp: View/startup_view.h \
 		View/KalkButton.h \
 		View/specialized\ view\ hierarchy/VCircuit.h \
 		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/testlayout.h \
 		Controller/controller.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
@@ -418,14 +420,16 @@ main.o: main.cpp Controller/controller.h \
 		View/startup_view.h \
 		View/KalkButton.h \
 		View/specialized\ view\ hierarchy/VCircuit.h \
-		View/specialized\ view\ hierarchy/specialized_view.h
+		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/testlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 controller.o: Controller/controller.cpp Controller/controller.h \
 		View/startup_view.h \
 		View/KalkButton.h \
 		View/specialized\ view\ hierarchy/VCircuit.h \
-		View/specialized\ view\ hierarchy/specialized_view.h
+		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/testlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o Controller/controller.cpp
 
 startup_view.o: View/startup_view.cpp View/startup_view.h \
@@ -433,11 +437,13 @@ startup_view.o: View/startup_view.cpp View/startup_view.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startup_view.o View/startup_view.cpp
 
 specialized_view.o: View/specialized\ view\ hierarchy/specialized_view.cpp View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/testlayout.h \
 		View/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o specialized_view.o View/specialized\ view\ hierarchy/specialized_view.cpp
 
 VCircuit.o: View/specialized\ view\ hierarchy/VCircuit.cpp View/specialized\ view\ hierarchy/VCircuit.h \
 		View/specialized\ view\ hierarchy/specialized_view.h \
+		View/specialized\ view\ hierarchy/testlayout.h \
 		View/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VCircuit.o View/specialized\ view\ hierarchy/VCircuit.cpp
 

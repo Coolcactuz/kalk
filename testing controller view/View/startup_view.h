@@ -29,7 +29,6 @@ private:
 public:
 
   startup_view();
-  ~startup_view();
 
 public slots:
 

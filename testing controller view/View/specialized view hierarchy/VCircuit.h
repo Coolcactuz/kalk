@@ -13,7 +13,6 @@ private:
 public:
 
   VCircuit();
-  ~VCircuit();
 };
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef SPECIALIZED_VIEW_H
 #define SPECIALIZED_VIEW_H
 
+#include "testlayout.h"
+
 #include "../KalkButton.h"
 #include <QWidget>
 #include <QVBoxLayout>
@@ -30,7 +32,7 @@ public:
 
 //costruttore e distruttore
   specialized_view();
-  virtual ~specialized_view();
+  virtual ~specialized_view() {}
 
 
 //DECIDERE SE FARE O MENO

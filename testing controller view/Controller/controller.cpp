@@ -1,21 +1,8 @@
 #include "controller.h"
 
 controller::~controller(){
-
-  std::cout << "distruttore controller - inizio" << std::endl;
-
-  if(startup){
-    std::cout << "controller->delete startup" << std::endl;
     delete startup;
-  }
-
-  if(specialized){
-    std::cout << "controller->delete specialized" << std::endl;
     delete specialized;
-  }
-
-  std::cout << "distruttore controller - fine" << std::endl;
-
 }
 
 void controller::start(){

@@ -32,17 +32,3 @@ display(new QPlainTextEdit(this)) {
 
   //connect e altra roba qua
 }
-
-specialized_view::~specialized_view(){
-
-  std::cout << "distruttore specialized - inizio" << std::endl;
-
-
-  delete upper;
-  delete lower;
-  delete keyboard;
-
-
-  std::cout << "distruttore specialized - fine" << std::endl;
-
-}

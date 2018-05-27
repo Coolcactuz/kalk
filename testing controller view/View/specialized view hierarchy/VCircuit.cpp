@@ -11,16 +11,3 @@ VCircuit::VCircuit(): c_op(new QVBoxLayout()), plot_area(new QVBoxLayout()){
   c_op->addWidget(new QSlider(Qt::Horizontal, this));
 
 }
-
-VCircuit::~VCircuit(){
-
-  std::cout << "distruttore VCircuit - inizio" << std::endl;
-
-
-  delete c_op;
-  delete plot_area;
-
-
-  std::cout << "distruttore VCircuit - fine" << std::endl;
-
-}

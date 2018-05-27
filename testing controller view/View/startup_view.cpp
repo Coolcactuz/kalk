@@ -2,7 +2,7 @@
 
 startup_view::startup_view(): external_layout(new QVBoxLayout(this)),
 upper(new QHBoxLayout()), lower(new QHBoxLayout()), kalk_label(new QLabel("KALK", this)),
-nota(new KalkButton(3, "NOTA", this)), circuito(new KalkButton(4, "CIRCUITO", this)),
+nota(new KalkButton(3, "NOTA", this)), circuito(new KalkButton(4, "COMPONENTE", this)),
 tipi_numerici(new QComboBox(this)){
 
 /*
@@ -30,17 +30,6 @@ QObject::connect(tipi_numerici, SIGNAL(activated(int)), this, SIGNAL(exchange_da
 
 }
 
-startup_view::~startup_view(){
-
-  std::cout << "distruttore startup_view - inizio" << std::endl;
-
-
-  delete upper;
-  delete lower;
-
-  std::cout << "distruttore startup_view - fine" << std::endl;
-
-}
 
 void startup_view::datatype_su(){
 
