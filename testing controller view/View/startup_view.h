@@ -6,7 +6,6 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
-#include <QComboBox>
 #include <iostream>
 
 /* fornisce una interfaccia per la selezione del tipo, comunica l'informazione
@@ -24,7 +23,9 @@ private:
   QLabel* kalk_label;
   KalkButton* nota;
   KalkButton* circuito;
-  QComboBox* tipi_numerici;
+  KalkButton* razionale;
+  KalkButton* complesso;
+
 
 public:
 

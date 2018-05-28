@@ -3,7 +3,13 @@
 
 #include "../View/startup_view.h"
 #include "../View/specialized view hierarchy/VCircuit.h"
+#include "../View/specialized view hierarchy/VRaz.h"
+#include "../View/specialized view hierarchy/VComplex.h"
+#include "../View/specialized view hierarchy/VNota.h"
+
+
 #include <QObject>
+
 #include <iostream>
 
 
@@ -21,13 +27,13 @@ public:
   controller();
   ~controller();
 
-  void start();
+  //void start();
 
   //int getDatatype() const {return datatype;}
 
 public slots:
   void setData(int);
-
+  void CStart();
 };
 
 #endif
