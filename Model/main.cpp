@@ -1,28 +1,13 @@
-#include "Raz.h"
-#include "C_cartesiano.h"
-#include "C_polare.h"
+#include"parser.h"
+#include"Raz.h"
+#include<string>
 
-#include "exception.h"
-#include "parser.h"
-
-#include "Resistore.h"
-#include "Induttore.h"
-#include "Condensatore.h"
-
-#include "Circuito.h"
-#include "Melodia.h"
-
-using namespace std;
-
-int main() {
-  std::string s1,s2;
-  std::cin>>s1>>s2;
-  Raz* r1= new Raz(s1);
-  std::cout<<*r1<<std::endl;
-  Raz* r2= new Raz(s2);
-  std::cout<<*r2<<std::endl;
-  Raz* r3= r1->operator/(r2);
-  std::cout<<*r3;
-
+int main(){
+  std::string input;
+  std::cin>>input;
+  parser<Raz> a(input);
+  a.load_operators();
+    std::cout<<"harambe"<<std::endl;
+  a.print(a.build_tree(input));
   return 0;
 }
