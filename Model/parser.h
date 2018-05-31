@@ -131,13 +131,11 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
   std::string tmp= "(";
   tmp=tmp.append(s);
   tmp=tmp.append(")");
-  std::cout<<tmp<<std::endl;
   auto it=tmp.begin();
   node* start = nullptr;
   node* current = start;
 
   while(it!=tmp.end()){
-    std::cout << "valuto: "<<*it<<std::endl;
     if(!is_operator(*it)){
       auto aux = it;
       while(!is_operator(*aux) && aux!=tmp.end())
@@ -171,10 +169,8 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
         break;
 
         case ')':{
-          while(current->prec != set_prec(*it)){
+          while(current->prec != set_prec(*it))
             current=find_father(current, start);
-            std::cout<<"up"<<std::endl;
-          }
           node*father=find_father(current,start);
           node* aux=current;
           if(father){
@@ -187,7 +183,6 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
           }
           aux->right=nullptr;
           delete aux;
-          std::cout<<"fatto tutto"<<std::endl;
         }
         break;
 
