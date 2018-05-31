@@ -4,8 +4,8 @@ CFLAGS = -std=c++11 -Wall
 
 all: kalk
 
-kalk: main.o C_cartesiano.o C_polare.o Circuito.o Complesso.o Componente.o Condensatore.o Induttore.o Melodia.o Nota.o Numero.o parser.o Raz.o Resistore.o
-	$(CC) $(CFLAGS) -o kalk main.o C_cartesiano.o C_polare.o Circuito.o Complesso.o Componente.o Condensatore.o Induttore.o Melodia.o Nota.o Numero.o parser.o Raz.o Resistore.o
+kalk: main.o C_cartesiano.o C_polare.o Circuito.o Complesso.o Componente.o Condensatore.o Induttore.o Melodia.o Nota.o Numero.o Raz.o Resistore.o
+	$(CC) $(CFLAGS) -o kalk main.o C_cartesiano.o C_polare.o Circuito.o Complesso.o Componente.o Condensatore.o Induttore.o Melodia.o Nota.o Numero.o Raz.o Resistore.o
 
 
 main.o: main.cpp
@@ -40,9 +40,6 @@ Nota.o: Nota.cpp
 
 Numero.o: Numero.cpp
 	$(CC) $(CFLAGS) -c Numero.cpp
-
-parser.o: parser.cpp
-	$(CC) $(CFLAGS) -c parser.cpp
 
 Raz.o: Raz.cpp
 	$(CC) $(CFLAGS) -c Raz.cpp
