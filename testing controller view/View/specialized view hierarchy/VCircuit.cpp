@@ -6,11 +6,10 @@ VCircuit::VCircuit(): c_op(new QVBoxLayout()){
 
   lower->addLayout(c_op);
 
-  c_op->addWidget(new KalkButton(-7, "PLOT", this));
   c_op->addWidget(new KalkButton(-6, "+", this));
   c_op->addWidget(new KalkButton(-5, "/", this));
-  c_op->addWidget(new QSlider(Qt::Horizontal, this));
-  c_op->addWidget(new QSlider(Qt::Horizontal, this));
+  c_op->addWidget(new QSpinBox(this));
+  c_op->addWidget(new QSpinBox(this));
 
 }
 

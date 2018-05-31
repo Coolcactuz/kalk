@@ -8,7 +8,9 @@
 #include "Numero.h"
 
 class Raz : public Numero {
+
 private:
+
     long num;
     long den;
 

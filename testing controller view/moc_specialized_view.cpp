@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'specialized_view.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'specialized_view.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_specialized_view_t {
     QByteArrayData data[5];
     char stringdata0[53];
@@ -84,14 +82,12 @@ void specialized_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
             typedef void (specialized_view::*_t)(std::string );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::sendData)) {
                 *result = 0;
-                return;
             }
         }
         {
             typedef void (specialized_view::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::goBack_CStart)) {
                 *result = 1;
-                return;
             }
         }
     }
@@ -99,7 +95,7 @@ void specialized_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
 
 const QMetaObject specialized_view::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_specialized_view.data,
-      qt_meta_data_specialized_view,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_specialized_view,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -110,7 +106,7 @@ const QMetaObject *specialized_view::metaObject() const
 
 void *specialized_view::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_specialized_view.stringdata0))
         return static_cast<void*>(const_cast< specialized_view*>(this));
     return QWidget::qt_metacast(_clname);
@@ -136,14 +132,13 @@ int specialized_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void specialized_view::sendData(std::string _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void specialized_view::goBack_CStart()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE
