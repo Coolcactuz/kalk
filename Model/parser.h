@@ -13,7 +13,7 @@ private:
   public:
     T* obj;
     char op;
-    int prec;
+    double prec;
     node* left, *right;
     node(T* t=nullptr, char o='\0', int p=0, node* l=nullptr, node* r=nullptr):
       obj(t), op(o), prec(p), left(l), right(r){};
@@ -31,7 +31,7 @@ public:
   parser(std::string ="");
   ~parser();
 
-  int set_prec(char) const;
+  double set_prec(char) const;
   void add_operator(const char);
   void remove_operator(const char);
   void load_operators();
@@ -39,8 +39,8 @@ public:
   bool balanced_brackets(std::string ="\0") const;
   node* build_tree(std::string ="\0")const ;
   static node* find_father(node* =nullptr, node* =nullptr) ;
-  void print(node* =nullptr, int =0);
-
+  static void balance_tree(node* =0);
+  void print(node* =nullptr, int =0) const ;
 };
 
 //
@@ -141,7 +141,8 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       while(!is_operator(*aux) && aux!=tmp.end())
         aux++;
       std::string spoil_item(it,aux);
-      T* obj_p = new T(spoil_item);
+      //T* obj_p = new T(spoil_item);
+      T* obj_p=T::create(spoil_item);
       if(!obj_p)
         std::cout << "identify_literal ERROR";
       current->right=new node();
@@ -201,11 +202,12 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       it++;
     }
   }
+  balance_tree(start);
   return start;
 }
 
 template<class T>
-int parser<T>::set_prec(char c) const{
+double parser<T>::set_prec(char c) const{
   if(c=='(' || c==')')
     return 1;
   else if(c=='+' || c=='-')
@@ -218,9 +220,8 @@ int parser<T>::set_prec(char c) const{
     return 7;
 }
 
-
 template<class T>
-void parser<T>::print(node* n, int z){
+void parser<T>::print(node* n, int z) const{
   if(!n) return;
   if(!n->left && !n->right)
     std::cout<<*(n->obj)<<std::endl;
@@ -235,6 +236,15 @@ void parser<T>::print(node* n, int z){
       print(n->right);
     }
   }
+}
+
+template<class T>
+void parser<T>::balance_tree(typename parser<T>::node* root){
+  if(!root || (!root->left && !root->right)) return;
+  balance_tree(root->left);
+  if(!root->left && root->right) root->left=new node(new T(),'0');
+  balance_tree(root->right);
+  return;
 }
 
 #endif

@@ -8,7 +8,6 @@
 
 #include "Complesso.h"
 
-
 class C_polare;
 
 
@@ -17,9 +16,10 @@ private:
     double reale;
     double immaginaria;
 public:
-    C_cartesiano(double =0,double =0);
+    C_cartesiano();
+    C_cartesiano(double,double);
     C_cartesiano(const C_cartesiano&);
-    C_cartesiano(std::string="");
+    C_cartesiano(std::string);
     ~C_cartesiano();
 
     C_cartesiano* operator+ (const Numero*)const;
@@ -30,11 +30,13 @@ public:
     double getReale() const;
     double getImmaginaria() const;
     C_cartesiano* coniugato() const override;
+    static C_cartesiano* create(std::string);
 
+    // Complesso* sub_create(std::string);
     Complesso* converti()const override;
     void stampa(std::ostream&)const;
 };
 
-std::ostream& operator<<(std::ostream&, const Numero&);
+std::ostream& operator<<(std::ostream&, const C_cartesiano&);
 
 #endif //KALK_C_CARTESIANO_H

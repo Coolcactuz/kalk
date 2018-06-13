@@ -16,16 +16,23 @@ Raz::Raz(long n, long d){   //2 parametri interi
     semplifica();
 }
 
+Raz::Raz():num(0),den(1){};
+
 Raz::Raz(std::string s){   //stringa
   std::string::size_type size=0;
-  double number=std::stod(s,&size);
-  if(size==s.length() && size!=0){
-    Raz aux(number);
+  double numerator=std::stod(s,&size);
+  if(s.find('/')==-1){
+    if(size!=s.length()) throw(0); //gestire eccezione syntax error
+    Raz aux(numerator);
     num=aux.getNum();
     den=aux.getDen();
   }
-  else
-    throw(0); //gestire eccezione syntax error
+  else{
+    double denominator=std::stod(s,&size+1);
+    if(size!=s.length()) throw(0); //gestire eccezione syntax error
+    num=numerator;
+    den=denominator;
+  }
 }
 
 Raz::~Raz(){}
@@ -83,28 +90,9 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 }
 //
 
-/*
-Raz Raz::operator+ (const Raz &n)const {
-    return Raz(num*n.den+n.num*den,(den*n.den));
-}
-Raz Raz::operator- (const Raz &n)const {
-    return Raz(num*n.den-n.num*den,(den*n.den));
-}
-Raz Raz::operator* (const Raz &n)const {
-    return Raz(num*n.num,den*n.den);
-}
-Raz Raz::operator/ (const Raz &n)const {
-    return Raz(num*n.den,den*n.num);
-}
-Raz Raz::operator^ (int exp)const {
-    if(exp==0) return Raz(1,1);
-    if(exp<0)
-        return Raz(pow(den,exp*-1), pow(num,exp*-1));
-    return Raz(pow(num,exp), pow(den,exp));
-}
-*/
-
 //metodi
+Raz* Raz::create(std::string s){ return new Raz(s);}
+
 long Raz::getNum () const { return num; }
 
 long Raz::getDen () const { return den; }
@@ -134,19 +122,3 @@ long double Raz::radice_quadrata()const {
 long double Raz::radice_cubica()const {
     return cbrt(getNum())/cbrt(getDen());
 }
-/*
-const Dato* Raz::parse(std::string s){
-  if(*(s.cbegin())=='{'){
-    double p_num=0, p_den=0;
-    std::size_t pos = s.find(",");
-    if(pos!=-1){
-      p_num=Numero::subparse(s.substr(1,pos-1));
-      p_den=Numero::subparse(s.substr((pos+1),(s.length()-pos-2)));
-    }
-    else
-      p_num=Numero::subparse(s.substr(1,(s.length()-1)));
-    return new Raz(p_num,p_den);
-  }
-  return nullptr;
-}
-*/

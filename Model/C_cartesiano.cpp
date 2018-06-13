@@ -8,12 +8,28 @@
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
 C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
-/*
-C_cartesiano(std::string s){
+
+C_cartesiano::C_cartesiano(std::string s){
+  auto pos=s.find('i');
   std::string::size_type size=0;
-  double
+  reale=0;
+  immaginaria=0;
+  if(pos==-1)
+    reale=std::stod(s);
+  else if(pos==s.length()-1)
+    immaginaria=(pos==0?1:std::stod(s.substr(size)));
+  else
+    throw(0); //gestire eccezione syntax error
 }
-*/
+
+C_cartesiano::C_cartesiano():reale(0),immaginaria(0){};
+
+// C_cartesiano::C_cartesiano(const C_polare& cp){
+//   C_cartesiano aux=*(static_cast<C_cartesiano*>(cp.converti()));
+//   reale=aux.getReale();
+//   immaginaria=aux.getImmaginaria();
+// }
+
 C_cartesiano::~C_cartesiano(){}
 
 C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
@@ -48,6 +64,10 @@ C_cartesiano* C_cartesiano::coniugato() const{
     return new C_cartesiano(reale, immaginaria*-1);
 }
 
+C_cartesiano* C_cartesiano::create(std::string s){
+  return new C_cartesiano(s);
+}
+
 Complesso* C_cartesiano::converti() const{
     double fase=sqrt(pow(reale,2)+pow(immaginaria,2));
     double modulo=(immaginaria<0)?rad_to_deg(atan(immaginaria/reale)+pi):rad_to_deg(atan(immaginaria/reale));
@@ -61,9 +81,9 @@ void C_cartesiano::stampa(std::ostream& os)const {
     std::cout<<"i";
 }
 
-std::ostream& operator<<(std::ostream& os, const Numero& n){
-    C_cartesiano cc= static_cast<const C_cartesiano&>(n);
-    cc.stampa(os);
+std::ostream& operator<<(std::ostream& os, const C_cartesiano& n){
+    //C_cartesiano cc= static_cast<const C_cartesiano&>(n);
+    n.stampa(os);
     return os;
 }
 

@@ -4,7 +4,9 @@
 
 #include "C_polare.h"
 #include <cmath>
-#include "C_cartesiano.h"
+//#include "C_cartesiano.h"
+
+C_polare::C_polare():modulo(0),fase(0){};
 
 C_polare::C_polare(double m, double f) {
     if(m<0) throw (0);    //GESTIRE ECCEZIONE
@@ -17,6 +19,27 @@ C_polare::C_polare(double m, double f) {
 }
 
 C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
+
+// C_polare::C_polare(const C_cartesiano& cc){
+//   C_polare aux=*(static_cast<C_polare*>(cc.converti()));
+//   modulo=aux.getModulo();
+//   fase=aux.getFase();
+// }
+
+C_polare::C_polare(std::string s){
+  auto pos=s.find('<');
+  std::string::size_type size=0;
+  modulo=0;
+  fase=0;
+  if(pos==-1)
+    modulo=std::stod(s);
+  else if(pos!=-1 && pos!=s.length()-1){
+    modulo=std::stod(s,&size);
+    fase=(std::stod(s.substr(size+1)));
+  }
+  else
+    throw(0); //gestire eccezione syntax error
+}
 
 C_polare::~C_polare(){};
 
@@ -60,6 +83,10 @@ C_polare* C_polare::operator/ (const Numero* n)const{
     throw(0); //gestire eccezione
 }
 
+C_polare* C_polare::create(std::string s){
+  return new C_polare(s);
+}
+
 Complesso* C_polare::converti() const{
     double reale=modulo*cos(deg_to_rad(fase));
     double immaginaria=modulo*sin(deg_to_rad(fase));
@@ -75,7 +102,7 @@ double C_polare::getModulo() const {return modulo;}
 double C_polare::getFase() const {return fase;}
 
 void C_polare::stampa(std::ostream& os)const {
-    std::cout<<modulo<<"∟"<<fase<<"°";
+    std::cout<<modulo<<"<"<<fase<<"°";
 }
 
 std::ostream& operator<<(std::ostream& os, const C_polare& cp){

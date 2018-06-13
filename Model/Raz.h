@@ -15,11 +15,12 @@ private:
     long den;
 
 public:
-    //Raz (int =0);
-    Raz (long=0, long=1);
-    Raz (std::string ="");
+    Raz ();
+    Raz (long, long);
+    Raz (std::string);
     Raz (double);
     ~Raz();
+    static Raz* create(std::string);
 
     explicit operator double () const;
     Raz* operator+ (const Numero *) const;
