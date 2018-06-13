@@ -12,12 +12,20 @@ class C_polare;
 
 
 class C_cartesiano: public Complesso {
+
 private:
+
     double reale;
     double immaginaria;
+
 public:
+<<<<<<< HEAD
     C_cartesiano();
     C_cartesiano(double,double);
+=======
+
+    C_cartesiano(double =0,double =0);
+>>>>>>> refs/remotes/origin/master
     C_cartesiano(const C_cartesiano&);
     C_cartesiano(std::string);
     ~C_cartesiano();

@@ -23,7 +23,7 @@ protected:
         p.drawPoint(QWidget::width() / 4, QWidget::height() / 2);
         p.drawPoint((3 * QWidget::width()) / 4, QWidget::height() / 2);
 
-        double d = 3.01;
+        double d = -3.999999;
 
         int pavimento = floor(d);
         int soffitto = ceil(d);
