@@ -24,37 +24,58 @@ C_cartesiano::C_cartesiano(std::string s){
 
 C_cartesiano::C_cartesiano():reale(0),immaginaria(0){};
 
-// C_cartesiano::C_cartesiano(const C_polare& cp){
-//   C_cartesiano aux=*(static_cast<C_cartesiano*>(cp.converti()));
-//   reale=aux.getReale();
-//   immaginaria=aux.getImmaginaria();
-// }
-
 C_cartesiano::~C_cartesiano(){}
 
 C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
-    auto c= dynamic_cast<const C_cartesiano*>(n);
-    if(c)
+    if(dynamic_cast<const C_cartesiano*>(n)){
+      const C_cartesiano* c=static_cast<const C_cartesiano*>(n);
       return new C_cartesiano(reale+c->reale,immaginaria+c->immaginaria);
-    throw(0);    //gestire eccezione
+    }
+    else if(dynamic_cast<const C_polare*>(n)){
+      const C_polare* cp=static_cast<const C_polare*>(n);
+      const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+      return this->operator+(aux);
+    }
+    throw(0);    //gestire eccezione di tipo incompatibile
 }
+
 C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
-    auto c= dynamic_cast<const C_cartesiano*>(n);
-    if(c)
-      return new C_cartesiano(reale-c->reale,immaginaria-c->immaginaria);
-    throw(0);    //gestire eccezione
+  if(dynamic_cast<const C_cartesiano*>(n)){
+    const C_cartesiano* c=static_cast<const C_cartesiano*>(n);
+    return new C_cartesiano(reale-c->reale,immaginaria-c->immaginaria);
+  }
+  else if(dynamic_cast<const C_polare*>(n)){
+    const C_polare* cp=static_cast<const C_polare*>(n);
+    const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    return this->operator-(aux);
+  }
+  throw(0);    //gestire eccezione di tipo incompatibile
 }
+
 C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
-    auto c= dynamic_cast<const C_cartesiano*>(n);
-    if(c)
-      return new C_cartesiano(reale*c->reale-immaginaria*c->immaginaria,immaginaria*c->reale+reale*c->immaginaria);
-    throw(0);    //gestire eccezione
+  if(dynamic_cast<const C_cartesiano*>(n)){
+    const C_cartesiano* c=static_cast<const C_cartesiano*>(n);
+    return new C_cartesiano(reale*c->reale-immaginaria*c->immaginaria,immaginaria*c->reale+reale*c->immaginaria);
+  }
+  else if(dynamic_cast<const C_polare*>(n)){
+    const C_polare* cp=static_cast<const C_polare*>(n);
+    const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    return this->operator*(aux);
+  }
+  throw(0);    //gestire eccezione di tipo incompatibile
 }
+
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
-    auto c= dynamic_cast<const C_cartesiano*>(n);
-    if(c)
-      return new C_cartesiano(reale/c->reale-immaginaria/c->immaginaria,immaginaria/c->reale+reale/c->immaginaria);
-    throw(0);    //gestire eccezione
+  if(dynamic_cast<const C_cartesiano*>(n)){
+    const C_cartesiano* c=static_cast<const C_cartesiano*>(n);
+    return new C_cartesiano(reale/c->reale-immaginaria/c->immaginaria,immaginaria/c->reale+reale/c->immaginaria);
+  }
+  else if(dynamic_cast<const C_polare*>(n)){
+    const C_polare* cp=static_cast<const C_polare*>(n);
+    const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    return this->operator/(aux);
+  }
+  throw(0);    //gestire eccezione di tipo incompatibile
 }
 
 double C_cartesiano::getReale() const {return reale;}
@@ -82,24 +103,6 @@ void C_cartesiano::stampa(std::ostream& os)const {
 }
 
 std::ostream& operator<<(std::ostream& os, const C_cartesiano& n){
-    //C_cartesiano cc= static_cast<const C_cartesiano&>(n);
     n.stampa(os);
     return os;
 }
-
-/*
-C_cartesiano* C_cartesiano::parse(std::string s){
-    if(*(s.cbegin())=='['){
-      double p_real=0, p_img=0;
-      std::size_t pos = s.find(',');
-      if(pos!=-1){
-        p_real=Numero::subparse(s.substr(1,pos-1));
-        p_img=Numero::subparse(s.substr((pos+1),(s.length()-pos-2)));
-      }
-      else
-        p_real=Numero::subparse(s.substr(1,(s.length()-1)));
-      return new C_cartesiano(p_real,p_img);
-    }
-    return nullptr;
-}
-*/

@@ -19,13 +19,9 @@ private:
     double immaginaria;
 
 public:
-<<<<<<< HEAD
+  
     C_cartesiano();
     C_cartesiano(double,double);
-=======
-
-    C_cartesiano(double =0,double =0);
->>>>>>> refs/remotes/origin/master
     C_cartesiano(const C_cartesiano&);
     C_cartesiano(std::string);
     ~C_cartesiano();

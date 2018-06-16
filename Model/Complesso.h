@@ -16,6 +16,4 @@ public:
     virtual void stampa(std::ostream&) const =0;
 };
 std::ostream& operator<< (std::ostream&, const Complesso&);
-
-
 #endif
