@@ -14,9 +14,10 @@ int main(){
 
   Complesso* a=new C_cartesiano(2,2);
   Complesso* b=new C_polare(2,45);
-  Complesso* c=new C_cartesiano(1,1);
-  Complesso* e=dynamic_cast<Complesso*>((a->operator+(b))->operator-(c));
-  std::cout<<*e<<std::endl;
+  Complesso* c=dynamic_cast<Complesso*>(a->operator/(b));
+  //Complesso* c=new C_cartesiano(1,1);
+  //Complesso* e=dynamic_cast<Complesso*>((b->operator+(a))->operator-(c));
+  std::cout<<*c<<std::endl;
   std::cout<<"harambeee"<<std::endl;
 
 

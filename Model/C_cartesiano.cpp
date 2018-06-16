@@ -36,7 +36,8 @@ C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
       const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
       return this->operator+(aux);
     }
-    throw(0);    //gestire eccezione di tipo incompatibile
+    else
+      throw(0);    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
@@ -49,7 +50,8 @@ C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
     return this->operator-(aux);
   }
-  throw(0);    //gestire eccezione di tipo incompatibile
+  else
+    throw(0);    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
@@ -62,7 +64,8 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
     return this->operator*(aux);
   }
-  throw(0);    //gestire eccezione di tipo incompatibile
+  else
+    throw(0);    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
@@ -75,7 +78,8 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
     return this->operator/(aux);
   }
-  throw(0);    //gestire eccezione di tipo incompatibile
+  else
+    throw(0);    //gestire eccezione di tipo incompatibile
 }
 
 double C_cartesiano::getReale() const {return reale;}
