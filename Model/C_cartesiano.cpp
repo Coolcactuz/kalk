@@ -70,13 +70,13 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
 
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
   if(dynamic_cast<const C_cartesiano*>(n)){
-    const C_cartesiano* c=static_cast<const C_cartesiano*>(n);
-    return new C_cartesiano(reale/c->reale-immaginaria/c->immaginaria,immaginaria/c->reale+reale/c->immaginaria);
+    const C_cartesiano* c= static_cast<const C_cartesiano*>(n);
+    return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(reale*reale+c->immaginaria*c->immaginaria),(immaginaria*c->reale-reale*c->immaginaria)/(reale*reale+c->immaginaria*c->immaginaria));
   }
   else if(dynamic_cast<const C_polare*>(n)){
-    const C_polare* cp=static_cast<const C_polare*>(n);
-    const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-    return this->operator/(aux);
+    const C_polare* cp= static_cast<const C_polare*>(n);
+    const C_polare* aux=static_cast<const C_polare*>(this->converti());
+    return static_cast<C_cartesiano*>(aux->operator/(cp)->converti());
   }
   else
     throw(0);    //gestire eccezione di tipo incompatibile
@@ -95,7 +95,7 @@ C_cartesiano* C_cartesiano::create(std::string s){
 
 Complesso* C_cartesiano::converti() const{
     double fase=sqrt(pow(reale,2)+pow(immaginaria,2));
-    double modulo=(immaginaria<0)?rad_to_deg(atan(immaginaria/reale)+pi):rad_to_deg(atan(immaginaria/reale));
+    double modulo=rad_to_deg(atan(immaginaria/reale));
     return new C_polare(fase,modulo);
 }
 

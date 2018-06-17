@@ -12,8 +12,8 @@ C_polare::C_polare(double m, double f) {
     if(m<0) throw (0);    //GESTIRE ECCEZIONE
     else
         modulo=m;
-    while(f>=360 && f<0) {
-        f=((f>=360)?f-360:f+360);
+    while(f>=360 || f<0) {
+        f=((f>=360)?(f-360):(360+f));
     }
     fase=f;
 }
@@ -70,7 +70,7 @@ C_polare* C_polare::operator/ (const Numero* n)const{
     if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp= static_cast<const C_polare*>(n);
       double m=modulo/cp->modulo;
-      double f=rad_to_deg(atan(deg_to_rad(fase))-atan(deg_to_rad(cp->fase)));
+      double f=fase-cp->fase;
       return new C_polare(m,f);
     }
     else if(dynamic_cast<const C_cartesiano*>(n)){
