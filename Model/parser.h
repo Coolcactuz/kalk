@@ -208,16 +208,22 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
 
 template<class T>
 double parser<T>::set_prec(char c) const{
-  if(c=='(' || c==')')
-    return 1;
-  else if(c=='+' || c=='-')
-    return 2;
-  else if(c=='*' || c=='/')
-    return 4;
-  else if(c=='^' || c=='#')
-    return 6;
-  else
-    return 7;
+  switch(c){
+    case '(':
+    case ')':
+      return 1;
+    case '+':
+    case '-':
+      return 2;
+    case '*':
+    case '/':
+      return 4;
+    case '^':
+    case '#':
+      return 6;
+    default:
+      return 7;
+  }
 }
 
 template<class T>

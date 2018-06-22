@@ -4,6 +4,7 @@
 
 #include "C_cartesiano.h"
 #include "C_polare.h"
+#include <cmath>
 
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
@@ -71,12 +72,12 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
   if(dynamic_cast<const C_cartesiano*>(n)){
     const C_cartesiano* c= static_cast<const C_cartesiano*>(n);
-    return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(reale*reale+c->immaginaria*c->immaginaria),(immaginaria*c->reale-reale*c->immaginaria)/(reale*reale+c->immaginaria*c->immaginaria));
+    return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)),(immaginaria*c->reale-reale*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)));
   }
   else if(dynamic_cast<const C_polare*>(n)){
-    const C_polare* cp= static_cast<const C_polare*>(n);
+    //const C_polare* cp= static_cast<const C_polare*>(n);
     const C_polare* aux=static_cast<const C_polare*>(this->converti());
-    return static_cast<C_cartesiano*>(aux->operator/(cp)->converti());
+    return static_cast<C_cartesiano*>(aux->operator/(n)->converti());
   }
   else
     throw(0);    //gestire eccezione di tipo incompatibile
