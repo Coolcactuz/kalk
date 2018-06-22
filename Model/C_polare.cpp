@@ -10,6 +10,10 @@ C_polare::C_polare():modulo(0),fase(0){};
 
 C_polare::C_polare(double m, double f) {
     if(m<0) throw (0);    //GESTIRE ECCEZIONE
+    else if(m==0){
+      modulo=0;
+      fase=0;
+    }
     else
         modulo=m;
     while(f>=360 || f<0) {
@@ -29,7 +33,10 @@ C_polare::C_polare(std::string s){
     modulo=std::stod(s);
   else if(pos!=-1 && pos!=s.length()-1){
     modulo=std::stod(s,&size);
-    fase=(std::stod(s.substr(size+1)));
+    if(modulo==0)
+      fase=0;
+    else
+      fase=(std::stod(s.substr(size+1)));
   }
   else
     throw(0); //gestire eccezione syntax error

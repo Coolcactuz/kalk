@@ -40,6 +40,7 @@ public:
   node* build_tree(std::string ="\0")const ;
   static node* find_father(node* =nullptr, node* =nullptr) ;
   static void balance_tree(node* =0);
+  static T* resolve(node*);
   void print(node* =nullptr, int =0) const ;
 };
 
@@ -252,5 +253,26 @@ void parser<T>::balance_tree(typename parser<T>::node* root){
   balance_tree(root->right);
   return;
 }
+
+template<class T>
+T* parser<T>::resolve(typename parser<T>::node* n){
+  if(n->op == 0)
+    return n->obj;
+  else{
+    switch(n->op){
+      case '+':
+        return (resolve(n->left))->operator+(resolve(n->right));
+      case '-':
+        return (resolve(n->left))->operator-(resolve(n->right));
+      case '*':
+        return (resolve(n->left))->operator*(resolve(n->right));
+      case '/':
+        return (resolve(n->left))->operator/(resolve(n->right));
+      //case '^':
+      //  return (resolve(n->left))->operator^(resolve(n->right));
+    }
+  }
+}
+
 
 #endif
