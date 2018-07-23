@@ -10,14 +10,14 @@
 class Componente{
 private:
     C_cartesiano imp;
-    std::string nome;
 public:
-    Componente(C_cartesiano = 0, std::string = "NoName");
+    Componente(C_cartesiano);
+    Componente(std::string);
+    Componente();
     virtual ~Componente ();
 
-    virtual std::string getName() const;
     virtual C_cartesiano impedenza() const;
-    void rename();
+
     void setImp(const C_cartesiano& );
 
     Componente* operator+(const Componente*) const;

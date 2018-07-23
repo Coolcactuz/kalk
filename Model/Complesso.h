@@ -6,7 +6,6 @@
 #define KALK_COMPLESSO_H
 
 #include "Numero.h"
-#include "complex_singleton.h"
 
 class Complesso : public Numero{
 public:

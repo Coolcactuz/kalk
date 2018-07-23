@@ -13,7 +13,9 @@ class Induttore: public Componente{
 private:
     double induttanza;
 public:
-    Induttore(double =0,std::string ="NoName");
+    Induttore(double);
+    Induttore(std::string);
+    Induttore();
     ~Induttore();
 
     C_cartesiano impedenza() const override;

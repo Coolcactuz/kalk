@@ -13,10 +13,12 @@ class Resistore : public Componente{
 private:
     double resistenza;
 public:
-    Resistore(double =0,std::string ="NoName");
+    Resistore(double);
+    Resistore(std::string);
+    Resistore();
     ~Resistore();
 
-    C_cartesiano impedenza() const override;
+    C_cartesiano impedenza() const;
 };
 
 #endif //KALK_RESISTORE_H

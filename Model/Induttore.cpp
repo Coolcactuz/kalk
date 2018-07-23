@@ -4,9 +4,15 @@
 
 #include "Induttore.h"
 
-Induttore::Induttore(double i, std::string n):Componente(0,n),induttanza(i){
+Induttore::Induttore(double i):Componente(),induttanza(i){
   Componente::setImp(impedenza());
 }
+
+Induttore::Induttore(std::string s){
+
+}
+
+Induttore::Induttore():Componente(),induttanza(0){}
 
 Induttore::~Induttore(){}
 

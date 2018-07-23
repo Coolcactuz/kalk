@@ -142,7 +142,6 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       while(!is_operator(*aux) && aux!=tmp.end())
         aux++;
       std::string spoil_item(it,aux);
-      //T* obj_p = new T(spoil_item);
       T* obj_p=T::create(spoil_item);
       if(!obj_p)
         std::cout << "identify_literal ERROR";

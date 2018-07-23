@@ -19,9 +19,9 @@ private:
     double immaginaria;
 
 public:
-  
+
     C_cartesiano();
-    C_cartesiano(double,double);
+    C_cartesiano(double,double =0);
     C_cartesiano(const C_cartesiano&);
     C_cartesiano(std::string);
     ~C_cartesiano();

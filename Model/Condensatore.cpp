@@ -4,10 +4,13 @@
 
 #include "Condensatore.h"
 
-Condensatore::Condensatore(double c, std::string n):Componente(0,n),capacita(c){
+Condensatore::Condensatore(double c):Componente(),capacita(c){
   Componente::setImp(impedenza());
 }
-
+Condensatore::Condensatore(std::string s){
+  
+}
+Condensatore::Condensatore():Componente(),capacita(0){};
 Condensatore::~Condensatore(){}
 
 C_cartesiano Condensatore::impedenza() const{

@@ -13,7 +13,9 @@ class Condensatore: public Componente{
 private:
     double capacita;
 public:
-    Condensatore(double =0,std::string ="NoName");
+    Condensatore(double);
+    Condensatore(std::string);
+    Condensatore();
     ~Condensatore ();
 
     C_cartesiano impedenza() const override;

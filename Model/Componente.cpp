@@ -4,7 +4,11 @@
 
 #include "Componente.h"
 
-Componente::Componente(C_cartesiano c, std::string n): imp(c), nome(n){}
+Componente::Componente(C_cartesiano c): imp(c){}
+Componente::Componente(std::string s){
+
+}
+Componente::Componente(): imp(0){}
 Componente::~Componente(){}
 
 Componente* Componente::operator+ (const Componente* c) const{
@@ -17,10 +21,6 @@ Componente* Componente::operator/ (const Componente* c) const {
     C_cartesiano c1=impedenza();
     C_cartesiano c2=c->impedenza();
     return new Componente(*(((&c1)->operator*(&c2))->operator/( (&c1)->operator+(&c2))));
-}
-
-std::string Componente::getName() const{
-  return nome;
 }
 
 C_cartesiano Componente::impedenza() const{
