@@ -90,9 +90,9 @@ C_cartesiano* C_cartesiano::coniugato() const{
     return new C_cartesiano(reale, immaginaria*-1);
 }
 
-C_cartesiano* C_cartesiano::create(std::string s){
-  return new C_cartesiano(s);
-}
+// C_cartesiano* C_cartesiano::create(std::string s){
+//   return new C_cartesiano(s);
+// }
 
 Complesso* C_cartesiano::converti() const{
     double fase=sqrt(pow(reale,2)+pow(immaginaria,2));

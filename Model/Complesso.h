@@ -6,10 +6,11 @@
 #define KALK_COMPLESSO_H
 
 #include "Numero.h"
+#include "complex_singleton.h"
 
 class Complesso : public Numero{
 public:
-    // static Complesso* create(std::string);
+    static Complesso* create(std::string);
     // virtual Complesso* sub_create(std::string)=0;
     virtual Complesso* converti() const =0;
     virtual Complesso* coniugato() const =0;
