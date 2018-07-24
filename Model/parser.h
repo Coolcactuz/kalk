@@ -8,7 +8,7 @@
 
 template<class T>
 class parser{
-private:
+public:
   class node{
   public:
     T* obj;
@@ -24,24 +24,27 @@ private:
          return new node(p->obj,p->op, copy(p->left), copy(p->right));
     };
   };
-  std::string data;
-  static std::list<const char> class_operators;
-
-public:
   parser(std::string ="");
   ~parser();
 
-  double set_prec(char) const;
-  void add_operator(const char);
-  void remove_operator(const char);
   void load_operators();
-  bool is_operator(const char) const;
-  bool balanced_brackets(std::string ="\0") const;
   node* build_tree(std::string ="\0")const ;
-  static node* find_father(node* =nullptr, node* =nullptr) ;
-  static void balance_tree(node* =0);
   static T* resolve(node*);
   void print(node* =nullptr, int =0) const ;
+
+private:
+  std::string data;
+  static std::list<const char> class_operators;
+
+protected:
+  double set_prec(char) const;
+  bool balanced_brackets(std::string ="\0") const;
+  static node* find_father(node* =nullptr, node* =nullptr) ;
+  static void balance_tree(node* =0);
+  void add_operator(const char);
+  void remove_operator(const char);
+  bool is_operator(const char) const;
+
 };
 
 //
@@ -272,6 +275,5 @@ T* parser<T>::resolve(typename parser<T>::node* n){
     }
   }
 }
-
 
 #endif

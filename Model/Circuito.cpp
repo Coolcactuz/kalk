@@ -8,16 +8,13 @@
 double Circuito::freq=0;
 double Circuito::volt=0;
 
-Circuito::Circuito(Componente * c){
-  v.push_back(c);
+Circuito::Circuito(std::string s){
+  parser<Componente> p;
+  this->start=p.build_tree(s);
 }
 
 Circuito::~Circuito () {
-  for(auto cit=v.cbegin(); cit!=v.cend(); ++cit ){
-    delete *cit;
-    v.erase(cit);
-    cit--;
-  }
+  delete start;
 }
 
 C_cartesiano Circuito::impEquivalente () const {
@@ -30,27 +27,18 @@ C_cartesiano Circuito::Corrente_totale() const{
         C_cartesiano impEq=impEquivalente();
         return *((&impEq)->operator/(&v));
     }
-    throw(0); //gestire ECCEZIONE
+    return 0;
 }
 
 void Circuito::setVolt(double v){
   if(v>=0)
     volt=v;
   else
-    throw(0); //gestire eccezione
+    throw(0); //gestire eccezione invalid value
 }
 void Circuito::setFreq(double f){
   if(f>=0)
     freq=f;
   else
-    throw(0); //gestire eccezione
+    throw(0); //gestire eccezione invalid value
 }
-
-/*
-bool Circuito::checkName(std::string s){
-  for(auto cit=v.cbegin(); cit!=v.cend(); ++cit){
-    if(s==(*cit)->getName()) return true;
-  }
-  return false;
-}
-*/

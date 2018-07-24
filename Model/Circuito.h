@@ -5,15 +5,16 @@
 #ifndef KALK_CIRCUITO_H
 #define KALK_CIRCUITO_H
 
+#include "parser.h"
 #include "C_cartesiano.h"
 #include "Componente.h"
 #include <vector>
 
 class Circuito {
 private:
-    std::vector<Componente*> v;
+    typename parser<Componente>::node* start;
 public:
-    Circuito(Componente* =0);
+    Circuito(std::string);
     ~Circuito ();
 
     static double freq;
@@ -24,7 +25,6 @@ public:
 
     void setVolt(double);
     void setFreq(double);
-    //bool checkName(std::string);
 };
 
 #endif //KALK_CIRCUITO_H
