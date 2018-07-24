@@ -19,6 +19,7 @@ public:
     virtual C_cartesiano impedenza() const;
 
     void setImp(const C_cartesiano);
+    static Componente* create(std::string);
 
     Componente* operator+(const Componente*) const;
     Componente* operator/(const Componente*) const;

@@ -4,13 +4,16 @@
 
 #include "Circuito.h"
 
-
 double Circuito::freq=0;
 double Circuito::volt=0;
 
 Circuito::Circuito(std::string s){
-  parser<Componente> p;
-  this->start=p.build_tree(s);
+  if(s!=""){
+    parser<Componente> p;
+    start=p.build_tree(s);
+  }
+  else
+    throw(0); //gestire eccezione stinga vuota
 }
 
 Circuito::~Circuito () {
@@ -18,7 +21,8 @@ Circuito::~Circuito () {
 }
 
 C_cartesiano Circuito::impEquivalente () const {
-  return 0;
+  typename parser<Componente>::node* current=start;
+  
 }
 
 C_cartesiano Circuito::Corrente_totale() const{

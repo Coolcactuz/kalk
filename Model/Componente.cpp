@@ -11,6 +11,8 @@ Componente::Componente(std::string s){
 Componente::Componente(): imp(0){}
 Componente::~Componente(){}
 
+Componente* Componente::create(std::string){}
+
 Componente* Componente::operator+ (const Componente* c) const{
     C_cartesiano c1=impedenza();
     C_cartesiano c2=c->impedenza();

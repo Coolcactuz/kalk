@@ -44,7 +44,6 @@ protected:
   void add_operator(const char);
   void remove_operator(const char);
   bool is_operator(const char) const;
-
 };
 
 //
@@ -270,8 +269,8 @@ T* parser<T>::resolve(typename parser<T>::node* n){
         return (resolve(n->left))->operator*(resolve(n->right));
       case '/':
         return (resolve(n->left))->operator/(resolve(n->right));
-      //case '^':
-      //  return (resolve(n->left))->operator^(resolve(n->right));
+      case '^':
+        return (resolve(n->left))->operator^(resolve(n->right));
     }
   }
 }
