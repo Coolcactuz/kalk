@@ -75,7 +75,6 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)),(immaginaria*c->reale-reale*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)));
   }
   else if(dynamic_cast<const C_polare*>(n)){
-    //const C_polare* cp= static_cast<const C_polare*>(n);
     const C_polare* aux=static_cast<const C_polare*>(this->converti());
     return static_cast<C_cartesiano*>(aux->operator/(n)->converti());
   }
@@ -89,10 +88,6 @@ double C_cartesiano::getImmaginaria() const {return immaginaria;}
 C_cartesiano* C_cartesiano::coniugato() const{
     return new C_cartesiano(reale, immaginaria*-1);
 }
-
-// C_cartesiano* C_cartesiano::create(std::string s){
-//   return new C_cartesiano(s);
-// }
 
 Complesso* C_cartesiano::converti() const{
     double fase=sqrt(pow(reale,2)+pow(immaginaria,2));

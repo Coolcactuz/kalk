@@ -18,7 +18,7 @@ public:
     Resistore();
     ~Resistore();
 
-    C_cartesiano impedenza() const;
+    C_cartesiano impedenza() const override;
 };
 
 #endif //KALK_RESISTORE_H

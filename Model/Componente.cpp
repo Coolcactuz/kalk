@@ -20,13 +20,13 @@ Componente* Componente::operator+ (const Componente* c) const{
 Componente* Componente::operator/ (const Componente* c) const {
     C_cartesiano c1=impedenza();
     C_cartesiano c2=c->impedenza();
-    return new Componente(*(((&c1)->operator*(&c2))->operator/( (&c1)->operator+(&c2))));
+    return new Componente(*(((&c1)->operator*(&c2))->operator/((&c1)->operator+(&c2))));
 }
 
 C_cartesiano Componente::impedenza() const{
   return imp;
 }
 
-void Componente::setImp(const C_cartesiano& c ){
-  imp=c;
+void Componente::setImp(const C_cartesiano c ){
+  this->imp=c;
 }

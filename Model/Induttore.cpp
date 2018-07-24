@@ -8,8 +8,14 @@ Induttore::Induttore(double i):Componente(),induttanza(i){
   Componente::setImp(impedenza());
 }
 
-Induttore::Induttore(std::string s){
-
+Induttore::Induttore(std::string s):Componente(){
+  auto pos=s.find('L');
+  if(pos==0){
+    induttanza=std::stod(s.substr(1));
+    Componente::setImp(impedenza());
+  }
+  else
+    throw(0); //gestire eccezione errore di sintassi
 }
 
 Induttore::Induttore():Componente(),induttanza(0){}

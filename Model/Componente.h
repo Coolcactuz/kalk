@@ -18,11 +18,10 @@ public:
 
     virtual C_cartesiano impedenza() const;
 
-    void setImp(const C_cartesiano& );
+    void setImp(const C_cartesiano);
 
     Componente* operator+(const Componente*) const;
     Componente* operator/(const Componente*) const;
-
 };
 
 #endif //KALK_COMPONENTE_H
