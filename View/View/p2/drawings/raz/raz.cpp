@@ -5,6 +5,11 @@
 
 #include <cmath>
 
+// void disegnaPunto(QPainter* p){
+//   p->setPen(QPen(Qt::blue, 5, Qt::SolidLine));
+//   p->drawPoint(550, 282);
+// }
+
 class Widget : public QWidget
 {
 protected:
@@ -24,6 +29,8 @@ protected:
         p.drawPoint((3 * QWidget::width()) / 4, QWidget::height() / 2);
 
         double d = -3.999999;
+
+        //disegnaPunto(&p);
 
         int pavimento = floor(d);
         int soffitto = ceil(d);
