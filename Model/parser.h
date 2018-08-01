@@ -5,6 +5,12 @@
 #include <list>
 #include <string>
 #include <iostream>
+#include <typeinfo>
+
+#include "Numerical_Hierarchy.h"
+#include "Circuit_Hierarchy.h"
+#include "Database_Hierarchy.h"
+
 
 template<class T>
 class parser{
@@ -44,6 +50,7 @@ protected:
   void add_operator(const char);
   void remove_operator(const char);
   bool is_operator(const char) const;
+  static T* create(std::string);
 };
 
 //
@@ -68,7 +75,6 @@ void parser<T>::load_operators(){
   for(unsigned int i=0; i<n; ++i)
     add_operator(op[i]);
   //   std::cout <<"caricato operatore "<< op[i] << std::endl;
-  return;
 }
 
 //ricerca operatore
@@ -86,7 +92,6 @@ void parser<T>::add_operator(const char c){
   if(!(is_operator(c))) class_operators.push_back(c);
   else
     throw(0); //gestire eccezione "operatore già presente"
-  return;
 }
 
 //rimuovi operatore
@@ -96,7 +101,6 @@ void parser<T>::remove_operator(const char c){
     if (c==*cit) class_operators.erase(cit);
     --cit;
   }
-  return;
 }
 
 //controllo parentesi bilanciate
@@ -144,7 +148,7 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       while(!is_operator(*aux) && aux!=tmp.end())
         aux++;
       std::string spoil_item(it,aux);
-      T* obj_p=T::create(spoil_item);
+      T* obj_p=this->create(spoil_item);
       if(!obj_p)
         std::cout << "identify_literal ERROR";
       current->right=new node();
@@ -252,27 +256,42 @@ void parser<T>::balance_tree(typename parser<T>::node* root){
   balance_tree(root->left);
   if(!root->left && root->right) root->left=new node(new T(),'0');
   balance_tree(root->right);
-  return;
 }
 
-template<class T>
-T* parser<T>::resolve(typename parser<T>::node* n){
-  if(n->op == 0)
-    return n->obj;
-  else{
-    switch(n->op){
-      case '+':
-        return (resolve(n->left))->operator+(resolve(n->right));
-      case '-':
-        return (resolve(n->left))->operator-(resolve(n->right));
-      case '*':
-        return (resolve(n->left))->operator*(resolve(n->right));
-      case '/':
-        return (resolve(n->left))->operator/(resolve(n->right));
-      case '^':
-        return (resolve(n->left))->operator^(resolve(n->right));
-    }
-  }
+//template<class T>
+//T* parser<T>::resolve(typename parser<T>::node* n){
+//  if(n->op == 0)
+//    return n->obj;
+//  else{
+//    switch(n->op){
+//      case '+':
+//        return (resolve(n->left))->operator+(resolve(n->right));
+//      case '-':
+//        return (resolve(n->left))->operator-(resolve(n->right));
+//      case '*':
+//        return (resolve(n->left))->operator*(resolve(n->right));
+//      case '/':
+//        return (resolve(n->left))->operator/(resolve(n->right));
+//      case '^':
+//        return (resolve(n->left))->operator^(resolve(n->right));
+//    }
+//  }
+//}
+
+template <class T>
+T* parser<T>::create(std::string s){
+  T* aux;
+  if(typeid(*aux).name()=="Complesso")
+    return Numerical_Hierarchy::create_complex(s);
+  if(typeid(*aux).name()=="Raz")
+    return Numerical_Hierarchy::create_rational(s);
+  if(typeid(*aux).name()=="Componente")
+    return Circuit_Hierarchy::create(s);
+  if(typeid(*aux).name()=="tupla")
+    return Database_Hierarchy::create(s);
+
+  throw(0); //gestire eccezione tipo non riconosciuto
+
 }
 
 #endif
