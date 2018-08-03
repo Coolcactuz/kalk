@@ -8,9 +8,12 @@
 #include "Resistore.h"
 #include "Induttore.h"
 #include "Condensatore.h"
+#include "Hierarchy_Handler.h"
 
+class Circuit_Hierarchy : public Hierarchy_Handler {
+private:
+    void load_operators();
 
-class Circuit_Hierarchy {
 public:
     static Componente* create(std::string);
 };

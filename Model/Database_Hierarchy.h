@@ -7,10 +7,15 @@
 
 #include <string>
 #include "tupla.h"
+#include "Hierarchy_Handler.h"
 
-class Database_Hierarchy {
+class Database_Hierarchy : public Hierarchy_Handler {
+private:
+    void load_operators();
+
 public:
     static tupla* create(std::string);
+
 };
 
 

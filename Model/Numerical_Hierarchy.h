@@ -8,8 +8,12 @@
 #include "Raz.h"
 #include "C_cartesiano.h"
 #include "C_polare.h"
+#include "Hierarchy_Handler.h"
 
-class Numerical_Hierarchy {
+class Numerical_Hierarchy : public Hierarchy_Handler {
+private:
+    void load_operators();
+
 public:
     static Complesso* create_complex(std::string);
     static Raz* create_rational(std::string);
