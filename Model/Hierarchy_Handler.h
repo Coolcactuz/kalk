@@ -20,8 +20,6 @@ public:
     Hierarchy_Handler();
     virtual ~Hierarchy_Handler();
     virtual bool is_operator(const char) const;
-
-
 };
 
 

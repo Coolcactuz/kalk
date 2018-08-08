@@ -15,6 +15,8 @@ private:
     void load_operators();
 
 public:
+    Circuit_Hierarchy();
+    ~Circuit_Hierarchy() =default;
     static Componente* create(std::string);
 };
 

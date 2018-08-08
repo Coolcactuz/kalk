@@ -14,6 +14,8 @@ private:
     void load_operators();
 
 public:
+    Database_Hierarchy();
+    ~Database_Hierarchy()=default;
     static tupla* create(std::string);
 
 };

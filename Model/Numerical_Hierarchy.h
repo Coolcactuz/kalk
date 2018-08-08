@@ -15,6 +15,8 @@ private:
     void load_operators();
 
 public:
+    Numerical_Hierarchy();
+    ~Numerical_Hierarchy() = default;
     static Complesso* create_complex(std::string);
     static Raz* create_rational(std::string);
 };

@@ -32,7 +32,6 @@ public:
   parser(std::string ="");
   ~parser();
 
-//  void load_operators();
   node* build_tree(std::string ="\0")const ;
 //  static T* resolve(node*);
   void print(node* =nullptr, int =0) const ;
@@ -41,18 +40,14 @@ private:
   std::string data;
   node* start;
   Hierarchy_Handler* handler;
-//  static std::list<const char> class_operators;
 
-  Hierarchy_Handler* check_handler(T*);
+  Hierarchy_Handler* check_handler();
 
 protected:
   double set_prec(char) const;
   bool balanced_brackets(std::string ="\0") const;
   static node* find_father(node* =nullptr, node* =nullptr) ;
   static void balance_tree(node* =0);
-//  void add_operator(const char);
-//  void remove_operator(const char);
-//  bool is_operator(const char) const;
   static T* create(std::string);
 };
 
@@ -61,9 +56,9 @@ protected:
 //
 //costruttore da stringa, default=nullo
 template<class T>
-parser<T>::parser(std::string s): data(s){
-  start=build_tree(s);
+parser<T>::parser(std::string s): data(s), start(){
   handler=check_handler(start->obj);
+  start=build_tree(s);
 }
 
 //distruttore
@@ -73,58 +68,19 @@ parser<T>::~parser(){
   delete handler;
 }
 
-//operatori base
-//template<class T>
-//std::list<const char> parser<T>::class_operators;
-
-//template<class T>
-//void parser<T>::load_operators(){
-//  unsigned int n=8;
-//  char op[n]={'(', ')', '+', '-', '*', '/', '^', '#'};
-//  for(unsigned int i=0; i<n; ++i)
-//    add_operator(op[i]);
-//     //std::cout <<"caricato operatore "<< op[i] << std::endl;
-//}
-
-//ricerca operatore
-//template<class T>
-//bool parser<T>::is_operator(const char c) const {
-//  for(auto it=class_operators.begin(); it!=class_operators.end(); ++it){
-//    if (c==*it) return true;
-//  }
-//  return false;
-//}
-
-//aggiungi operatore
-//template<class T>
-//void parser<T>::add_operator(const char c){
-//  if(!(is_operator(c))) class_operators.push_back(c);
-//  else
-//    throw(0); //gestire eccezione "operatore già presente"
-//}
-
-//rimuovi operatore
-//template<class T>
-//void parser<T>::remove_operator(const char c){
-//  for (auto cit=class_operators.cbegin(); cit!=class_operators.cend(); ++cit) {
-//    if (c==*cit) class_operators.erase(cit);
-//    --cit;
-//  }
-//}
 template<class T>
-Hierarchy_Handler* parser<T>::check_handler(T* object){
-  if(typeid(*object).name()=="Complesso")
+Hierarchy_Handler* parser<T>::check_handler(){
+  T* object;
+  if(dynamic_cast<Complesso*>(object))
     return new Numerical_Hierarchy();
-  if(typeid(*object).name()=="Raz")
+  if(dynamic_cast<Raz*>(object))
     return new Numerical_Hierarchy();
-  if(typeid(*object).name()=="Componente")
+  if(dynamic_cast<Componente*>(object))
     return new Circuit_Hierarchy();
-  if(typeid(*object).name()=="tupla")
+  if(dynamic_cast<tupla*>(object))
     return new Database_Hierarchy();
 
   throw(0); //gestire eccezione tipo non riconosciuto
-
-
 }
 
 //controllo parentesi bilanciate
@@ -305,13 +261,13 @@ void parser<T>::balance_tree(typename parser<T>::node* root){
 template <class T>
 T* parser<T>::create(std::string s){
   T* aux;
-  if(typeid(*aux).name()=="Complesso")
+  if(dynamic_cast<Complesso*>(aux))
     return Numerical_Hierarchy::create_complex(s);
-  if(typeid(*aux).name()=="Raz")
+  if(dynamic_cast<Raz*>(aux))
     return Numerical_Hierarchy::create_rational(s);
-  if(typeid(*aux).name()=="Componente")
+  if(dynamic_cast<Componente*>(aux))
     return Circuit_Hierarchy::create(s);
-  if(typeid(*aux).name()=="tupla")
+  if(dynamic_cast<tupla*>(aux))
     return Database_Hierarchy::create(s);
 
   throw(0); //gestire eccezione tipo non riconosciuto

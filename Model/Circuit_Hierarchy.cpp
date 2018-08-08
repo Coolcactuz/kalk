@@ -4,6 +4,18 @@
 
 #include "Circuit_Hierarchy.h"
 
+Circuit_Hierarchy::Circuit_Hierarchy() :Hierarchy_Handler(){
+    load_operators();
+}
+
+void Database_Hierarchy::load_operators() {
+    unsigned int n=2;
+    char op[n]={'+','/'};
+    for(unsigned int i=0; i<n; ++i)
+        add_operator(op[i]);
+    delete[] op;
+}
+
 Componente* Circuit_Hierarchy::create(std::string s){
     if(s.find('Z')!=-1)
         return new Componente(s);
