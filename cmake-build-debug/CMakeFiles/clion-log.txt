@@ -1,0 +1,16 @@
+/opt/clion-2018.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/luca/Documenti/kalk
+-- Configuring done
+CMake Error at CMakeLists.txt:15 (add_executable):
+  Cannot find source file:
+
+    Model/C_cartesiano.o
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:15 (add_executable):
+  No SOURCES given to target: kalk
+
+
+-- Build files have been written to: /home/luca/Documenti/kalk/cmake-build-debug
