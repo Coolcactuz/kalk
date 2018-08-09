@@ -9,11 +9,11 @@
 
 class Complesso : public Numero{
 public:
-    static Complesso* create(std::string);
-    // virtual Complesso* sub_create(std::string)=0;
     virtual Complesso* converti() const =0;
     virtual Complesso* coniugato() const =0;
     virtual void stampa(std::ostream&) const =0;
+
+    Complesso* solve_operation(Numero*, Numero*, char)const ;
 };
 std::ostream& operator<< (std::ostream&, const Complesso&);
 #endif

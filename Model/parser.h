@@ -33,7 +33,7 @@ public:
   ~parser();
 
   node* build_tree(std::string ="\0")const ;
-//  static T* resolve(node*);
+  T* resolve(node*);
   void print(node* =nullptr, int =0) const ;
 
 private:
@@ -272,6 +272,15 @@ T* parser<T>::create(std::string s){
 
   throw(0); //gestire eccezione tipo non riconosciuto
 
+}
+
+template<class T>
+T* parser<T>::resolve(typename parser<T>::node* n){
+  if(n->op == 0)
+    return n->obj;
+  if(handler->is_operator(n->op))
+    return T::solve_operation(resolve(n->left), resolve(n->right), n->op);
+  throw (0); //gestire eccezione operatore non corretto
 }
 
 #endif

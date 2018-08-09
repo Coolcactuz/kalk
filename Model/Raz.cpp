@@ -93,6 +93,25 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 //metodi
 Raz* Raz::create(std::string s){ return new Raz(s);}
 
+Raz* Raz::solve_operation(Numero* l, Numero* r, char o)const {
+    switch(o) {
+        case '+':
+            return dynamic_cast<Raz*>(l->operator+(r));
+        case '-':
+            return dynamic_cast<Raz*>(l->operator-(r));
+        case '*':
+            return dynamic_cast<Raz*>(l->operator*(r));
+        case '/':
+            return dynamic_cast<Raz*>(l->operator/(r));
+        case '^':
+            return dynamic_cast<Raz*>(l)->operator^(double(*dynamic_cast<Raz*>(r));
+        case '#':
+            return new Raz(dynamic_cast<Raz*>(r)->radice_quadrata());
+        default:
+            throw (0); //gestire eccezione operatore errato
+    }
+}
+
 long Raz::getNum () const { return num; }
 
 long Raz::getDen () const { return den; }
