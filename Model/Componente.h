@@ -23,6 +23,9 @@ public:
 
     Componente* operator+(const Componente*) const;
     Componente* operator/(const Componente*) const;
+
+    Componente* solve_operation(const Componente*, const Componente*, char)const ;
+
 };
 
 #endif //KALK_COMPONENTE_H

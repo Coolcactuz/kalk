@@ -21,8 +21,7 @@ Circuito::~Circuito () {
 }
 
 C_cartesiano Circuito::impEquivalente () const {
-  typename parser<Componente>::node* current=start;
-  
+    return (parser<Componente>::resolve(this->start))->impedenza();
 }
 
 C_cartesiano Circuito::Corrente_totale() const{

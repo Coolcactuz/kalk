@@ -25,6 +25,17 @@ Componente* Componente::operator/ (const Componente* c) const {
     return new Componente(*(((&c1)->operator*(&c2))->operator/((&c1)->operator+(&c2))));
 }
 
+Componente* Componente::solve_operation(const Componente* l, const Componente* r, char o)const{
+    switch(o) {
+        case '+':
+            return l->operator+(r);
+        case '/':
+            return l->operator/(r);
+        default:
+            throw (0); //gestire eccezione operatore errato
+    }
+}
+
 C_cartesiano Componente::impedenza() const{
   return imp;
 }

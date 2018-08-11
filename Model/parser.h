@@ -33,7 +33,7 @@ public:
   ~parser();
 
   node* build_tree(std::string ="\0")const ;
-  T* resolve(node*);
+  static T* resolve(node*);
   void print(node* =nullptr, int =0) const ;
 
 private:
@@ -238,25 +238,6 @@ void parser<T>::balance_tree(typename parser<T>::node* root){
   balance_tree(root->right);
 }
 
-//template<class T>
-//T* parser<T>::resolve(typename parser<T>::node* n){
-//  if(n->op == 0)
-//    return n->obj;
-//  else{
-//    switch(n->op){
-//      case '+':
-//        return (resolve(n->left))->operator+(resolve(n->right));
-//      case '-':
-//        return (resolve(n->left))->operator-(resolve(n->right));
-//      case '*':
-//        return (resolve(n->left))->operator*(resolve(n->right));
-//      case '/':
-//        return (resolve(n->left))->operator/(resolve(n->right));
-//      case '^':
-//        return (resolve(n->left))->operator^(resolve(n->right));
-//    }
-//  }
-//}
 
 template <class T>
 T* parser<T>::create(std::string s){
@@ -276,6 +257,7 @@ T* parser<T>::create(std::string s){
 
 template<class T>
 T* parser<T>::resolve(typename parser<T>::node* n){
+  if(!n) return 0;
   if(n->op == 0)
     return n->obj;
   if(handler->is_operator(n->op))
