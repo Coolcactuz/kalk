@@ -88,6 +88,23 @@ C_polare* C_polare::operator/ (const Numero* n)const{
       throw(0); //gestire eccezione
 }
 
+C_polare& C_polare::operator=(const Dato&) const{
+    auto aux= dynamic_cast<C_polare&>(d);
+    if(d){
+        modulo=aux.modulo;
+        fase=aux.fase;
+        return *this;
+    }
+    throw(0); //gestire eccezione
+}
+
+bool C_polare::operator== (const Dato& d)const{
+    auto aux= dynamic_cast<const C_polare&>(d);
+    if(aux)
+        return this->modulo==aux.modulo && this->fase==aux.fase;
+    return false;
+}
+
 C_polare* C_polare::create(std::string s){
   return new C_polare(s);
 }

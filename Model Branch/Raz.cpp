@@ -81,7 +81,24 @@ Raz* Raz::operator^ (int exp)const {
 }
 
 Raz::operator double() const{  //nb: metodi const
-    return static_cast<double>(num)/static_cast<double>(den);
+    num/den;
+}
+
+bool Raz::operator== (const Dato& d)const{
+    auto aux= dynamic_cast<const Raz&>(d);
+    if(aux)
+        return this->num==aux.num && this->den==aux.den;
+    return false;
+}
+
+Raz& Raz::operator=(const Dato& d) const {
+    auto aux= dynamic_cast<Raz&>(d);
+    if(d){
+        num=aux.num;
+        den=aux.den;
+        return *this;
+    }
+    throw(0); //gestire eccezione
 }
 
 std::ostream& operator << (std::ostream& os, const Raz& r){

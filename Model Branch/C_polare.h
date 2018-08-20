@@ -23,6 +23,8 @@ public:
     C_polare* operator- (const Numero*)const;
     C_polare* operator* (const Numero*)const;
     C_polare* operator/ (const Numero*)const;
+    bool operator== (const Dato&)const;
+    C_polare& operator=(const Dato&) const;
 
     static C_polare* create(std::string);
     Complesso* converti() const;
