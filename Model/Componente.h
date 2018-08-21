@@ -1,7 +1,3 @@
-//
-// Created by luca on 03/01/18.
-//
-
 #ifndef KALK_COMPONENTE_H
 #define KALK_COMPONENTE_H
 

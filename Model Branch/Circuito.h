@@ -14,7 +14,7 @@ private:
     parser<Componente> circuit;
 public:
     Circuito(std::string);
-    ~Circuito ();
+    ~Circuito();
 
     static double freq;
     static double volt;

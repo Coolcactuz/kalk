@@ -1,6 +1,3 @@
-//
-// Created by luca on 02/08/18.
-//
 
 #include "Hierarchy_Handler.h"
 
@@ -19,7 +16,7 @@ Hierarchy_Handler::~Hierarchy_Handler(){
 void Hierarchy_Handler::add_operator(const char c){
   if(!is_operator(c)) class_operators.push_back(c);
   else
-    throw(0); //gestire eccezione "operatore già presente"
+    throw logic_exception("Operatore già presente"); //gestire eccezione "operatore già presente"
 }
 
 void Hierarchy_Handler::remove_operator(const char c){

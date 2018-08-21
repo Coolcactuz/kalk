@@ -1,7 +1,3 @@
-//
-// Created by luca on 03/01/18.
-//
-
 #ifndef KALK_RESISTORE_H
 #define KALK_RESISTORE_H
 
@@ -15,7 +11,7 @@ private:
 public:
     Resistore(double);
     Resistore(std::string);
-    Resistore();
+    Resistore(): resistenza(0){}
     ~Resistore();
 
     C_cartesiano impedenza() const override;

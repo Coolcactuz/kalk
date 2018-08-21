@@ -1,7 +1,3 @@
-//
-// Created by luca on 18/12/17.
-//
-
 #ifndef KALK_C_POLARE_H
 #define KALK_C_POLARE_H
 

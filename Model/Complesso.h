@@ -1,7 +1,3 @@
-//
-// Created by luca on 18/12/17.
-//
-
 #ifndef KALK_COMPLESSO_H
 #define KALK_COMPLESSO_H
 

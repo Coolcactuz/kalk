@@ -1,7 +1,3 @@
-//
-// Created by luca on 14/01/18.
-//
-
 #include "Circuito.h"
 
 double Circuito::freq=0;
@@ -16,7 +12,8 @@ Circuito::~Circuito () {
 }
 
 C_cartesiano Circuito::impEquivalente () const {
-    return dynamic_cast<Componente*>(parser<Componente>::resolve(circuit.getStart()))->impedenza();
+    Componente* res = static_cast<Componente*>(parser<Componente>::resolve(circuit.getStart()));
+    return res->impedenza();
 }
 
 C_cartesiano Circuito::Corrente_totale() const{
@@ -32,11 +29,12 @@ void Circuito::setVolt(double v){
   if(v>=0)
     volt=v;
   else
-    throw(0); //gestire eccezione invalid value
+    throw logic_exception("Invalid Value");   //gestire eccezione invalid value
 }
+
 void Circuito::setFreq(double f){
   if(f>=0)
     freq=f;
   else
-    throw(0); //gestire eccezione invalid value
+    throw logic_exception("Invalid Value");  //gestire eccezione invalid value
 }

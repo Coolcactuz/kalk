@@ -80,7 +80,7 @@ Hierarchy_Handler* parser<T>::check_handler(){
   if(dynamic_cast<tupla*>(object))
     return new Database_Hierarchy();
 
-  throw(0); //gestire eccezione tipo non riconosciuto
+  throw logic_exception("Tipo non riconosciuto"); //gestire eccezione tipo non riconosciuto
 }
 
 //controllo parentesi bilanciate
@@ -113,8 +113,13 @@ typename parser<T>::node* parser<T>::find_father(typename parser<T>::node* wante
 //costruzione albero di parsing
 template<class T>
 typename parser<T>::node* parser<T>::build_tree(std::string s) const {
-  if(!balanced_brackets(s)) throw(0); //gestire eccezione parentesi non bilanciate
-  if(s.length()==0) throw(0); //gestire eccezione stringa vuota
+
+  if(!balanced_brackets(s))
+    throw logic_exception("Parentesi non bilanciate"); //gestire eccezione parentesi non bilanciate
+
+  if(s.length()==0)
+    throw logic_exception("Stringa vuota"); //gestire eccezione stringa vuota
+
   std::string tmp= "(";
   tmp=tmp.append(s);
   tmp=tmp.append(")");
@@ -251,7 +256,7 @@ T* parser<T>::create(std::string s){
   if(dynamic_cast<tupla*>(aux))
     return Database_Hierarchy::create(s);
 
-  throw(0); //gestire eccezione tipo non riconosciuto
+  throw logic_exception("Tipo non riconosciuto"); //gestire eccezione tipo non riconosciuto
 
 }
 
@@ -260,9 +265,11 @@ T* parser<T>::resolve(typename parser<T>::node* n){
   if(!n) return 0;
   if(n->op == 0)
     return n->obj;
+
   if(handler->is_operator(n->op))
     return T::solve_operation(resolve(n->left), resolve(n->right), n->op);
-  throw (0); //gestire eccezione operatore non corretto
+
+  throw syntax_exception("Operatore non riconosciuto"); //gestire eccezione operatore non corretto
 }
 
 #endif

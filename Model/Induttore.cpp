@@ -1,10 +1,12 @@
-//
-// Created by luca on 10/01/18.
-//
-
 #include "Induttore.h"
 
-Induttore::Induttore(double i):Componente(),induttanza(i){
+Induttore::Induttore(double i){
+
+  if(i > 0)
+    induttanza = i;
+  else
+    throw logic_exception("Inizializzato con valore negativo");
+
   Componente::setImp(impedenza());
 }
 
@@ -15,10 +17,8 @@ Induttore::Induttore(std::string s):Componente(){
     Componente::setImp(impedenza());
   }
   else
-    throw(0); //gestire eccezione errore di sintassi
+    throw syntax_exception("La stringa non inizia con il carattere L"); //gestire eccezione errore di sintassi
 }
-
-Induttore::Induttore():Componente(),induttanza(0){}
 
 Induttore::~Induttore(){}
 

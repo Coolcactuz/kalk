@@ -1,7 +1,3 @@
-//
-// Created by luca on 10/01/18.
-//
-
 #ifndef KALK_INDUTTANZA_H
 #define KALK_INDUTTANZA_H
 
@@ -15,7 +11,7 @@ private:
 public:
     Induttore(double);
     Induttore(std::string);
-    Induttore();
+    Induttore(): induttanza(0){}
     ~Induttore();
 
     C_cartesiano impedenza() const override;

@@ -1,7 +1,3 @@
-//
-// Created by luca on 19/12/17.
-//
-
 #ifndef KALK_C_CARTESIANO_H
 #define KALK_C_CARTESIANO_H
 

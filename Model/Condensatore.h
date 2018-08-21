@@ -1,6 +1,3 @@
-//
-// Created by luca on 10/01/18.
-//
 
 #ifndef KALK_CONDENSATORE_H
 #define KALK_CONDENSATORE_H
@@ -15,8 +12,8 @@ private:
 public:
     Condensatore(double);
     Condensatore(std::string);
-    Condensatore();
-    ~Condensatore ();
+    Condensatore():capacita(0){}
+    ~Condensatore();
 
     C_cartesiano impedenza() const override;
 };

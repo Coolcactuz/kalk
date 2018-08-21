@@ -1,10 +1,12 @@
-//
-// Created by luca on 03/01/18.
-//
-
 #include "Resistore.h"
 
-Resistore::Resistore(double r):Componente(),resistenza(r){
+Resistore::Resistore(double r){
+
+  if(r > 0)
+    resistenza = r;
+  else
+    throw logic_exception("Inizializzato con valore negativo");
+
   Componente::setImp(impedenza());
 }
 
@@ -15,10 +17,8 @@ Resistore::Resistore(std::string s):Componente(){
     Componente::setImp(impedenza());
   }
   else
-    throw(0); //gestire eccezione errore di sintassi
+    throw syntax_exception("La stringa non inizia con il carattere R"); //gestire eccezione errore di sintassi
 }
-
-Resistore::Resistore():Componente(), resistenza(0){}
 
 Resistore::~Resistore(){}
 

@@ -1,7 +1,3 @@
-//
-// Created by luca on 14/01/18.
-//
-
 #include "Circuito.h"
 
 double Circuito::freq=0;

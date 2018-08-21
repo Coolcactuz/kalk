@@ -1,6 +1,3 @@
-//
-// Created by luca on 07/12/17.
-//
 #include "parser.h"
 #include "Raz.h"
 #include <cmath>
@@ -9,7 +6,10 @@
 //Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
 
 Raz::Raz(long n, long d){   //2 parametri interi
-    if(d==0) throw(0);  //GESTIRE ECCEZIONE
+    if(d==0){
+      //se il denominatore è 0 viene automaticamente settato a 1
+      d = 1;
+    }
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
     else{num=n; den=d;}
@@ -19,25 +19,38 @@ Raz::Raz(long n, long d){   //2 parametri interi
 Raz::Raz():num(0),den(1){};
 
 Raz::Raz(std::string s){   //stringa
+
   std::string::size_type size=0;
+
   double numerator=std::stod(s,&size);
+
   if(s.find('/')==-1){
-    if(size!=s.length()) throw(0); //gestire eccezione syntax error
+
+    if(size!=s.length()){
+      throw syntax_exception("Costruzione oggetto fallita");
+    }
+
     Raz aux(numerator);
     num=aux.getNum();
     den=aux.getDen();
   }
+
   else{
     double denominator=std::stod(s,&size+1);
-    if(size!=s.length()) throw(0); //gestire eccezione syntax error
+    if(size!=s.length()) throw syntax_exception("Costruzione oggetto fallita");
     num=numerator;
     den=denominator;
   }
+
 }
 
 Raz::~Raz(){}
 
-Raz::Raz(double d){ //1 parametro decimale
+Raz::Raz(double d){ //funziona solo con double positivi
+
+    if(d < 0)
+      throw syntax_exception("Valore negativo")
+
     int i=1;
     while(d-(floor(d*pow(10,i))/pow(10, i))){
         i++;
@@ -46,34 +59,46 @@ Raz::Raz(double d){ //1 parametro decimale
     num=b.getNum();
     den=b.getDen();
 }
-//
 
 //overloading operatori con puntatori
 Raz* Raz::operator+ (const Numero *n)const {
+
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den+r->num*den,(den*r->den));
-    throw(0); //gestire eccezione
+
+    throw logic_exception(); //gestire eccezione
 }
+
 Raz* Raz::operator- (const Numero *n)const {
+
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den-r->num*den,(den*r->den));
-    throw(0); //gestire eccezione
+
+    throw logic_exception(); //gestire eccezione
 }
+
 Raz* Raz::operator* (const Numero *n)const {
+
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->num,den*r->den);
-    throw(0); //gestire eccezione
+
+    throw logic_exception(); //gestire eccezione
 }
+
 Raz* Raz::operator/ (const Numero *n)const {
+
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den,den*r->num);
-    throw(0); //gestire eccezione
+
+    throw logic_exception(); //gestire eccezione
 }
+
 Raz* Raz::operator^ (int exp)const {
+
     if(exp==0) return new Raz(1,1);
     if(exp<0)
         return new Raz(pow(den,exp*-1), pow(num,exp*-1));
@@ -93,23 +118,31 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 //metodi
 Raz* Raz::create(std::string s){ return new Raz(s);}
 
-Raz* Raz::solve_operation(Numero* l, Numero* r, char o)const {
+Raz* Raz::solve_operation(Numero* l, Numero* r, char o) const{
+
+    Raz* res = 0;
+
     switch(o) {
         case '+':
-            return dynamic_cast<Raz*>(l->operator+(r));
+            res = dynamic_cast<Raz*>(l->operator+(r));
         case '-':
-            return dynamic_cast<Raz*>(l->operator-(r));
+            res = dynamic_cast<Raz*>(l->operator-(r));
         case '*':
-            return dynamic_cast<Raz*>(l->operator*(r));
+            res = dynamic_cast<Raz*>(l->operator*(r));
         case '/':
-            return dynamic_cast<Raz*>(l->operator/(r));
+            res = dynamic_cast<Raz*>(l->operator/(r));
         case '^':
-            return dynamic_cast<Raz*>(l)->operator^(double(*dynamic_cast<Raz*>(r));
+            res = dynamic_cast<Raz*>(l)->operator^(double(*dynamic_cast<Raz*>(r));
         case '#':
-            return new Raz(dynamic_cast<Raz*>(r)->radice_quadrata());
+            res = new Raz(dynamic_cast<Raz*>(r)->radice_quadrata());
         default:
-            throw (0); //gestire eccezione operatore errato
+            throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
     }
+
+    if(!res)
+      throw logic_exception();
+
+    return res;
 }
 
 long Raz::getNum () const { return num; }
@@ -119,13 +152,22 @@ long Raz::getDen () const { return den; }
 Raz* Raz::reciproco() const {return new Raz(den,num);}
 
 int Raz::getMCD(long a, long b) const {
+
+    a = abs(a);
+    b = abs(b);
+
+    if(!b)
+      throw logic_exception("Divisore nullo");
+
     int r;
+
     while(b){
         r = a%b;
         a=b;
         b=r;
     }
-    return (a>=0?a:(a*-1));
+
+    return (a>=0 ? a:(a*-1));
 }
 
 void Raz::semplifica(){

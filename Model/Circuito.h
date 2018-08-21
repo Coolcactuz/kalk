@@ -1,7 +1,3 @@
-//
-// Created by luca on 14/01/18.
-//
-
 #ifndef KALK_CIRCUITO_H
 #define KALK_CIRCUITO_H
 

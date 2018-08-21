@@ -1,7 +1,3 @@
-//
-// Created by luca on 07/12/17.
-//
-
 #ifndef KALK_RAZ_H
 #define KALK_RAZ_H
 

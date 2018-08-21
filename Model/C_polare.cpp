@@ -1,7 +1,3 @@
-//
-// Created by luca on 18/12/17.
-//
-
 #include "C_polare.h"
 #include <cmath>
 //#include "C_cartesiano.h"
@@ -9,7 +5,7 @@
 C_polare::C_polare():modulo(0),fase(0){};
 
 C_polare::C_polare(double m, double f) {
-    if(m<0) throw (0);    //GESTIRE ECCEZIONE
+    if(m<0) throw logic_exception("Modulo negativo");
     else if(m==0){
       modulo=0;
       fase=0;
@@ -25,7 +21,7 @@ C_polare::C_polare(double m, double f) {
 C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
 
 C_polare::C_polare(std::string s){
-  auto pos=s.find('<');
+  auto pos = s.find('<');
   std::string::size_type size=0;
   modulo=0;
   fase=0;
@@ -39,7 +35,7 @@ C_polare::C_polare(std::string s){
       fase=(std::stod(s.substr(size+1)));
   }
   else
-    throw(0); //gestire eccezione syntax error
+    throw syntax_exception("Invalid value"); //gestire eccezione syntax error
 }
 
 C_polare::~C_polare(){};
@@ -49,7 +45,7 @@ C_polare* C_polare::operator+ (const Numero* n)const{
     if(dynamic_cast<const C_cartesiano*>(n)||dynamic_cast<const C_polare*>(n))
       return static_cast<C_polare*>((aux->operator+(n))->converti());
     else
-      throw(0); //gestire eccezione
+      throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 C_polare* C_polare::operator- (const Numero* n)const{
@@ -57,8 +53,10 @@ C_polare* C_polare::operator- (const Numero* n)const{
   if(dynamic_cast<const C_cartesiano*>(n)||dynamic_cast<const C_polare*>(n))
     return static_cast<C_polare*>((aux->operator-(n))->converti());
   else
-    throw(0); //gestire eccezione
+    throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
+
 C_polare* C_polare::operator* (const Numero* n)const{
     if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp= static_cast<const C_polare*>(n);
@@ -71,8 +69,10 @@ C_polare* C_polare::operator* (const Numero* n)const{
       return static_cast<C_polare*>((cc->operator*(this))->converti());
     }
     else
-      throw(0); //gestire eccezione
+      throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
+
 C_polare* C_polare::operator/ (const Numero* n)const{
     if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp= static_cast<const C_polare*>(n);
@@ -85,7 +85,7 @@ C_polare* C_polare::operator/ (const Numero* n)const{
       return static_cast<C_polare*>((cc->operator/(this))->converti());
     }
     else
-      throw(0); //gestire eccezione
+      throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 C_polare* C_polare::create(std::string s){

@@ -1,7 +1,3 @@
-//
-// Created by luca on 18/12/17.
-//
-
 #ifndef KALK_NUMERO_H
 #define KALK_NUMERO_H
 

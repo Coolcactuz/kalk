@@ -29,20 +29,28 @@
 // }
 
 
-//costruttore di tupla a partire da una stringa del tipo METADATO, DATO
+//costruttore di tupla a partire da una stringa del tipo METADATO,DATO
 tupla::tupla(std::string s){
 
   if(s != ""){
 
     int commas = 0;
     for(std::string::const_iterator it = s.begin(); it != s.end(); it++){
-      if(*it == ',')
+      if(*it == ','){
         commas++;
+        if(*(std::next(it)) == ',')
+          throw syntax_exception("Due o più virgole sono di seguito");
+      }
     }
 
-    // if(commas%2 == 0)
-    //   throw exception("Diverso numero tra dati e metadati");
+    if(commas%2 == 0)
+      throw syntax_exception("Errore nel numero delle virgole");
 
+    if(s[0] == ",")
+      throw syntax_exception("La stringa inizia con una virgola");
+
+    if(s[s.size() - 1] == ",")
+      throw syntax_exception("La stringa finisce con una virgola");
 
     //std::string::const_iterator it = s.begin();
 
@@ -71,19 +79,12 @@ tupla::tupla(std::string s){
 
       dati.push_back(s.substr(ind,sub_size));
 
-      if(s[aux] == ',')
+      if(aux < s.size())
         aux++;
 
       ind = aux;
     }
 
-    // try{
-    //   check_tupla();
-    // }
-    //
-    // catch(exception e){
-    //     throw e;
-    // }
   }
 }
 
@@ -109,7 +110,7 @@ bool tupla::exist_metadati(std::string s) const{
   return res;
 }
 
-//restituisce il dato corrispondente al metadato cercato, se quest'ultimo esiste, altrimenti lancia una eccezione
+//restituisce il dato corrispondente al metadato cercato, se quest'ultimo esiste
 std::string tupla::search_by_metadati(std::string s) const{
 
   if(exist_metadati(s)){
@@ -120,8 +121,8 @@ std::string tupla::search_by_metadati(std::string s) const{
 
     return dati[ind];
   }
-  // else
-  //   throw exception("Metadato inesistente");
+  else
+    return "METADATO INESISTENTE"
 }
 
 //verifica l'esistenza di una intera entry
@@ -169,19 +170,11 @@ tupla tupla::unione(const tupla& t) const{
   res.metadati.insert(res.metadati.end(), metadati.begin(), metadati.end());
   res.dati.insert(res.dati.end(), dati.begin(), dati.end());
 
-  // try{
-  //   res.check_tupla();
-  // }
-  //
-  // catch(exception e){
-  //     throw e;
-  // }
-
   return res;
 }
 
 //restituisce una tupla che è intersezione di due tuple: l'intersezione è intesa come stesso campo METADATO
-//e stesso campo DATO. Restituisce una eccezione in caso di errore
+//e stesso campo DATO
 tupla tupla::intersect(const tupla& t) const{
 
   tupla res;
@@ -192,59 +185,37 @@ tupla tupla::intersect(const tupla& t) const{
         res.insert(*it, search_by_metadati(*it));
   }
 
-  // try{
-  //   res.check_tupla();
-  // }
-  //
-  // catch(exception e){
-  //     throw e;
-  // }
-
   return res;
-
 }
 
-//restituisce una tupla che è differenza di due tuple, una eccezione in caso di errore
+//restituisce una tupla che è differenza di due tuple
 tupla tupla::diff(const tupla& t) const{
 
   tupla res;
+
   //for che scorre i metadati dell'oggetto di invocazione
   for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
     if(!(t.exist_metadati(*it)) || (t.search_by_metadati(*it) != search_by_metadati(*it)))
       res.insert(*it, search_by_metadati(*it));
   }
-  //for che scorre i metadato della tupla parametro
+
+  //for che scorre i metadati della tupla parametro
   for(std::vector<std::string>::const_iterator it = t.metadati.begin(); it != t.metadati.end(); it++){
     if(!(exist_metadati(*it)) || (t.search_by_metadati(*it) != search_by_metadati(*it)))
       res.insert(*it, t.search_by_metadati(*it));
   }
 
-  // try{
-  //   res.check_tupla();
-  // }
-  //
-  // catch(exception e){
-  //     throw e;
-  // }
-
   return res;
 }
 
-//restituisce il join tra due tuple, una eccezione altrimenti
+
+//restituisce il join tra due tuple
 tupla tupla::join(const tupla& t) const{
 
   tupla aux1 = diff(t);
   tupla aux2 = intersect(t);
 
   tupla res = aux1.unione(aux2);
-
-  // try{
-  //   res.check_tupla();
-  // }
-  //
-  // catch(exception e){
-  //     throw e;
-  // }
 
   return res;
 }

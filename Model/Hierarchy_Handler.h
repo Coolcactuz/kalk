@@ -1,6 +1,3 @@
-//
-// Created by luca on 02/08/18.
-//
 
 #ifndef KALK_HIERARCHY_HANDLER_H
 #define KALK_HIERARCHY_HANDLER_H
