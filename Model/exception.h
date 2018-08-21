@@ -2,26 +2,19 @@
 #define EXCEPTION_H
 
 #include <iostream>
+#include <string>
 
 class exception{
+  friend std::ostream& operator<<(std::ostream&, const exception&);
+private:
+  std::string error;
 public:
-  virtual void print() const =0;
-  std::string errorMessage;
-  exception(std::string s): errorMessage(s){}
+  exception(std::string s = ""): error(s) {}
 };
 
-class syntax_exception: public exception{
-public:
-  syntax_exception(std::string s): exception(s) {}
-  virtual void print() const {  std::cout << exception::errorMessage
-    << std::endl;}
-};
-
-class logic_exception: public exception{
-public:
-  logic_exception(std::string s): exception(s) {}
-  virtual void print() const {  std::cout << exception::errorMessage
-    << std::endl;}
-};
+std::ostream& operator<<(std::ostream& out, const exception& e){
+  out<<e.error<<std::endl;
+  return out; 
+}
 
 #endif

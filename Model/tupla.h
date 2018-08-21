@@ -12,8 +12,10 @@ private:
   std::vector<std::string> metadati;
   std::vector<std::string> dati;
 
-  //inserire funzioni di controllo integrità?
+  //funzione di controllo integrità
   void check_tupla() const;
+
+  tupla unione(const tupla&) const;
 
 public:
   tupla(std::string = "");
@@ -28,31 +30,27 @@ public:
   void print_dati() const;
 
   //verifica esistenza metadato
-  bool metadata_exist(std::string = "") const;
+  bool exist_metadati(std::string) const;
 
   //cerca tramite metadato
-  std::string search_by_metadata(std::string) const;
+  std::string search_by_metadati(std::string) const;
 
-  //inserisci entry
+  //ricerca per intera entry
+  bool search_by_entry(std::string, std::string) const;
+
+  //inserisce una entry alla fine
   void insert(std::string, std::string);
 
-  //elimina entry per metadato
-  void delete_by_metadata(std::string);
+  //elimina l'ultima entry
+  void erase();
 
 
-  //non ho ridefinito gli operatori poichè ho inteso queste operazioni
-  //come operazioni tra insiemi
+  //non ho ridefinito gli operatori poichè ho inteso queste operazioni come operazioni tra insiemi
 
-  //unione
-  tupla unione(const tupla&) const;
-
-  //join
   tupla join(const tupla&) const;
 
-  //differenza
   tupla diff(const tupla&) const;
 
-  //intersezione
   tupla intersect(const tupla&) const;
 
 
