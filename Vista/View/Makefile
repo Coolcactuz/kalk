@@ -52,22 +52,22 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		startup_view.cpp \
-		specialized\ view\ hierarchy/specialized_view.cpp \
-		specialized\ view\ hierarchy/VCircuit.cpp \
-		specialized\ view\ hierarchy/VComplex.cpp \
-		specialized\ view\ hierarchy/VNumTypes.cpp \
-		specialized\ view\ hierarchy/VRaz.cpp moc_KalkButton.cpp \
-		moc_startup_view.cpp \
+		specialized_view_hierarchy/specialized_view.cpp \
+		specialized_view_hierarchy/VCircuito.cpp \
+		specialized_view_hierarchy/VComplesso.cpp \
+		specialized_view_hierarchy/VRazionale.cpp \
+		specialized_view_hierarchy/VTupla.cpp moc_startup_view.cpp \
+		moc_KalkButton.cpp \
 		moc_specialized_view.cpp
 OBJECTS       = main.o \
 		startup_view.o \
 		specialized_view.o \
-		VCircuit.o \
-		VComplex.o \
-		VNumTypes.o \
-		VRaz.o \
-		moc_KalkButton.o \
+		VCircuito.o \
+		VComplesso.o \
+		VRazionale.o \
+		VTupla.o \
 		moc_startup_view.o \
+		moc_KalkButton.o \
 		moc_specialized_view.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -147,20 +147,19 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		View.pro KalkButton.h \
-		startup_view.h \
-		specialized\ view\ hierarchy/specialized_view.h \
-		specialized\ view\ hierarchy/VCircuit.h \
-		specialized\ view\ hierarchy/VComplex.h \
-		specialized\ view\ hierarchy/VNota.h \
-		specialized\ view\ hierarchy/VNumTypes.h \
-		specialized\ view\ hierarchy/VRaz.h main.cpp \
+		View.pro startup_view.h \
+		items/KalkButton.h \
+		specialized_view_hierarchy/specialized_view.h \
+		specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/VComplesso.h \
+		specialized_view_hierarchy/VRazionale.h \
+		specialized_view_hierarchy/VTupla.h main.cpp \
 		startup_view.cpp \
-		specialized\ view\ hierarchy/specialized_view.cpp \
-		specialized\ view\ hierarchy/VCircuit.cpp \
-		specialized\ view\ hierarchy/VComplex.cpp \
-		specialized\ view\ hierarchy/VNumTypes.cpp \
-		specialized\ view\ hierarchy/VRaz.cpp
+		specialized_view_hierarchy/specialized_view.cpp \
+		specialized_view_hierarchy/VCircuito.cpp \
+		specialized_view_hierarchy/VComplesso.cpp \
+		specialized_view_hierarchy/VRazionale.cpp \
+		specialized_view_hierarchy/VTupla.cpp
 QMAKE_TARGET  = View
 DESTDIR       = 
 TARGET        = View
@@ -352,8 +351,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents KalkButton.h startup_view.h specialized\ view\ hierarchy/specialized_view.h specialized\ view\ hierarchy/VCircuit.h specialized\ view\ hierarchy/VComplex.h specialized\ view\ hierarchy/VNota.h specialized\ view\ hierarchy/VNumTypes.h specialized\ view\ hierarchy/VRaz.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp startup_view.cpp specialized\ view\ hierarchy/specialized_view.cpp specialized\ view\ hierarchy/VCircuit.cpp specialized\ view\ hierarchy/VComplex.cpp specialized\ view\ hierarchy/VNumTypes.cpp specialized\ view\ hierarchy/VRaz.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents startup_view.h items/KalkButton.h specialized_view_hierarchy/specialized_view.h specialized_view_hierarchy/VCircuito.h specialized_view_hierarchy/VComplesso.h specialized_view_hierarchy/VRazionale.h specialized_view_hierarchy/VTupla.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp startup_view.cpp specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VTupla.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -384,25 +383,25 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -m64 -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_KalkButton.cpp moc_startup_view.cpp moc_specialized_view.cpp
+compiler_moc_header_make_all: moc_startup_view.cpp moc_KalkButton.cpp moc_specialized_view.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_KalkButton.cpp moc_startup_view.cpp moc_specialized_view.cpp
-moc_KalkButton.cpp: KalkButton.h \
-		moc_predefs.h \
-		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include KalkButton.h -o moc_KalkButton.cpp
-
-moc_startup_view.cpp: KalkButton.h \
+	-$(DEL_FILE) moc_startup_view.cpp moc_KalkButton.cpp moc_specialized_view.cpp
+moc_startup_view.cpp: items/KalkButton.h \
 		startup_view.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include startup_view.h -o moc_startup_view.cpp
 
-moc_specialized_view.cpp: KalkButton.h \
-		specialized\ view\ hierarchy/specialized_view.h \
+moc_KalkButton.cpp: items/KalkButton.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include specialized\ view\ hierarchy/specialized_view.h -o moc_specialized_view.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include items/KalkButton.h -o moc_KalkButton.cpp
+
+moc_specialized_view.cpp: items/KalkButton.h \
+		specialized_view_hierarchy/specialized_view.h \
+		moc_predefs.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include specialized_view_hierarchy/specialized_view.h -o moc_specialized_view.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -418,45 +417,47 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
-main.o: main.cpp startup_view.h \
-		KalkButton.h
+main.o: main.cpp specialized_view_hierarchy/VComplesso.h \
+		specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h \
+		specialized_view_hierarchy/VTupla.h \
+		specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/VRazionale.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 startup_view.o: startup_view.cpp startup_view.h \
-		KalkButton.h
+		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startup_view.o startup_view.cpp
 
-specialized_view.o: specialized\ view\ hierarchy/specialized_view.cpp specialized\ view\ hierarchy/specialized_view.h \
-		KalkButton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o specialized_view.o specialized\ view\ hierarchy/specialized_view.cpp
+specialized_view.o: specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o specialized_view.o specialized_view_hierarchy/specialized_view.cpp
 
-VCircuit.o: specialized\ view\ hierarchy/VCircuit.cpp specialized\ view\ hierarchy/VCircuit.h \
-		specialized\ view\ hierarchy/specialized_view.h \
-		KalkButton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VCircuit.o specialized\ view\ hierarchy/VCircuit.cpp
+VCircuito.o: specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VCircuito.o specialized_view_hierarchy/VCircuito.cpp
 
-VComplex.o: specialized\ view\ hierarchy/VComplex.cpp specialized\ view\ hierarchy/VComplex.h \
-		specialized\ view\ hierarchy/VNumTypes.h \
-		specialized\ view\ hierarchy/specialized_view.h \
-		KalkButton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VComplex.o specialized\ view\ hierarchy/VComplex.cpp
+VComplesso.o: specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VComplesso.h \
+		specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VComplesso.o specialized_view_hierarchy/VComplesso.cpp
 
-VNumTypes.o: specialized\ view\ hierarchy/VNumTypes.cpp specialized\ view\ hierarchy/VNumTypes.h \
-		specialized\ view\ hierarchy/specialized_view.h \
-		KalkButton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VNumTypes.o specialized\ view\ hierarchy/VNumTypes.cpp
+VRazionale.o: specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VRazionale.h \
+		specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VRazionale.o specialized_view_hierarchy/VRazionale.cpp
 
-VRaz.o: specialized\ view\ hierarchy/VRaz.cpp specialized\ view\ hierarchy/VRaz.h \
-		specialized\ view\ hierarchy/VNumTypes.h \
-		specialized\ view\ hierarchy/specialized_view.h \
-		KalkButton.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VRaz.o specialized\ view\ hierarchy/VRaz.cpp
-
-moc_KalkButton.o: moc_KalkButton.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkButton.o moc_KalkButton.cpp
+VTupla.o: specialized_view_hierarchy/VTupla.cpp specialized_view_hierarchy/VTupla.h \
+		specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VTupla.o specialized_view_hierarchy/VTupla.cpp
 
 moc_startup_view.o: moc_startup_view.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_startup_view.o moc_startup_view.cpp
+
+moc_KalkButton.o: moc_KalkButton.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkButton.o moc_KalkButton.cpp
 
 moc_specialized_view.o: moc_specialized_view.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_specialized_view.o moc_specialized_view.cpp

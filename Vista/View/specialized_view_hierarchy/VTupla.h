@@ -13,7 +13,6 @@ public:
 
   VTupla();
 
-  void resize_max();
 };
 
 #endif

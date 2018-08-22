@@ -2,6 +2,8 @@
 
 VTupla::VTupla(): tupla_op(new QGridLayout()){
 
+  type_title->setText("TUPLA");
+
   lower->addLayout(tupla_op);
 
   tupla_op->addWidget(new KalkButton(8, "+", this), 0, 0);
@@ -9,8 +11,4 @@ VTupla::VTupla(): tupla_op(new QGridLayout()){
   tupla_op->addWidget(new KalkButton(10, "/", this), 2, 0);
   tupla_op->addWidget(new KalkButton(11, "%", this), 3, 0);
 
-}
-
-void VTupla::resize_max(){
-  
 }

@@ -9,6 +9,7 @@
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPlainTextEdit>
+#include <QSpinBox>
 
 
 #include <string>
@@ -39,16 +40,6 @@ public:
   specialized_view();
   virtual ~specialized_view() {}
 
-
-//ridimensiona la vista affinchè occupi il massimo dello schermo
-  virtual void resize_max() =0;
-
-signals:
-
-//segnale generico comune a tutte le viste, invia dati al controller
-  void sendData(std::string);
-
-  void goBack_CStart();
 };
 
 
