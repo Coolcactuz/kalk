@@ -164,7 +164,7 @@ std::ostream& operator<<(std::ostream& out, const tupla& t){
 }
 
 //restituisce l'unione di due tuple, una eccezione in caso di errore
-tupla tupla::unione(const tupla& t) const{
+tupla tupla::operator+(const tupla& t) const{
 
   tupla res = t;
   res.metadati.insert(res.metadati.end(), metadati.begin(), metadati.end());
@@ -175,7 +175,7 @@ tupla tupla::unione(const tupla& t) const{
 
 //restituisce una tupla che è intersezione di due tuple: l'intersezione è intesa come stesso campo METADATO
 //e stesso campo DATO
-tupla tupla::intersect(const tupla& t) const{
+tupla tupla::operator/(const tupla& t) const{
 
   tupla res;
   for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
@@ -189,7 +189,7 @@ tupla tupla::intersect(const tupla& t) const{
 }
 
 //restituisce una tupla che è differenza di due tuple
-tupla tupla::diff(const tupla& t) const{
+tupla tupla::operator-(const tupla& t) const{
 
   tupla res;
 
@@ -210,23 +210,12 @@ tupla tupla::diff(const tupla& t) const{
 
 
 //restituisce il join tra due tuple
-tupla tupla::join(const tupla& t) const{
+tupla tupla::operator%(const tupla& t) const{
 
-  tupla aux1 = diff(t);
-  tupla aux2 = intersect(t);
+  tupla aux1 = operator-(t);
+  tupla aux2 = operator/(t);
 
-  tupla res = aux1.unione(aux2);
+  tupla res = aux1+aux2;
 
   return res;
-}
-
-
-int main(){
-
-  tupla b("NOME,NICK,COGNOME,VETTORELLO");
-
-  tupla t("NOME,GUIDO,COGNOME,VETTORELLO,COGNOME,VETTORELLO");
-
-
-  return 0;
 }

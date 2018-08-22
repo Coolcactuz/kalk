@@ -12,12 +12,10 @@ keyboard(new QGridLayout()),display(new QPlainTextEdit(this)){
   header->addWidget(type_title);
   header->addWidget(go_back);
 
-  lower->addLayout(keyboard);
-
   upper->addWidget(display);
 
+  lower->addLayout(keyboard);
 
-  //riempire il QGridLayout con i KalkButton
 
   keyboard->addWidget(new KalkButton(7, "7", this), 0, 0);
   keyboard->addWidget(new KalkButton(8, "8", this), 0, 1);
@@ -34,14 +32,4 @@ keyboard(new QGridLayout()),display(new QPlainTextEdit(this)){
   keyboard->addWidget(new KalkButton(-2, ".", this), 2, 3);
   keyboard->addWidget(new KalkButton(-1, "ENTER", this), 3, 3);
 
-
-  //connect e altra roba qua
-
-  QObject::connect(go_back, SIGNAL(clicked()), this, SIGNAL(goBack_CStart()));
 }
-
-/*
-void specialized_view::test(){
-  std::cout << "goBack_CStart"<< std::endl;
-}
-*/

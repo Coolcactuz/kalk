@@ -12,10 +12,8 @@ private:
   std::vector<std::string> metadati;
   std::vector<std::string> dati;
 
-  //funzione di controllo integrità
-  void check_tupla() const;
-
-  tupla unione(const tupla&) const;
+  // //funzione di controllo integrità
+  // void check_tupla() const;
 
 public:
   tupla(std::string = "");
@@ -45,13 +43,17 @@ public:
   void erase();
 
 
-  //non ho ridefinito gli operatori poichè ho inteso queste operazioni come operazioni tra insiemi
+  //unione
+  tupla operator+(const tupla&) const;
 
-  tupla join(const tupla&) const;
+  //join
+  tupla operator%(const tupla&) const;
 
-  tupla diff(const tupla&) const;
+  //differenza
+  tupla operator-(const tupla&) const;
 
-  tupla intersect(const tupla&) const;
+  //intersezione
+  tupla operator/(const tupla&) const;
 
 
   //controllo tupla vuota

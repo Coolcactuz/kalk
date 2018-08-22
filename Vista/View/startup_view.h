@@ -1,15 +1,14 @@
 #ifndef STARTUP_VIEW_H
 #define STARTUP_VIEW_H
 
-#include "KalkButton.h"
+#include "items/KalkButton.h"
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <iostream>
 
-/* fornisce una interfaccia per la selezione del tipo, comunica l'informazione
-al controller e cede il controllo */
+/* fornisce una interfaccia per la selezione del tipo */
 
 class startup_view : public QWidget{
 
@@ -35,9 +34,9 @@ public slots:
 
   void datatype_su();
 
-signals:
-
-  void exchange_datatype(int);
+// signals:
+//
+//   void exchange_datatype(int);
 
 };
 
