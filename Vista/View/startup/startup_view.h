@@ -1,7 +1,7 @@
 #ifndef STARTUP_VIEW_H
 #define STARTUP_VIEW_H
 
-#include "items/KalkButton.h"
+#include "../items/KalkButton.h"
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -30,13 +30,15 @@ public:
 
   startup_view();
 
+  ~startup_view();
+
 public slots:
 
-  void datatype_su();
+  void type_FButtonTStartup();
 
-// signals:
-//
-//   void exchange_datatype(int);
+signals:
+
+  void type_FStartupTController(int);
 
 };
 

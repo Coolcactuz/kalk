@@ -19,4 +19,6 @@ keyboard(new QGridLayout()),display(new QPlainTextEdit(this)){
   keyboard->addWidget(new KalkButton(-3, "AC", this), 0, 0);
   keyboard->addWidget(new KalkButton(-2, "DEL", this), 1, 0);
   keyboard->addWidget(new KalkButton(-1, "ENTER", this), 2, 0);
+
+  QObject::connect(go_back, SIGNAL(clicked()), this, SIGNAL(back()));
 }

@@ -38,7 +38,13 @@ private:
 public:
 
   specialized_view();
-  virtual ~specialized_view() {}
+  virtual ~specialized_view() {
+    std::cout << "SONO IL DISTRUTTORE DI SPECIALIZED" << std::endl;
+  }
+
+signals:
+
+  void back();
 
 };
 
