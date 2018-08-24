@@ -18,6 +18,9 @@ public:
     Induttore();
     ~Induttore();
 
+    bool operator== (const Dato&) const;
+    Induttore& operator= (const Dato&);
+
     C_cartesiano impedenza() const override;
 };
 

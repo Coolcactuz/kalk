@@ -88,25 +88,26 @@ C_polare* C_polare::operator/ (const Numero* n)const{
       throw(0); //gestire eccezione
 }
 
-C_polare& C_polare::operator=(const Dato&) const{
-    auto aux= dynamic_cast<C_polare&>(d);
-    if(d){
+C_polare& C_polare::operator= (const Dato&){
+    try{
+        auto aux=dynamic_cast<const C_polare&>(d);
         modulo=aux.modulo;
         fase=aux.fase;
         return *this;
     }
-    throw(0); //gestire eccezione
+    catch (const std::bad_cast &error){
+        std::cout << "tipi incompatibili" << std::endl;
+    }
 }
 
-bool C_polare::operator== (const Dato& d)const{
-    auto aux= dynamic_cast<const C_polare&>(d);
-    if(aux)
-        return this->modulo==aux.modulo && this->fase==aux.fase;
-    return false;
-}
-
-C_polare* C_polare::create(std::string s){
-  return new C_polare(s);
+bool C_polare::operator== (const Dato& d)const {
+    try{
+        auto aux = dynamic_cast<const C_polare &>(d);
+        return this->modulo == aux.modulo && this->fase == aux.fase;
+    }
+    catch(const std::bad_cast& error){
+        return false;
+    }
 }
 
 Complesso* C_polare::converti() const{

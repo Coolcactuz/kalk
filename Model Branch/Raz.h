@@ -20,7 +20,6 @@ public:
     Raz (std::string);
     Raz (double);
     ~Raz();
-    static Raz* create(std::string);
 
     explicit operator double () const;
     Raz* operator+ (const Numero *) const;
@@ -29,7 +28,7 @@ public:
     Raz* operator/ (const Numero *) const;
     Raz* operator^ (int) const;
     bool operator== (const Dato&)const;
-    Raz& operator=(const Dato&) const;
+    Raz& operator=(const Dato&);
 
 
     static Raz* solve_operation(const Dato*, const Dato*, char);

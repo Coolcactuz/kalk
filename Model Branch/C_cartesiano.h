@@ -31,14 +31,12 @@ public:
     C_cartesiano* operator* (const Numero*)const;
     C_cartesiano* operator/ (const Numero*)const;
     bool operator== (const Dato&)const;
-    C_cartesiano& operator=(const Dato&) const;
+    C_cartesiano& operator=(const Dato&);
 
     double getReale() const;
     double getImmaginaria() const;
     C_cartesiano* coniugato() const override;
-    static C_cartesiano* create(std::string);
 
-    // Complesso* sub_create(std::string);
     Complesso* converti()const override;
     void stampa(std::ostream&)const;
 };

@@ -82,21 +82,26 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     throw(0);    //gestire eccezione di tipo incompatibile
 }
 
-C_cartesiano& C_cartesiano::operator=(const Dato&) const{
-    auto aux= dynamic_cast<C_cartesiano&>(d);
-    if(d){
+C_cartesiano& C_cartesiano::operator=(const Dato& d){
+    try{
+        auto aux= dynamic_cast<const C_cartesiano&>(d);
         reale=aux.reale;
         immaginaria=aux.immaginaria;
         return *this;
     }
-    throw(0); //gestire eccezione
+    catch (const std::bad_cast &error){
+        std::cout << "tipi incompatibili" << std::endl;
+    }
 }
 
 bool C_cartesiano::operator== (const Dato& d)const{
-    auto aux= dynamic_cast<const C_cartesiano&>(d);
-    if(aux)
-        return this->reale==aux.reale && this->immaginaria==aux.immaginaria;
-    return false;
+    try {
+        auto aux = dynamic_cast<const C_cartesiano &>(d);
+        return this->reale == aux.reale && this->immaginaria == aux.immaginaria;
+    }
+    catch(const std::bad_cast& error){
+        return false;
+    }
 }
 
 double C_cartesiano::getReale() const {return reale;}

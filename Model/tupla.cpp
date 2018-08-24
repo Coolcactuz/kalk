@@ -219,3 +219,11 @@ tupla tupla::operator%(const tupla& t) const{
 
   return res;
 }
+
+tupla& tupla::operator=(const Dato&){
+
+}
+
+bool tupla::operator==(const Dato&) const{
+
+}

@@ -4,7 +4,7 @@
 
 #include "Circuit_Hierarchy.h"
 
-Circuit_Hierarchy::Circuit_Hierarchy() :Hierarchy_Handler(){
+Circuit_Hierarchy::Circuit_Hierarchy(){
     load_operators();
 }
 

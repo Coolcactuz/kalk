@@ -3,13 +3,7 @@
 double Circuito::freq=0;
 double Circuito::volt=0;
 
-Circuito::Circuito(std::string s){
-  circuit=new parser<Componente>(s);
-}
-
-Circuito::~Circuito () {
-  delete circuit.getStart();
-}
+Circuito::Circuito(std::string s): circuit(parser<Componente>(s)){}
 
 C_cartesiano Circuito::impEquivalente () const {
     Componente* res = static_cast<Componente*>(parser<Componente>::resolve(circuit.getStart()));
@@ -23,6 +17,15 @@ C_cartesiano Circuito::Corrente_totale() const{
         return *((&impEq)->operator/(&v));
     }
     return 0;
+}
+
+Circuito Circuito::operator=(const Circuito& c){
+    if(!(circuit==c.circuit)){
+        delete this->circuit.getStart();
+        delete this->circuit.getHandler();
+        circuit = c.circuit;
+    }
+    return *this;
 }
 
 void Circuito::setVolt(double v){

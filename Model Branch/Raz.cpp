@@ -85,20 +85,25 @@ Raz::operator double() const{  //nb: metodi const
 }
 
 bool Raz::operator== (const Dato& d)const{
-    auto aux= dynamic_cast<const Raz&>(d);
-    if(aux)
-        return this->num==aux.num && this->den==aux.den;
-    return false;
+    try {
+        auto aux = dynamic_cast<const Raz &>(d);
+        return this->num == aux.num && this->den == aux.den;
+    }
+    catch(const std::bad_cast& error){
+        return false;
+    }
 }
 
-Raz& Raz::operator=(const Dato& d) const {
-    auto aux= dynamic_cast<Raz&>(d);
-    if(d){
+Raz& Raz::operator=(const Dato& d){
+    try{
+        auto aux= dynamic_cast<const Raz&>(d);
         num=aux.num;
         den=aux.den;
         return *this;
     }
-    throw(0); //gestire eccezione
+    catch (const std::bad_cast &error){
+        std::cout << "tipi incompatibili" << std::endl;
+    }
 }
 
 std::ostream& operator << (std::ostream& os, const Raz& r){
@@ -108,7 +113,6 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 //
 
 //metodi
-Raz* Raz::create(std::string s){ return new Raz(s);}
 
 Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Raz*>(a);

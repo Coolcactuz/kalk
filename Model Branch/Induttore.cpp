@@ -22,6 +22,28 @@ Induttore::Induttore():Componente(),induttanza(0){}
 
 Induttore::~Induttore(){}
 
+bool Induttore::operator== (const Dato& d) const {
+    try {
+        auto aux = dynamic_cast<const Induttore &>(d);
+        return induttanza == aux.induttanza;
+    }
+    catch (std::bad_cast &error){
+        return false;
+    }
+}
+
+Induttore& Induttore::operator= (const Dato& d) {
+    try {
+        auto aux = dynamic_cast<const Induttore &>(d);
+        induttanza = aux.induttanza;
+        setImp(induttanza);
+        return *this;
+    }
+    catch (const std::bad_cast &error){
+        std::cout << "tipi incompatibili" << std::endl;
+    }
+}
+
 C_cartesiano Induttore::impedenza() const{
     double xl=2*Numero::pi*Circuito::freq*induttanza;
     return C_cartesiano(0,xl);

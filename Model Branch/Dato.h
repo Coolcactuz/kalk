@@ -16,7 +16,7 @@ public:
     bool operator!=(const Dato& d) const{
         return !(*this == d);
     }
-    virtual Dato& operator=(const Dato&) const =0;
+    virtual Dato& operator=(const Dato&) =0;
 };
 
 

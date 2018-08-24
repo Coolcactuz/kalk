@@ -5,7 +5,6 @@
 #include <list>
 #include <string>
 #include <iostream>
-#include <typeinfo>
 
 #include "Numerical_Hierarchy.h"
 #include "Circuit_Hierarchy.h"
@@ -25,23 +24,31 @@ public:
       obj(t), op(o), prec(p), left(l), right(r){};
     ~node(){delete left; delete right; delete obj;};
 
-    node* copy(node* p=nullptr){
+    bool operator==(node& n){
+      return *obj==*(n.obj) && op==n.op && left==n.left && right==n.right;
+    }
+    bool operator!=(node& n){
+      return !(*this == n);
+    }
+
+    static node* copy(node* p=nullptr){
       if(!p) return 0;
-         return new node(p->obj,p->op, copy(p->left), copy(p->right));
+         return new node(p->obj,p->op, p->prec, copy(p->left), copy(p->right));
     };
   };
   parser(std::string ="");
   ~parser();
 
-  parser<T> operator=(parser<T>&);
-  bool operator==(parser<T>&);
-  bool operator!=(parser<T>&);
+  parser<T> operator=(const parser<T>&);
+  bool operator==(const parser<T>&);
+  bool operator!=(const parser<T>&);
 
   node* build_tree(std::string ="\0")const ;
   static Dato* resolve(node*);
   void print(node* =nullptr, int =0) const ;
-  node* getStart();
-  bool compara_nodi(typename parser<T>::node*)
+  node* getStart() const ;
+  Hierarchy_Handler* getHandler() const;
+  bool compara_alberi(typename parser<T>::node*, typename parser<T>::node*);
 
 private:
   std::string input;
@@ -106,13 +113,11 @@ bool parser<T>::balanced_brackets(std::string s) const{
 template<class T>
 typename parser<T>::node* parser<T>::find_father(typename parser<T>::node* wanted,typename parser<T>::node* root) {
   if(!root || !wanted || wanted==root) return nullptr; //l'albero e il nodo figlio devono essere != null
-  if(root){
-    if((root->left && root->left == wanted) || (root->right && root->right == wanted)) return root;
-    node* sub_left=find_father(wanted, root->left);
-    if(sub_left) return sub_left;
-    node* sub_right=find_father(wanted, root->right);
-    if(sub_right) return sub_right;
-  }
+  if((root->left && root->left == wanted) || (root->right && root->right == wanted)) return root;
+  node* sub_left=find_father(wanted, root->left);
+  if(sub_left) return sub_left;
+  node* sub_right=find_father(wanted, root->right);
+  if(sub_right) return sub_right;
   return nullptr;
 }
 
@@ -219,10 +224,27 @@ double parser<T>::set_prec(char c) const{
 }
 
 template<class T>
-parser<T> parser<T>::operator=(parser<T>& p){
+bool parser<T>::compara_alberi(parser<T>::node * root, parser<T>::node * aux) {
+  if(root->operator==(*aux))
+    return compara_alberi(root->left, aux->left) && compara_alberi(root->right, aux->right);
+  return false;
+}
+
+template <class T>
+typename parser<T>::node* parser<T>::getStart() const {
+  return start;
+}
+
+template <class T>
+Hierarchy_Handler* parser<T>::getHandler() const{
+  return handler;
+}
+
+template<class T>
+parser<T> parser<T>::operator=(const parser<T>& p){
   if(*start!=*(p.start)){
     delete start;
-    start=copy(p.start);
+    start=parser<T>::node::copy(p.start);
   }
   if(*handler!=*(p.handler)){
     delete handler;
@@ -233,15 +255,14 @@ parser<T> parser<T>::operator=(parser<T>& p){
 }
 
 template<class T>
-bool parser<T>::operator==(parser<T>& p){
-  
+bool parser<T>::operator==(const parser<T>& p){
+  return input==p.input && compara_alberi(start,p.start);
 }
 
 template<class T>
-bool parser<T>::operator!=(parser<T>& p){
-  return !(*this==p)
+bool parser<T>::operator!=(const parser<T>& p){
+  return !(*this==p);
 }
-
 
 template<class T>
 void parser<T>::print(node* n, int z) const{
@@ -261,10 +282,6 @@ void parser<T>::print(node* n, int z) const{
   }
 }
 
-template<class T>
-typename parser<T>::node* parser<T>::getStart(){
-  return start;
-}
 
 template<class T>
 void parser<T>::balance_tree(typename parser<T>::node* root){
@@ -273,7 +290,6 @@ void parser<T>::balance_tree(typename parser<T>::node* root){
   if(!root->left && root->right) root->left=new node(new T(),'0');
   balance_tree(root->right);
 }
-
 
 template <class T>
 Dato* parser<T>::create(std::string s){

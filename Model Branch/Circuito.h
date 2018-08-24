@@ -14,7 +14,7 @@ private:
     parser<Componente> circuit;
 public:
     Circuito(std::string);
-    ~Circuito();
+    ~Circuito() = default;
 
     static double freq;
     static double volt;
@@ -22,7 +22,7 @@ public:
     C_cartesiano impEquivalente() const ;
     C_cartesiano Corrente_totale() const ;
 
-    Circuito operator=(Circuito&);
+    Circuito operator=(const Circuito&);
 
     void setVolt(double);
     void setFreq(double);

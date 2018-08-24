@@ -18,6 +18,8 @@ public:
     Resistore();
     ~Resistore();
 
+    bool operator== (const Dato&) const;
+    Resistore& operator= (const Dato&);
     C_cartesiano impedenza() const override;
 };
 

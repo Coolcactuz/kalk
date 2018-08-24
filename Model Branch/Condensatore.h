@@ -18,6 +18,9 @@ public:
     Condensatore();
     ~Condensatore ();
 
+    bool operator== (const Dato&) const;
+    Condensatore& operator= (const Dato&);
+
     C_cartesiano impedenza() const override;
 };
 
