@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall.
+CFLAGS=-Wall -std=c++11.
 
 kalk_model: C_cartesiano.o Circuit_Hierarchy.o Circuito.o Complesso.o Componente.o Condensatore.o C_polare.o Database_Hierarchy.o Hierarchy_Handler.o Induttore.o main.o Numerical_Hierarchy.o Numero.o Raz.o Resistore.o tupla.o
 	$(CC) -o kalk_model C_cartesiano.o Circuit_Hierarchy.o Circuito.o Complesso.o Componente.o Condensatore.o C_polare.o Database_Hierarchy.o Hierarchy_Handler.o Induttore.o main.o Numerical_Hierarchy.o Numero.o Raz.o Resistore.o tupla.o
