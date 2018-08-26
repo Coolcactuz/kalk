@@ -8,7 +8,7 @@
 
 //SCELTE PROGETTUALI:
 // 1) override dei metodi toString(), equals()
-// 2) implementazione del metodo assign()
+// 2) implementazione del metodo assign()         OK
 // 3) "traduzione" in linguaggio Java delle ulteriori funzionalita' offerte dalla corrispettiva classe C++
 
 
@@ -61,7 +61,7 @@ class Tupla extends Dato{
         //----------------------
         //GESTIRE ECCEZIONE
         //----------------------
-      }      
+      }
       //fine dei controlli sulla stringa
       //da qui si assume che la stringa abbia una sintassi corretta
 
