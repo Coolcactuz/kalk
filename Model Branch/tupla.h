@@ -1,3 +1,15 @@
+//rappresenta una tupla che contiene una o più coppie di elementi nella forma METADATO,DATO
+//non vi possono essere metadati o dati corrispondenti alla stringa nulla
+//la costruzione di una tupla avviene mediante una stringa: la stringa nulla rappresenta la tupla nulla, ossia quella con 0 coppie di elementi,
+//una generica stringa deve essere composta da coppie di elementi per poter generare una tupla valida: deve attenersi alla seguente sintassi:
+  //deve essere nella forma m1,d1,m2,d2....mn,dn dove m sono i metadati, d i dati
+  //il numero di virgole deve essere dispari
+  //non può iniziare con una virgola
+  //non può finire con una virgola
+  //non possono esserci una o più virgole di seguito
+
+//da ciò deriva che in una tupla valida il numero dei metadati è uguale a quello dei dati, ed esiste una mappatura tra insieme dei dati e quello dei metadati
+
 #ifndef TUPLA_H
 #define TUPLA_H
 

@@ -1,17 +1,17 @@
 #include "tupla.h"
 
 
-// //controlla l'integrità della tupla, se ci sono problemi solleva una eccezione
+// //controlla l'integrità della tupla
 // void tupla::check_tupla() const{
 //
 //   //controlla che i vettori abbiano la stessa dimensione
 //   if(metadati.size() != dati.size())
-//     throw exception("Diverso numero di dati e metadati");
+//     //eccezione
 //
 //   //controlla che nei metadati non ci sia la stringa vuota
 //   for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
 //       if(*it == "")
-//         throw exception("Metadato nullo");
+//         //eccezione
 //   }
 //
 //   // //controlla che non ci sia un metadato ripetuto
@@ -25,7 +25,7 @@
 //   // }
 //   //
 //   // if(check_repetition)
-//   //   throw exception("Metadato ripetuto");
+//   //   //eccezione
 // }
 
 
@@ -132,6 +132,12 @@ bool tupla::search_by_entry(std::string m, std::string d) const{
 
 //inserisce una entry nella tupla
 void tupla::insert(std::string m, std::string d){
+  if(m == ""  ||  d == ""){
+    std::cout << "stai inserendo una stringa nulla" << std::endl;
+    //----------------------
+    //GESTIRE ECCEZIONE
+    //----------------------
+  }
   metadati.push_back(m);
   dati.push_back(d);
 }
