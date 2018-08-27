@@ -10,10 +10,9 @@ Database_Hierarchy::Database_Hierarchy() : Hierarchy_Handler(){
 
 void Database_Hierarchy::load_operators() {
   unsigned int n=6;
-  char op[n]={'+', '-', '*', '/', '^', '#'};
+  char op[n]={'+', '-', '%', '/'};
   for(unsigned int i=0; i<n; ++i)
     add_operator(op[i]);
-  delete[] op;
 }
 
 tupla* Database_Hierarchy::create(std::string s){

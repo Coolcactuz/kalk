@@ -20,8 +20,6 @@ Resistore::Resistore(std::string s):Componente(){
 
 Resistore::Resistore():Componente(), resistenza(0){}
 
-Resistore::~Resistore(){}
-
 bool Resistore::operator== (const Dato& d) const{
   try{
     auto aux= dynamic_cast<const Resistore&>(d);

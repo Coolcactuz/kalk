@@ -4,8 +4,7 @@
 
 #include "Hierarchy_Handler.h"
 
-Hierarchy_Handler::Hierarchy_Handler(){
-    class_operators();
+Hierarchy_Handler::Hierarchy_Handler():class_operators(){
     class_operators.push_back('(');
     class_operators.push_back(')');
 }
@@ -37,9 +36,17 @@ bool Hierarchy_Handler::is_operator(const char c) const {
 }
 
 bool Hierarchy_Handler::operator==(Hierarchy_Handler& h) const{
-    return class_operators==h.class_operators;
+    auto cit1=class_operators.cbegin(), cit2=h.class_operators.cbegin();
+    for(; cit1!=class_operators.cend() && cit2!=h.class_operators.cend(); ++cit1, ++cit2){
+        if((*cit1!=*cit2))
+            return false;
+    }
+    if(cit1!=class_operators.cend() || cit2!=h.class_operators.cend())
+        return false;
+    return true;
+    //    return class_operators==h.class_operators;
 }
-
-bool Hierarchy_Handler::operator!=(Hierarchy_Handler& h) const{
-    return !(class_operators==h.class_operators);
-}
+//
+//bool Hierarchy_Handler::operator!=(Hierarchy_Handler& h) const{
+//    return !(class_operators==h.class_operators);
+//}

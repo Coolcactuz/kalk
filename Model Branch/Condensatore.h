@@ -7,7 +7,6 @@
 
 
 #include "Componente.h"
-#include "Circuito.h"
 
 class Condensatore: public Componente{
 private:
@@ -16,7 +15,6 @@ public:
     Condensatore(double);
     Condensatore(std::string);
     Condensatore();
-    ~Condensatore ();
 
     bool operator== (const Dato&) const;
     Condensatore& operator= (const Dato&);

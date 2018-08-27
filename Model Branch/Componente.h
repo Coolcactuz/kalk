@@ -6,25 +6,30 @@
 #define KALK_COMPONENTE_H
 
 #include "C_cartesiano.h"
-#include "Dato.h"
 
 class Componente : public Dato{
 private:
     C_cartesiano imp;
+protected:
+    static double freq;
+    static double volt;
 public:
     Componente(C_cartesiano);
     Componente(std::string);
     Componente();
-    virtual ~Componente ();
 
     virtual C_cartesiano impedenza() const;
-
-    void setImp(const C_cartesiano);
 
     Componente* operator+(const Componente*) const;
     Componente* operator/(const Componente*) const;
     bool operator== (const Dato&) const;
     Componente& operator= (const Dato&);
+
+    static double getVolt();
+    static double getFreq();
+    void setVolt(double);
+    void setFreq(double);
+    void setImp(const C_cartesiano&);
 
     static Componente* solve_operation(const Dato*, const Dato*, char);
 

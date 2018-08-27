@@ -19,7 +19,6 @@ public:
     Raz (long, long);
     Raz (std::string);
     Raz (double);
-    ~Raz();
 
     explicit operator double () const;
     Raz* operator+ (const Numero *) const;

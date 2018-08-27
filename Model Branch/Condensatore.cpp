@@ -18,7 +18,6 @@ Condensatore::Condensatore(std::string s):Componente(){
 }
 
 Condensatore::Condensatore():Componente(),capacita(0){};
-Condensatore::~Condensatore(){}
 
 bool Condensatore::operator== (const Dato& d) const{
     try {
@@ -43,6 +42,6 @@ Condensatore& Condensatore::operator= (const Dato& d){
 }
 
 C_cartesiano Condensatore::impedenza() const{
-    double xc=1/(2*(Numero::pi)*(Circuito::freq)*capacita);
+    double xc=1/(2*(Numero::pi)*(Componente::freq)*capacita);
     return C_cartesiano(0,-xc);
 }

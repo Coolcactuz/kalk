@@ -24,7 +24,6 @@ public:
     C_cartesiano(double,double =0);
     C_cartesiano(const C_cartesiano&);
     C_cartesiano(std::string);
-    ~C_cartesiano();
 
     C_cartesiano* operator+ (const Numero*)const;
     C_cartesiano* operator- (const Numero*)const;

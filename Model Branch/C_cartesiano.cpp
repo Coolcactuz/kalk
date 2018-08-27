@@ -25,8 +25,6 @@ C_cartesiano::C_cartesiano(std::string s){
 
 C_cartesiano::C_cartesiano():reale(0),immaginaria(0){};
 
-C_cartesiano::~C_cartesiano(){}
-
 C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     if(dynamic_cast<const C_cartesiano*>(n)){
       const C_cartesiano* c=static_cast<const C_cartesiano*>(n);

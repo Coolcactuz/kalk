@@ -20,7 +20,6 @@ Induttore::Induttore(std::string s):Componente(){
 
 Induttore::Induttore():Componente(),induttanza(0){}
 
-Induttore::~Induttore(){}
 
 bool Induttore::operator== (const Dato& d) const {
     try {
@@ -45,6 +44,6 @@ Induttore& Induttore::operator= (const Dato& d) {
 }
 
 C_cartesiano Induttore::impedenza() const{
-    double xl=2*Numero::pi*Circuito::freq*induttanza;
+    double xl=2*Numero::pi*Componente::freq*induttanza;
     return C_cartesiano(0,xl);
 }
