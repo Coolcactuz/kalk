@@ -1,12 +1,15 @@
 //rappresenta una tupla che contiene una o più coppie di elementi nella forma METADATO,DATO
-//non vi possono essere metadati o dati corrispondenti alla stringa nulla
 //la costruzione di una tupla avviene mediante una stringa: la stringa nulla rappresenta la tupla nulla, ossia quella con 0 coppie di elementi,
 //una generica stringa deve essere composta da coppie di elementi per poter generare una tupla valida: deve attenersi alla seguente sintassi:
+
   //deve essere nella forma m1,d1,m2,d2....mn,dn dove m sono i metadati, d i dati
   //il numero di virgole deve essere dispari
   //non può iniziare con una virgola
   //non può finire con una virgola
   //non possono esserci una o più virgole di seguito
+  //non possono esserci due o più metadati uguali
+  //possono esserci due o più dati uguali
+  //non vi possono essere metadati o dati corrispondenti alla stringa nulla
 
 //da ciò deriva che in una tupla valida il numero dei metadati è uguale a quello dei dati, ed esiste una mappatura tra insieme dei dati e quello dei metadati
 
@@ -28,6 +31,18 @@ private:
   // //funzione di controllo integrità
   // void check_tupla() const;
 
+public:
+  tupla(std::string = "");
+
+  //costruttore di copia, assegnazione e distruttore possono restare
+  //standard, tanto non ci sono puntatori
+
+  //stampa il vettore dei metadati
+  void print_metadati() const;
+
+  //stampa il vettore dei dati
+  void print_dati() const;
+
   //verifica esistenza metadato
   bool exist_metadati(std::string) const;
 
@@ -43,33 +58,18 @@ private:
   //elimina l'ultima entry
   void erase();
 
-public:
-  tupla(std::string = "");
-
-  //costruttore di copia, assegnazione e distruttore possono restare
-  //standard, tanto non ci sono puntatori
-
-  //stampa il vettore dei metadati
-  void print_metadati() const;
-
-  //stampa il vettore dei dati
-  void print_dati() const;
-
-  //unione
-  tupla operator+(const tupla&) const;
-
   //join
-  tupla operator%(const tupla&) const;
+  tupla* operator%(const tupla*) const;
 
   //differenza
-  tupla operator-(const tupla&) const;
+  tupla* operator-(const tupla*) const;
 
   //intersezione
-  tupla operator/(const tupla&) const;
+  tupla* operator/(const tupla*) const;
 
-  tupla& operator=(const Dato&);
+  tupla& operator=(const Dato&);    //<----in java implementato come metodo assign()
 
-  bool operator==(const Dato&) const;
+  bool operator==(const Dato&) const;   //<-----in java implementato come metodo equals()
 
   //controllo tupla vuota
   bool is_null() const;

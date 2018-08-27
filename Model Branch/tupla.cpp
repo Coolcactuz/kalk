@@ -66,6 +66,19 @@ tupla::tupla(std::string s){
         aux++;
       }
 
+      //a questo punto s.substr(ind, sub_size) è il metadato da inserire
+      //controllo se è già presente nel vettore dei metadati, e in tal caso lancio una eccezione
+
+      for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
+        if(*it == s.substr(ind, sub_size)){
+          std::cout << "metadato presente due o più volte" << std::endl;
+          //--------------------
+          //GESTIRE ECCEZIONE
+          //--------------------
+        }
+      }
+
+      //se arrivo qui nessun metadato già presente nel vettore è uguale a quello che voglio inserire, quindi posso farlo
       metadati.push_back(s.substr(ind, sub_size));
 
       sub_size = 0;
@@ -85,6 +98,12 @@ tupla::tupla(std::string s){
       ind = aux;
     }
 
+    if(dati.size() != metadati.size()){
+      std::cout << "errore nella creazione della tupla: diverso numero di metadati e dati" << std::endl;
+      //--------------------
+      //GESTIRE ECCEZIONE
+      //--------------------
+    }
   }
 }
 
@@ -122,7 +141,7 @@ std::string tupla::search_by_metadati(std::string s) const{
     return dati[ind];
   }
   else
-    return "METADATO INESISTENTE"
+    return std::string();
 }
 
 //verifica l'esistenza di una intera entry
@@ -138,14 +157,32 @@ void tupla::insert(std::string m, std::string d){
     //GESTIRE ECCEZIONE
     //----------------------
   }
+
+  for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
+    if(*it == m){
+      std::cout << "impossibile inserire: metadato già presente" << std::endl;
+      //----------------------
+      //GESTIRE ECCEZIONE
+      //----------------------
+    }
+  }
+
   metadati.push_back(m);
   dati.push_back(d);
 }
 
 //elimina la ultima entry
 void tupla::erase(){
-  metadati.pop_back();
-  dati.pop_back();
+  if(is_null()){
+    std::cout << "impossibile togliere elementi dalla tupla nulla" << '\n';
+    //---------------------
+    //GESTIRE ECCEZIONE
+    //---------------------
+  }
+  else{
+    metadati.pop_back();
+    dati.pop_back();
+  }
 }
 
 //verifica se la tupla è nulla
@@ -169,46 +206,36 @@ std::ostream& operator<<(std::ostream& out, const tupla& t){
   return out;
 }
 
-//restituisce l'unione di due tuple, una eccezione in caso di errore
-tupla tupla::operator+(const tupla& t) const{
-
-  tupla res = t;
-  res.metadati.insert(res.metadati.end(), metadati.begin(), metadati.end());
-  res.dati.insert(res.dati.end(), dati.begin(), dati.end());
-
-  return res;
-}
 
 //restituisce una tupla che è intersezione di due tuple: l'intersezione è intesa come stesso campo METADATO
 //e stesso campo DATO
-tupla tupla::operator/(const tupla& t) const{
+tupla* tupla::operator/(const tupla* t) const{
 
-  tupla res;
+  tupla* res = new tupla();
+
   for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
-      if(t.exist_metadati(*it) && (t.search_by_metadati(*it) == search_by_metadati(*it))
-        && !(res.search_by_entry(*it, search_by_metadati(*it))))
-
-        res.insert(*it, search_by_metadati(*it));
+      if(t->exist_metadati(*it) && (t->search_by_metadati(*it) == search_by_metadati(*it)))
+        res->insert(*it, search_by_metadati(*it));
   }
 
   return res;
 }
 
 //restituisce una tupla che è differenza di due tuple
-tupla tupla::operator-(const tupla& t) const{
+tupla* tupla::operator-(const tupla* t) const{
 
-  tupla res;
+  tupla* res = new tupla();
 
   //for che scorre i metadati dell'oggetto di invocazione
   for(std::vector<std::string>::const_iterator it = metadati.begin(); it != metadati.end(); it++){
-    if(!(t.exist_metadati(*it)) || (t.search_by_metadati(*it) != search_by_metadati(*it)))
-      res.insert(*it, search_by_metadati(*it));
+    if(!(t->exist_metadati(*it)))
+      res->insert(*it, search_by_metadati(*it));
   }
 
   //for che scorre i metadati della tupla parametro
-  for(std::vector<std::string>::const_iterator it = t.metadati.begin(); it != t.metadati.end(); it++){
-    if(!(exist_metadati(*it)) || (t.search_by_metadati(*it) != search_by_metadati(*it)))
-      res.insert(*it, t.search_by_metadati(*it));
+  for(std::vector<std::string>::const_iterator it = t->metadati.begin(); it != t->metadati.end(); it++){
+    if(!(exist_metadati(*it)))
+      res->insert(*it, t->search_by_metadati(*it));
   }
 
   return res;
@@ -216,12 +243,18 @@ tupla tupla::operator-(const tupla& t) const{
 
 
 //restituisce il join tra due tuple
-tupla tupla::operator%(const tupla& t) const{
+//ATTENZIONE: il join non è caratterizzato dalla proprietà commutativa
+tupla* tupla::operator%(const tupla* t) const{
 
-  tupla aux1 = operator-(t);
-  tupla aux2 = operator/(t);
+  tupla* res = new tupla();
+  res->metadati = metadati;
+  res->dati = dati;
 
-  tupla res = aux1+aux2;
+  for(std::vector<std::string>::const_iterator it = t->metadati.begin(); it!=t->metadati.end(); ++it){
+    if(!(exist_metadati(*it))){
+      res->insert(*it, t->search_by_metadati(*it));
+    }
+  }
 
   return res;
 }

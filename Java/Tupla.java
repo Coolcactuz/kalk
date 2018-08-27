@@ -16,6 +16,15 @@
 //    d)printDati
 //    e)printMetadati
 //    f)existsMetadato
+//    g)searchByMetadato
+//    h)searchByEntry
+//    i)insert
+//    l)erase
+//    m)isNull
+//    n)unione
+//    o)differenza
+//    p)intersezione
+//    q)join
 
 import java.util.Vector;
 import java.util.Iterator;
@@ -80,6 +89,13 @@ class Tupla extends Dato{
             ++aux;
           }
 
+          if(metadati.contains(s.substring(ind, aux))){
+            System.out.println("due o più metadati uguali");
+            //----------------------
+            //GESTIRE ECCEZIONE
+            //----------------------
+          }
+
           metadati.add(s.substring(ind, aux));
 
           ++aux;
@@ -100,6 +116,12 @@ class Tupla extends Dato{
           }
       }
 
+      if(dati.size() != metadati.size()){
+        System.out.println("errore nella creazione della tupla: diverso numero tra metadati e dati");
+        //----------------------
+        //GESTIRE ECCEZIONE
+        //----------------------
+      }
     }
 
   }
@@ -174,18 +196,123 @@ class Tupla extends Dato{
   }
 
   //true se il metadato cercato esiste, false altrimenti
-  private boolean existsMetadato(String s){
+  public boolean existsMetadato(String s){
     return metadati.contains(s);
   }
 
   //controlla se il metadato esiste nella tupla e in caso positivo restituisce il dato associato,
   //altrimenti la stringa nulla
-  private String searchByMetadato(String s){
+  public String searchByMetadato(String s){
     if(existsMetadato(s)){
-      
+      int ind = 0;
+      while(!((metadati.elementAt(ind)).equals(s))){
+        ind++;
+      }
+      //quando esce dal while metadati.elementAt(ind) è uguale a s;
+      return dati.elementAt(ind);
     }
     else{
       return new String();
     }
+  }
+
+  public boolean searchByEntry(String m, String d){
+    if(existsMetadato(m) && (searchByMetadato(m)).equals(d)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  public void insert(String m, String d){
+    if(m.isEmpty() || d.isEmpty()){
+      System.out.println("almeno una delle due string è vuota");
+      //----------------------
+      //GESTIRE ECCEZIONE
+      //----------------------
+    }
+    if(metadati.contains(m)){
+      System.out.println("metadato già presente");
+      //----------------------
+      //GESTIRE ECCEZIONE
+      //----------------------
+    }
+
+    metadati.add(m);
+    dati.add(d);
+  }
+
+  public void erase(){
+    int numeroElementi = metadati.size();
+
+    if(numeroElementi == 0){
+      System.out.println("impossibile rimuovere elementi da tupla vuota");
+      //------------------
+      //GESTIRE ECCEZIONE
+      //------------------
+    }
+    else{
+      metadati.remove(numeroElementi-1);
+      dati.remove(numeroElementi-1);
+    }
+  }
+
+  public boolean isNull(){
+    if(metadati.size() == 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+
+  public Tupla intersezione(Tupla t){
+
+    Tupla res = new Tupla();
+
+    Iterator<String> it = metadati.iterator();
+    while(it.hasNext()){
+      if(t.existsMetadato(it.next()) && (searchByMetadato(it.next())).equals(t.searchByMetadato(it.next()))){
+        res.insert(it.next(), searchByMetadato(it.next()));
+      }
+    }
+
+    return res;
+  }
+
+  public Tupla differenza(Tupla t){
+    Tupla res = new Tupla();
+
+    Iterator<String> it1 = metadati.iterator();
+    while(it1.hasNext()){
+      if(!(t.existsMetadato(it1.next()))){
+        res.insert(it1.next(), searchByMetadato(it1.next()))
+      }
+    }
+
+    Iterator<String> it2 = t.metadati.iterator();
+    while(it2.hasNext()){
+      if(!(existsMetadato(it2.next()))){
+        res.insert(it2.next(), t.searchByMetadato(it2.next()));
+      }
+    }
+
+    return res;
+  }
+
+  public Tupla join(Tupla t){
+    Tupla aux = new Tupla();
+    aux.assign(this);
+
+    Iterator<String> it = t.metadati.iterator();
+    while(it.hasNext()){
+      if(!(existsMetadato(it.next()))){
+        aux.insert(it.next(), t.searchByMetadato(it.next()));
+      }
+    }
+
+    return aux;
   }
 }
