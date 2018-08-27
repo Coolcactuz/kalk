@@ -9,7 +9,6 @@
 #include "Numerical_Hierarchy.h"
 #include "Circuit_Hierarchy.h"
 #include "Database_Hierarchy.h"
-#include "Dato.h"
 
 template<class T>
 class parser{
@@ -246,7 +245,7 @@ parser<T> parser<T>::operator=(const parser<T>& p){
     delete start;
     start=parser<T>::node::copy(p.start);
   }
-  if(*handler!=*(p.handler)){
+  if(!(*handler==*(p.handler))){
     delete handler;
     handler=p.handler;
   }

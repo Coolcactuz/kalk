@@ -21,7 +21,7 @@ public:
     virtual ~Hierarchy_Handler();
     virtual bool is_operator(const char) const;
     bool operator==(Hierarchy_Handler&) const;
-    bool operator!=(Hierarchy_Handler&) const;
+//    bool operator!=(Hierarchy_Handler&) const;
 };
 
 

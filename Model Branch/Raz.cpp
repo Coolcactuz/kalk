@@ -35,8 +35,6 @@ Raz::Raz(std::string s){   //stringa
   }
 }
 
-Raz::~Raz(){}
-
 Raz::Raz(double d){ //1 parametro decimale
     int i=1;
     while(d-(floor(d*pow(10,i))/pow(10, i))){

@@ -17,7 +17,6 @@ public:
     C_polare(const C_polare&);
     C_polare(std::string);
     C_polare();
-    ~C_polare();
 
     C_polare* operator+ (const Numero*)const;
     C_polare* operator- (const Numero*)const;

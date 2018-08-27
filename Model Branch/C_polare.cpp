@@ -42,8 +42,6 @@ C_polare::C_polare(std::string s){
     throw(0); //gestire eccezione syntax error
 }
 
-C_polare::~C_polare(){};
-
 C_polare* C_polare::operator+ (const Numero* n)const{
     C_cartesiano* aux=static_cast<C_cartesiano*>(this->converti());
     if(dynamic_cast<const C_cartesiano*>(n)||dynamic_cast<const C_polare*>(n))
@@ -88,7 +86,7 @@ C_polare* C_polare::operator/ (const Numero* n)const{
       throw(0); //gestire eccezione
 }
 
-C_polare& C_polare::operator= (const Dato&){
+C_polare& C_polare::operator= (const Dato& d){
     try{
         auto aux=dynamic_cast<const C_polare&>(d);
         modulo=aux.modulo;

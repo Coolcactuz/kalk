@@ -7,7 +7,6 @@
 
 
 #include "Componente.h"
-#include "Circuito.h"
 
 class Induttore: public Componente{
 private:
@@ -16,7 +15,6 @@ public:
     Induttore(double);
     Induttore(std::string);
     Induttore();
-    ~Induttore();
 
     bool operator== (const Dato&) const;
     Induttore& operator= (const Dato&);

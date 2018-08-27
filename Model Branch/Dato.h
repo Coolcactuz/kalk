@@ -8,14 +8,10 @@
 #include <iostream>
 #include <cmath>
 
-
 class Dato{
 public:
     virtual ~Dato() = default;
     virtual bool operator==(const Dato&) const =0;
-    bool operator!=(const Dato& d) const{
-        return !(*this == d);
-    }
     virtual Dato& operator=(const Dato&) =0;
 };
 

@@ -7,7 +7,7 @@
 
 
 #include "Componente.h"
-#include "Circuito.h"
+
 
 class Resistore : public Componente{
 private:
@@ -16,10 +16,9 @@ public:
     Resistore(double);
     Resistore(std::string);
     Resistore();
-    ~Resistore();
 
-    bool operator== (const Dato&) const;
-    Resistore& operator= (const Dato&);
+    bool operator== (const Dato &) const;
+    Resistore& operator= (const Dato &);
     C_cartesiano impedenza() const override;
 };
 

@@ -46,10 +46,10 @@ tupla::tupla(std::string s){
     if(commas%2 == 0)
       throw syntax_exception("Errore nel numero delle virgole");
 
-    if(s[0] == ",")
+    if(s[0] == ',')
       throw syntax_exception("La stringa inizia con una virgola");
 
-    if(s[s.size() - 1] == ",")
+    if(s[s.size() - 1] == ',')
       throw syntax_exception("La stringa finisce con una virgola");
 
     //std::string::const_iterator it = s.begin();

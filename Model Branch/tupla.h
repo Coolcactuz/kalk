@@ -67,12 +67,14 @@ public:
   //intersezione
   tupla* operator/(const tupla*) const;
 
-  tupla& operator=(const Dato&);    //<----in java implementato come metodo assign()
+  tupla& operator=(const Dato&){};
 
-  bool operator==(const Dato&) const;   //<-----in java implementato come metodo equals()
+  bool operator==(const Dato&) const{};
 
   //controllo tupla vuota
   bool is_null() const;
+
+  static tupla* solve_operation(const Dato*, const Dato*, char);
 };
 
 

@@ -4,18 +4,20 @@
 
 #include "Componente.h"
 
+double Componente::freq=0;
+double Componente::volt=0;
+
 Componente::Componente(C_cartesiano c): imp(c){}
 
 Componente::Componente(std::string s){
     auto pos=s.find('Z');
     if(pos == 0)
-        imp=std::stod(s.substr(1));
+        setImp(std::stod(s.substr(1)));
     else
-        throw(0) //gestire eccezione errore sintassi
+        throw(0); //gestire eccezione errore sintassi
 }
 
 Componente::Componente(): imp(0){}
-Componente::~Componente(){}
 
 Componente* Componente::operator+ (const Componente* c) const{
     C_cartesiano c1=impedenza();
@@ -30,30 +32,35 @@ Componente* Componente::operator/ (const Componente* c) const {
 }
 
 bool Componente::operator== (const Dato& d) const{
-   auto aux= dynamic_cast<Componente&>(d);
-   if(aux)
+   try{
+       auto aux= dynamic_cast<const Componente&>(d);
        return imp==aux.imp;
-   return false;
+   }
+   catch(const std::bad_cast& error){
+       return false;
+   }
 }
 
 Componente& Componente::operator= (const Dato& d){
-    auto aux= dynamic_cast<Componente&>(d);
-    if(aux){
-        imp = aux.imp;
+    try{
+        auto aux= dynamic_cast<const Componente&>(d);
+        setImp(aux.impedenza());
         return *this;
     }
-    throw (0);
+    catch (const std::bad_cast &error){
+        std::cout << "tipi incompatibili" << std::endl;
+    }
 }
 
-Componente* Componente::solve_operation(const Dato* l, const Dato* r, char o){
+Componente* Componente::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Componente*>(a);
     auto r=dynamic_cast<const Componente*>(b);
-    if(a && b){
+    if(l && r){
         switch(o) {
             case '+':
                 return dynamic_cast<Componente*>(l->operator+(r));
-            case '*':
-                return dynamic_cast<Componente*>(l->operator*(r));
+            case '/':
+                return dynamic_cast<Componente*>(l->operator/(r));
             default:
                 throw (0); //gestire eccezione operatore errato
         }
@@ -64,6 +71,28 @@ C_cartesiano Componente::impedenza() const{
   return imp;
 }
 
-void Componente::setImp(const C_cartesiano c ){
-  this->imp=c;
+double Componente::getVolt(){
+    return volt;
+}
+
+double Componente::getFreq(){
+    return freq;
+}
+
+void Componente::setImp(const C_cartesiano& c ){
+  imp=c;
+}
+
+void Componente::setVolt(double v){
+    if(v>=0)
+        volt=v;
+    else
+        throw(0); // logic_exception("Invalid Value");   //gestire eccezione invalid value
+}
+
+void Componente::setFreq(double f){
+    if(f>=0)
+        freq=f;
+    else
+        throw(0); // logic_exception("Invalid Value");  //gestire eccezione invalid value
 }
