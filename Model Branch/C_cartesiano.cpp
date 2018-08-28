@@ -33,6 +33,7 @@ C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     else if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp=static_cast<const C_polare*>(n);
       const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+      delete cp;
       return this->operator+(aux);
     }
     else
@@ -47,6 +48,7 @@ C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    delete cp;
     return this->operator-(aux);
   }
   else
@@ -61,6 +63,7 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    delete cp;
     return this->operator*(aux);
   }
   else
@@ -73,8 +76,10 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)),(immaginaria*c->reale-reale*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)));
   }
   else if(dynamic_cast<const C_polare*>(n)){
-    const C_polare* aux=static_cast<const C_polare*>(this->converti());
-    return static_cast<C_cartesiano*>(aux->operator/(n)->converti());
+    const C_polare* cp= static_cast<const C_polare*>(n);
+    const C_cartesiano* aux= static_cast<const C_cartesiano*>(cp->converti());
+    delete cp;
+    return this->operator+(aux);
   }
   else
     throw(0);    //gestire eccezione di tipo incompatibile

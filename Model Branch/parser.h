@@ -308,9 +308,14 @@ Dato* parser<T>::create(std::string s){
 template<class T>
 Dato* parser<T>::resolve(typename parser<T>::node* n){
   if(!n) return 0;
-  if(n->op == 0)
-    return n->obj;
-  return T::solve_operation(resolve(n->left), resolve(n->right), n->op);
+  if(n->op != 0) {
+      n->obj = T::solve_operation(resolve(n->left), resolve(n->right), n->op);
+      n->op = 0;
+      n->prec = 7;
+      delete n->left;
+      delete n->right;
+  }
+  return n->obj;
 }
 
 #endif

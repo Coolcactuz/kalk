@@ -8,7 +8,7 @@ Resistore::Resistore(double r):resistenza(r){
   Componente::setImp(impedenza());
 }
 
-Resistore::Resistore(std::string s):{
+Resistore::Resistore(std::string s){
   auto pos=s.find('R');
   if(pos==0){
     resistenza=std::stod(s.substr(1));
