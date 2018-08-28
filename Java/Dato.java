@@ -1,7 +1,7 @@
 // classe Dato, superclasse di ogni classe della gerarchia, utilizzata per il parsing
 // rappresenta il tipo di dato piu' generico possibile
 
-// SCELTE PROGETTUALI:
+
 // 1) Distruttore: non serve
 // 2) Uguaglianza: eredita il metodo public boolean equals(Object) da Object, ma non fa overriding
 // 3) Disuguaglianza: metodo notEquals(), ritorna l'opposto di equals()

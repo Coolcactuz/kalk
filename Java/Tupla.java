@@ -7,10 +7,10 @@
 
 
 //SCELTE PROGETTUALI:
-// 1) override dei metodi toString(), equals()    OK
-// 2) implementazione del metodo assign()         OK
+// 1) override dei metodi toString(), equals()
+// 2) implementazione del metodo assign()
 // 3) "traduzione" in linguaggio Java delle ulteriori funzionalita' offerte dalla corrispettiva classe C++
-//    a)costruttore a zero parametri
+//    a)costruttore di default
 //    b)costruttore da stringa
 //    c)print
 //    d)printDati
@@ -288,7 +288,7 @@ class Tupla extends Dato{
     Iterator<String> it1 = metadati.iterator();
     while(it1.hasNext()){
       if(!(t.existsMetadato(it1.next()))){
-        res.insert(it1.next(), searchByMetadato(it1.next()))
+        res.insert(it1.next(), searchByMetadato(it1.next()));
       }
     }
 

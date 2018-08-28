@@ -13,8 +13,12 @@ Componente::Componente(std::string s){
     auto pos=s.find('Z');
     if(pos == 0)
         setImp(std::stod(s.substr(1)));
-    else
-        throw(0); //gestire eccezione errore sintassi
+    else{
+        std::cout << "errore di sintassi nella costruzione di Componente" << std::endl;
+        //------------------
+        //GESTIRE ECCEZIONE
+        //------------------
+    }
 }
 
 Componente::Componente(): imp(0){}
@@ -22,6 +26,12 @@ Componente::Componente(): imp(0){}
 Componente* Componente::operator+ (const Componente* c) const{
     C_cartesiano c1=impedenza();
     C_cartesiano c2=c->impedenza();
+    /*
+    C_cartesiano* result = (&c1)->operator+(&c2);
+    Componente* aux = new Componente(*result);
+    delete result;
+    return aux;
+    */
     return new Componente(*((&c1)->operator+(&c2)));
 }
 
@@ -57,12 +67,22 @@ Componente* Componente::solve_operation(const Dato* a, const Dato* b, char o){
     auto r=dynamic_cast<const Componente*>(b);
     if(l && r){
         switch(o) {
+
             case '+':
-                return dynamic_cast<Componente*>(l->operator+(r));
+              return l->operator+(r);
+            break;
+
             case '/':
-                return dynamic_cast<Componente*>(l->operator/(r));
+              return l->operator/(r);
+            break;
+
             default:
-                throw (0); //gestire eccezione operatore errato
+              std::cout << "Componente::solve_operation->operatore errato" << std::endl;
+              //------------------
+              //GESTIRE ECCEZIONE
+              //------------------
+            break;
+
         }
     }
 }
@@ -86,13 +106,21 @@ void Componente::setImp(const C_cartesiano& c ){
 void Componente::setVolt(double v){
     if(v>=0)
         volt=v;
-    else
-        throw(0); // logic_exception("Invalid Value");   //gestire eccezione invalid value
+    else{
+      std::cout << "volt negativi" << std::endl;
+      //------------------
+      //GESTIRE ECCEZIONE
+      //------------------
+    }
 }
 
 void Componente::setFreq(double f){
     if(f>=0)
         freq=f;
-    else
-        throw(0); // logic_exception("Invalid Value");  //gestire eccezione invalid value
+    else{
+      std::cout << "frequenza negativa" << std::endl;
+      //------------------
+      //GESTIRE ECCEZIONE
+      //------------------
+    }
 }

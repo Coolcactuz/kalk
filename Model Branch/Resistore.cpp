@@ -4,11 +4,11 @@
 
 #include "Resistore.h"
 
-Resistore::Resistore(double r):Componente(),resistenza(r){
+Resistore::Resistore(double r):resistenza(r){
   Componente::setImp(impedenza());
 }
 
-Resistore::Resistore(std::string s):Componente(){
+Resistore::Resistore(std::string s):{
   auto pos=s.find('R');
   if(pos==0){
     resistenza=std::stod(s.substr(1));
@@ -18,7 +18,7 @@ Resistore::Resistore(std::string s):Componente(){
     throw(0); //gestire eccezione errore di sintassi
 }
 
-Resistore::Resistore():Componente(), resistenza(0){}
+Resistore::Resistore():resistenza(0){}
 
 bool Resistore::operator== (const Dato& d) const{
   try{
