@@ -4,21 +4,25 @@
 
 #include "Induttore.h"
 
-Induttore::Induttore(double i):Componente(),induttanza(i){
+Induttore::Induttore(double i):induttanza(i){
   Componente::setImp(impedenza());
 }
 
-Induttore::Induttore(std::string s):Componente(){
+Induttore::Induttore(std::string s){
   auto pos=s.find('L');
   if(pos==0){
     induttanza=std::stod(s.substr(1));
     Componente::setImp(impedenza());
   }
-  else
-    throw(0); //gestire eccezione errore di sintassi
+  else{
+    std::cout << "errore di sintassi nella costruzione di induttore" << std::endl;
+    //------------------
+    //GESTIRE ECCEZIONE
+    //------------------
+  }
 }
 
-Induttore::Induttore():Componente(),induttanza(0){}
+Induttore::Induttore():induttanza(0){}
 
 
 bool Induttore::operator== (const Dato& d) const {

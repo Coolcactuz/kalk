@@ -4,20 +4,24 @@
 
 #include "Condensatore.h"
 
-Condensatore::Condensatore(double c):Componente(),capacita(c){
+Condensatore::Condensatore(double c):capacita(c){
   Componente::setImp(impedenza());
 }
-Condensatore::Condensatore(std::string s):Componente(){
+Condensatore::Condensatore(std::string s){
   auto pos=s.find('C');
   if(pos==0){
     capacita=std::stod(s.substr(1));
     Componente::setImp(impedenza());
   }
-  else
-    throw(0); //gestire eccezione errore di sintassi
+  else{
+    std::cout << "errore di sintassi nella costruzione di condensatore" << std::endl;
+    //------------------
+    //GESTIRE ECCEZIONE
+    //------------------
+  }
 }
 
-Condensatore::Condensatore():Componente(),capacita(0){};
+Condensatore::Condensatore():capacita(0){};
 
 bool Condensatore::operator== (const Dato& d) const{
     try {

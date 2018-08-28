@@ -14,8 +14,12 @@ Resistore::Resistore(std::string s):{
     resistenza=std::stod(s.substr(1));
     Componente::setImp(impedenza());
   }
-  else
-    throw(0); //gestire eccezione errore di sintassi
+  else{
+    std::cout << "errore di sintassi costruzione resistore" << std::endl;
+    //------------------
+    //GESTIRE ECCEZIONE
+    //-------------------
+  }
 }
 
 Resistore::Resistore():resistenza(0){}

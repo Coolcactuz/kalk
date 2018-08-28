@@ -21,7 +21,6 @@
 //    i)getFreq
 //    l)setFreq
 //    m)setImp
-//    n)solveOperation
 
 
 class Componente extends Dato{
@@ -103,45 +102,6 @@ class Componente extends Dato{
 
   public void setImp(CCartesiano c){
     imp = c;
-  }
-
-  public static Componente solveOperation(Dato d1, Dato d2, String s){
-    if(!(d1 instanceof Componente)){
-      System.out.println("Componente.solveOperation()->d1 non è una istanza di Componente");
-      //---------------
-      //GESTIRE ECCEZIONE
-      //---------------
-    }
-    if(!(d2 instanceof Componente)){
-      System.out.println("Componente.solveOperation()->d2 non è una istanza di Componente");
-      //---------------
-      //GESTIRE ECCEZIONE
-      //---------------
-    }
-
-    Componente aux1 = (Componente) d1;
-    Componente aux2 = (Componente) d2;
-
-    switch(s){
-
-        case "serie":
-          Componente result = aux1.serie(aux2);
-          return result;
-        break;
-
-        case "parallelo":
-          Componente result = aux1.parallelo(aux2);
-          return result;
-        break;
-
-        default:
-          System.out.println("Componente.solveOperation()->errore nell'operatore");
-          //---------------
-          //GESTIRE ECCEZIONE
-          //---------------
-        break;
-
-    }
   }
 
   public void assign(Dato d){
