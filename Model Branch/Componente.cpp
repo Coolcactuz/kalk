@@ -24,21 +24,47 @@ Componente::Componente(std::string s){
 Componente::Componente(): imp(0){}
 
 Componente* Componente::operator+ (const Componente* c) const{
-    C_cartesiano c1=impedenza();
-    C_cartesiano c2=c->impedenza();
+    C_cartesiano* comp1= new C_cartesiano(impedenza());
+    C_cartesiano* comp2= new C_cartesiano(c->impedenza());
+    C_cartesiano* serie= comp1->operator+(comp2);
+    delete comp1;
+    delete comp2;
+    Componente* result= new Componente(*serie);
+    delete serie;
+    return result;
+
     /*
     C_cartesiano* result = (&c1)->operator+(&c2);
     Componente* aux = new Componente(*result);
     delete result;
     return aux;
-    */
+
     return new Componente(*((&c1)->operator+(&c2)));
+     */
 }
 
 Componente* Componente::operator/ (const Componente* c) const {
-    C_cartesiano c1=impedenza();
-    C_cartesiano c2=c->impedenza();
-    return new Componente(*(((&c1)->operator*(&c2))->operator/((&c1)->operator+(&c2))));
+    C_cartesiano* comp1= new C_cartesiano(impedenza());
+    C_cartesiano* comp2= new C_cartesiano(c->impedenza());
+
+    C_cartesiano* num= comp1->operator*(comp2);
+    C_cartesiano* den= comp1->operator+(comp2);
+
+    delete comp1;
+    delete comp2;
+
+    C_cartesiano* parallelo= num->operator/(den);
+
+    delete num;
+    delete den;
+
+    Componente* result=new Componente(*parallelo);
+    delete parallelo;
+    return result;
+//
+//    C_cartesiano c1=impedenza();
+//    C_cartesiano c2=c->impedenza();
+//    return new Componente(*(((&c1)->operator*(&c2))->operator/((&c1)->operator+(&c2))));
 }
 
 bool Componente::operator== (const Dato& d) const{
