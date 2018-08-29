@@ -12,7 +12,7 @@
 // 3) "traduzione" in linguaggio Java delle ulteriori funzionalita' offerte dalla corrispettiva classe C++
 //    a)costruttore di default
 //    b)costruttore da stringa
-//    c)print
+//    c)printTupla
 //    d)printDati
 //    e)printMetadati
 //    f)existsMetadato
@@ -181,7 +181,7 @@ class Tupla extends Dato{
   }
 
   //stampa l'intera Tupla
-  public void print(){
+  public void printTupla(){
     System.out.println(toString());
   }
 

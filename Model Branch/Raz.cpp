@@ -8,7 +8,12 @@
 //Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
 
 Raz::Raz(long n, long d){   //2 parametri interi
-    if(d==0) throw(0);  //GESTIRE ECCEZIONE
+    if(d==0){
+      std::cout << "denominatore nullo" << std::endl;
+      //-----------------
+      //GESTIRE ECCEZIONE
+      //-----------------
+    }
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
     else{num=n; den=d;}
@@ -114,7 +119,7 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Raz*>(a);
     auto r=dynamic_cast<const Raz*>(b);
-    if(l&&r){    
+    if(l&&r){
         switch(o) {
             case '+':
                 return dynamic_cast<Raz*>(l->operator+(r));
