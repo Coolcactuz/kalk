@@ -67,7 +67,7 @@ public:
   //intersezione
   tupla* operator/(const tupla*) const;
 
-  tupla& operator=(const Dato&){};
+//  tupla& operator=(const Dato&){};
 
   bool operator==(const Dato&) const{};
 

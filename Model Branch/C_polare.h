@@ -23,7 +23,7 @@ public:
     C_polare* operator* (const Numero*)const;
     C_polare* operator/ (const Numero*)const;
     bool operator== (const Dato&)const;
-    C_polare& operator=(const Dato&);
+//    C_polare& operator=(const Dato&);
 
     Complesso* converti() const;
     C_polare* coniugato() const;

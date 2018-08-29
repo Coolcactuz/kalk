@@ -23,7 +23,7 @@ public:
     Componente* operator+(const Componente*) const;
     Componente* operator/(const Componente*) const;
     bool operator== (const Dato&) const;
-    Componente& operator= (const Dato&);
+//    Componente& operator= (const Dato&);
 
     static double getVolt();
     static double getFreq();

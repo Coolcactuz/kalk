@@ -14,7 +14,7 @@ class Dato{
 public:
     virtual ~Dato() = default;
     virtual bool operator==(const Dato&) const =0;
-    virtual Dato& operator=(const Dato&) =0;
+   // virtual Dato& operator=(const Dato&) =0;
 };
 
 

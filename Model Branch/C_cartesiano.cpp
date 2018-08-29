@@ -85,17 +85,17 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
       throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
-C_cartesiano& C_cartesiano::operator=(const Dato& d){
-    try{
-        auto aux= dynamic_cast<const C_cartesiano&>(d);
-        reale=aux.reale;
-        immaginaria=aux.immaginaria;
-        return *this;
-    }
-    catch (const std::bad_cast &error){
-        std::cout << "tipi incompatibili" << std::endl;
-    }
-}
+//C_cartesiano& C_cartesiano::operator=(const Dato& d){
+//    try{
+//        auto aux= dynamic_cast<const C_cartesiano&>(d);
+//        reale=aux.reale;
+//        immaginaria=aux.immaginaria;
+//        return *this;
+//    }
+//    catch (const std::bad_cast &error){
+//        std::cout << "tipi incompatibili" << std::endl;
+//    }
+//}
 
 bool C_cartesiano::operator== (const Dato& d)const{
     try {

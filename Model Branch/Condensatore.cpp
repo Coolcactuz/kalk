@@ -32,18 +32,18 @@ bool Condensatore::operator== (const Dato& d) const{
         return false;
     }
 }
-
-Condensatore& Condensatore::operator= (const Dato& d){
-    try{
-        auto aux= dynamic_cast<const Condensatore&>(d);
-        capacita = aux.capacita;
-        setImp(capacita);
-        return *this;
-    }
-    catch(const std::bad_cast& error){
-        std::cout<<"tipi incompatibili"<<std::endl;
-    }
-}
+//
+//Condensatore& Condensatore::operator= (const Dato& d){
+//    try{
+//        auto aux= dynamic_cast<const Condensatore&>(d);
+//        capacita = aux.capacita;
+//        setImp(capacita);
+//        return *this;
+//    }
+//    catch(const std::bad_cast& error){
+//        std::cout<<"tipi incompatibili"<<std::endl;
+//    }
+//}
 
 C_cartesiano Condensatore::impedenza() const{
     double xc=1/(2*(Numero::pi)*(Componente::freq)*capacita);

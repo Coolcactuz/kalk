@@ -34,17 +34,17 @@ bool Resistore::operator== (const Dato& d) const{
   }
 }
 
-Resistore& Resistore::operator= (const Dato& d) {
-  try {
-    auto aux = dynamic_cast<const Resistore &>(d);
-    resistenza = aux.resistenza;
-    setImp(resistenza);
-    return *this;
-  }
-  catch (const std::bad_cast &error){
-    std::cout << "tipi incompatibili" << std::endl;
-  }
-}
+//Resistore& Resistore::operator= (const Dato& d) {
+//  try {
+//    auto aux = dynamic_cast<const Resistore &>(d);
+//    resistenza = aux.resistenza;
+//    setImp(resistenza);
+//    return *this;
+//  }
+//  catch (const std::bad_cast &error){
+//    std::cout << "tipi incompatibili" << std::endl;
+//  }
+//}
 
 C_cartesiano Resistore::impedenza() const{
     return C_cartesiano(resistenza);

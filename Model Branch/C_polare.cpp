@@ -114,17 +114,17 @@ C_polare* C_polare::operator/ (const Numero* n)const{
         throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
-C_polare& C_polare::operator= (const Dato& d){
-    try{
-        auto aux=dynamic_cast<const C_polare&>(d);
-        modulo=aux.modulo;
-        fase=aux.fase;
-        return *this;
-    }
-    catch (const std::bad_cast &error){
-        std::cout << "tipi incompatibili" << std::endl;
-    }
-}
+//C_polare& C_polare::operator= (const Dato& d){
+//    try{
+//        auto aux=dynamic_cast<const C_polare&>(d);
+//        modulo=aux.modulo;
+//        fase=aux.fase;
+//        return *this;
+//    }
+//    catch (const std::bad_cast &error){
+//        std::cout << "tipi incompatibili" << std::endl;
+//    }
+//}
 
 bool C_polare::operator== (const Dato& d)const {
     try{

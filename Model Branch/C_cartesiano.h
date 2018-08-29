@@ -30,7 +30,7 @@ public:
     C_cartesiano* operator* (const Numero*)const;
     C_cartesiano* operator/ (const Numero*)const;
     bool operator== (const Dato&)const;
-    C_cartesiano& operator=(const Dato&);
+//    C_cartesiano& operator=(const Dato&);
 
     double getReale() const;
     double getImmaginaria() const;

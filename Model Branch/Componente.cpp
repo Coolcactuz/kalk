@@ -59,17 +59,17 @@ bool Componente::operator== (const Dato& d) const{
        return false;
    }
 }
-
-Componente& Componente::operator= (const Dato& d){
-    try{
-        auto aux= dynamic_cast<const Componente&>(d);
-        setImp(aux.impedenza());
-        return *this;
-    }
-    catch (const std::bad_cast &error){
-        std::cout << "tipi incompatibili" << std::endl;
-    }
-}
+//
+//Componente& Componente::operator= (const Dato& d){
+//    try{
+//        auto aux= dynamic_cast<const Componente&>(d);
+//        setImp(aux.impedenza());
+//        return *this;
+//    }
+//    catch (const std::bad_cast &error){
+//        std::cout << "tipi incompatibili" << std::endl;
+//    }
+//}
 
 Componente* Componente::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Componente*>(a);

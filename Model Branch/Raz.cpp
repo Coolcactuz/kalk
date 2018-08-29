@@ -95,17 +95,17 @@ bool Raz::operator== (const Dato& d)const{
     }
 }
 
-Raz& Raz::operator=(const Dato& d){
-    try{
-        auto aux= dynamic_cast<const Raz&>(d);
-        num=aux.num;
-        den=aux.den;
-        return *this;
-    }
-    catch (const std::bad_cast &error){
-        std::cout << "tipi incompatibili" << std::endl;
-    }
-}
+//Raz& Raz::operator=(const Dato& d){
+//    try{
+//        auto aux= dynamic_cast<const Raz&>(d);
+//        num=aux.num;
+//        den=aux.den;
+//        return *this;
+//    }
+//    catch (const std::bad_cast &error){
+//        std::cout << "tipi incompatibili" << std::endl;
+//    }
+//}
 
 std::ostream& operator << (std::ostream& os, const Raz& r){
     os<<r.getNum()<<"/"<<r.getDen();
