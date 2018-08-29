@@ -121,17 +121,17 @@ Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
     if(l&&r){
         switch(o) {
             case '+':
-                return dynamic_cast<Raz*>(l->operator+(r));
+                return l->operator+(r);
             case '-':
-                return dynamic_cast<Raz*>(l->operator-(r));
+                return l->operator-(r);
             case '*':
-                return dynamic_cast<Raz*>(l->operator*(r));
+                return l->operator*(r);
             case '/':
-                return dynamic_cast<Raz*>(l->operator/(r));
+                return l->operator/(r);
             case '^':
-                return dynamic_cast<const Raz*>(l)->operator^(double(*dynamic_cast<const Raz*>(r)));
+                return l->operator^(double(*dynamic_cast<const Raz*>(r)));
             case '#':
-                return new Raz(dynamic_cast<const Raz*>(r)->radice_quadrata());
+                return new Raz(r->radice_quadrata());
             default:
                 throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
         }

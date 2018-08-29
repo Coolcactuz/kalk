@@ -10,13 +10,13 @@ Complesso* Complesso::solve_operation(const Dato* a, const Dato* b, char o){
     if(l && r){
         switch(o) {
             case '+':
-                return dynamic_cast<Complesso*>(l->operator+(r));
+                return static_cast<Complesso*>(l->operator+(r));
             case '-':
-                return dynamic_cast<Complesso*>(l->operator-(r));
+                return static_cast<Complesso*>(l->operator-(r));
             case '*':
-                return dynamic_cast<Complesso*>(l->operator*(r));
+                return static_cast<Complesso*>(l->operator*(r));
             case '/':
-                return dynamic_cast<Complesso*>(l->operator/(r));
+                return static_cast<Complesso*>(l->operator/(r));
             default:
                 throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
         }
