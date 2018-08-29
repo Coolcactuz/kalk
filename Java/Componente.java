@@ -38,18 +38,6 @@ class Componente extends Dato{
     this(0);
   }
 
-  public Componente(String s){
-    if(s.charAt(0) == 'Z'){
-      imp = Double.parseDouble(s.substring(1));
-    }
-    else{
-      System.out.println("errore di sintassi nella costruzione di Componente");
-      //---------------
-      //GESTIRE ECCEZIONE
-      //---------------
-    }
-  }
-
   public CCartesiano impedenza(){
     return imp;
   }

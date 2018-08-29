@@ -25,19 +25,6 @@ class Resistore extends Componente{
     this(0);
   }
 
-  public Resistore(String s){
-    if(s.charAt(0) == 'R'){
-      resistenza = Double.parseDouble(s.substring(1));
-      super.setImp(impedenza());
-    }
-    else{
-      System.out.println("errore di sintassi costruzione di Resistore");
-      //------------------
-      //GESTIRE ECCEZIONE
-      //------------------
-    }
-  }
-
   public CCartesiano impedenza(){
     CCartesiano result = new CCartesiano(resistenza);
     return result;

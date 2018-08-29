@@ -44,7 +44,7 @@ Raz::Raz(double d){ //1 parametro decimale
     while(d-(floor(d*pow(10,i))/pow(10, i))){
         i++;
     }
-    Raz b(d*pow(10, i),pow(10,i));
+    Raz b(d*pow(10, i), pow(10,i));
     num=b.getNum();
     den=b.getDen();
 }
@@ -55,26 +55,42 @@ Raz* Raz::operator+ (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den+r->num*den,(den*r->den));
-    throw(0); //gestire eccezione
+    else{
+      //gestire eccezione
+      std::cout << "cast fallito" << std::endl;
+    }
 }
+
 Raz* Raz::operator- (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den-r->num*den,(den*r->den));
-    throw(0); //gestire eccezione
+    else{
+      //gestire eccezione
+      std::cout << "cast fallito" << std::endl;
+    }
 }
+
 Raz* Raz::operator* (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->num,den*r->den);
-    throw(0); //gestire eccezione
+    else{
+      //gestire eccezione
+      std::cout << "cast fallito" << std::endl;
+    }
 }
+
 Raz* Raz::operator/ (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den,den*r->num);
-    throw(0); //gestire eccezione
+    else{
+      //gestire eccezione
+      std::cout << "cast fallito" << std::endl;
+    }
 }
+
 Raz* Raz::operator^ (int exp)const {
     if(exp==0) return new Raz(1,1);
     if(exp<0)
@@ -83,7 +99,7 @@ Raz* Raz::operator^ (int exp)const {
 }
 
 Raz::operator double() const{  //nb: metodi const
-    num/den;
+    return num/den;
 }
 
 bool Raz::operator== (const Dato& d)const{
@@ -161,7 +177,7 @@ void Raz::semplifica(){
     den=den/mcd;
 }
 
-long double Raz::radice_quadrata()const {
+long double Raz::radice_quadrata() const {
     return sqrt(getNum())/sqrt(getDen());
 }
 
