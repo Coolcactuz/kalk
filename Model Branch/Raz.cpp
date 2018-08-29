@@ -54,56 +54,28 @@ Raz* Raz::operator+ (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den+r->num*den,(den*r->den));
-<<<<<<< HEAD
-    else{
-      //gestire eccezione
-      std::cout << "cast fallito" << std::endl;
-    }
-=======
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
->>>>>>> 07f087e4e63000dc189fc184e39e3261fb24a5ee
 }
 
 Raz* Raz::operator- (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den-r->num*den,(den*r->den));
-<<<<<<< HEAD
-    else{
-      //gestire eccezione
-      std::cout << "cast fallito" << std::endl;
-    }
-=======
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
->>>>>>> 07f087e4e63000dc189fc184e39e3261fb24a5ee
 }
 
 Raz* Raz::operator* (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->num,den*r->den);
-<<<<<<< HEAD
-    else{
-      //gestire eccezione
-      std::cout << "cast fallito" << std::endl;
-    }
-=======
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
->>>>>>> 07f087e4e63000dc189fc184e39e3261fb24a5ee
 }
 
 Raz* Raz::operator/ (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den,den*r->num);
-<<<<<<< HEAD
-    else{
-      //gestire eccezione
-      std::cout << "cast fallito" << std::endl;
-    }
-=======
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
->>>>>>> 07f087e4e63000dc189fc184e39e3261fb24a5ee
 }
 
 Raz* Raz::operator^ (int exp)const {
@@ -198,18 +170,9 @@ void Raz::semplifica(){
     den=den/mcd;
 }
 
-<<<<<<< HEAD
-long double Raz::radice_quadrata() const {
-    return sqrt(getNum())/sqrt(getDen());
-}
-
-long double Raz::radice_cubica()const {
-    return cbrt(getNum())/cbrt(getDen());
-=======
 long double Raz::radice_quadrata()const {
     if(getNum()>=0)
         return sqrt(getNum()) / sqrt(getDen());
     else
         throw logic_exception("radice di numero negativo");
->>>>>>> 07f087e4e63000dc189fc184e39e3261fb24a5ee
 }
