@@ -25,19 +25,6 @@ class Condensatore extends Componente{
     capacita = 0;
   }
 
-  public Condensatore(String s){
-    if(s.charAt(0) == 'C'){
-      capacita = Double.parseDouble(s.substring(1));
-      super.setImp(impedenza());
-    }
-    else{
-      System.out.println("errore di sintassi nella costruzione di Condensatore")
-      //-------------------
-      //GESTIRE ECCEZIONE
-      //-------------------
-    }
-  }
-
   public CCartesiano impedenza(){
     double aux = 1 / (2 * (Numero.pi) * (Componente.freq) * capacita);
     CCartesiano result = new CCartesiano(0, -aux);

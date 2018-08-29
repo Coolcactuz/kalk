@@ -25,19 +25,6 @@ class Induttore extends Componente{
     induttanza = 0;
   }
 
-  public Induttore(String s){
-    if(s.charAt(0) == 'L'){
-      induttanza = Double.parseDouble(s.substring(1));
-      super.setImp(impedenza());
-    }
-    else{
-      System.out.println("errore di sintassi nella costruzione di Induttore")
-      //-------------------
-      //GESTIRE ECCEZIONE
-      //-------------------
-    }
-  }
-
   public CCartesiano impedenza(){
     double aux = 2 * (Numero.pi) * (Componente.freq) * induttanza;
     CCartesiano result = new CCartesiano(0, aux);

@@ -43,7 +43,7 @@ Raz::Raz(double d){ //1 parametro decimale
     while(d-(floor(d*pow(10,i))/pow(10, i))){
         i++;
     }
-    Raz b(d*pow(10, i),pow(10,i));
+    Raz b(d*pow(10, i), pow(10,i));
     num=b.getNum();
     den=b.getDen();
 }
@@ -56,24 +56,28 @@ Raz* Raz::operator+ (const Numero *n)const {
       return new Raz(num*r->den+r->num*den,(den*r->den));
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
 Raz* Raz::operator- (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den-r->num*den,(den*r->den));
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
 Raz* Raz::operator* (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->num,den*r->den);
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
 Raz* Raz::operator/ (const Numero *n)const {
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den,den*r->num);
     throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
 Raz* Raz::operator^ (int exp)const {
     if(exp==0) return new Raz(1,1);
     if(exp<0)
