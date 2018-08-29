@@ -9,7 +9,7 @@
 C_polare::C_polare():modulo(0),fase(0){};
 
 C_polare::C_polare(double m, double f) {
-    if(m<0) throw (0);    //GESTIRE ECCEZIONE
+    if(m<0) logic_exception("Modulo negativo");    //GESTIRE ECCEZIONE
     else if(m==0){
       modulo=0;
       fase=0;
@@ -39,7 +39,7 @@ C_polare::C_polare(std::string s){
       fase=(std::stod(s.substr(size+1)));
   }
   else
-    throw(0); //gestire eccezione syntax error
+      throw syntax_exception("Invalid value"); //gestire eccezione syntax error
 }
 
 C_polare* C_polare::operator+ (const Numero* n)const{
@@ -59,7 +59,7 @@ C_polare* C_polare::operator+ (const Numero* n)const{
         return this->operator+(supp);
     }
     else
-      throw(0); //gestire eccezione
+        throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 C_polare* C_polare::operator- (const Numero* n)const{
@@ -79,7 +79,7 @@ C_polare* C_polare::operator- (const Numero* n)const{
         return this->operator-(supp);
     }
     else
-        throw(0); //gestire eccezione
+        throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 C_polare* C_polare::operator* (const Numero* n)const{
     if(dynamic_cast<const C_polare*>(n)){
@@ -95,7 +95,7 @@ C_polare* C_polare::operator* (const Numero* n)const{
         return this->operator*(cp);
     }
     else
-        throw(0); //gestire eccezione
+        throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 C_polare* C_polare::operator/ (const Numero* n)const{
     if(dynamic_cast<const C_polare*>(n)){
@@ -111,7 +111,7 @@ C_polare* C_polare::operator/ (const Numero* n)const{
         return this->operator/(cp);
     }
     else
-        throw(0); //gestire eccezione
+        throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 C_polare& C_polare::operator= (const Dato& d){

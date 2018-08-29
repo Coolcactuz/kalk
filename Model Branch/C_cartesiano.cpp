@@ -20,7 +20,7 @@ C_cartesiano::C_cartesiano(std::string s){
   else if(pos==s.length()-1)
     immaginaria=(pos==0?1:std::stod(s.substr(size)));
   else
-    throw(0); //gestire eccezione syntax error
+      throw syntax_exception("Invalid value"); //gestire eccezione syntax error
 }
 
 C_cartesiano::C_cartesiano():reale(0),immaginaria(0){};
@@ -37,7 +37,7 @@ C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
       return this->operator+(aux);
     }
     else
-      throw(0);    //gestire eccezione di tipo incompatibile
+    throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
@@ -52,7 +52,7 @@ C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
     return this->operator-(aux);
   }
   else
-    throw(0);    //gestire eccezione di tipo incompatibile
+      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
@@ -67,7 +67,7 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
     return this->operator*(aux);
   }
   else
-    throw(0);    //gestire eccezione di tipo incompatibile
+      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
@@ -82,7 +82,7 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     return this->operator+(aux);
   }
   else
-    throw(0);    //gestire eccezione di tipo incompatibile
+      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano& C_cartesiano::operator=(const Dato& d){
@@ -115,9 +115,9 @@ C_cartesiano* C_cartesiano::coniugato() const{
 }
 
 Complesso* C_cartesiano::converti() const{
-    double fase=sqrt(pow(reale,2)+pow(immaginaria,2));
-    double modulo=rad_to_deg(atan(immaginaria/reale));
-    return new C_polare(fase,modulo);
+    double f=sqrt(pow(reale,2)+pow(immaginaria,2));
+    double m=rad_to_deg(atan(immaginaria/reale));
+    return new C_polare(f,m);
 }
 
 void C_cartesiano::stampa(std::ostream& os)const {

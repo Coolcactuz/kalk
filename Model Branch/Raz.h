@@ -37,7 +37,6 @@ public:
     Raz* reciproco () const;
     void semplifica ();
     long double radice_quadrata () const;
-    long double radice_cubica () const;
 };
 
 std::ostream &operator<< (std::ostream &, const Raz &);

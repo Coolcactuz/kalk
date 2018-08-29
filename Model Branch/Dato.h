@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <typeinfo>
+#include "exception.h"
 
 class Dato{
 public:

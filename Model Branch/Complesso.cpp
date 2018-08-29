@@ -7,7 +7,7 @@
 Complesso* Complesso::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Complesso*>(a);
     auto r=dynamic_cast<const Complesso*>(b);
-    if(a && b){
+    if(l && r){
         switch(o) {
             case '+':
                 return dynamic_cast<Complesso*>(l->operator+(r));
@@ -18,9 +18,11 @@ Complesso* Complesso::solve_operation(const Dato* a, const Dato* b, char o){
             case '/':
                 return dynamic_cast<Complesso*>(l->operator/(r));
             default:
-                throw (0); //gestire eccezione operatore errato
+                throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
         }
     }
+    else
+        throw logic_exception("tipo di dati errato");
 }
 
 std::ostream& operator<< (std::ostream& os, const Complesso& c){

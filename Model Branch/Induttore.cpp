@@ -4,8 +4,12 @@
 
 #include "Induttore.h"
 
-Induttore::Induttore(double i):induttanza(i){
-  Componente::setImp(impedenza());
+Induttore::Induttore(double i){
+    if(i > 0)
+        induttanza = i;
+    else
+        throw logic_exception("Inizializzato con valore negativo");
+    Componente::setImp(impedenza());
 }
 
 Induttore::Induttore(std::string s){
@@ -14,12 +18,8 @@ Induttore::Induttore(std::string s){
     induttanza=std::stod(s.substr(1));
     Componente::setImp(impedenza());
   }
-  else{
-    std::cout << "errore di sintassi nella costruzione di induttore" << std::endl;
-    //------------------
-    //GESTIRE ECCEZIONE
-    //------------------
-  }
+  else
+      throw syntax_exception("La stringa non inizia con il carattere L"); //gestire eccezione errore di sintassi
 }
 
 Induttore::Induttore():induttanza(0){}
