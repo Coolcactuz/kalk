@@ -30,6 +30,7 @@ class Resistore extends Componente{
     return result;
   }
 
+  /*
   public void assign(Dato d){
     if(!(d instanceof Resistore)){
       System.out.println("Resistore.assign()-> d non e' istanza di Resistore");
@@ -44,6 +45,7 @@ class Resistore extends Componente{
 
     resistenza = aux.resistenza;
   }
+  */
 
   public boolean equals(Object obj){
     if(!(obj instanceof Resistore)){

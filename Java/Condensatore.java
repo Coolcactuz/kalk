@@ -31,6 +31,7 @@ class Condensatore extends Componente{
     return result;
   }
 
+  /*
   public void assign(Dato d){
     if(!(d instanceof Condensatore)){
       System.out.println("Condensatore.assign()-> d non e' instanza di Condensatore")
@@ -45,6 +46,7 @@ class Condensatore extends Componente{
 
     capacita = aux.capacita;
   }
+  */
 
   public boolean equals(Object obj){
     if(!(obj instanceof Condensatore)){

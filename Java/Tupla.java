@@ -130,7 +130,7 @@ class Tupla extends Dato{
     this("");
   }
 
-
+/*
   //casta d a Tupla se possibile, altrimenti lancia una eccezione
   //se il cast riesce clona i vettori del parametro nei rispettivi campi dell'oggetto di invocazione
   public void assign(Dato d){
@@ -146,6 +146,7 @@ class Tupla extends Dato{
       //----------------------
     }
   }
+*/
 
   //verifica se obj può essere castato a Tupla
   //vero se e solo se stesso vettore metadati e stesso vettore dati

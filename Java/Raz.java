@@ -182,6 +182,7 @@ class Raz extends Numero{
     return result;
   }
 
+  /*
   public void assign(Dato d){
     if(!(d instanceof Raz)){
       System.out.println("cast fallito");
@@ -192,7 +193,7 @@ class Raz extends Numero{
 
     num = aux.num;
     den = aux.den;
-  }
+  }*/
 
   public boolean equals(Object obj){
     if(!(obj instanceof Raz)){

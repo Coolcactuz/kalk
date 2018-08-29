@@ -14,5 +14,5 @@ abstract class Dato{
       return !(this.equals(obj));
   }
 
-  public abstract void assign(Dato d);
+  //public abstract void assign(Dato d);
 }

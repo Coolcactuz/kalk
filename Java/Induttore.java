@@ -31,6 +31,7 @@ class Induttore extends Componente{
     return result;
   }
 
+  /*
   public void assign(Dato d){
     if(!(d instanceof Induttore)){
       System.out.println("Induttore.assign()-> d non e' istanza di Induttore")
@@ -45,6 +46,7 @@ class Induttore extends Componente{
 
     induttanza = aux.induttanza;
   }
+  */
 
   public boolean equals(Object obj){
     if(!(obj instanceof Induttore)){

@@ -92,6 +92,7 @@ class Componente extends Dato{
     imp = c;
   }
 
+  /*
   public void assign(Dato d){
     if(!(d instanceof Componente)){
       System.out.println("Componente.assign()->d non è istanza di Componente");
@@ -104,6 +105,7 @@ class Componente extends Dato{
 
     setImp(aux.impedenza());
   }
+  */
 
   public boolean equals(Object obj){
     if(!(obj instanceof Componente)){
