@@ -3,7 +3,7 @@
 specialized_view::specialized_view(): external_layout(new QVBoxLayout(this)),
 header(new QHBoxLayout()), type_title(new QLabel(this)), upper(new QVBoxLayout()),
 lower(new QHBoxLayout()), go_back(new QPushButton("BACK", this)),
-keyboard(new QGridLayout()),display(new QPlainTextEdit(this)){
+generic_keyboard(new QGridLayout()),display(new QPlainTextEdit(this)){
 
   external_layout->addLayout(header);
   external_layout->addLayout(upper);
@@ -14,11 +14,11 @@ keyboard(new QGridLayout()),display(new QPlainTextEdit(this)){
 
   upper->addWidget(display);
 
-  lower->addLayout(keyboard);
+  lower->addLayout(generic_keyboard);
 
-  keyboard->addWidget(new KalkButton(-3, "AC", this), 0, 0);
-  keyboard->addWidget(new KalkButton(-2, "DEL", this), 1, 0);
-  keyboard->addWidget(new KalkButton(-1, "ENTER", this), 2, 0);
+  generic_keyboard->addWidget(new KalkButton(-3, "AC", this), 0, 0);
+  generic_keyboard->addWidget(new KalkButton(-2, "DEL", this), 1, 0);
+  generic_keyboard->addWidget(new KalkButton(-1, "ENTER", this), 2, 0);
 
   QObject::connect(go_back, SIGNAL(clicked()), this, SIGNAL(back()));
 }

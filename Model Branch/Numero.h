@@ -9,7 +9,6 @@
 
 class Numero: public Dato{
 public:
-
     virtual Numero* operator+(const Numero*)const =0;
     virtual Numero* operator-(const Numero*)const =0;
     virtual Numero* operator*(const Numero*)const =0;

@@ -50,6 +50,7 @@ OBJECTS_DIR   = ./
 
 SOURCES       = controller_view.cpp \
 		main.cpp \
+		specialized_view_hierarchy/numerical_insert.cpp \
 		specialized_view_hierarchy/specialized_view.cpp \
 		specialized_view_hierarchy/VCircuito.cpp \
 		specialized_view_hierarchy/VComplesso.cpp \
@@ -61,6 +62,7 @@ SOURCES       = controller_view.cpp \
 		moc_startup_view.cpp
 OBJECTS       = controller_view.o \
 		main.o \
+		numerical_insert.o \
 		specialized_view.o \
 		VCircuito.o \
 		VComplesso.o \
@@ -130,6 +132,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		View.pro controller_view.h \
 		items/KalkButton.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
 		specialized_view_hierarchy/VCircuito.h \
 		specialized_view_hierarchy/VComplesso.h \
@@ -137,6 +140,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		specialized_view_hierarchy/VTupla.h \
 		startup/startup_view.h controller_view.cpp \
 		main.cpp \
+		specialized_view_hierarchy/numerical_insert.cpp \
 		specialized_view_hierarchy/specialized_view.cpp \
 		specialized_view_hierarchy/VCircuito.cpp \
 		specialized_view_hierarchy/VComplesso.cpp \
@@ -310,8 +314,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents controller_view.h items/KalkButton.h specialized_view_hierarchy/specialized_view.h specialized_view_hierarchy/VCircuito.h specialized_view_hierarchy/VComplesso.h specialized_view_hierarchy/VRazionale.h specialized_view_hierarchy/VTupla.h startup/startup_view.h $(DISTDIR)/
-	$(COPY_FILE) --parents controller_view.cpp main.cpp specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VTupla.cpp startup/startup_view.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents controller_view.h items/KalkButton.h specialized_view_hierarchy/numerical_insert.h specialized_view_hierarchy/specialized_view.h specialized_view_hierarchy/VCircuito.h specialized_view_hierarchy/VComplesso.h specialized_view_hierarchy/VRazionale.h specialized_view_hierarchy/VTupla.h startup/startup_view.h $(DISTDIR)/
+	$(COPY_FILE) --parents controller_view.cpp main.cpp specialized_view_hierarchy/numerical_insert.cpp specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VTupla.cpp startup/startup_view.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -342,6 +346,7 @@ moc_controller_view.cpp: startup/startup_view.h \
 		specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
 		specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/VRazionale.h \
 		specialized_view_hierarchy/VComplesso.h \
 		controller_view.h
@@ -378,6 +383,7 @@ controller_view.o: controller_view.cpp controller_view.h \
 		specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
 		specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/VRazionale.h \
 		specialized_view_hierarchy/VComplesso.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller_view.o controller_view.cpp
@@ -388,25 +394,34 @@ main.o: main.cpp controller_view.h \
 		specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
 		specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/VRazionale.h \
 		specialized_view_hierarchy/VComplesso.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
+
+numerical_insert.o: specialized_view_hierarchy/numerical_insert.cpp specialized_view_hierarchy/numerical_insert.h \
+		specialized_view_hierarchy/specialized_view.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o numerical_insert.o specialized_view_hierarchy/numerical_insert.cpp
 
 specialized_view.o: specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/specialized_view.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o specialized_view.o specialized_view_hierarchy/specialized_view.cpp
 
 VCircuito.o: specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VCircuito.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VCircuito.o specialized_view_hierarchy/VCircuito.cpp
 
 VComplesso.o: specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VComplesso.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VComplesso.o specialized_view_hierarchy/VComplesso.cpp
 
 VRazionale.o: specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VRazionale.h \
+		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VRazionale.o specialized_view_hierarchy/VRazionale.cpp

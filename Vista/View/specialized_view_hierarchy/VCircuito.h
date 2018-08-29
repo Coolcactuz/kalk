@@ -1,24 +1,16 @@
 #ifndef VCIRCUITO_H
 #define VCIRCUITO_H
 
-#include "specialized_view.h"
+#include "numerical_insert.h"
 
-class VCircuito: public specialized_view{
-
+class VCircuito: public numerical_insert{
 private:
-
-  QGridLayout* circuitoKeyboard;
   QGridLayout* circuitoOp;
-
   QVBoxLayout* circuitoSelectors;
-
   QSpinBox* freq;
   QSpinBox* volt;
-
 public:
-
   VCircuito();
-
 };
 
 #endif

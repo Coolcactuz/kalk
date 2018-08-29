@@ -31,7 +31,7 @@ protected:
 private:
 
   QPushButton* go_back;
-  QGridLayout* keyboard;
+  QGridLayout* generic_keyboard;
   QPlainTextEdit* display;
 
 

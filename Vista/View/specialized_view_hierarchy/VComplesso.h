@@ -1,19 +1,13 @@
 #ifndef VCOMPLESSO_H
 #define VCOMPLESSO_H
 
-#include "specialized_view.h"
+#include "numerical_insert.h"
 
-class VComplesso: public specialized_view{
-
+class VComplesso: public numerical_insert{
 private:
-
-  QGridLayout* complessoKeyboard;
   QGridLayout* complessoOp;
-
 public:
-
   VComplesso();
-
 };
 
 #endif

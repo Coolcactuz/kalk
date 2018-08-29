@@ -1,19 +1,17 @@
 #ifndef VRAZIONALE_H
 #define VRAZIONALE_H
 
-#include "specialized_view.h"
+#include "numerical_insert.h"
 
-class VRazionale: public specialized_view{
-
+class VRazionale: public numerical_insert{
 private:
-
-  QGridLayout* razionaleKeyboard;
   QGridLayout* razionaleOp;
-
 public:
-
   VRazionale();
 
+  ~VRazionale(){
+    std::cout << "SONO IL DISTRUTTORE DI VRAZIONALE" << std::endl;
+  }
 };
 
 #endif
