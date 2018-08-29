@@ -138,7 +138,14 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       while(!(handler->is_operator(*aux)) && aux!=tmp.end())
         aux++;
       std::string spoil_item(it,aux);
-      T* obj_p=dynamic_cast<T*>(create(spoil_item));
+      T* obj_p=nullptr;
+      try {
+        T* obj_p=dynamic_cast<T*>(create(spoil_item));
+      }
+      catch(const syntax_exception& error){
+        delete obj_p;
+        throw error;
+      }
       if(!obj_p)
         std::cout << "identify_literal ERROR";
       current->right=new node();

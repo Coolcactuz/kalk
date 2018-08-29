@@ -4,8 +4,12 @@
 
 #include "Condensatore.h"
 
-Condensatore::Condensatore(double c):capacita(c){
-  Componente::setImp(impedenza());
+Condensatore::Condensatore(double c){
+    if(c > 0)
+        capacita = c;
+    else
+        throw logic_exception("Inizializzato con valore negativo");
+    Componente::setImp(impedenza());
 }
 Condensatore::Condensatore(std::string s){
   auto pos=s.find('C');
@@ -13,12 +17,8 @@ Condensatore::Condensatore(std::string s){
     capacita=std::stod(s.substr(1));
     Componente::setImp(impedenza());
   }
-  else{
-    std::cout << "errore di sintassi nella costruzione di condensatore" << std::endl;
-    //------------------
-    //GESTIRE ECCEZIONE
-    //------------------
-  }
+  else
+      throw syntax_exception("La stringa non inizia con il carattere C");
 }
 
 Condensatore::Condensatore():capacita(0){};

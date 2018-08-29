@@ -2,6 +2,7 @@
 #define EXCEPTION_H
 
 #include <iostream>
+#include <exception>
 
 class exception{
 public:

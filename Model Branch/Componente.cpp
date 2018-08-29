@@ -13,12 +13,8 @@ Componente::Componente(std::string s){
     auto pos=s.find('Z');
     if(pos == 0)
         setImp(std::stod(s.substr(1)));
-    else{
-        std::cout << "errore di sintassi nella costruzione di Componente" << std::endl;
-        //------------------
-        //GESTIRE ECCEZIONE
-        //------------------
-    }
+    else
+        throw syntax_exception("La stringa non inizia con il carattere Z");
 }
 
 Componente::Componente(): imp(0){}
@@ -32,15 +28,6 @@ Componente* Componente::operator+ (const Componente* c) const{
     Componente* result= new Componente(*serie);
     delete serie;
     return result;
-
-    /*
-    C_cartesiano* result = (&c1)->operator+(&c2);
-    Componente* aux = new Componente(*result);
-    delete result;
-    return aux;
-
-    return new Componente(*((&c1)->operator+(&c2)));
-     */
 }
 
 Componente* Componente::operator/ (const Componente* c) const {
@@ -61,10 +48,6 @@ Componente* Componente::operator/ (const Componente* c) const {
     Componente* result=new Componente(*parallelo);
     delete parallelo;
     return result;
-//
-//    C_cartesiano c1=impedenza();
-//    C_cartesiano c2=c->impedenza();
-//    return new Componente(*(((&c1)->operator*(&c2))->operator/((&c1)->operator+(&c2))));
 }
 
 bool Componente::operator== (const Dato& d) const{
@@ -93,7 +76,6 @@ Componente* Componente::solve_operation(const Dato* a, const Dato* b, char o){
     auto r=dynamic_cast<const Componente*>(b);
     if(l && r){
         switch(o) {
-
             case '+':
               return l->operator+(r);
             break;
@@ -103,14 +85,13 @@ Componente* Componente::solve_operation(const Dato* a, const Dato* b, char o){
             break;
 
             default:
-              std::cout << "Componente::solve_operation->operatore errato" << std::endl;
-              //------------------
-              //GESTIRE ECCEZIONE
-              //------------------
+                throw syntax_exception("Operatore inesistente");
             break;
 
         }
     }
+    else
+        throw logic_exception("tipo di dati errato");
 }
 
 C_cartesiano Componente::impedenza() const{
@@ -132,21 +113,13 @@ void Componente::setImp(const C_cartesiano& c ){
 void Componente::setVolt(double v){
     if(v>=0)
         volt=v;
-    else{
-      std::cout << "volt negativi" << std::endl;
-      //------------------
-      //GESTIRE ECCEZIONE
-      //------------------
-    }
+    else
+      throw logic_exception("parametro non corretto");
 }
 
-void Componente::setFreq(double f){
-    if(f>=0)
-        freq=f;
-    else{
-      std::cout << "frequenza negativa" << std::endl;
-      //------------------
-      //GESTIRE ECCEZIONE
-      //------------------
-    }
+void Componente::setFreq(double f) {
+    if (f >= 0)
+        freq = f;
+    else
+        throw logic_exception("parametro non corretto");
 }
