@@ -6,10 +6,9 @@
 
 
 //SCELTE PROGETTUALI:
-// 1) override dei metodi toString(), equals(), assign(), impedenza()
+// 1) override dei metodi toString(), equals(), impedenza()
 // 3) "traduzione" in linguaggio Java delle ulteriori funzionalita' offerte dalla corrispettiva classe C++
 //    a)costruttore da double
-//    b)costruttore da stringa
 //    c)costruttore di default
 
 class Condensatore extends Componente{

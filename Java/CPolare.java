@@ -12,10 +12,10 @@
 //COMPLESSO -> converti()   ok
 //COMPLESSO -> coniugato()  ok
 
-//CCARTESIANO ->costruttore di default   ok
-//CCARTESIANO ->costruttore da due double   ok
-//CCARTESIANO ->getModulo()   ok
-//CCARTESIANO ->getFase()   ok
+//CPOLARE ->costruttore di default   ok
+//CPOLARE ->costruttore da due double   ok
+//CPOLARE ->getModulo()   ok
+//CPOLARE ->getFase()   ok
 
 
 class CPolare extends Complesso{

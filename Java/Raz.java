@@ -5,7 +5,6 @@
 //  GESTIRE ECCEZIONI
 
 //1)implementazione dei metodi somma(), differenza(), moltiplicazione(), divisione() ereditati da Numero    ok
-//2)implementazione del metodo assign() ereditato da Dato   ok
 //3)implementazione dei metodi equals() e toString() ereditati da Object    ok
 //4)implementazione dei metodi della classe:
 //  a)costruttore di default    ok
@@ -119,7 +118,7 @@ class Raz extends Numero{
     return result;
   }
 
-  public void semplifica(){
+  private void semplifica(){
     long mcd = getMCD(num, den);
     num = num / mcd;
     den = den / mcd;

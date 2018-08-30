@@ -14,6 +14,8 @@ private:
     long num;
     long den;
 
+    void semplifica ();
+
 public:
     Raz ();
     Raz (long, long);
@@ -35,7 +37,6 @@ public:
     long getDen () const;
     int getMCD (long, long) const;
     Raz* reciproco () const;
-    void semplifica ();
     long double radice_quadrata () const;
 };
 

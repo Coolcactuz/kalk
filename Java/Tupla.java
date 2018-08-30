@@ -8,7 +8,6 @@
 
 //SCELTE PROGETTUALI:
 // 1) override dei metodi toString(), equals()
-// 2) implementazione del metodo assign()
 // 3) "traduzione" in linguaggio Java delle ulteriori funzionalita' offerte dalla corrispettiva classe C++
 //    a)costruttore di default
 //    b)costruttore da stringa
@@ -21,10 +20,11 @@
 //    i)insert
 //    l)erase
 //    m)isNull
-//    n)unione
 //    o)differenza
 //    p)intersezione
 //    q)join
+
+//ATTENZIONE: i metodi di Tupla sono case sensitive
 
 import java.util.Vector;
 import java.util.Iterator;
@@ -305,7 +305,8 @@ class Tupla extends Dato{
 
   public Tupla join(Tupla t){
     Tupla aux = new Tupla();
-    aux.assign(this);
+    aux.metadati = (Vector<String>) metadati.clone();
+    aux.dati = (Vector<String>) dati.clone();
 
     Iterator<String> it = t.metadati.iterator();
     while(it.hasNext()){

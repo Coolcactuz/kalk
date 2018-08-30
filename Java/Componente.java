@@ -8,10 +8,8 @@
 
 //SCELTE PROGETTUALI:
 // 1) override dei metodi toString(), equals()
-// 2) implementazione del metodo assign()
 // 3) "traduzione" in linguaggio Java delle ulteriori funzionalita' offerte dalla corrispettiva classe C++
 //    a)costruttore con un parametro CCartesiano
-//    b)costruttore con un parametro String
 //    c)costruttore di default
 //    d)impedenza
 //    e)serie
@@ -64,7 +62,7 @@ class Componente extends Dato{
     return freq;
   }
 
-  public void setVolt(double v){
+  public static void setVolt(double v){
     if(v >= 0){
       volt = v;
     }
@@ -76,7 +74,7 @@ class Componente extends Dato{
     }
   }
 
-  public void setFreq(double f){
+  public static void setFreq(double f){
     if(f >= 0){
       freq = f;
     }
@@ -88,7 +86,7 @@ class Componente extends Dato{
     }
   }
 
-  public void setImp(CCartesiano c){
+  protected void setImp(CCartesiano c){
     imp = c;
   }
 
