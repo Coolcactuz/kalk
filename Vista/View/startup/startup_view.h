@@ -19,6 +19,7 @@ private:
   QVBoxLayout* external_layout;
   QHBoxLayout* upper;
   QHBoxLayout* lower;
+
   QLabel* kalk_label;
   KalkButton* nota;
   KalkButton* circuito;
@@ -30,7 +31,7 @@ public:
 
   startup_view();
 
-  ~startup_view();
+  //~startup_view();
 
 public slots:
 

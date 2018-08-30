@@ -14,7 +14,7 @@ private:
 
 public:
     C_polare(double, double);
-    C_polare(const C_polare&);
+    //C_polare(const C_polare&);
     C_polare(std::string);
     C_polare();
 

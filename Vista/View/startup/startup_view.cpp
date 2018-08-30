@@ -47,7 +47,7 @@ void startup_view::type_FButtonTStartup(){
     std::cout <<"button è nullo"<< std::endl;
 }
 
-
+/*
 startup_view::~startup_view(){
   std::cout << "SONO IL DISTRUTTORE DI STARTUP" << std::endl;
-}
+}*/

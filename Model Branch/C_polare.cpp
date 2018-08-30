@@ -14,15 +14,16 @@ C_polare::C_polare(double m, double f) {
       modulo=0;
       fase=0;
     }
-    else
+    else{   //<----- suppongo ci vadano le parentesi
         modulo=m;
-    while(f>=360 || f<0) {
-        f=((f>=360)?(f-360):(360+f));
+        while(f>=360 || f<0){
+          f=((f>=360)?(f-360):(360+f));
+        }
+        fase=f;
     }
-    fase=f;
 }
 
-C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
+//C_polare::C_polare(const C_polare& c):modulo(c.modulo),fase(c.fase){};
 
 C_polare::C_polare(std::string s){
   auto pos=s.find('<');
@@ -97,6 +98,7 @@ C_polare* C_polare::operator* (const Numero* n)const{
     else
         throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
+
 C_polare* C_polare::operator/ (const Numero* n)const{
     if(dynamic_cast<const C_polare*>(n)){
         const C_polare* cp= static_cast<const C_polare*>(n);

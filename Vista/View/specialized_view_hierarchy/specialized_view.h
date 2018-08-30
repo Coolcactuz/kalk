@@ -21,15 +21,14 @@ class specialized_view: public QWidget{
 Q_OBJECT
 
 protected:
-
-  QVBoxLayout* external_layout;
-  QHBoxLayout* header;
   QLabel * type_title;
-  QVBoxLayout* upper;
   QHBoxLayout* lower;
 
 private:
-
+  QVBoxLayout* external_layout;
+  QHBoxLayout* header;
+  QVBoxLayout* upper;
+  
   QPushButton* go_back;
   QGridLayout* generic_keyboard;
   QPlainTextEdit* display;
@@ -38,9 +37,10 @@ private:
 public:
 
   specialized_view();
+  /*
   virtual ~specialized_view() {
     std::cout << "SONO IL DISTRUTTORE DI SPECIALIZED" << std::endl;
-  }
+  }*/
 
 signals:
 
