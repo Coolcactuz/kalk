@@ -1,9 +1,8 @@
 #include "specialized_view.h"
 
-specialized_view::specialized_view(): type_title(new QLabel(this)), lower(new QHBoxLayout()),
+specialized_view::specialized_view(): type_title(new QLabel(this)), lower(new QHBoxLayout()), display(new KalkPlainTextEdit(this)),
   external_layout(new QVBoxLayout(this)), header(new QHBoxLayout()),  upper(new QVBoxLayout()),
-  go_back(new QPushButton("BACK", this)), generic_keyboard(new QGridLayout()),
-  display(new QPlainTextEdit(this)){
+  go_back(new QPushButton("BACK", this)), generic_keyboard(new QGridLayout()){
 
   external_layout->addLayout(header);
   external_layout->addLayout(upper);

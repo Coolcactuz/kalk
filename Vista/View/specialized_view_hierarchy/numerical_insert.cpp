@@ -13,4 +13,16 @@ numerical_insert::numerical_insert(): numeric_keyboard(new QGridLayout()){
   numeric_keyboard->addWidget(new KalkButton(2, "2", this), 2, 1);
   numeric_keyboard->addWidget(new KalkButton(3, "3", this), 2, 2);
   numeric_keyboard->addWidget(new KalkButton(0, "0", this), 3, 1);
+
+
+    for(int j = 0; j < numeric_keyboard->count(); j++){
+      QLayoutItem* aux = numeric_keyboard->itemAt(j);
+      QWidgetItem* tmp = dynamic_cast<QWidgetItem*>(aux);
+      if(aux){
+        QWidget* qw = tmp->widget();
+        KalkButton* kb = dynamic_cast<KalkButton*>(qw);
+        QObject::connect(kb, SIGNAL(clicked()), display, SLOT(receiveString()));
+      }
+    }
+
 }

@@ -1,7 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "../View/view_manager.h"
+#include "../Vista/View/controller_view.h"
+#include "../Model/parser.h"
 #include <QObject>
 
 class controller: public QObject{

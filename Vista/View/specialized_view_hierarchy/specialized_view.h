@@ -1,14 +1,14 @@
 #ifndef SPECIALIZED_VIEW_H
 #define SPECIALIZED_VIEW_H
 
-#include "../items/KalkButton.h"
+// #include "../items/KalkButton.h"
+#include "../items/KalkPlainTextEdit.h"
 
 #include <QLabel>
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
-#include <QPlainTextEdit>
 #include <QSpinBox>
 
 
@@ -23,15 +23,15 @@ Q_OBJECT
 protected:
   QLabel * type_title;
   QHBoxLayout* lower;
+  KalkPlainTextEdit* display;
 
 private:
   QVBoxLayout* external_layout;
   QHBoxLayout* header;
   QVBoxLayout* upper;
-  
+
   QPushButton* go_back;
   QGridLayout* generic_keyboard;
-  QPlainTextEdit* display;
 
 
 public:

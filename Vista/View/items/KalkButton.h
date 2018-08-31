@@ -1,7 +1,6 @@
 #ifndef KALK_BUTTON_H
 #define KALK_BUTTON_H
 
-#include <QWidget>
 #include <QPushButton>
 
 class KalkButton: public QPushButton{

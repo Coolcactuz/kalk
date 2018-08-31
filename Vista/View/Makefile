@@ -52,6 +52,7 @@ OBJECTS_DIR   = ./
 
 SOURCES       = controller_view.cpp \
 		main.cpp \
+		items/KalkPlainTextEdit.cpp \
 		specialized_view_hierarchy/numerical_insert.cpp \
 		specialized_view_hierarchy/specialized_view.cpp \
 		specialized_view_hierarchy/VCircuito.cpp \
@@ -60,10 +61,12 @@ SOURCES       = controller_view.cpp \
 		specialized_view_hierarchy/VTupla.cpp \
 		startup/startup_view.cpp moc_controller_view.cpp \
 		moc_KalkButton.cpp \
+		moc_KalkPlainTextEdit.cpp \
 		moc_specialized_view.cpp \
 		moc_startup_view.cpp
 OBJECTS       = controller_view.o \
 		main.o \
+		KalkPlainTextEdit.o \
 		numerical_insert.o \
 		specialized_view.o \
 		VCircuito.o \
@@ -73,6 +76,7 @@ OBJECTS       = controller_view.o \
 		startup_view.o \
 		moc_controller_view.o \
 		moc_KalkButton.o \
+		moc_KalkPlainTextEdit.o \
 		moc_specialized_view.o \
 		moc_startup_view.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -155,6 +159,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		View.pro controller_view.h \
 		items/KalkButton.h \
+		items/KalkPlainTextEdit.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
 		specialized_view_hierarchy/VCircuito.h \
@@ -163,6 +168,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		specialized_view_hierarchy/VTupla.h \
 		startup/startup_view.h controller_view.cpp \
 		main.cpp \
+		items/KalkPlainTextEdit.cpp \
 		specialized_view_hierarchy/numerical_insert.cpp \
 		specialized_view_hierarchy/specialized_view.cpp \
 		specialized_view_hierarchy/VCircuito.cpp \
@@ -361,8 +367,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents controller_view.h items/KalkButton.h specialized_view_hierarchy/numerical_insert.h specialized_view_hierarchy/specialized_view.h specialized_view_hierarchy/VCircuito.h specialized_view_hierarchy/VComplesso.h specialized_view_hierarchy/VRazionale.h specialized_view_hierarchy/VTupla.h startup/startup_view.h $(DISTDIR)/
-	$(COPY_FILE) --parents controller_view.cpp main.cpp specialized_view_hierarchy/numerical_insert.cpp specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VTupla.cpp startup/startup_view.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents controller_view.h items/KalkButton.h items/KalkPlainTextEdit.h specialized_view_hierarchy/numerical_insert.h specialized_view_hierarchy/specialized_view.h specialized_view_hierarchy/VCircuito.h specialized_view_hierarchy/VComplesso.h specialized_view_hierarchy/VRazionale.h specialized_view_hierarchy/VTupla.h startup/startup_view.h $(DISTDIR)/
+	$(COPY_FILE) --parents controller_view.cpp main.cpp items/KalkPlainTextEdit.cpp specialized_view_hierarchy/numerical_insert.cpp specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VTupla.cpp startup/startup_view.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -393,13 +399,14 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -m64 -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_controller_view.cpp moc_KalkButton.cpp moc_specialized_view.cpp moc_startup_view.cpp
+compiler_moc_header_make_all: moc_controller_view.cpp moc_KalkButton.cpp moc_KalkPlainTextEdit.cpp moc_specialized_view.cpp moc_startup_view.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_controller_view.cpp moc_KalkButton.cpp moc_specialized_view.cpp moc_startup_view.cpp
+	-$(DEL_FILE) moc_controller_view.cpp moc_KalkButton.cpp moc_KalkPlainTextEdit.cpp moc_specialized_view.cpp moc_startup_view.cpp
 moc_controller_view.cpp: startup/startup_view.h \
 		items/KalkButton.h \
 		specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		specialized_view_hierarchy/VCircuito.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/VRazionale.h \
@@ -414,7 +421,14 @@ moc_KalkButton.cpp: items/KalkButton.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include items/KalkButton.h -o moc_KalkButton.cpp
 
-moc_specialized_view.cpp: items/KalkButton.h \
+moc_KalkPlainTextEdit.cpp: items/KalkButton.h \
+		items/KalkPlainTextEdit.h \
+		moc_predefs.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/nick/Documents/p2/kalk/Vista/View -I/home/nick/Documents/p2/kalk/Vista/View -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include items/KalkPlainTextEdit.h -o moc_KalkPlainTextEdit.cpp
+
+moc_specialized_view.cpp: items/KalkPlainTextEdit.h \
+		items/KalkButton.h \
 		specialized_view_hierarchy/specialized_view.h \
 		moc_predefs.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
@@ -445,6 +459,7 @@ controller_view.o: controller_view.cpp controller_view.h \
 		items/KalkButton.h \
 		specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		specialized_view_hierarchy/VCircuito.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/VRazionale.h \
@@ -456,41 +471,52 @@ main.o: main.cpp controller_view.h \
 		items/KalkButton.h \
 		specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		specialized_view_hierarchy/VCircuito.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/VRazionale.h \
 		specialized_view_hierarchy/VComplesso.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
+KalkPlainTextEdit.o: items/KalkPlainTextEdit.cpp items/KalkPlainTextEdit.h \
+		items/KalkButton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o KalkPlainTextEdit.o items/KalkPlainTextEdit.cpp
+
 numerical_insert.o: specialized_view_hierarchy/numerical_insert.cpp specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o numerical_insert.o specialized_view_hierarchy/numerical_insert.cpp
 
 specialized_view.o: specialized_view_hierarchy/specialized_view.cpp specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o specialized_view.o specialized_view_hierarchy/specialized_view.cpp
 
 VCircuito.o: specialized_view_hierarchy/VCircuito.cpp specialized_view_hierarchy/VCircuito.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VCircuito.o specialized_view_hierarchy/VCircuito.cpp
 
 VComplesso.o: specialized_view_hierarchy/VComplesso.cpp specialized_view_hierarchy/VComplesso.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VComplesso.o specialized_view_hierarchy/VComplesso.cpp
 
 VRazionale.o: specialized_view_hierarchy/VRazionale.cpp specialized_view_hierarchy/VRazionale.h \
 		specialized_view_hierarchy/numerical_insert.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VRazionale.o specialized_view_hierarchy/VRazionale.cpp
 
 VTupla.o: specialized_view_hierarchy/VTupla.cpp specialized_view_hierarchy/VTupla.h \
 		specialized_view_hierarchy/specialized_view.h \
+		items/KalkPlainTextEdit.h \
 		items/KalkButton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VTupla.o specialized_view_hierarchy/VTupla.cpp
 
@@ -503,6 +529,9 @@ moc_controller_view.o: moc_controller_view.cpp
 
 moc_KalkButton.o: moc_KalkButton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkButton.o moc_KalkButton.cpp
+
+moc_KalkPlainTextEdit.o: moc_KalkPlainTextEdit.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkPlainTextEdit.o moc_KalkPlainTextEdit.cpp
 
 moc_specialized_view.o: moc_specialized_view.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_specialized_view.o moc_specialized_view.cpp
