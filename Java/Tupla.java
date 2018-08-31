@@ -275,8 +275,11 @@ class Tupla extends Dato{
 
     Iterator<String> it = metadati.iterator();
     while(it.hasNext()){
-      if(t.existsMetadato(it.next()) && (searchByMetadato(it.next())).equals(t.searchByMetadato(it.next()))){
-        res.insert(it.next(), searchByMetadato(it.next()));
+
+      String tmp = it.next();
+
+      if(t.existsMetadato(tmp) && (searchByMetadato(tmp)).equals(t.searchByMetadato(tmp))){
+        res.insert(tmp, searchByMetadato(tmp));
       }
     }
 
@@ -288,16 +291,26 @@ class Tupla extends Dato{
 
     Iterator<String> it1 = metadati.iterator();
     while(it1.hasNext()){
-      if(!(t.existsMetadato(it1.next()))){
-        res.insert(it1.next(), searchByMetadato(it1.next()));
+
+      String thisMetadato = it1.next();
+
+      if(!(t.existsMetadato(thisMetadato))){
+        res.insert(thisMetadato, searchByMetadato(thisMetadato));
       }
+
+      //System.out.println(it1.next());
     }
 
     Iterator<String> it2 = t.metadati.iterator();
     while(it2.hasNext()){
-      if(!(existsMetadato(it2.next()))){
-        res.insert(it2.next(), t.searchByMetadato(it2.next()));
+
+      String parameterMetadato = it2.next();
+
+      if(!(existsMetadato(parameterMetadato))){
+        res.insert(parameterMetadato, t.searchByMetadato(parameterMetadato));
       }
+
+      //System.out.println(it2.next());
     }
 
     return res;
@@ -310,8 +323,11 @@ class Tupla extends Dato{
 
     Iterator<String> it = t.metadati.iterator();
     while(it.hasNext()){
-      if(!(existsMetadato(it.next()))){
-        aux.insert(it.next(), t.searchByMetadato(it.next()));
+
+      String tmp = it.next();
+
+      if(!(existsMetadato(tmp))){
+        aux.insert(tmp, t.searchByMetadato(tmp));
       }
     }
 

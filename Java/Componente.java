@@ -125,9 +125,9 @@ class Componente extends Dato{
 
   public String toString(){
     String result = new String();
-    result = result + "IMPEDENZA: " + imp.toString() + ";\r\n";
-    result = result + "VOLTAGGIO: " + volt + ";\r\n";
-    result = result + "FREQUENZA: " + freq + ";\r\n";
+    result = result + "IMPEDENZA: " + imp.toString();
+    result = result + "VOLTAGGIO: " + volt + "\r\n";
+    result = result + "FREQUENZA: " + freq + "\r\n";
     return result;
   }
 }

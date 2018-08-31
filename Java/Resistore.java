@@ -20,6 +20,10 @@ class Resistore extends Componente{
     super.setImp(impedenza());
   }
 
+  public double getResistenza(){
+    return resistenza;
+  }
+
   public Resistore(){
     this(0);
   }
@@ -52,6 +56,7 @@ class Resistore extends Componente{
       //------------------
       //GESTIRE ECCEZIONE
       //------------------
+      return false;
     }
 
     Resistore aux = (Resistore) obj;
@@ -71,7 +76,7 @@ class Resistore extends Componente{
 
   public String toString(){
     String result = super.toString();
-    result = result + "RESISTENZA: " + resistenza + ";\r\n";
+    result = result + "RESISTENZA: " + resistenza + "\r\n";
     return result;
   }
 

@@ -155,7 +155,7 @@ class CCartesiano extends Complesso{
   }
 
   public String toString(){
-    String result = new String(reale + " + i" + immaginaria + "\r\n");
+    String result = new String(reale + " " + ((immaginaria < 0) ? "-" : "+") + " i" + Math.abs(immaginaria) + "\r\n");
     return result;
   }
 }

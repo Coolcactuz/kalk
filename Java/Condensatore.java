@@ -24,6 +24,10 @@ class Condensatore extends Componente{
     capacita = 0;
   }
 
+  public double getCapacita(){
+    return capacita;
+  }
+
   public CCartesiano impedenza(){
     double aux = 1 / (2 * (Numero.pi) * (Componente.freq) * capacita);
     CCartesiano result = new CCartesiano(0, -aux);
@@ -72,7 +76,7 @@ class Condensatore extends Componente{
 
   public String toString(){
     String result = super.toString();
-    result = result + "CAPACITA': " + capacita + ";\r\n";
+    result = result + "CAPACITA': " + capacita + "\r\n";
     return result;
   }
 }

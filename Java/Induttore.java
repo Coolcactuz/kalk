@@ -17,11 +17,16 @@ class Induttore extends Componente{
 
   public Induttore(double d){
     induttanza = d;
+    //System.out.println(this.impedenza());
     super.setImp(impedenza());
   }
 
   public Induttore(){
     induttanza = 0;
+  }
+
+  public double getInduttanza(){
+    return induttanza;
   }
 
   public CCartesiano impedenza(){
@@ -72,7 +77,7 @@ class Induttore extends Componente{
 
   public String toString(){
     String result = super.toString();
-    result = result + "INDUTTANZA" + induttanza + ";\r\n";
+    result = result + "INDUTTANZA: " + induttanza + "\r\n";
     return result;
   }
 }

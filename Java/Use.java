@@ -20,6 +20,8 @@ public class Use{
     //    s)equals
     //    t)toString
 
+    System.out.println("--------------TUPLA----------------------");
+
     Tupla t1 = new Tupla();
     Tupla t2 = new Tupla("MARCA,apple,PRODOTTO,iphone,MODELLO,6s");
 
@@ -42,17 +44,22 @@ public class Use{
     System.out.println((t1.notEquals(t2)) ? "T1 DIVERSO DA T2" : "T1 UGUALE A T2");
     System.out.println((t1.equals(t2)) ? "T1 UGUALE A T2" : "T1 DIVERSO DA T2");
 
-    System.out.println("Esempio Tupla.toString()" + t2.toString());
+    System.out.println("Esempio Tupla.toString() " + t2.toString());
 
     Tupla t3 = new Tupla("MARCA,apple,PRODOTTO,appleTV");
 
     (t2.intersezione(t3)).printTupla();
 
     t3.insert("DISPONIBILE", "si");
+
+    t3.printTupla();
+
     (t2.differenza(t3)).printTupla();
 
     (t2.join(t3)).printTupla();
     (t3.join(t2)).printTupla();
+
+    System.out.println("\r\n");
 
     //----------------------------------------------
 
@@ -76,6 +83,8 @@ public class Use{
     //  t)equals()
     //  u)notEquals()
     //  v)toString()
+
+    System.out.println("-------------RAZ-----------------");
 
     Raz ra1 = new Raz();
 
@@ -106,6 +115,8 @@ public class Use{
     System.out.println(ra3.moltiplicazione(ra4));
     System.out.println(ra3.divisione(ra4));
 
+    System.out.println("\r\n");
+
     //----------------------------------------------
 
 
@@ -130,6 +141,8 @@ public class Use{
     //CPOLARE ->getModulo()   ok
     //CPOLARE ->getFase()   ok
 
+    System.out.println("------------CPOLARE---------------");
+
     CPolare p1 = new CPolare();
     CPolare p2 = new CPolare(7.62, 18);
     System.out.println(p2.getModulo());
@@ -148,6 +161,8 @@ public class Use{
     System.out.println(p2.equals(p3));
     System.out.println(p2.notEquals(p3));
     System.out.println(p2.toString());
+
+    System.out.println("\r\n");
 
     //----------------------------------------------
 
@@ -172,6 +187,8 @@ public class Use{
     //CCARTESIANO ->getReale()    ok
     //CCARTESIANO ->getImmaginaria()    ok
 
+    System.out.println("-----------CCARTESIANO------------");
+
     CCartesiano ca1 = new CCartesiano();
     CCartesiano ca2 = new CCartesiano(3.7, 9.2);
     System.out.println(ca2.getReale());
@@ -190,6 +207,8 @@ public class Use{
     System.out.println(ca2.equals(ca3));
     System.out.println(ca2.notEquals(ca3));
     System.out.println(ca2.toString());
+
+    System.out.println("\r\n");
 
     //-----------------------------------------------
 
@@ -221,6 +240,8 @@ public class Use{
     //    a)costruttore da double
     //    c)costruttore di default
 
+    System.out.println("-------------COMPONENTE---------------");
+
     Resistore re1 = new Resistore();
     Resistore re2 = new Resistore(7);
 
@@ -228,7 +249,15 @@ public class Use{
     Condensatore co2 = new Condensatore(2);
 
     Induttore i1 = new Induttore();
+
+    //System.out.println("i2\n");
     Induttore i2 = new Induttore(3.56);
+    //System.out.println("\n");
+
+
+    System.out.println(re2.getResistenza());
+    System.out.println(co2.getCapacita());
+    System.out.println(i2.getInduttanza());
 
     Componente.setVolt(14);
     Componente.setFreq(2);
@@ -244,6 +273,8 @@ public class Use{
     System.out.println(re2.notEquals(co2));
 
     System.out.println(i2.toString());
+
+    System.out.println("\r\n");
 
     //-----------------------------------------------
   }
