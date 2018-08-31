@@ -13,7 +13,6 @@ void Numerical_Hierarchy::load_operators() {
     char op[n]={'+', '-', '*', '/', '^'};
     for(unsigned int i=0; i<n; ++i)
         add_operator(op[i]);
-    delete[] op;
 }
 
 Complesso* Numerical_Hierarchy::create_complex(std::string s){

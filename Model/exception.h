@@ -2,32 +2,27 @@
 #define EXCEPTION_H
 
 #include <iostream>
-#include <string>
+#include <exception>
 
 class exception{
-
-private:
-  std::string error;
-
 public:
-  exception(std::string s = ""): error(s) {}
-  virtual void stampa() const{ std::cout<<error<<std::endl;}
-};
-
-class logic_exception: public exception{
-public:
-  void stampa() const{
-    std::cout<<"LOGIC EXCEPTION: ";
-    exception::stampa();
-  }
+  virtual void print() const =0;
+  std::string errorMessage;
+  exception(std::string s): errorMessage(s){}
 };
 
 class syntax_exception: public exception{
 public:
-  void stampa() const{
-    std::cout<<"SYNTAX EXCEPTION: ";
-    exception::stampa();
-  }
+  syntax_exception(std::string s): exception(s) {}
+  virtual void print() const {  std::cout << exception::errorMessage
+    << std::endl;}
+};
+
+class logic_exception: public exception{
+public:
+  logic_exception(std::string s): exception(s) {}
+  virtual void print() const {  std::cout << exception::errorMessage
+    << std::endl;}
 };
 
 #endif

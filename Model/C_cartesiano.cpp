@@ -1,10 +1,14 @@
+//
+// Created by luca on 19/12/17.
+//
+
 #include "C_cartesiano.h"
 #include "C_polare.h"
 #include <cmath>
 
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
-C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
+//C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
 
 C_cartesiano::C_cartesiano(std::string s){
   auto pos=s.find('i');
@@ -16,12 +20,10 @@ C_cartesiano::C_cartesiano(std::string s){
   else if(pos==s.length()-1)
     immaginaria=(pos==0?1:std::stod(s.substr(size)));
   else
-    throw syntax_exception("Invalid value"); //gestire eccezione syntax error
+      throw syntax_exception("Invalid value"); //gestire eccezione syntax error
 }
 
 C_cartesiano::C_cartesiano():reale(0),immaginaria(0){};
-
-C_cartesiano::~C_cartesiano(){}
 
 C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     if(dynamic_cast<const C_cartesiano*>(n)){
@@ -31,10 +33,11 @@ C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     else if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp=static_cast<const C_polare*>(n);
       const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+      delete cp;
       return this->operator+(aux);
     }
     else
-      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
+    throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
@@ -45,10 +48,11 @@ C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    delete cp;
     return this->operator-(aux);
   }
   else
-    throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
+      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
@@ -59,10 +63,11 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
+    delete cp;
     return this->operator*(aux);
   }
   else
-    throw logic_exception("Tipo incompatibile");   //gestire eccezione di tipo incompatibile
+      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
@@ -71,11 +76,43 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
     return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)),(immaginaria*c->reale-reale*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)));
   }
   else if(dynamic_cast<const C_polare*>(n)){
-    const C_polare* aux=static_cast<const C_polare*>(this->converti());
-    return static_cast<C_cartesiano*>(aux->operator/(n)->converti());
+    const C_polare* cp= static_cast<const C_polare*>(n);
+    const C_cartesiano* aux= static_cast<const C_cartesiano*>(cp->converti());
+    delete cp;
+    return this->operator+(aux);
   }
   else
-    throw logic_exception("Tipo incompatibile");   //gestire eccezione di tipo incompatibile
+      throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
+}
+
+//C_cartesiano& C_cartesiano::operator=(const Dato& d){
+//    try{
+//        auto aux= dynamic_cast<const C_cartesiano&>(d);
+//        reale=aux.reale;
+//        immaginaria=aux.immaginaria;
+//        return *this;
+//    }
+//    catch (const std::bad_cast &error){
+//        std::cout << "tipi incompatibili" << std::endl;
+//    }
+//}
+
+bool C_cartesiano::operator== (const Dato& d)const{
+    try {
+        auto aux = dynamic_cast<const C_cartesiano &>(d);
+        return this->reale == aux.reale && this->immaginaria == aux.immaginaria;
+    }
+    catch(const std::bad_cast& error){
+        return false;
+    }
+}
+
+std::string C_cartesiano::toString() const{
+    std::string res= std::to_string(getReale());
+    if(getImmaginaria()>=0)
+        res=res+"+";
+    res=res+std::to_string(getImmaginaria())+"i";
+    return res;
 }
 
 double C_cartesiano::getReale() const {return reale;}
@@ -86,9 +123,9 @@ C_cartesiano* C_cartesiano::coniugato() const{
 }
 
 Complesso* C_cartesiano::converti() const{
-    double fase=sqrt(pow(reale,2)+pow(immaginaria,2));
-    double modulo=rad_to_deg(atan(immaginaria/reale));
-    return new C_polare(fase,modulo);
+    double f=sqrt(pow(reale,2)+pow(immaginaria,2));
+    double m=rad_to_deg(atan(immaginaria/reale));
+    return new C_polare(f,m);
 }
 
 void C_cartesiano::stampa(std::ostream& os)const {

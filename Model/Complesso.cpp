@@ -1,26 +1,28 @@
+//
+// Created by luca on 18/12/17.
+//
+
 #include "Complesso.h"
 
-Complesso* Complesso::solve_operation(Numero* l, Numero* r, char o)const {
-
-    Complesso* res = 0;
-
-    switch(o) {
-        case '+':
-            res = dynamic_cast<Complesso*>(l->operator+(r));
-        case '-':
-            res = dynamic_cast<Complesso*>(l->operator-(r));
-        case '*':
-            res = dynamic_cast<Complesso*>(l->operator*(r));
-        case '/':
-            res = dynamic_cast<Complesso*>(l->operator/(r));
-        default:
-            throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
+Complesso* Complesso::solve_operation(const Dato* a, const Dato* b, char o){
+    auto l=dynamic_cast<const Complesso*>(a);
+    auto r=dynamic_cast<const Complesso*>(b);
+    if(l && r){
+        switch(o) {
+            case '+':
+                return static_cast<Complesso*>(l->operator+(r));
+            case '-':
+                return static_cast<Complesso*>(l->operator-(r));
+            case '*':
+                return static_cast<Complesso*>(l->operator*(r));
+            case '/':
+                return static_cast<Complesso*>(l->operator/(r));
+            default:
+                throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
+        }
     }
-
-    if(!res)
-      throw logic_exception();
-
-    return res;
+    else
+        throw logic_exception("tipo di dati errato");
 }
 
 std::ostream& operator<< (std::ostream& os, const Complesso& c){

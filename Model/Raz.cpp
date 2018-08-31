@@ -1,4 +1,6 @@
-#include "parser.h"
+//
+// Created by luca on 07/12/17.
+//
 #include "Raz.h"
 #include <cmath>
 
@@ -7,8 +9,8 @@
 
 Raz::Raz(long n, long d){   //2 parametri interi
     if(d==0){
-      //se il denominatore è 0 viene automaticamente settato a 1
-      d = 1;
+        //se il denominatore è 0 viene automaticamente settato a 1
+        d = 1;
     }
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
@@ -19,86 +21,64 @@ Raz::Raz(long n, long d){   //2 parametri interi
 Raz::Raz():num(0),den(1){};
 
 Raz::Raz(std::string s){   //stringa
-
   std::string::size_type size=0;
-
   double numerator=std::stod(s,&size);
-
   if(s.find('/')==-1){
-
-    if(size!=s.length()){
-      throw syntax_exception("Costruzione oggetto fallita");
-    }
-
+    if(size!=s.length())
+          throw syntax_exception("Costruzione oggetto fallita");
     Raz aux(numerator);
     num=aux.getNum();
     den=aux.getDen();
   }
-
   else{
     double denominator=std::stod(s,&size+1);
-    if(size!=s.length()) throw syntax_exception("Costruzione oggetto fallita");
+    if(size!=s.length()) throw syntax_exception("Costruzione oggetto fallita"); //gestire eccezione syntax error
     num=numerator;
     den=denominator;
   }
-
 }
 
-Raz::~Raz(){}
-
-Raz::Raz(double d){ //funziona solo con double positivi
-
-    if(d < 0)
-      throw syntax_exception("Valore negativo")
-
+Raz::Raz(double d){ //1 parametro decimale
     int i=1;
     while(d-(floor(d*pow(10,i))/pow(10, i))){
         i++;
     }
-    Raz b(d*pow(10, i),pow(10,i));
+    Raz b(d*pow(10, i), pow(10,i));
     num=b.getNum();
     den=b.getDen();
 }
+//
 
 //overloading operatori con puntatori
 Raz* Raz::operator+ (const Numero *n)const {
-
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den+r->num*den,(den*r->den));
-
-    throw logic_exception(); //gestire eccezione
+    throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 Raz* Raz::operator- (const Numero *n)const {
-
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den-r->num*den,(den*r->den));
-
-    throw logic_exception(); //gestire eccezione
+    throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 Raz* Raz::operator* (const Numero *n)const {
-
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->num,den*r->den);
-
-    throw logic_exception(); //gestire eccezione
+    throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 Raz* Raz::operator/ (const Numero *n)const {
-
     auto r= dynamic_cast<const Raz*>(n);
     if(r)
       return new Raz(num*r->den,den*r->num);
-
-    throw logic_exception(); //gestire eccezione
+    throw logic_exception("Tipo incompatibile"); //gestire eccezione
 }
 
 Raz* Raz::operator^ (int exp)const {
-
     if(exp==0) return new Raz(1,1);
     if(exp<0)
         return new Raz(pow(den,exp*-1), pow(num,exp*-1));
@@ -106,8 +86,30 @@ Raz* Raz::operator^ (int exp)const {
 }
 
 Raz::operator double() const{  //nb: metodi const
-    return static_cast<double>(num)/static_cast<double>(den);
+    return num/den;
 }
+
+bool Raz::operator== (const Dato& d)const{
+    try {
+        auto aux = dynamic_cast<const Raz &>(d);
+        return this->num == aux.num && this->den == aux.den;
+    }
+    catch(const std::bad_cast& error){
+        return false;
+    }
+}
+
+//Raz& Raz::operator=(const Dato& d){
+//    try{
+//        auto aux= dynamic_cast<const Raz&>(d);
+//        num=aux.num;
+//        den=aux.den;
+//        return *this;
+//    }
+//    catch (const std::bad_cast &error){
+//        std::cout << "tipi incompatibili" << std::endl;
+//    }
+//}
 
 std::ostream& operator << (std::ostream& os, const Raz& r){
     os<<r.getNum()<<"/"<<r.getDen();
@@ -116,33 +118,36 @@ std::ostream& operator << (std::ostream& os, const Raz& r){
 //
 
 //metodi
-Raz* Raz::create(std::string s){ return new Raz(s);}
 
-Raz* Raz::solve_operation(Numero* l, Numero* r, char o) const{
 
-    Raz* res = 0;
-
-    switch(o) {
-        case '+':
-            res = dynamic_cast<Raz*>(l->operator+(r));
-        case '-':
-            res = dynamic_cast<Raz*>(l->operator-(r));
-        case '*':
-            res = dynamic_cast<Raz*>(l->operator*(r));
-        case '/':
-            res = dynamic_cast<Raz*>(l->operator/(r));
-        case '^':
-            res = dynamic_cast<Raz*>(l)->operator^(double(*dynamic_cast<Raz*>(r));
-        case '#':
-            res = new Raz(dynamic_cast<Raz*>(r)->radice_quadrata());
-        default:
-            throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
-    }
-
-    if(!res)
-      throw logic_exception();
-
+std::string Raz::toString() const{
+    std::string res= std::to_string(getNum())+"/"+std::to_string(getDen());
     return res;
+}
+
+Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
+    auto l=dynamic_cast<const Raz*>(a);
+    auto r=dynamic_cast<const Raz*>(b);
+    if(l&&r){
+        switch(o) {
+            case '+':
+                return l->operator+(r);
+            case '-':
+                return l->operator-(r);
+            case '*':
+                return l->operator*(r);
+            case '/':
+                return l->operator/(r);
+            case '^':
+                return l->operator^(double(*dynamic_cast<const Raz*>(r)));
+            case '#':
+                return new Raz(r->radice_quadrata());
+            default:
+                throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
+        }
+    }
+    else
+        throw logic_exception("tipo di dati errato");
 }
 
 long Raz::getNum () const { return num; }
@@ -152,21 +157,16 @@ long Raz::getDen () const { return den; }
 Raz* Raz::reciproco() const {return new Raz(den,num);}
 
 int Raz::getMCD(long a, long b) const {
-
     a = abs(a);
     b = abs(b);
-
     if(!b)
-      throw logic_exception("Divisore nullo");
-
+        throw logic_exception("Divisore nullo");
     int r;
-
     while(b){
         r = a%b;
         a=b;
         b=r;
     }
-
     return (a>=0 ? a:(a*-1));
 }
 
@@ -177,9 +177,8 @@ void Raz::semplifica(){
 }
 
 long double Raz::radice_quadrata()const {
-    return sqrt(getNum())/sqrt(getDen());
-}
-
-long double Raz::radice_cubica()const {
-    return cbrt(getNum())/cbrt(getDen());
+    if(getNum()>=0)
+        return sqrt(getNum()) / sqrt(getDen());
+    else
+        throw logic_exception("radice di numero negativo");
 }

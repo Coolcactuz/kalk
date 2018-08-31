@@ -1,21 +1,18 @@
+//
+// Created by luca on 18/12/17.
+//
+
 #ifndef KALK_NUMERO_H
 #define KALK_NUMERO_H
 
-#include <iostream>
-#include <cmath>
+#include "Dato.h"
 
-
-class Numero{
+class Numero: public Dato{
 public:
-
-    virtual ~Numero() = default;
-
     virtual Numero* operator+(const Numero*)const =0;
     virtual Numero* operator-(const Numero*)const =0;
     virtual Numero* operator*(const Numero*)const =0;
     virtual Numero* operator/(const Numero*)const =0;
-
-    virtual Numero* solve_operation(Numero*, Numero*, char) const =0;
 
     static double pi;
     static double e;

@@ -5,7 +5,6 @@
 #include <list>
 #include <string>
 #include <iostream>
-#include <typeinfo>
 
 #include "Numerical_Hierarchy.h"
 #include "Circuit_Hierarchy.h"
@@ -24,31 +23,45 @@ public:
       obj(t), op(o), prec(p), left(l), right(r){};
     ~node(){delete left; delete right; delete obj;};
 
-    node* copy(node* p=nullptr){
+    bool operator==(node& n){
+      return *obj==*(n.obj) && op==n.op && left==n.left && right==n.right;
+    }
+    bool operator!=(node& n){
+      return !(*this == n);
+    }
+
+    static node* copy(node* p=nullptr){
       if(!p) return 0;
-         return new node(p->obj,p->op, copy(p->left), copy(p->right));
+         return new node(p->obj,p->op, p->prec, copy(p->left), copy(p->right));
     };
   };
   parser(std::string ="");
   ~parser();
 
+  parser<T> operator=(const parser<T>&);
+  bool operator==(const parser<T>&);
+  bool operator!=(const parser<T>&);
+
   node* build_tree(std::string ="\0")const ;
-  static T* resolve(node*);
+  static Dato* resolve(node*);
   void print(node* =nullptr, int =0) const ;
+  node* getStart() const ;
+  Hierarchy_Handler* getHandler() const;
+  bool compara_alberi(typename parser<T>::node*, typename parser<T>::node*);
 
 private:
-  std::string data;
+  std::string input;
   node* start;
   Hierarchy_Handler* handler;
 
-  Hierarchy_Handler* check_handler();
+  Hierarchy_Handler* check_handler(T*);
 
 protected:
   double set_prec(char) const;
   bool balanced_brackets(std::string ="\0") const;
   static node* find_father(node* =nullptr, node* =nullptr) ;
   static void balance_tree(node* =0);
-  static T* create(std::string);
+  static Dato* create(std::string);
 };
 
 //
@@ -56,9 +69,9 @@ protected:
 //
 //costruttore da stringa, default=nullo
 template<class T>
-parser<T>::parser(std::string s): data(s), start(){
-  handler=check_handler(start->obj);
-  start=build_tree(s);
+parser<T>::parser(std::string s): input(s), start(){
+  handler=parser<T>::check_handler(start->obj);
+  start=build_tree(input);
 }
 
 //distruttore
@@ -69,8 +82,7 @@ parser<T>::~parser(){
 }
 
 template<class T>
-Hierarchy_Handler* parser<T>::check_handler(){
-  T* object;
+Hierarchy_Handler* parser<T>::check_handler(T* object){
   if(dynamic_cast<Complesso*>(object))
     return new Numerical_Hierarchy();
   if(dynamic_cast<Raz*>(object))
@@ -80,7 +92,7 @@ Hierarchy_Handler* parser<T>::check_handler(){
   if(dynamic_cast<tupla*>(object))
     return new Database_Hierarchy();
 
-  throw logic_exception("Tipo non riconosciuto"); //gestire eccezione tipo non riconosciuto
+  throw(0); //gestire eccezione tipo non riconosciuto
 }
 
 //controllo parentesi bilanciate
@@ -100,26 +112,19 @@ bool parser<T>::balanced_brackets(std::string s) const{
 template<class T>
 typename parser<T>::node* parser<T>::find_father(typename parser<T>::node* wanted,typename parser<T>::node* root) {
   if(!root || !wanted || wanted==root) return nullptr; //l'albero e il nodo figlio devono essere != null
-  if(root){
-    if((root->left && root->left == wanted) || (root->right && root->right == wanted)) return root;
-    node* sub_left=find_father(wanted, root->left);
-    if(sub_left) return sub_left;
-    node* sub_right=find_father(wanted, root->right);
-    if(sub_right) return sub_right;
-  }
+  if((root->left && root->left == wanted) || (root->right && root->right == wanted)) return root;
+  node* sub_left=find_father(wanted, root->left);
+  if(sub_left) return sub_left;
+  node* sub_right=find_father(wanted, root->right);
+  if(sub_right) return sub_right;
   return nullptr;
 }
 
 //costruzione albero di parsing
 template<class T>
 typename parser<T>::node* parser<T>::build_tree(std::string s) const {
-
-  if(!balanced_brackets(s))
-    throw logic_exception("Parentesi non bilanciate"); //gestire eccezione parentesi non bilanciate
-
-  if(s.length()==0)
-    throw logic_exception("Stringa vuota"); //gestire eccezione stringa vuota
-
+  if(!balanced_brackets(s)) throw(0); //gestire eccezione parentesi non bilanciate
+  if(s.length()==0) throw(0); //gestire eccezione stringa vuota
   std::string tmp= "(";
   tmp=tmp.append(s);
   tmp=tmp.append(")");
@@ -133,7 +138,14 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       while(!(handler->is_operator(*aux)) && aux!=tmp.end())
         aux++;
       std::string spoil_item(it,aux);
-      T* obj_p=this->create(spoil_item);
+      T* obj_p=nullptr;
+      try {
+        T* obj_p=dynamic_cast<T*>(create(spoil_item));
+      }
+      catch(const syntax_exception& error){
+        delete obj_p;
+        throw error;
+      }
       if(!obj_p)
         std::cout << "identify_literal ERROR";
       current->right=new node();
@@ -218,6 +230,47 @@ double parser<T>::set_prec(char c) const{
 }
 
 template<class T>
+bool parser<T>::compara_alberi(parser<T>::node * root, parser<T>::node * aux) {
+  if(root->operator==(*aux))
+    return compara_alberi(root->left, aux->left) && compara_alberi(root->right, aux->right);
+  return false;
+}
+
+template <class T>
+typename parser<T>::node* parser<T>::getStart() const {
+  return start;
+}
+
+template <class T>
+Hierarchy_Handler* parser<T>::getHandler() const{
+  return handler;
+}
+
+template<class T>
+parser<T> parser<T>::operator=(const parser<T>& p){
+  if(*start!=*(p.start)){
+    delete start;
+    start=parser<T>::node::copy(p.start);
+  }
+  if(!(*handler==*(p.handler))){
+    delete handler;
+    handler=p.handler;
+  }
+  input=p.input;
+  return *this;
+}
+
+template<class T>
+bool parser<T>::operator==(const parser<T>& p){
+  return input==p.input && compara_alberi(start,p.start);
+}
+
+template<class T>
+bool parser<T>::operator!=(const parser<T>& p){
+  return !(*this==p);
+}
+
+template<class T>
 void parser<T>::print(node* n, int z) const{
   if(!n) return;
   if(!n->left && !n->right)
@@ -235,6 +288,7 @@ void parser<T>::print(node* n, int z) const{
   }
 }
 
+
 template<class T>
 void parser<T>::balance_tree(typename parser<T>::node* root){
   if(!root || (!root->left && !root->right)) return;
@@ -243,33 +297,32 @@ void parser<T>::balance_tree(typename parser<T>::node* root){
   balance_tree(root->right);
 }
 
-
 template <class T>
-T* parser<T>::create(std::string s){
+Dato* parser<T>::create(std::string s){
   T* aux;
   if(dynamic_cast<Complesso*>(aux))
     return Numerical_Hierarchy::create_complex(s);
-  if(dynamic_cast<Raz*>(aux))
+  else if(dynamic_cast<Raz*>(aux))
     return Numerical_Hierarchy::create_rational(s);
-  if(dynamic_cast<Componente*>(aux))
+  else if(dynamic_cast<Componente*>(aux))
     return Circuit_Hierarchy::create(s);
-  if(dynamic_cast<tupla*>(aux))
+  else if(dynamic_cast<tupla*>(aux))
     return Database_Hierarchy::create(s);
-
-  throw logic_exception("Tipo non riconosciuto"); //gestire eccezione tipo non riconosciuto
-
+  else
+    throw(0); //gestire eccezione tipo non riconosciuto
 }
 
 template<class T>
-T* parser<T>::resolve(typename parser<T>::node* n){
+Dato* parser<T>::resolve(typename parser<T>::node* n){
   if(!n) return 0;
-  if(n->op == 0)
-    return n->obj;
-
-  if(handler->is_operator(n->op))
-    return T::solve_operation(resolve(n->left), resolve(n->right), n->op);
-
-  throw syntax_exception("Operatore non riconosciuto"); //gestire eccezione operatore non corretto
+  if(n->op != 0) {
+      n->obj = T::solve_operation(resolve(n->left), resolve(n->right), n->op);
+      n->op = 0;
+      n->prec = 7;
+      delete n->left;
+      delete n->right;
+  }
+  return n->obj;
 }
 
 #endif

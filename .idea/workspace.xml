@@ -11,7 +11,27 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22e8c627-8d14-47df-8375-38669db096dd" name="Default Changelist" comment="" />
+    <list default="true" id="22e8c627-8d14-47df-8375-38669db096dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/C_cartesiano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/C_cartesiano.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/C_cartesiano.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/C_cartesiano.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/C_polare.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/C_polare.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/C_polare.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/C_polare.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Componente.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Componente.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Componente.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Componente.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Condensatore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Condensatore.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Condensatore.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Condensatore.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Dato.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Dato.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Induttore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Induttore.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Induttore.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Induttore.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Raz.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Raz.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Raz.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Raz.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Resistore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Resistore.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/Resistore.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/Resistore.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/kalk_model" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/kalk_model" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/tupla.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/tupla.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model Branch/tupla.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model Branch/tupla.h" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,22 +44,22 @@
     <session id="-2112058985">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="6" />
-          <entry key="project.open.time.12" value="3" />
+          <entry key="project.open.time.12" value="4" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.6" value="7" />
           <entry key="project.open.time.7" value="5" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="25" />
+          <entry key="project.opened" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="142" />
-          <entry key="h" value="134" />
+          <entry key="cpp" value="158" />
+          <entry key="h" value="148" />
           <entry key="makefile" value="1" />
           <entry key="txt" value="1" />
         </counts>
@@ -47,158 +67,121 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
-          <entry key="ObjectiveC" value="276" />
+          <entry key="ObjectiveC" value="306" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="5485" />
-          <entry key="h" value="3613" />
+          <entry key="cpp" value="6556" />
+          <entry key="h" value="3762" />
           <entry key="txt" value="159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="9098" />
+          <entry key="ObjectiveC" value="10318" />
           <entry key="PLAIN_TEXT" value="159" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Raz.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="97" selection-start-line="97" selection-start-column="2" selection-end-line="107" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Resistore.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="241">
-                  <caret line="36" selection-start-line="36" selection-end-line="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Resistore.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/tupla.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1323">
-                  <caret line="207" selection-start-line="207" selection-end-line="207" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Model Branch/tupla.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="243">
-                  <caret line="70" selection-start-line="70" selection-end-line="70" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Componente.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="61" selection-start-line="61" selection-start-column="2" selection-end-line="71" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="20" selection-start-line="20" selection-end-line="20" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="36" selection-start-line="36" selection-start-column="2" selection-end-line="47" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="20" selection-start-line="20" selection-end-line="20" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Raz.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="30" selection-start-line="30" selection-end-line="30" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Complesso.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Complesso.h">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Componente.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" selection-start-line="26" selection-end-line="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Raz.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-508">
+              <caret line="113" column="30" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Resistore.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/tupla.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="260" selection-start-line="260" selection-end-line="260" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Componente.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/C_cartesiano.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+              <folding>
+                <element signature="e#39#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="33" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/Raz.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model Branch/C_polare.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="131" column="8" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -248,7 +231,6 @@
         <option value="$PROJECT_DIR$/Model Branch/Circuito.h" />
         <option value="$PROJECT_DIR$/Model Branch/Circuito.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/Numerical_Hierarchy.cpp" />
-        <option value="$PROJECT_DIR$/Model Branch/tupla.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/Circuit_Hierarchy.h" />
         <option value="$PROJECT_DIR$/Model Branch/Circuit_Hierarchy.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/Database_Hierarchy.cpp" />
@@ -257,22 +239,23 @@
         <option value="$PROJECT_DIR$/Model Branch/parser.h" />
         <option value="$PROJECT_DIR$/Model Branch/main.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/Complesso.cpp" />
-        <option value="$PROJECT_DIR$/Model Branch/Dato.h" />
-        <option value="$PROJECT_DIR$/Model Branch/C_cartesiano.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/Raz.h" />
         <option value="$PROJECT_DIR$/Model Branch/C_cartesiano.h" />
-        <option value="$PROJECT_DIR$/Model Branch/C_polare.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/C_polare.h" />
         <option value="$PROJECT_DIR$/Model Branch/Componente.h" />
-        <option value="$PROJECT_DIR$/Model Branch/Condensatore.cpp" />
-        <option value="$PROJECT_DIR$/Model Branch/Componente.cpp" />
-        <option value="$PROJECT_DIR$/Model Branch/Condensatore.h" />
-        <option value="$PROJECT_DIR$/Model Branch/Induttore.cpp" />
-        <option value="$PROJECT_DIR$/Model Branch/Induttore.h" />
-        <option value="$PROJECT_DIR$/Model Branch/Raz.h" />
-        <option value="$PROJECT_DIR$/Model Branch/Raz.cpp" />
-        <option value="$PROJECT_DIR$/Model Branch/Resistore.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/Resistore.h" />
+        <option value="$PROJECT_DIR$/Model Branch/Induttore.h" />
+        <option value="$PROJECT_DIR$/Model Branch/Condensatore.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/Condensatore.h" />
         <option value="$PROJECT_DIR$/Model Branch/tupla.h" />
+        <option value="$PROJECT_DIR$/Model Branch/Dato.h" />
+        <option value="$PROJECT_DIR$/Model Branch/Raz.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/C_cartesiano.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/C_polare.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/Componente.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/Resistore.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/tupla.cpp" />
+        <option value="$PROJECT_DIR$/Model Branch/Induttore.cpp" />
       </list>
     </option>
   </component>
@@ -292,6 +275,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -308,7 +292,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -330,20 +313,16 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Tupla.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Model Branch/Numero.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Model Branch/Raz.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/Makefile</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/View</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/View.pro</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/VCircuito.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/VCircuito.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/VComplesso.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/VComplesso.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/VRazionale.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/VRazionale.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/specialized_view.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/specialized_view.h</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/CCartesiano.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/CPolare.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Complesso.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Componente.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Condensatore.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Induttore.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Numero.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Raz.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Resistore.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Use.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -351,27 +330,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Numero.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Java/Raz.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/VCircuito.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/VComplesso.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/VRazionale.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/VTupla.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/controller_view.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/main.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_KalkButton.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_KalkButton.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_controller_view.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_controller_view.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_specialized_view.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_specialized_view.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_startup_view.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/moc_startup_view.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/numerical_insert.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view.o</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/numerical_insert.cpp</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/specialized_view_hierarchy/numerical_insert.h</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Vista/View/startup_view.o</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -548,8 +506,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15022762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15250379" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962063" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -560,7 +519,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32888147" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32888147" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.327212" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32888147" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.327212" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.33665007" />
@@ -571,7 +530,7 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15022762" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15250379" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962063" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -582,7 +541,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32888147" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32888147" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3283582" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32888147" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.327212" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.33665007" />
@@ -685,20 +644,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Circuito.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Circuito.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Circuito.h" />
+    <entry file="file://$PROJECT_DIR$/Model Branch/Circuito.cpp" />
     <entry file="file://$PROJECT_DIR$/Model Branch/Numerical_Hierarchy.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -834,40 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/C_cartesiano.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="87" selection-start-line="87" selection-start-column="2" selection-end-line="97" selection-end-column="3" />
-          <folding>
-            <element signature="e#39#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Dato.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#80#99#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/C_cartesiano.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/C_polare.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="116" selection-start-line="116" selection-start-column="2" selection-end-line="126" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/Complesso.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -878,94 +791,128 @@
     <entry file="file://$PROJECT_DIR$/Model Branch/Complesso.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Componente.h">
+    <entry file="file://$PROJECT_DIR$/Model Branch/C_cartesiano.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+        <state relative-caret-position="272">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/C_polare.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Componente.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="61" selection-start-line="61" selection-start-column="2" selection-end-line="71" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="36" selection-start-line="36" selection-start-column="2" selection-end-line="47" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Raz.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Raz.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="97" selection-start-line="97" selection-start-column="2" selection-end-line="107" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/Resistore.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="36" selection-start-line="36" selection-end-line="47" />
+        <state relative-caret-position="405">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/Resistore.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model Branch/tupla.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1323">
-          <caret line="207" selection-start-line="207" selection-end-line="207" />
+        <state relative-caret-position="345">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/tupla.h">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="73" selection-start-line="73" selection-end-line="73" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Dato.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding>
+            <element signature="e#80#99#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Componente.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/C_cartesiano.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+          <folding>
+            <element signature="e#39#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/C_polare.cpp">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
+          <caret line="131" column="8" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Resistore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Componente.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Condensatore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/tupla.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="260" selection-start-line="260" selection-end-line="260" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Induttore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Raz.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model Branch/Raz.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-508">
+          <caret line="113" column="30" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
         </state>
       </provider>
     </entry>

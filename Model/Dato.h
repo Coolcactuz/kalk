@@ -8,12 +8,14 @@
 #include <iostream>
 #include <cmath>
 #include <typeinfo>
+#include <string>
 #include "exception.h"
 
 class Dato{
 public:
     virtual ~Dato() = default;
     virtual bool operator==(const Dato&) const =0;
+    virtual std::string toString() const =0;
    // virtual Dato& operator=(const Dato&) =0;
 };
 

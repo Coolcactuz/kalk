@@ -1,10 +1,12 @@
+//
+// Created by luca on 10/01/18.
+//
 
 #ifndef KALK_CONDENSATORE_H
 #define KALK_CONDENSATORE_H
 
 
 #include "Componente.h"
-#include "Circuito.h"
 
 class Condensatore: public Componente{
 private:
@@ -12,9 +14,13 @@ private:
 public:
     Condensatore(double);
     Condensatore(std::string);
-    Condensatore():capacita(0){}
-    ~Condensatore();
+    Condensatore();
 
+    bool operator== (const Dato&) const;
+//    Condensatore& operator= (const Dato&);
+
+    std::string toString() const;
+    double getCapacita() const;
     C_cartesiano impedenza() const override;
 };
 

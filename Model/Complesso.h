@@ -1,3 +1,7 @@
+//
+// Created by luca on 18/12/17.
+//
+
 #ifndef KALK_COMPLESSO_H
 #define KALK_COMPLESSO_H
 
@@ -9,7 +13,7 @@ public:
     virtual Complesso* coniugato() const =0;
     virtual void stampa(std::ostream&) const =0;
 
-    Complesso* solve_operation(Numero*, Numero*, char)const ;
+    static Complesso* solve_operation(const Dato*, const Dato*, char);
 };
 std::ostream& operator<< (std::ostream&, const Complesso&);
 #endif

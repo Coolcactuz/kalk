@@ -1,9 +1,12 @@
+//
+// Created by luca on 10/01/18.
+//
+
 #ifndef KALK_INDUTTANZA_H
 #define KALK_INDUTTANZA_H
 
 
 #include "Componente.h"
-#include "Circuito.h"
 
 class Induttore: public Componente{
 private:
@@ -11,9 +14,13 @@ private:
 public:
     Induttore(double);
     Induttore(std::string);
-    Induttore(): induttanza(0){}
-    ~Induttore();
+    Induttore();
 
+    bool operator== (const Dato&) const;
+//    Induttore& operator= (const Dato&);
+
+    std::string toString() const;
+    double getInduttanza() const;
     C_cartesiano impedenza() const override;
 };
 

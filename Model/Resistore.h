@@ -1,9 +1,13 @@
+//
+// Created by luca on 03/01/18.
+//
+
 #ifndef KALK_RESISTORE_H
 #define KALK_RESISTORE_H
 
 
 #include "Componente.h"
-#include "Circuito.h"
+
 
 class Resistore : public Componente{
 private:
@@ -11,9 +15,13 @@ private:
 public:
     Resistore(double);
     Resistore(std::string);
-    Resistore(): resistenza(0){}
-    ~Resistore();
+    Resistore();
 
+    bool operator== (const Dato &) const;
+//    Resistore& operator= (const Dato &);
+
+    std::string toString() const;
+    double getResistenza() const;
     C_cartesiano impedenza() const override;
 };
 

@@ -1,3 +1,7 @@
+//
+// Created by luca on 18/12/17.
+//
+
 #ifndef KALK_C_POLARE_H
 #define KALK_C_POLARE_H
 
@@ -10,17 +14,18 @@ private:
 
 public:
     C_polare(double, double);
-    C_polare(const C_polare&);
+    //C_polare(const C_polare&);
     C_polare(std::string);
     C_polare();
-    ~C_polare();
 
     C_polare* operator+ (const Numero*)const;
     C_polare* operator- (const Numero*)const;
     C_polare* operator* (const Numero*)const;
     C_polare* operator/ (const Numero*)const;
+    bool operator== (const Dato&)const;
+//    C_polare& operator=(const Dato&);
 
-    static C_polare* create(std::string);
+    std::string toString() const;
     Complesso* converti() const;
     C_polare* coniugato() const;
     double getModulo() const;
