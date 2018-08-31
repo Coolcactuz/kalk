@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'specialized_view.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'specialized_view.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -73,10 +73,9 @@ void specialized_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (specialized_view::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::back)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&specialized_view::back)) {
                 *result = 0;
                 return;
             }
@@ -100,7 +99,7 @@ void *specialized_view::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_specialized_view.stringdata0))
-        return static_cast<void*>(const_cast< specialized_view*>(this));
+        return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
