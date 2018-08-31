@@ -25,7 +25,7 @@ class Resistore extends Componente{
   }
 
   public CCartesiano impedenza(){
-    CCartesiano result = new CCartesiano(resistenza);
+    CCartesiano result = new CCartesiano(resistenza, 0);
     return result;
   }
 

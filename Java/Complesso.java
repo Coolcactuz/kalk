@@ -13,7 +13,7 @@
 //COMPLESSO -> printComplesso()
 
 
-class Complesso extends Numero{
+abstract class Complesso extends Numero{
     public abstract Complesso converti();
     public abstract Complesso coniugato();
 

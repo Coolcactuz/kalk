@@ -68,6 +68,7 @@ class CCartesiano extends Complesso{
       //----------------
       //GESTIRE ECCEZIONE-> tipi incompatibili
       //-----------------
+      return this;
     }
   }
 
@@ -88,6 +89,7 @@ class CCartesiano extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE->tipi incompatibili
       //-------------------
+      return this;
     }
   }
 
@@ -108,6 +110,7 @@ class CCartesiano extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE->tipi incompatibili
       //-------------------
+      return this;
     }
   }
 
@@ -130,6 +133,7 @@ class CCartesiano extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE->tipi incompatibili
       //-------------------
+      return this;
     }
   }
 

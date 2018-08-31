@@ -29,9 +29,9 @@ public class Use{
 
     System.out.println((t2.existsMetadato("PRODOTTO")) ? "PRODOTTO ESISTE" : "PRODOTTO NON ESISTE");
     System.out.println(t2.searchByMetadato("MODELLO"));
-    System.out.println((t2.searchByEntry("MARCA,samsung")) ? "L'ENTRY CERCATA ESISTE" : "L'ENTRY CERCATA NON ESISTE");
+    System.out.println((t2.searchByEntry("MARCA","samsung")) ? "L'ENTRY CERCATA ESISTE" : "L'ENTRY CERCATA NON ESISTE");
 
-    t2.insert("COLORE,grigio");
+    t2.insert("COLORE","grigio");
     t2.printTupla();
 
     t2.erase();
@@ -48,7 +48,7 @@ public class Use{
 
     (t2.intersezione(t3)).printTupla();
 
-    t3.insert("DISPONIBILE,si");
+    t3.insert("DISPONIBILE", "si");
     (t2.differenza(t3)).printTupla();
 
     (t2.join(t3)).printTupla();

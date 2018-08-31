@@ -79,11 +79,11 @@ class Raz extends Numero{
       return result;
     }
     else if(exp < 0){
-      Raz result = new Raz(Math.pow(den, -exp), Math.pow(num, -exp));
+      Raz result = new Raz(((long) Math.pow(den, -exp)), ((long) Math.pow(num, -exp)));
       return result;
     }
     else{
-      Raz result = new Raz(Math.pow(num, exp), Math.pow(den, exp));
+      Raz result = new Raz(((long) Math.pow(num, exp)), ((long) Math.pow(den, exp)));
       return result;
     }
   }

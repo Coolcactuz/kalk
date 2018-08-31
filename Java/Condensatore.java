@@ -49,7 +49,7 @@ class Condensatore extends Componente{
 
   public boolean equals(Object obj){
     if(!(obj instanceof Condensatore)){
-      System.out.println("Condensatore.equals()-> obj non e' instanza di Condensatore")
+      System.out.println("Condensatore.equals()-> obj non e' instanza di Condensatore");
       //-------------------
       //GESTIRE ECCEZIONE
       //-------------------

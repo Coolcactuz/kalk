@@ -65,7 +65,7 @@ class CPolare extends Complesso{
     double real = modulo * Math.cos(Math.toRadians(fase));
     double img = modulo * Math.sin(Math.toRadians(fase));
 
-    CCartesiano result = new Ccartesiano(real, img);
+    CCartesiano result = new CCartesiano(real, img);
     return result;
   }
 
@@ -118,6 +118,7 @@ class CPolare extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE-> tipi incompatibili
       //-------------------
+      return this;
     }
   }
 
@@ -142,6 +143,7 @@ class CPolare extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE-> tipi incompatibili
       //-------------------
+      return this;
     }
   }
 
@@ -165,6 +167,7 @@ class CPolare extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE-> tipi incompatibili
       //-------------------
+      return this;
     }
   }
 
@@ -188,6 +191,7 @@ class CPolare extends Complesso{
       //-------------------
       //GESTIRE ECCEZIONE-> tipi incompatibili
       //-------------------
+      return this;
     }
   }
 

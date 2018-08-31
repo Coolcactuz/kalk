@@ -33,7 +33,7 @@ class Componente extends Dato{
   }
 
   public Componente(){
-    this(0);
+    this(new CCartesiano());
   }
 
   public CCartesiano impedenza(){
@@ -43,14 +43,14 @@ class Componente extends Dato{
   public Componente serie(Componente c){
     CCartesiano impThis = impedenza();
     CCartesiano impParameter = c.impedenza();
-    Componente result = new Componente(impThis.somma(impParameter));
+    Componente result = new Componente(((CCartesiano) impThis.somma(impParameter)));
     return result;
   }
 
   public Componente parallelo(Componente c){
     CCartesiano impThis = impedenza();
     CCartesiano impParameter = c.impedenza();
-    Componente result = new Componente((impThis.moltiplicazione(impParameter)).divisione(impThis.somma(impParameter)));
+    Componente result = new Componente(((CCartesiano) (impThis.moltiplicazione(impParameter)).divisione(impThis.somma(impParameter))));
     return result;
   }
 
