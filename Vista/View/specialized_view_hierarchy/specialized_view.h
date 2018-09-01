@@ -46,6 +46,12 @@ signals:
 
   void back();
 
+  void inviaQS(QString);
+
+public slots:
+
+  void raccogli_testo_corrente();
+
 };
 
 

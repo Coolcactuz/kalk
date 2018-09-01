@@ -2,6 +2,7 @@
 
 controller_view::controller_view(): StartupV(new startup_view()), SpecializedV(0) {
   QObject::connect(StartupV, SIGNAL(type_FStartupTController(int)), this, SLOT(createSpecialized(int)));
+  QObject::connect(StartupV, SIGNAL(type_FStartupTController(int)), this, SIGNAL(inviaTipo(int)));
 
   setCenterOfMonitor(StartupV);
   StartupV->show();
@@ -37,6 +38,7 @@ void controller_view::createSpecialized(int i){
   }
 
   QObject::connect(SpecializedV, SIGNAL(back()), this, SLOT(createStartup()));
+  QObject::connect(SpecializedV, SIGNAL(inviaQS(QString)), this, SIGNAL(inviaStringa(QString)));
 
   StartupV->close();
   delete StartupV;
@@ -51,6 +53,7 @@ void controller_view::createStartup(){
 
   StartupV = new startup_view();
   QObject::connect(StartupV, SIGNAL(type_FStartupTController(int)), this, SLOT(createSpecialized(int)));
+  QObject::connect(StartupV, SIGNAL(type_FStartupTController(int)), this, SIGNAL(inviaTipo(int)));
 
   SpecializedV->close();
   delete SpecializedV;

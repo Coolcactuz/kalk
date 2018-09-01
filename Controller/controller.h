@@ -3,6 +3,9 @@
 
 #include "../Vista/View/controller_view.h"
 #include "../Model/parser.h"
+
+#include <string>
+
 #include <QObject>
 
 class controller: public QObject{
@@ -10,17 +13,24 @@ class controller: public QObject{
 Q_OBJECT
 
 private:
-  int datatype;
-  view_manager* vm;
+
+  controller_view* cv;
+
+  int tipo_corrente;
+  Dato* oggetto_corrente;
+  QString from_gui;
+
+  //void inizia_sessione();
 
 public:
 
   controller();
-
-  int getDatatype() const {return datatype;}
+  ~controller();
 
 public slots:
-  void setData(int);
+
+  void defineTC(int);
+  void data_GUI_to_controller(QString);
 
 };
 

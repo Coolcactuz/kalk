@@ -2,6 +2,7 @@
 #define CONTROLLER_VIEW_H
 
 #include <iostream>
+#include <string>
 
 #include <QObject>
 
@@ -32,6 +33,11 @@ public:
 
   controller_view();
   ~controller_view();
+
+signals:
+
+  void inviaTipo(int);
+  void inviaStringa(QString);
 
 public slots:
 

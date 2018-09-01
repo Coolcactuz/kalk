@@ -30,16 +30,21 @@ specialized_view::specialized_view(): type_title(new QLabel(this)), lower(new QH
       if(kb){
 
         if(kb->getDataNumber() == -1){
-
+          QObject::connect(kb, SIGNAL(clicked()), this, SLOT(raccogli_testo_corrente()));
         }
         else{
           QObject::connect(kb, SIGNAL(clicked()), display, SLOT(write_on_kpte()));
         }
-        
+
       }
     }
 
   }
 
   QObject::connect(go_back, SIGNAL(clicked()), this, SIGNAL(back()));
+}
+
+void specialized_view::raccogli_testo_corrente(){
+  QString aux = display->toPlainText();
+  emit inviaQS(aux);
 }
