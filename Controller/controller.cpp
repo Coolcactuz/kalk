@@ -26,7 +26,9 @@ void controller::data_GUI_to_controller(QString s){
 
       parser<Raz> pr(from_gui.toUtf8().constData());
 
-      oggetto_corrente = parser::
+      oggetto_corrente = pr.resolve();
+
+      emit data_controller_to_GUI(QString(oggetto_corrente->toString()));
 
     break;
 

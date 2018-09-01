@@ -36,3 +36,7 @@ void KalkPlainTextEdit::write_on_kpte(){
   }
 
 }
+
+// void KalkPlainTextEdit::show_text(QString qs){
+//   setPlainText(qs);
+// }

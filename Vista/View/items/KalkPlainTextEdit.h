@@ -18,6 +18,8 @@ class KalkPlainTextEdit: public QPlainTextEdit{
 public:
   KalkPlainTextEdit(QWidget* p = 0): QPlainTextEdit(p) {}
 
+  //void show_text(QString);
+
 public slots:
   void write_on_kpte();
 };

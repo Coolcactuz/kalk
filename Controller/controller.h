@@ -27,6 +27,10 @@ public:
   controller();
   ~controller();
 
+signals:
+
+  void data_controller_to_GUI(QString);
+
 public slots:
 
   void defineTC(int);
