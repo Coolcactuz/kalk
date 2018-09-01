@@ -7,12 +7,27 @@ type_title->setText("CIRCUITO");
 lower->addLayout(circuitoOp);
 lower->addLayout(circuitoSelectors);
 
-circuitoOp->addWidget(new KalkButton(10, "+", this), 0, 0);
-circuitoOp->addWidget(new KalkButton(11, "//", this), 0, 1);
-circuitoOp->addWidget(new KalkButton(12, "R", this), 0, 2);
+circuitoOp->addWidget(new KalkButton(10, "+", this), 0, 1);
+circuitoOp->addWidget(new KalkButton(11, "/", this), 1, 1);
+circuitoOp->addWidget(new KalkButton(12, "R", this), 0, 0);
 circuitoOp->addWidget(new KalkButton(13, "L", this), 1, 0);
-circuitoOp->addWidget(new KalkButton(14, "C", this), 1, 1);
-circuitoOp->addWidget(new KalkButton(15, "Z", this), 1, 2);
+circuitoOp->addWidget(new KalkButton(14, "C", this), 2, 0);
+//circuitoOp->addWidget(new KalkButton(15, "Z", this), 1, 2);
+
+for(int j = 0; j < circuitoOp->count(); j++){
+
+  QLayoutItem* aux = circuitoOp->itemAt(j);
+  QWidgetItem* tmp = dynamic_cast<QWidgetItem*>(aux);
+
+  if(tmp){
+    QWidget* qw = tmp->widget();
+    KalkButton* kb = dynamic_cast<KalkButton*>(qw);
+
+    if(kb){
+      QObject::connect(kb, SIGNAL(clicked()), display, SLOT(write_on_kpte()));
+    }
+  }
+}
 
 circuitoSelectors->addWidget(new QLabel("Frequenza:", this));
 circuitoSelectors->addWidget(freq);

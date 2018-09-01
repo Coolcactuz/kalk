@@ -11,7 +11,29 @@ VRazionale::VRazionale(): razionaleOp(new QGridLayout()){
   razionaleOp->addWidget(new KalkButton(12, "-", this), 1, 0);
   razionaleOp->addWidget(new KalkButton(13, "/", this), 1, 1);
   razionaleOp->addWidget(new KalkButton(14, "^", this), 2, 0);
-  razionaleOp->addWidget(new KalkButton(15, "sqrt", this), 2, 1);
-  razionaleOp->addWidget(new KalkButton(16, "1/x", this), 2, 1);
-  razionaleOp->addWidget(new KalkButton(17, "<->", this), 2, 1);
+  razionaleOp->addWidget(new KalkButton(-6, "sqrt", this), 2, 1);
+  razionaleOp->addWidget(new KalkButton(-7, "1/x", this), 2, 1);
+  razionaleOp->addWidget(new KalkButton(-8, "<->", this), 2, 1);
+
+  for(int j = 0; j < razionaleOp->count(); j++){
+
+    QLayoutItem* aux = razionaleOp->itemAt(j);
+    QWidgetItem* tmp = dynamic_cast<QWidgetItem*>(aux);
+
+    if(tmp){
+      QWidget* qw = tmp->widget();
+      KalkButton* kb = dynamic_cast<KalkButton*>(qw);
+
+      if(kb){
+
+        if(kb->getDataNumber() > 0){
+          QObject::connect(kb, SIGNAL(clicked()), display, SLOT(write_on_kpte()));
+        }
+        else{
+
+        }
+        
+      }
+    }
+  }
 }

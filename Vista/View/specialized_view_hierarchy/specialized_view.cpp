@@ -19,5 +19,27 @@ specialized_view::specialized_view(): type_title(new QLabel(this)), lower(new QH
   generic_keyboard->addWidget(new KalkButton(-2, "DEL", this), 1, 0);
   generic_keyboard->addWidget(new KalkButton(-1, "ENTER", this), 2, 0);
 
+  for(int i = 0; i < generic_keyboard->count(); i++){
+    QLayoutItem* aux = generic_keyboard->itemAt(i);
+    QWidgetItem* tmp = dynamic_cast<QWidgetItem*>(aux);
+
+    if(tmp){
+      QWidget* qw = tmp->widget();
+      KalkButton* kb = dynamic_cast<KalkButton*>(qw);
+
+      if(kb){
+
+        if(kb->getDataNumber() == -1){
+
+        }
+        else{
+          QObject::connect(kb, SIGNAL(clicked()), display, SLOT(write_on_kpte()));
+        }
+        
+      }
+    }
+
+  }
+
   QObject::connect(go_back, SIGNAL(clicked()), this, SIGNAL(back()));
 }

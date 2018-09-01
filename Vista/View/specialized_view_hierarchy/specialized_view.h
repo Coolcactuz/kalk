@@ -1,7 +1,7 @@
 #ifndef SPECIALIZED_VIEW_H
 #define SPECIALIZED_VIEW_H
 
-// #include "../items/KalkButton.h"
+//#include "../items/KalkButton.h"
 #include "../items/KalkPlainTextEdit.h"
 
 #include <QLabel>
