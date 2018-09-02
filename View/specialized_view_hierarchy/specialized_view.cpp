@@ -1,14 +1,16 @@
 #include "specialized_view.h"
 
-specialized_view::specialized_view(): type_title(new QLabel(this)), lower(new QHBoxLayout()), display(new KalkPlainTextEdit(this)),
-  external_layout(new QVBoxLayout(this)), header(new QHBoxLayout()),  upper(new QVBoxLayout()),
-  go_back(new QPushButton("BACK", this)), generic_keyboard(new QGridLayout()){
+specialized_view::specialized_view(): type_title(new QLabel(this)), help(new QPushButton("SERVE AIUTO?", this)),
+  lower(new QHBoxLayout()), display(new KalkPlainTextEdit(this)), external_layout(new QVBoxLayout(this)),
+  header(new QHBoxLayout()),  upper(new QVBoxLayout()), go_back(new QPushButton("BACK", this)),
+  generic_keyboard(new QGridLayout()){
 
   external_layout->addLayout(header);
   external_layout->addLayout(upper);
   external_layout->addLayout(lower);
 
   header->addWidget(type_title);
+  header->addWidget(help);
   header->addWidget(go_back);
 
   upper->addWidget(display);
@@ -49,8 +51,8 @@ void specialized_view::raccogli_testo_corrente(){
   emit inviaQS(aux);
 }
 
-void specialized_view::mostra_result(Qstring res){
-  display->setPlainText(s);
+void specialized_view::mostra_result(QString res){
+  display->setPlainText(res);
 }
 
 void specialized_view::specops_raz(){

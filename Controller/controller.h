@@ -1,7 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "../Vista/View/controller_view.h"
+#include "../View/controller_view.h"
 #include "../Model/parser.h"
 
 #include <string>

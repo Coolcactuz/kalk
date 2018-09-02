@@ -21,7 +21,8 @@ class specialized_view: public QWidget{
 Q_OBJECT
 
 protected:
-  QLabel * type_title;
+  QLabel* type_title;
+  QPushButton* help;
   QHBoxLayout* lower;
   KalkPlainTextEdit* display;
 
