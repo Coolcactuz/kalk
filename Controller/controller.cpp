@@ -4,6 +4,10 @@ controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_c
   QObject::connect(cv, SIGNAL(inviaTipo(int)), this, SLOT(defineTC(int)));
   QObject::connect(cv, SIGNAL(inviaStringa(QString)), this, SLOT(data_GUI_to_controller(QString)));
 
+  QObject::connect(cv, SIGNAL(SOComplesso(int)), this, SLOT(socomplesso_logic(int)));
+  QObject::connect(cv, SIGNAL(SORaz(int)), this, SLOT(soraz_logic(int)));
+
+
   QObject::connect(this, SIGNAL(data_controller_to_GUI(QString)), cv, SIGNAL(inviaResult(QString)));
   //inizia_sessione();
 }
@@ -90,6 +94,32 @@ void controller::soraz_logic(int i){
 
 void controller::socomplesso_logic(int i){
 
+  Complesso* aux = dynamic_cast<Complesso*>(oggetto_corrente);
+
+  if(!aux){
+    //gestire eccezione
+  }
+
+  switch (i){
+
+    case -4:
+    {
+      Complesso* result_conversione = aux->converti();
+      QString result_stringa = result_conversione->toString();
+      delete result_conversione;
+      emit data_controller_to_GUI(result_stringa);
+    }
+    break;
+
+    default:
+    {
+      Complesso* result_coniugato = aux->coniugato();
+      QString stringa_coniugato = result_coniugato->toString();
+      delete result_coniugato;
+      emit data_controller_to_GUI(stringa_coniugato);
+    }
+    break;
+  }
 }
 // void controller::inizia_sessione(){
 
