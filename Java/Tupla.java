@@ -96,6 +96,24 @@ class Tupla extends Dato{
             //----------------------
           }
 
+          String metadato_da_verificare = s.substring(ind, aux);
+
+          int tmp = 0;
+
+          while(tmp < metadato_da_verificare.length()){
+
+            Character ch_tmp = metadato_da_verificare.charAt(tmp);
+
+            if((ch_tmp.toString()).matches("[^a-zA-Z0-9]")){
+              //gestire eccezione carattere speciale
+              System.out.println("carattere speciale in metadato");
+            }
+
+            tmp++;
+          }
+
+          tmp = 0;
+
           metadati.add(s.substring(ind, aux));
 
           ++aux;
@@ -107,10 +125,40 @@ class Tupla extends Dato{
 
 
           if(aux == s.length()){
+
+            String dato_da_verificare = s.substring(ind);
+
+            while(tmp < dato_da_verificare.length()){
+
+              Character ch_tmp = dato_da_verificare.charAt(tmp);
+
+              if((ch_tmp.toString()).matches("[^a-zA-Z0-9]")){
+                //gestire errore sintassi
+                System.out.println("carattere speciale in dato");
+              }
+
+              tmp++;
+            }
+
             dati.add(s.substring(ind));
             ind = aux;
           }
           else{
+
+            String dato_da_verificare = s.substring(ind, aux);
+
+            while(tmp < dato_da_verificare.length()){
+
+              Character ch_tmp = dato_da_verificare.charAt(tmp);
+
+              if((ch_tmp.toString()).matches("[^a-zA-Z0-9]")){
+                //gestire errore sintassi
+                System.out.println("carattere speciale in dato");
+              }
+
+              tmp++;
+            }
+
             dati.add(s.substring(ind, aux));
             ind = aux + 1;
           }
@@ -147,6 +195,7 @@ class Tupla extends Dato{
     }
   }
 */
+
 
   //verifica se obj può essere castato a Tupla
   //vero se e solo se stesso vettore metadati e stesso vettore dati

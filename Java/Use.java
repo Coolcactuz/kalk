@@ -25,6 +25,10 @@ public class Use{
     Tupla t1 = new Tupla();
     Tupla t2 = new Tupla("MARCA,apple,PRODOTTO,iphone,MODELLO,6s");
 
+    //Tupla t4 = new Tupla("ci ao,ciao");
+    //Tupla t5 = new Tupla("ciao,c\niao");
+    Tupla t6 = new Tupla("ciao, ciao");
+
     t2.printTupla();
     t2.printDati();
     t2.printMetadati();

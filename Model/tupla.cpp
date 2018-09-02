@@ -80,7 +80,16 @@ tupla::tupla(std::string s){
         }
       }
 
-      //se arrivo qui nessun metadato già presente nel vettore è uguale a quello che voglio inserire, quindi posso farlo
+      //controllo che all'interno della stringa non sia presente un carattere speciale
+      std::size_t found_metadato = (s.substr(ind, sub_size)).find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890");
+
+      if(found_metadato != std::string::npos){
+        //gestire eccezione sintassi
+        std::cout << "eccezione sintassi" << std::endl;
+      }
+
+      //se arrivo qui nessun metadato già presente nel vettore è uguale a quello che voglio inserire e all'interno del metadato stesso non ci
+      //sono caratteri speciali, quindi posso farlo
       metadati.push_back(s.substr(ind, sub_size));
 
       sub_size = 0;
@@ -90,6 +99,14 @@ tupla::tupla(std::string s){
       while(aux < s.size() && s[aux] != ','){
         sub_size++;
         aux++;
+      }
+
+      //controllo che nel dato da inserire non ci siano caratteri speciali
+      std::size_t found_dato = (s.substr(ind, sub_size)).find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890");
+
+      if(found_dato != std::string::npos){
+        //gestire eccezione sintassi
+        std::cout << "eccezione sintassi" << std::endl;
       }
 
       dati.push_back(s.substr(ind,sub_size));
