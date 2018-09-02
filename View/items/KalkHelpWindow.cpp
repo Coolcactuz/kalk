@@ -62,6 +62,7 @@ void KalkHelpWindow::set_aiuto_complesso(){
 void KalkHelpWindow::set_aiuto_circuito(){
   testo_aiuto->appendPlainText("Questa vista permette la gestione del tipo Componente:");
   testo_aiuto->appendPlainText("\npermette infatti di effettuare operazioni tra Induttori, Condensatori, e Resistori.");
+  testo_aiuto->appendPlainText("\nI selettori possono essere usati per settare la frequenza e il voltaggio.");
   testo_aiuto->appendPlainText("\n\nModi per esprimere un Induttore:");
   testo_aiuto->appendPlainText("\n1) Lx ->  x >= 0, con parte decimale o no (es. L45)");
   testo_aiuto->appendPlainText("\nModi per esprimere un Condensatore:");

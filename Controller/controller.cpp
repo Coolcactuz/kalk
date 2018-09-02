@@ -7,6 +7,9 @@ controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_c
   QObject::connect(cv, SIGNAL(SOComplesso(int)), this, SLOT(socomplesso_logic(int)));
   QObject::connect(cv, SIGNAL(SORaz(int)), this, SLOT(soraz_logic(int)));
 
+  QObject::connect(cv, SIGNAL(controller_view_inviaVolt(double)), this, SLOT(circuito_cambia_volt(double)));
+  QObject::connect(cv, SIGNAL(controller_view_inviaFreq(double)), this, SLOT(circuito_cambia_freq(double)));
+
 
   QObject::connect(this, SIGNAL(data_controller_to_GUI(QString)), cv, SIGNAL(inviaResult(QString)));
   //inizia_sessione();
@@ -121,6 +124,17 @@ void controller::socomplesso_logic(int i){
     break;
   }
 }
-// void controller::inizia_sessione(){
 
-// }
+void controller::circuito_cambia_volt(double d){
+  Componente::setVolt(d);
+
+  //per vedere se fa robe
+  emit data_controller_to_GUI(QString(Componente::getVolt()));
+}
+
+void controller::circuito_cambia_freq(double d){
+  Componente::setFreq(d);
+
+  //per vedere se fa robe
+  emit data_controller_to_GUI(QString(Componente::getFreq()));
+}

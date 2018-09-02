@@ -43,6 +43,9 @@ void controller_view::createSpecialized(int i){
   QObject::connect(SpecializedV, SIGNAL(inviaSORaz(int)), this, SIGNAL(SORaz(int)));
   QObject::connect(SpecializedV, SIGNAL(inviaSOComplesso(int)), this, SIGNAL(SOComplesso(int)));
 
+  QObject::connect(SpecializedV, SIGNAL(specialized_view_inviaVolt(double)), this, SIGNAL(controller_view_inviaVolt(double)));
+  QObject::connect(SpecializedV, SIGNAL(specialized_view_inviaFreq(double)), this, SIGNAL(controller_view_inviaFreq(double)));
+
 
   QObject::connect(this, SIGNAL(inviaResult(QString)), SpecializedV, SLOT(mostra_result(QString)));
 

@@ -1,6 +1,6 @@
 #include "VCircuito.h"
 
-VCircuito::VCircuito(): circuitoOp(new QGridLayout()),circuitoSelectors(new QVBoxLayout()), freq(new QSpinBox(this)), volt(new QSpinBox(this)){
+VCircuito::VCircuito(): circuitoOp(new QGridLayout()),circuitoSelectors(new QVBoxLayout()), freq(new QDoubleSpinBox(this)), volt(new QDoubleSpinBox(this)){
 
 type_title->setText("CIRCUITO");
 
@@ -33,6 +33,9 @@ circuitoSelectors->addWidget(new QLabel("Frequenza:", this));
 circuitoSelectors->addWidget(freq);
 circuitoSelectors->addWidget(new QLabel("Voltaggio:", this));
 circuitoSelectors->addWidget(volt);
+
+QObject::connect(freq, SIGNAL(valueChanged(double)), this, SIGNAL(specialized_view_inviaFreq()));
+QObject::connect(volt, SIGNAL(valueChanged(double)), this, SIGNAL(specialized_view_inviaVolt()));
 
 QObject::connect(help, SIGNAL(clicked()), this, SLOT(helpCircuito()));
 

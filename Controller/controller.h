@@ -39,6 +39,8 @@ public slots:
   void soraz_logic(int);
   void socomplesso_logic(int);
 
+  void circuito_cambia_volt(double);
+  void circuito_cambia_freq(double);
 };
 
 #endif

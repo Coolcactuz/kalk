@@ -28,8 +28,8 @@ public:
     std::string toString() const;
     static double getVolt();
     static double getFreq();
-    void setVolt(double);
-    void setFreq(double);
+    static void setVolt(double);
+    static void setFreq(double);
     void setImp(const C_cartesiano&);
 
     static Componente* solve_operation(const Dato*, const Dato*, char);

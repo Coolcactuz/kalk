@@ -10,7 +10,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
-#include <QSpinBox>
+#include <QDoubleSpinBox>
 
 
 #include <string>
@@ -50,6 +50,9 @@ signals:
 
   void inviaSORaz(int);
   void inviaSOComplesso(int);
+
+  void specialized_view_inviaVolt(double);
+  void specialized_view_inviaFreq(double);
 
 public slots:
 

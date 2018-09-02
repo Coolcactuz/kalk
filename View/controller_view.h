@@ -43,6 +43,9 @@ signals:
   void SOComplesso(int);
   void SORaz(int);
 
+  void controller_view_inviaFreq(double);
+  void controller_view_inviaVolt(double);
+
 public slots:
 
   void createSpecialized(int);

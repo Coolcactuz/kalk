@@ -7,8 +7,8 @@ class VCircuito: public numerical_insert{
 private:
   QGridLayout* circuitoOp;
   QVBoxLayout* circuitoSelectors;
-  QSpinBox* freq;
-  QSpinBox* volt;
+  QDoubleSpinBox* freq;
+  QDoubleSpinBox* volt;
 public:
   VCircuito();
 };
