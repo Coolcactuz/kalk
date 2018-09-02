@@ -28,8 +28,7 @@ VComplesso::VComplesso(): complessoOp(new QGridLayout()){
           QObject::connect(kb, SIGNAL(clicked()), display, SLOT(write_on_kpte()));
         }
         else{
-
-          
+          QObject::connect(kb, SIGNAL(clicked()), this, SLOT(specops_complesso()));
         }
       }
     }

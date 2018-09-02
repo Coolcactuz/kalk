@@ -36,6 +36,9 @@ public slots:
   void defineTC(int);
   void data_GUI_to_controller(QString);
 
+  void soraz_logic(int);
+  void socomplesso_logic(int);
+
 };
 
 #endif

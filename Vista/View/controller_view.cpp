@@ -40,6 +40,12 @@ void controller_view::createSpecialized(int i){
   QObject::connect(SpecializedV, SIGNAL(back()), this, SLOT(createStartup()));
   QObject::connect(SpecializedV, SIGNAL(inviaQS(QString)), this, SIGNAL(inviaStringa(QString)));
 
+  QObject::connect(SpecializedV, SIGNAL(inviaSORaz(int)), this, SIGNAL(SORaz(int)));
+  QObject::connect(SpecializedV, SIGNAL(inviaSOComplesso(int)), this, SIGNAL(SOComplesso(int)));
+
+
+  QObject::connect(this, SIGNAL(inviaResult(QString)), SpecializedV, SLOT(mostra_result(QString)));
+
   StartupV->close();
   delete StartupV;
   StartupV = 0;

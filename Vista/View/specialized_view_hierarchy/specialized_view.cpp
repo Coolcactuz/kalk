@@ -48,3 +48,29 @@ void specialized_view::raccogli_testo_corrente(){
   QString aux = display->toPlainText();
   emit inviaQS(aux);
 }
+
+void specialized_view::mostra_result(Qstring res){
+  display->setPlainText(s);
+}
+
+void specialized_view::specops_raz(){
+  KalkButton* aux = qobject_cast<KalkButton*>(sender());
+
+  if(aux){
+    emit inviaSORaz(aux->getDataNumber());
+  }
+  else{
+    //gestire eccezione
+  }
+}
+
+void specialized_view::specops_complesso(){
+  KalkButton* aux = qobject_cast<KalkButton*>(sender());
+
+  if(aux){
+    emit inviaSOComplesso(aux->getDataNumber());
+  }
+  else{
+    //gestire eccezione
+  }
+}

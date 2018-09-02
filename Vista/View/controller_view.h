@@ -38,6 +38,10 @@ signals:
 
   void inviaTipo(int);
   void inviaStringa(QString);
+  void inviaResult(QString);
+
+  void SOComplesso(int);
+  void SORaz(int);
 
 public slots:
 

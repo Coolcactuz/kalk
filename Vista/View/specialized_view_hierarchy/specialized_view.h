@@ -48,11 +48,16 @@ signals:
 
   void inviaQS(QString);
 
+  void inviaSORaz(int);
+  void inviaSOComplesso(int);
+
 public slots:
 
   void raccogli_testo_corrente();
+  void mostra_result(QString);
 
+  void specops_raz();
+  void specops_complesso();
 };
-
 
 #endif
