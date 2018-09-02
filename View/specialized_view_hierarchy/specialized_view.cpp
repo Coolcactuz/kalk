@@ -3,7 +3,7 @@
 specialized_view::specialized_view(): type_title(new QLabel(this)), help(new QPushButton("SERVE AIUTO?", this)),
   lower(new QHBoxLayout()), display(new KalkPlainTextEdit(this)), external_layout(new QVBoxLayout(this)),
   header(new QHBoxLayout()),  upper(new QVBoxLayout()), go_back(new QPushButton("BACK", this)),
-  generic_keyboard(new QGridLayout()){
+  generic_keyboard(new QGridLayout()), help_window(0){
 
   external_layout->addLayout(header);
   external_layout->addLayout(upper);
@@ -74,5 +74,63 @@ void specialized_view::specops_complesso(){
   }
   else{
     //gestire eccezione
+  }
+}
+
+void specialized_view::helpRaz(){
+
+  if(help_window){
+    delete help_window;
+  }
+
+  help_window = new KalkHelpWindow();
+
+  help_window->set_aiuto_raz();
+
+  //hide();
+
+  help_window->showMaximized();
+}
+
+void specialized_view::helpComplesso(){
+
+  if(help_window){
+    delete help_window;
+  }
+
+  help_window = new KalkHelpWindow();
+
+  help_window->set_aiuto_complesso();
+
+  help_window->showMaximized();
+}
+
+void specialized_view::helpCircuito(){
+  if(help_window){
+    delete help_window;
+  }
+
+  help_window = new KalkHelpWindow();
+
+  help_window->set_aiuto_circuito();
+
+  help_window->showMaximized();
+}
+
+void specialized_view::helpTupla(){
+  if(help_window){
+    delete help_window;
+  }
+
+  help_window = new KalkHelpWindow();
+
+  help_window->set_aiuto_tupla();
+
+  help_window->showMaximized();
+}
+
+specialized_view::~specialized_view(){
+  if(help_window){
+    delete help_window;
   }
 }

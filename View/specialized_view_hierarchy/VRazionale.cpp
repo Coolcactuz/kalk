@@ -36,4 +36,6 @@ VRazionale::VRazionale(): razionaleOp(new QGridLayout()){
       }
     }
   }
+
+  QObject::connect(help, SIGNAL(clicked()), this, SLOT(helpRaz()));
 }

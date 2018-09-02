@@ -33,4 +33,7 @@ circuitoSelectors->addWidget(new QLabel("Frequenza:", this));
 circuitoSelectors->addWidget(freq);
 circuitoSelectors->addWidget(new QLabel("Voltaggio:", this));
 circuitoSelectors->addWidget(volt);
+
+QObject::connect(help, SIGNAL(clicked()), this, SLOT(helpCircuito()));
+
 }

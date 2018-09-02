@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'controller_view.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'controller_view.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.1. It"
+#error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -103,38 +103,37 @@ void controller_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (controller_view::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&controller_view::inviaTipo)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&controller_view::inviaTipo)) {
                 *result = 0;
                 return;
             }
         }
         {
             typedef void (controller_view::*_t)(QString );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&controller_view::inviaStringa)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&controller_view::inviaStringa)) {
                 *result = 1;
                 return;
             }
         }
         {
             typedef void (controller_view::*_t)(QString );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&controller_view::inviaResult)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&controller_view::inviaResult)) {
                 *result = 2;
                 return;
             }
         }
         {
             typedef void (controller_view::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&controller_view::SOComplesso)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&controller_view::SOComplesso)) {
                 *result = 3;
                 return;
             }
         }
         {
             typedef void (controller_view::*_t)(int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&controller_view::SORaz)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&controller_view::SORaz)) {
                 *result = 4;
                 return;
             }
@@ -157,7 +156,7 @@ void *controller_view::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_controller_view.stringdata0))
-        return static_cast<void*>(const_cast< controller_view*>(this));
+        return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 

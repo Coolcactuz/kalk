@@ -3,6 +3,7 @@
 
 //#include "../items/KalkButton.h"
 #include "../items/KalkPlainTextEdit.h"
+#include "../items/KalkHelpWindow.h"
 
 #include <QLabel>
 #include <QWidget>
@@ -33,15 +34,13 @@ private:
 
   QPushButton* go_back;
   QGridLayout* generic_keyboard;
+  KalkHelpWindow* help_window;
 
 
 public:
 
   specialized_view();
-  /*
-  virtual ~specialized_view() {
-    std::cout << "SONO IL DISTRUTTORE DI SPECIALIZED" << std::endl;
-  }*/
+  ~specialized_view();
 
 signals:
 
@@ -59,6 +58,12 @@ public slots:
 
   void specops_raz();
   void specops_complesso();
+
+  void helpRaz();
+  void helpComplesso();
+  void helpCircuito();
+  void helpTupla();
+
 };
 
 #endif

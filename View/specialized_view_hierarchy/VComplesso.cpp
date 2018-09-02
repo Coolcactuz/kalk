@@ -34,4 +34,6 @@ VComplesso::VComplesso(): complessoOp(new QGridLayout()){
     }
   }
 
+  QObject::connect(help, SIGNAL(clicked()), this, SLOT(helpComplesso()));
+
 }

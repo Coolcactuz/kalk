@@ -26,4 +26,6 @@ VTupla::VTupla(): tupla_op(new QGridLayout()){
     }
   }
 
+  QObject::connect(help, SIGNAL(clicked()), this, SLOT(helpTupla()));
+
 }

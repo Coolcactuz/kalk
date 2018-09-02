@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'KalkButton.h'
+** Meta object code from reading C++ file 'KalkHelpWindow.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "items/KalkButton.h"
+#include "items/KalkHelpWindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'KalkButton.h' doesn't include <QObject>."
+#error "The header file 'KalkHelpWindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -20,25 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_KalkButton_t {
+struct qt_meta_stringdata_KalkHelpWindow_t {
     QByteArrayData data[1];
-    char stringdata0[11];
+    char stringdata0[15];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_KalkButton_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_KalkHelpWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_KalkButton_t qt_meta_stringdata_KalkButton = {
+static const qt_meta_stringdata_KalkHelpWindow_t qt_meta_stringdata_KalkHelpWindow = {
     {
-QT_MOC_LITERAL(0, 0, 10) // "KalkButton"
+QT_MOC_LITERAL(0, 0, 14) // "KalkHelpWindow"
 
     },
-    "KalkButton"
+    "KalkHelpWindow"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_KalkButton[] = {
+static const uint qt_meta_data_KalkHelpWindow[] = {
 
  // content:
        7,       // revision
@@ -54,7 +54,7 @@ static const uint qt_meta_data_KalkButton[] = {
        0        // eod
 };
 
-void KalkButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void KalkHelpWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -62,28 +62,28 @@ void KalkButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     Q_UNUSED(_a);
 }
 
-const QMetaObject KalkButton::staticMetaObject = {
-    { &QPushButton::staticMetaObject, qt_meta_stringdata_KalkButton.data,
-      qt_meta_data_KalkButton,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject KalkHelpWindow::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_KalkHelpWindow.data,
+      qt_meta_data_KalkHelpWindow,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *KalkButton::metaObject() const
+const QMetaObject *KalkHelpWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *KalkButton::qt_metacast(const char *_clname)
+void *KalkHelpWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_KalkButton.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_KalkHelpWindow.stringdata0))
         return static_cast<void*>(this);
-    return QPushButton::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
-int KalkButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int KalkHelpWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QPushButton::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP
