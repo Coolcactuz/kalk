@@ -12,7 +12,7 @@ KalkHelpWindow::KalkHelpWindow(): l_khw(new QVBoxLayout(this)), testo_aiuto(new 
 
 }
 
-void KalkHelpWindow::set_aiuto_raz(){
+void KalkHelpWindow::set_aiuto_raz() const{
   testo_aiuto->appendPlainText("Questa vista permette la gestione del tipo Razionale.");
   testo_aiuto->appendPlainText("\n\nUn Razionale puo  essere espresso nei seguenti modi:");
   testo_aiuto->appendPlainText("\na) x/y -> dove x e y possono essere positivi, negativi, con parte decimale o senza (es. 3/5, oppure 2.3/3.6)");
@@ -35,7 +35,7 @@ void KalkHelpWindow::set_aiuto_raz(){
 }
 
 
-void KalkHelpWindow::set_aiuto_complesso(){
+void KalkHelpWindow::set_aiuto_complesso() const{
   testo_aiuto->appendPlainText("Questa vista permette la gestione dei tipi Complesso Cartesiano e Complesso Polare.");
   testo_aiuto->appendPlainText("\nIl passaggio tra questi due tipi avviene in automatico all interno di questa vista.");
   testo_aiuto->appendPlainText("\n\nModi per esprimere un Complesso Polare:");
@@ -59,7 +59,7 @@ void KalkHelpWindow::set_aiuto_complesso(){
   testo_aiuto->appendPlainText("\n3) premere il tasto relativo all operatore");
 }
 
-void KalkHelpWindow::set_aiuto_circuito(){
+void KalkHelpWindow::set_aiuto_circuito() const{
   testo_aiuto->appendPlainText("Questa vista permette la gestione del tipo Componente:");
   testo_aiuto->appendPlainText("\npermette infatti di effettuare operazioni tra Induttori, Condensatori, e Resistori.");
   testo_aiuto->appendPlainText("\nI selettori possono essere usati per settare la frequenza e il voltaggio.");
@@ -75,7 +75,7 @@ void KalkHelpWindow::set_aiuto_circuito(){
   testo_aiuto->appendPlainText("\n1) parallelo (/)");
 }
 
-void KalkHelpWindow::set_aiuto_tupla(){
+void KalkHelpWindow::set_aiuto_tupla() const{
   testo_aiuto->appendPlainText("Questa vista permette la gestione del tipo Tupla.");
   testo_aiuto->appendPlainText("\nUna tupla e  rappresentata da una o piu  coppie di elementi nella forma:");
   testo_aiuto->appendPlainText("\nMETADATO1,dato1,METADATO2,dato2,...METADATOn,daton");

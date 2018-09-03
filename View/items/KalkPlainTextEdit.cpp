@@ -1,7 +1,7 @@
 #include "KalkPlainTextEdit.h"
 
 
-void KalkPlainTextEdit::write_on_kpte(){
+void KalkPlainTextEdit::write_on_kpte() {
 
   KalkButton* aux = qobject_cast<KalkButton*>(sender());
 

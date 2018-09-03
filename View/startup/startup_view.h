@@ -33,13 +33,13 @@ public:
 
   //~startup_view();
 
-public slots:
-
-  void type_FButtonTStartup();
-
 signals:
 
   void type_FStartupTController(int);
+
+private slots:
+
+  void type_FButtonTStartup();
 
 };
 

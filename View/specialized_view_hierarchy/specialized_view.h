@@ -54,10 +54,8 @@ signals:
   void specialized_view_inviaVolt(double);
   void specialized_view_inviaFreq(double);
 
-public slots:
-
+private slots:
   void raccogli_testo_corrente();
-  void mostra_result(QString);
 
   void specops_raz();
   void specops_complesso();
@@ -66,6 +64,9 @@ public slots:
   void helpComplesso();
   void helpCircuito();
   void helpTupla();
+
+public slots:
+  void mostra_result(QString) const;
 
 };
 

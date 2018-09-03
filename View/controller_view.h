@@ -46,7 +46,7 @@ signals:
   void controller_view_inviaFreq(double);
   void controller_view_inviaVolt(double);
 
-public slots:
+private slots:
 
   void createSpecialized(int);
   void createStartup();

@@ -51,7 +51,7 @@ void specialized_view::raccogli_testo_corrente(){
   emit inviaQS(aux);
 }
 
-void specialized_view::mostra_result(QString res){
+void specialized_view::mostra_result(QString res) const{
   display->setPlainText(res);
 }
 

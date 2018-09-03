@@ -31,7 +31,7 @@ signals:
 
   void data_controller_to_GUI(QString);
 
-public slots:
+private slots:
 
   void defineTC(int);
   void data_GUI_to_controller(QString);

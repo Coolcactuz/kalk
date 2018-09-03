@@ -18,10 +18,10 @@ public:
 
   KalkHelpWindow();
 
-  void set_aiuto_raz();
-  void set_aiuto_circuito();
-  void set_aiuto_complesso();
-  void set_aiuto_tupla();
+  void set_aiuto_raz() const;
+  void set_aiuto_circuito() const;
+  void set_aiuto_complesso() const;
+  void set_aiuto_tupla() const;
 };
 
 #endif

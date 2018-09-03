@@ -9,9 +9,9 @@ private:
 public:
   VRazionale();
 
-  ~VRazionale(){
-    std::cout << "SONO IL DISTRUTTORE DI VRAZIONALE" << std::endl;
-  }
+  // ~VRazionale(){
+  //   std::cout << "SONO IL DISTRUTTORE DI VRAZIONALE" << std::endl;
+  // }
 };
 
 #endif
