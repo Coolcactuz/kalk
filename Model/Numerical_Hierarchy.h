@@ -16,9 +16,8 @@ private:
 
 public:
     Numerical_Hierarchy();
-    ~Numerical_Hierarchy() = default;
-    static Complesso* create_complex(std::string);
-    static Raz* create_rational(std::string);
+    Complesso* create_complex(std::string) const;
+    Raz* create(std::string) const;
 };
 
 

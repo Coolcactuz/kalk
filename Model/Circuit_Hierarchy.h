@@ -16,8 +16,7 @@ private:
 
 public:
     Circuit_Hierarchy();
-    ~Circuit_Hierarchy()=default;
-    static Componente* create(std::string);
+    Componente* create(std::string) const;
 
 //    C_cartesiano impEquivalente() const ;
     C_cartesiano Corrente_totale(const C_cartesiano&) const ;

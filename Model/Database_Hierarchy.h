@@ -15,8 +15,7 @@ private:
 
 public:
     Database_Hierarchy();
-    ~Database_Hierarchy()=default;
-    static tupla* create(std::string);
+    tupla* create(std::string) const;
 
 };
 

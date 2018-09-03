@@ -15,13 +15,13 @@ void Numerical_Hierarchy::load_operators() {
         add_operator(op[i]);
 }
 
-Complesso* Numerical_Hierarchy::create_complex(std::string s){
+Complesso* Numerical_Hierarchy::create_complex(std::string s)const {
     auto pos=s.find('<');
     if(pos==-1)
         return new C_cartesiano(s);
     return new C_polare(s);
 }
 
-Raz* Numerical_Hierarchy::create_rational(std::string s){
+Raz* Numerical_Hierarchy::create(std::string s) const{
     return new Raz(s);
 }

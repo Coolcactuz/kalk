@@ -4,16 +4,11 @@
 
 #include "Hierarchy_Handler.h"
 
+
 Hierarchy_Handler::Hierarchy_Handler():class_operators(){
     class_operators.push_back('(');
     class_operators.push_back(')');
 }
-
-Hierarchy_Handler::~Hierarchy_Handler(){
-    for(auto cit=class_operators.cbegin(); cit!=class_operators.cend();)
-        cit=class_operators.erase(cit);
-}
-
 
 void Hierarchy_Handler::add_operator(const char c){
   if(!is_operator(c)) class_operators.push_back(c);

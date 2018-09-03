@@ -6,6 +6,9 @@
 #define KALK_HIERARCHY_HANDLER_H
 
 #include <list>
+#include <string>
+#include <iostream>
+#include "Dato.h"
 
 class Hierarchy_Handler {
 protected:
@@ -18,8 +21,9 @@ protected:
 
 public:
     Hierarchy_Handler();
-    virtual ~Hierarchy_Handler();
+    virtual ~Hierarchy_Handler() {}
     virtual bool is_operator(const char) const;
+    virtual Dato* create(std::string)const =0;
     bool operator==(Hierarchy_Handler&) const;
 //    bool operator!=(Hierarchy_Handler&) const;
 };

@@ -2,10 +2,7 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <list>
-#include <string>
-#include <iostream>
-
+#include <type_traits>
 #include "Numerical_Hierarchy.h"
 #include "Circuit_Hierarchy.h"
 #include "Database_Hierarchy.h"
@@ -19,7 +16,7 @@ public:
     char op;
     double prec;
     node* left, *right;
-    node(T* t=nullptr, char o='\0', int p=0, node* l=nullptr, node* r=nullptr):
+    node(T* t=nullptr, char o='\0', double p=0, node* l=nullptr, node* r=nullptr):
       obj(t), op(o), prec(p), left(l), right(r){};
     ~node(){delete left; delete right; delete obj;};
 
@@ -35,16 +32,16 @@ public:
          return new node(p->obj,p->op, p->prec, copy(p->left), copy(p->right));
     };
   };
-  parser(std::string ="");
+  parser(std::string ="", Dato* = nullptr);
   ~parser();
 
-  parser<T> operator=(const parser<T>&);
+  parser<T>& operator=(const parser<T>&);
   bool operator==(const parser<T>&);
   bool operator!=(const parser<T>&);
 
-  node* build_tree(std::string ="\0")const ;
+  node* build_tree(std::string ="\0");
   static Dato* resolve(node*);
-  void print(node* =nullptr, int =0) const ;
+  void print(node* =nullptr) const ;
   node* getStart() const ;
   Hierarchy_Handler* getHandler() const;
   bool compara_alberi(typename parser<T>::node*, typename parser<T>::node*);
@@ -54,14 +51,14 @@ private:
   node* start;
   Hierarchy_Handler* handler;
 
-  Hierarchy_Handler* check_handler(T*);
+  Hierarchy_Handler* check_handler(Dato*);
 
 protected:
   double set_prec(char) const;
   bool balanced_brackets(std::string ="\0") const;
   static node* find_father(node* =nullptr, node* =nullptr) ;
-  static void balance_tree(node* =0);
-  static Dato* create(std::string);
+  void balance_tree(node* =0);
+  Dato* create(std::string);
 };
 
 //
@@ -69,30 +66,40 @@ protected:
 //
 //costruttore da stringa, default=nullo
 template<class T>
-parser<T>::parser(std::string s): input(s), start(){
-  handler=parser<T>::check_handler(start->obj);
+parser<T>::parser(std::string s, Dato* d): input(s){
+  handler=parser<T>::check_handler(d);
   start=build_tree(input);
 }
 
 //distruttore
 template<class T>
 parser<T>::~parser(){
-  delete start;
-  delete handler;
+    if(start)
+        delete start;
+    if(handler)
+        delete handler;
 }
 
 template<class T>
-Hierarchy_Handler* parser<T>::check_handler(T* object){
-  if(dynamic_cast<Complesso*>(object))
-    return new Numerical_Hierarchy();
-  if(dynamic_cast<Raz*>(object))
-    return new Numerical_Hierarchy();
-  if(dynamic_cast<Componente*>(object))
-    return new Circuit_Hierarchy();
-  if(dynamic_cast<tupla*>(object))
-    return new Database_Hierarchy();
+Hierarchy_Handler* parser<T>::check_handler(Dato* d){
+    Hierarchy_Handler* hdl=nullptr;
+    try{
+        if (dynamic_cast<Raz *>(d))
+            hdl = new Numerical_Hierarchy();
+        else if (dynamic_cast<Complesso *>(d))
+            hdl = new Numerical_Hierarchy();
+        else if (dynamic_cast<Componente *>(d))
+            hdl = new Circuit_Hierarchy();
+        else if (dynamic_cast<tupla *>(d))
+            hdl = new Database_Hierarchy();
+        else
+            throw syntax_exception("errore creazione oggetto parsato");//gestire eccezione tipo non riconosciuto
+        return hdl;
+    }
+    catch(const syntax_exception& error){
+        throw;
+    }
 
-  throw(0); //gestire eccezione tipo non riconosciuto
 }
 
 //controllo parentesi bilanciate
@@ -122,7 +129,7 @@ typename parser<T>::node* parser<T>::find_father(typename parser<T>::node* wante
 
 //costruzione albero di parsing
 template<class T>
-typename parser<T>::node* parser<T>::build_tree(std::string s) const {
+typename parser<T>::node* parser<T>::build_tree(std::string s){
   if(!balanced_brackets(s)) throw(0); //gestire eccezione parentesi non bilanciate
   if(s.length()==0) throw(0); //gestire eccezione stringa vuota
   std::string tmp= "(";
@@ -131,7 +138,6 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
   auto it=tmp.begin();
   node* start = nullptr;
   node* current = start;
-
   while(it!=tmp.end()){
     if(!(handler->is_operator(*it))){
       auto aux = it;
@@ -140,13 +146,14 @@ typename parser<T>::node* parser<T>::build_tree(std::string s) const {
       std::string spoil_item(it,aux);
       T* obj_p=nullptr;
       try {
-        T* obj_p=dynamic_cast<T*>(create(spoil_item));
+          //std::cout<<spoil_item<<std::endl;
+        obj_p=dynamic_cast<T*>(create(spoil_item));
       }
       catch(const syntax_exception& error){
         delete obj_p;
         throw error;
       }
-      if(!obj_p)
+      if(obj_p == nullptr)
         std::cout << "identify_literal ERROR";
       current->right=new node();
       current=current->right;
@@ -223,6 +230,7 @@ double parser<T>::set_prec(char c) const{
       return 4;
     case '^':
     case '#':
+    case '%':
       return 6;
     default:
       return 7;
@@ -247,7 +255,7 @@ Hierarchy_Handler* parser<T>::getHandler() const{
 }
 
 template<class T>
-parser<T> parser<T>::operator=(const parser<T>& p){
+parser<T>& parser<T>::operator=(const parser<T>& p){
   if(*start!=*(p.start)){
     delete start;
     start=parser<T>::node::copy(p.start);
@@ -271,10 +279,11 @@ bool parser<T>::operator!=(const parser<T>& p){
 }
 
 template<class T>
-void parser<T>::print(node* n, int z) const{
+void parser<T>::print(node* n) const{
   if(!n) return;
   if(!n->left && !n->right)
     std::cout<<*(n->obj)<<std::endl;
+     // n->obj->toString();
   else{
     if(n->left){
       std::cout<<"<"<<std::endl;
@@ -293,34 +302,51 @@ template<class T>
 void parser<T>::balance_tree(typename parser<T>::node* root){
   if(!root || (!root->left && !root->right)) return;
   balance_tree(root->left);
-  if(!root->left && root->right) root->left=new node(new T(),'0');
+  if(!root->left && root->right) root->left=new node(dynamic_cast<T*>(create("")),'0');
   balance_tree(root->right);
 }
 
 template <class T>
 Dato* parser<T>::create(std::string s){
-  T* aux;
-  if(dynamic_cast<Complesso*>(aux))
-    return Numerical_Hierarchy::create_complex(s);
-  else if(dynamic_cast<Raz*>(aux))
-    return Numerical_Hierarchy::create_rational(s);
-  else if(dynamic_cast<Componente*>(aux))
-    return Circuit_Hierarchy::create(s);
-  else if(dynamic_cast<tupla*>(aux))
-    return Database_Hierarchy::create(s);
-  else
-    throw(0); //gestire eccezione tipo non riconosciuto
+//    Dato* supp= nullptr;
+//    if(std::is_same<T,Complesso>::value)
+//        supp= Numerical_Hierarchy::create_complex(s);
+//    else {
+//        T *aux = new T();
+//        if (dynamic_cast<Raz *>(aux))
+//            supp = Numerical_Hierarchy::create_rational(s);
+//        else if (dynamic_cast<Componente *>(aux))
+//            supp = Circuit_Hierarchy::create(s);
+//        else if (dynamic_cast<tupla *>(aux))
+//            supp = Database_Hierarchy::create(s);
+//        else
+//            throw syntax_exception("tipo non riconosciuto"); //gestire eccezione tipo non riconosciuto
+//        delete aux;
+//    }
+//    return supp;
+
+    Dato* supp= nullptr;
+    try{
+        if(std::is_same<T,Complesso>::value)
+            supp= static_cast<Numerical_Hierarchy*>(handler)->create_complex(s);
+        else {
+            supp=handler->create(s);
+        }
+    }
+    catch(const syntax_exception& error){
+        throw error;
+    }
+    return supp;
+
 }
 
 template<class T>
 Dato* parser<T>::resolve(typename parser<T>::node* n){
-  if(!n) return 0;
+  if(!n) return nullptr;
   if(n->op != 0) {
       n->obj = T::solve_operation(resolve(n->left), resolve(n->right), n->op);
       n->op = 0;
       n->prec = 7;
-      delete n->left;
-      delete n->right;
   }
   return n->obj;
 }

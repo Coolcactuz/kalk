@@ -15,7 +15,7 @@ void Circuit_Hierarchy::load_operators() {
         add_operator(op[i]);
 }
 
-Componente* Circuit_Hierarchy::create(std::string s){
+Componente* Circuit_Hierarchy::create(std::string s) const{
     if(s.find('Z')!=-1)
         return new Componente(s);
     if(s.find('R')!=-1)

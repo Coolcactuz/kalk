@@ -9,12 +9,12 @@ Database_Hierarchy::Database_Hierarchy() : Hierarchy_Handler(){
 }
 
 void Database_Hierarchy::load_operators() {
-  unsigned int n=6;
-  char op[n]={'+', '-', '%', '/'};
+  unsigned int n=3;
+  char op[n]={'-', '%', '/'};
   for(unsigned int i=0; i<n; ++i)
     add_operator(op[i]);
 }
 
-tupla* Database_Hierarchy::create(std::string s){
+tupla* Database_Hierarchy::create(std::string s) const{
     return new tupla(s);
 }
