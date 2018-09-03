@@ -11,14 +11,27 @@ template<class T>
 class parser{
 public:
   class node{
+  private:
+    void cancellaobj(T* obj){
+      if(obj != nullptr)
+        delete obj;
+    }
   public:
     T* obj;
     char op;
     double prec;
     node* left, *right;
     node(T* t=nullptr, char o='\0', double p=0, node* l=nullptr, node* r=nullptr):
-      obj(t), op(o), prec(p), left(l), right(r){};
-    ~node(){delete left; delete right; delete obj;};
+      obj(t), op(o), prec(p), left(l), right(r){}
+    ~node(){
+      if(left != nullptr)
+        delete left;
+
+      if(right != nullptr)
+          delete right;
+
+      cancellaobj(obj);
+    }
 
     bool operator==(node& n){
       return *obj==*(n.obj) && op==n.op && left==n.left && right==n.right;
@@ -30,7 +43,7 @@ public:
     static node* copy(node* p=nullptr){
       if(!p) return 0;
          return new node(p->obj,p->op, p->prec, copy(p->left), copy(p->right));
-    };
+    }
   };
   parser(std::string ="", Dato* = nullptr);
   ~parser();
@@ -74,8 +87,14 @@ parser<T>::parser(std::string s, Dato* d): input(s){
 //distruttore
 template<class T>
 parser<T>::~parser(){
+
+  std::cout << "distruttore parser" << '\n';
+
     if(start)
         delete start;
+
+  std::cout << "sono arrivato qua" << '\n';
+
     if(handler)
         delete handler;
 }
@@ -151,6 +170,7 @@ typename parser<T>::node* parser<T>::build_tree(std::string s){
       }
       catch(const syntax_exception& error){
         delete obj_p;
+        std::cout << "catch build_tree" << '\n';
         throw error;
       }
       if(obj_p == nullptr)

@@ -10,20 +10,20 @@ Hierarchy_Handler::Hierarchy_Handler():class_operators(){
     class_operators.push_back(')');
 }
 
-void Hierarchy_Handler::add_operator(const char c){
+void Hierarchy_Handler::add_operator(char c){
   if(!is_operator(c)) class_operators.push_back(c);
   else
     throw(0); //gestire eccezione "operatore già presente"
 }
 
-void Hierarchy_Handler::remove_operator(const char c){
+void Hierarchy_Handler::remove_operator(char c){
     for (auto cit=class_operators.cbegin(); cit!=class_operators.cend(); ++cit) {
         if (c==*cit) class_operators.erase(cit);
         --cit;
     }
 }
 
-bool Hierarchy_Handler::is_operator(const char c) const {
+bool Hierarchy_Handler::is_operator(char c) const {
     for(auto it=class_operators.begin(); it!=class_operators.end(); ++it){
         if (c==*it) return true;
     }
@@ -41,6 +41,9 @@ bool Hierarchy_Handler::operator==(Hierarchy_Handler& h) const{
     return true;
     //    return class_operators==h.class_operators;
 }
+
+
+
 //
 //bool Hierarchy_Handler::operator!=(Hierarchy_Handler& h) const{
 //    return !(class_operators==h.class_operators);

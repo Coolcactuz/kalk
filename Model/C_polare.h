@@ -18,6 +18,10 @@ public:
     C_polare(std::string);
     C_polare();
 
+    ~C_polare(){
+      std::cout << "distruttore polare" << '\n';
+    }
+
     C_polare* operator+ (const Numero*)const;
     C_polare* operator- (const Numero*)const;
     C_polare* operator* (const Numero*)const;

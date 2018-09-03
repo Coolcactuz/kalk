@@ -56,7 +56,7 @@ C_polare* C_polare::operator+ (const Numero* n)const{
     else if(dynamic_cast<const C_polare*>(n)){
         const C_polare* cp= static_cast<const C_polare*>(n);
         const C_cartesiano* supp= static_cast<const C_cartesiano*>(cp->converti());
-        delete cp;
+        //delete cp;
         return this->operator+(supp);
     }
     else

@@ -12,17 +12,17 @@
 
 class Hierarchy_Handler {
 protected:
-    std::list<const char> class_operators;
+    std::list<char> class_operators;
 
-    virtual void add_operator(const char);
-    virtual void remove_operator(const char);
+    virtual void add_operator(char);
+    virtual void remove_operator(char);
 
     virtual void load_operators() =0;
 
 public:
     Hierarchy_Handler();
-    virtual ~Hierarchy_Handler() {}
-    virtual bool is_operator(const char) const;
+    virtual ~Hierarchy_Handler() {std::cout << "distruttore Hierarchy_Handler" << '\n';}
+    virtual bool is_operator(char) const;
     virtual Dato* create(std::string)const =0;
     bool operator==(Hierarchy_Handler&) const;
 //    bool operator!=(Hierarchy_Handler&) const;
