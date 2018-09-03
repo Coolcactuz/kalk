@@ -73,8 +73,8 @@ static const uint qt_meta_data_controller_view[] = {
        8,    1,   77,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,   80,    2, 0x0a /* Public */,
-      10,    0,   83,    2, 0x0a /* Public */,
+       9,    1,   80,    2, 0x08 /* Private */,
+      10,    0,   83,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,

@@ -57,7 +57,7 @@ static const uint qt_meta_data_startup_view[] = {
        1,    1,   24,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   27,    2, 0x0a /* Public */,
+       3,    0,   27,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
