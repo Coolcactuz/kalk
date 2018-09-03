@@ -81,6 +81,6 @@ controller_view::~controller_view(){
   if(SpecializedV)
     delete SpecializedV;
 
-  std::cout << "SONO IL DISTRUTTORE DI CONTROLLER VIEW" << std::endl;
+  //std::cout << "SONO IL DISTRUTTORE DI CONTROLLER VIEW" << std::endl;
 
 }

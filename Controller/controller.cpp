@@ -34,30 +34,51 @@ void controller::defineTC(int tc){
 void controller::data_GUI_to_controller(QString s){
   from_gui = s;
 
-  switch (tipo_corrente){
+  try{
+    switch (tipo_corrente){
 
-    //vedere sintassi funzione resolve
+      case 1:
+      {
+        Raz* tmp = new Raz();
+        parser<Raz> pr(from_gui.toUtf8().constData(), tmp);
+        oggetto_corrente = pr.resolve();
+        delete tmp;
+      }
+      break;
 
-    case 1:
-      parser<Raz> pr(from_gui.toUtf8().constData());
-      oggetto_corrente = pr.resolve();
-    break;
+      case 2:
+      {
+        Complesso* tmp = new C_cartesiano();
+        parser<Complesso> pcomplesso(from_gui.toUtf8().constData(), tmp);
+        oggetto_corrente = pcomplesso.resolve();
+        delete tmp;
+      }
+      break;
 
-    case 2:
-      parser<Complesso> pcomplesso(from_gui.toUtf8().constData());
-      oggetto_corrente = pcomplesso.resolve();
-    break;
+      case 3:
+      {
+        tupla* tmp = new tupla();
+        parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
+        oggetto_corrente = pt.resolve();
+        delete tmp;
+      }
+      break;
 
-    case 3:
-      parser<tupla> pt(from_gui.toUtf8().constData());
-      oggetto_corrente = pt.resolve();
-    break;
-
-    default:
-      parser<Componente> pcomponente(from_gui.toUtf8().constData());
-      oggetto_corrente = pcomponente.resolve();
-    break;
-
+      default:
+      {
+        Componente* tmp = new Condensatore();
+        parser<Componente> pcomponente(from_gui.toUtf8().constData(), tmp);
+        oggetto_corrente = pcomponente.resolve();
+        delete tmp;
+      }
+      break;
+    }
+  }
+  catch(syntax_exception se){
+    //visualizza errore sintassi
+  }
+  catch(logic_exception le){
+    //errore logico
   }
 
   emit data_controller_to_GUI(QString(oggetto_corrente->toString()));
