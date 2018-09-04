@@ -33,8 +33,9 @@ C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     else if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp=static_cast<const C_polare*>(n);
       const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-      delete cp;
-      return this->operator+(aux);
+      C_cartesiano* result=this->operator+(aux);
+      delete aux;
+      return result;
     }
     else
     throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
@@ -48,8 +49,9 @@ C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-    delete cp;
-    return this->operator-(aux);
+    C_cartesiano* result=this->operator-(aux);
+    delete aux;
+    return result;
   }
   else
       throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
@@ -63,8 +65,9 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-    delete cp;
-    return this->operator*(aux);
+    C_cartesiano* result=this->operator*(aux);
+    delete aux;
+    return result;
   }
   else
       throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
@@ -78,8 +81,9 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp= static_cast<const C_polare*>(n);
     const C_cartesiano* aux= static_cast<const C_cartesiano*>(cp->converti());
-    delete cp;
-    return this->operator+(aux);
+    C_cartesiano* result=this->operator/(aux);
+    delete aux;
+    return result;
   }
   else
       throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile

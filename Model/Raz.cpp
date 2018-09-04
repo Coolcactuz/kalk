@@ -140,8 +140,8 @@ Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
                 return l->operator/(r);
             case '^':
                 return l->operator^(double(*dynamic_cast<const Raz*>(r)));
-            case '#':
-                return new Raz(r->radice_quadrata());
+//            case '#':
+//                return new Raz(r->radice_quadrata());
             default:
                 throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
         }

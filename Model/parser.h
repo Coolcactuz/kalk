@@ -105,8 +105,10 @@ Hierarchy_Handler* parser<T>::check_handler(Dato* d){
     try{
         if (dynamic_cast<Raz *>(d))
             hdl = new Numerical_Hierarchy();
-        else if (dynamic_cast<Complesso *>(d))
+        else if (dynamic_cast<Complesso *>(d)) {
             hdl = new Numerical_Hierarchy();
+            hdl->remove_operator('^');
+        }
         else if (dynamic_cast<Componente *>(d))
             hdl = new Circuit_Hierarchy();
         else if (dynamic_cast<tupla *>(d))

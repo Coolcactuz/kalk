@@ -56,8 +56,9 @@ C_polare* C_polare::operator+ (const Numero* n)const{
     else if(dynamic_cast<const C_polare*>(n)){
         const C_polare* cp= static_cast<const C_polare*>(n);
         const C_cartesiano* supp= static_cast<const C_cartesiano*>(cp->converti());
-        //delete cp;
-        return this->operator+(supp);
+        C_polare* result=this->operator+(supp);
+        delete supp;
+        return result;
     }
     else
         throw logic_exception("Tipo incompatibile"); //gestire eccezione
@@ -76,8 +77,9 @@ C_polare* C_polare::operator- (const Numero* n)const{
     else if(dynamic_cast<const C_polare*>(n)){
         const C_polare* cp= static_cast<const C_polare*>(n);
         const C_cartesiano* supp= static_cast<const C_cartesiano*>(cp->converti());
-        delete cp;
-        return this->operator-(supp);
+        C_polare* result=this->operator-(supp);
+        delete supp;
+        return result;
     }
     else
         throw logic_exception("Tipo incompatibile"); //gestire eccezione
@@ -91,9 +93,10 @@ C_polare* C_polare::operator* (const Numero* n)const{
     }
     else if(dynamic_cast<const C_cartesiano*>(n)){
         const C_cartesiano* aux= static_cast<const C_cartesiano*>(n);
-        const C_polare* cp= static_cast<const C_polare*>(aux->converti());
-        delete aux;
-        return this->operator*(cp);
+        const C_polare* supp= static_cast<const C_polare*>(aux->converti());
+        C_polare* result=this->operator*(supp);
+        delete supp;
+        return result;
     }
     else
         throw logic_exception("Tipo incompatibile"); //gestire eccezione
@@ -108,9 +111,10 @@ C_polare* C_polare::operator/ (const Numero* n)const{
     }
     else if(dynamic_cast<const C_cartesiano*>(n)){
         const C_cartesiano* aux= static_cast<const C_cartesiano*>(n);
-        const C_polare* cp= static_cast<const C_polare*>(aux->converti());
-        delete aux;
-        return this->operator/(cp);
+        const C_polare* supp= static_cast<const C_polare*>(aux->converti());
+        C_polare* result=this->operator/(supp);
+        delete supp;
+        return result;
     }
     else
         throw logic_exception("Tipo incompatibile"); //gestire eccezione
