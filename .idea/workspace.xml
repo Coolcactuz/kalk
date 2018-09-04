@@ -14,10 +14,28 @@
     <list default="true" id="22e8c627-8d14-47df-8375-38669db096dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/C_cartesiano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/C_cartesiano.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/C_polare.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/C_polare.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Hierarchy_Handler.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Hierarchy_Handler.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Raz.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Raz.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/C_cartesiano.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/C_cartesiano.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/C_cartesiano.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/C_cartesiano.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/C_polare.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/C_polare.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Circuit_Hierarchy.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Circuit_Hierarchy.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Complesso.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Complesso.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Componente.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Componente.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Componente.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Componente.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Componente.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Componente.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Condensatore.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Condensatore.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Database_Hierarchy.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Database_Hierarchy.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Hierarchy_Handler.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Hierarchy_Handler.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Induttore.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Induttore.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Numerical_Hierarchy.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Numerical_Hierarchy.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Numero.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Numero.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Raz.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Raz.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Resistore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Resistore.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Resistore.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Resistore.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/kalk_model" beforeDir="false" afterPath="$PROJECT_DIR$/Model/kalk_model" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/parser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/tupla.o" beforeDir="false" afterPath="$PROJECT_DIR$/Model/tupla.o" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,8 +78,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="173" />
-          <entry key="h" value="162" />
+          <entry key="cpp" value="179" />
+          <entry key="h" value="168" />
           <entry key="java" value="2" />
           <entry key="makefile" value="2" />
           <entry key="txt" value="1" />
@@ -70,20 +88,20 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
-          <entry key="ObjectiveC" value="335" />
+          <entry key="ObjectiveC" value="347" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="7425" />
-          <entry key="h" value="5021" />
+          <entry key="cpp" value="8170" />
+          <entry key="h" value="5163" />
           <entry key="txt" value="159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="12446" />
+          <entry key="ObjectiveC" value="13333" />
           <entry key="PLAIN_TEXT" value="159" />
         </counts>
       </usages-collector>
@@ -95,43 +113,19 @@
         <entry file="file://$PROJECT_DIR$/Model/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/C_cartesiano.cpp">
+        <entry file="file://$PROJECT_DIR$/Model/Circuit_Hierarchy.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1023">
-              <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/C_polare.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Numerical_Hierarchy.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model/Raz.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="142" selection-start-line="142" selection-start-column="2" selection-end-line="143" selection-end-column="55" />
+            <state relative-caret-position="33">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -139,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/parser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+            <state relative-caret-position="240">
+              <caret line="172" column="2" selection-start-line="172" selection-start-column="2" selection-end-line="172" selection-end-column="2" />
               <folding>
                 <element signature="e#36#58#0" expanded="true" />
               </folding>
@@ -148,14 +142,61 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Model/Hierarchy_Handler.h">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Componente.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="333">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-              <folding>
-                <element signature="e#106#121#0" expanded="true" />
-              </folding>
+              <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Resistore.h">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Componente.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/C_cartesiano.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Resistore.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Model/C_cartesiano.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Hierarchy_Handler.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -187,13 +228,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Model/Numero.h" />
-        <option value="$PROJECT_DIR$/Model/Complesso.h" />
-        <option value="$PROJECT_DIR$/Model/Raz.h" />
         <option value="$PROJECT_DIR$/Model/Complesso.cpp" />
         <option value="$PROJECT_DIR$/Model/Circuito.cpp" />
-        <option value="$PROJECT_DIR$/Model/Componente.cpp" />
-        <option value="$PROJECT_DIR$/Model/Componente.h" />
         <option value="$PROJECT_DIR$/Model/tupla.cpp" />
         <option value="$PROJECT_DIR$/Model Branch/Hierarchy_Handler.h" />
         <option value="$PROJECT_DIR$/Model Branch/Hierarchy_Handler.cpp" />
@@ -232,12 +268,17 @@
         <option value="$PROJECT_DIR$/Model/Numerical_Hierarchy.h" />
         <option value="$PROJECT_DIR$/Model/Database_Hierarchy.h" />
         <option value="$PROJECT_DIR$/Model/Hierarchy_Handler.cpp" />
-        <option value="$PROJECT_DIR$/Model/main.cpp" />
-        <option value="$PROJECT_DIR$/Model/C_cartesiano.cpp" />
         <option value="$PROJECT_DIR$/Model/C_polare.cpp" />
         <option value="$PROJECT_DIR$/Model/Raz.cpp" />
-        <option value="$PROJECT_DIR$/Model/parser.h" />
         <option value="$PROJECT_DIR$/Model/Hierarchy_Handler.h" />
+        <option value="$PROJECT_DIR$/Model/Complesso.h" />
+        <option value="$PROJECT_DIR$/Model/Componente.h" />
+        <option value="$PROJECT_DIR$/Model/Resistore.cpp" />
+        <option value="$PROJECT_DIR$/Model/parser.h" />
+        <option value="$PROJECT_DIR$/Model/main.cpp" />
+        <option value="$PROJECT_DIR$/Model/Componente.cpp" />
+        <option value="$PROJECT_DIR$/Model/C_cartesiano.cpp" />
+        <option value="$PROJECT_DIR$/Model/C_cartesiano.h" />
       </list>
     </option>
   </component>
@@ -526,28 +567,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.32928678" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15933232" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24962063" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32888147" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32554257" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32888147" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.327212" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.33830845" />
-      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.32888147" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32928678" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -563,28 +582,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="risolutore per albero gerarchia circuito" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Model Branch/Circuito.cpp" />
-    <entry file="file://$PROJECT_DIR$/Model Branch/Numerical_Hierarchy.cpp" />
-    <entry file="file://$PROJECT_DIR$/Model Branch/Circuit_Hierarchy.h" />
-    <entry file="file://$PROJECT_DIR$/Model Branch/Circuit_Hierarchy.cpp" />
-    <entry file="file://$PROJECT_DIR$/Model Branch/Database_Hierarchy.h" />
-    <entry file="file://$PROJECT_DIR$/Model Branch/Database_Hierarchy.cpp" />
     <entry file="file://$PROJECT_DIR$/Model Branch/Numero.cpp" />
-    <entry file="file://$PROJECT_DIR$/Model/Complesso.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/exception.h" />
-    <entry file="file://$PROJECT_DIR$/Model/Componente.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Condensatore.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -600,13 +599,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/parser.h" />
-    <entry file="file://$PROJECT_DIR$/Model/Resistore.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model Branch/main.cpp" />
     <entry file="file://$PROJECT_DIR$/Model Branch/Numero.h" />
     <entry file="file://$PROJECT_DIR$/Model Branch/Complesso.cpp" />
@@ -643,13 +635,6 @@
         <state relative-caret-position="-1125" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Circuit_Hierarchy.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Circuit_Hierarchy.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -671,38 +656,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Hierarchy_Handler.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Database_Hierarchy.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="54" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/C_cartesiano.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1023">
-          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/C_polare.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -713,6 +670,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Complesso.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/C_polare.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-210">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/C_polare.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="31" selection-start-line="31" selection-end-line="31" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Complesso.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/exception.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Numerical_Hierarchy.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -720,23 +712,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Hierarchy_Handler.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="e#106#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Hierarchy_Handler.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Resistore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Model/parser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+        <state relative-caret-position="240">
+          <caret line="172" column="2" selection-start-line="172" selection-start-column="2" selection-end-line="172" selection-end-column="2" />
           <folding>
             <element signature="e#36#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Hierarchy_Handler.h">
+    <entry file="file://$PROJECT_DIR$/Model/Resistore.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Circuit_Hierarchy.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Componente.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding>
-            <element signature="e#106#121#0" expanded="true" />
-          </folding>
+          <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/C_cartesiano.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Componente.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/C_cartesiano.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
         </state>
       </provider>
     </entry>

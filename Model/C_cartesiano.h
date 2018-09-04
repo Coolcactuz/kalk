@@ -22,10 +22,8 @@ public:
 
     C_cartesiano();
     C_cartesiano(double,double =0);
-    //C_cartesiano(const C_cartesiano&);    //<---- serve veramente??
+    C_cartesiano(const C_cartesiano&);    //<---- serve veramente??
     C_cartesiano(std::string);
-
-    ~C_cartesiano(){std::cout << "distruttore cartesiano" << '\n';}
 
     C_cartesiano* operator+ (const Numero*)const;
     C_cartesiano* operator- (const Numero*)const;

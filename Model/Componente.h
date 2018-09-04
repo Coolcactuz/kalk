@@ -14,7 +14,7 @@ protected:
     static double freq;
     static double volt;
 public:
-    Componente(C_cartesiano);
+    Componente(C_cartesiano&);
     Componente(std::string);
     Componente();
 
