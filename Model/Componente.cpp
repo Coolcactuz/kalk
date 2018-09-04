@@ -7,14 +7,26 @@
 double Componente::freq=0;
 double Componente::volt=0;
 
-Componente::Componente(C_cartesiano c): imp(c){}
+Componente::Componente(C_cartesiano& c){
+    try{
+        setImp(c);
+    }
+    catch(const exception& error){
+        throw;
+    }
+}
 
-Componente::Componente(std::string s){
-    auto pos=s.find('Z');
-    if(pos == 0)
-        setImp(std::stod(s.substr(1)));
-    else
-        throw syntax_exception("La stringa non inizia con il carattere Z");
+Componente::Componente(std::string s) {
+    try {
+        auto pos = s.find('Z');
+        if (pos == 0)
+            setImp(std::stod(s.substr(1)));
+        else
+            throw syntax_exception("La stringa non inizia con il carattere Z");
+    }
+    catch(const exception& error){
+        throw;
+    }
 }
 
 Componente::Componente(): imp(0){}
@@ -36,12 +48,10 @@ Componente* Componente::operator/ (const Componente* c) const {
 
     C_cartesiano* num= comp1->operator*(comp2);
     C_cartesiano* den= comp1->operator+(comp2);
-
     delete comp1;
     delete comp2;
 
     C_cartesiano* parallelo= num->operator/(den);
-
     delete num;
     delete den;
 
@@ -112,19 +122,22 @@ double Componente::getFreq(){
 }
 
 void Componente::setImp(const C_cartesiano& c ){
-  imp=c;
+  if(c.getReale()<0)
+      throw syntax_exception("il valore reale dell'impedenza non può essere negativo");
+  else
+    imp=c;
 }
 
 void Componente::setVolt(double v){
-    if(v>=0)
+    if(v>0)
         volt=v;
     else
-      throw logic_exception("parametro non corretto");
+      throw syntax_exception("parametro non corretto");
 }
 
 void Componente::setFreq(double f) {
-    if (f >= 0)
+    if (f > 0)
         freq = f;
     else
-        throw logic_exception("parametro non corretto");
+        throw syntax_exception("parametro non corretto");
 }

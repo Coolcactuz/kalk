@@ -8,7 +8,7 @@
 
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
-//C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
+C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
 
 C_cartesiano::C_cartesiano(std::string s){
   auto pos=s.find('i');
@@ -76,7 +76,7 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
 C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
   if(dynamic_cast<const C_cartesiano*>(n)){
     const C_cartesiano* c= static_cast<const C_cartesiano*>(n);
-    return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)),(immaginaria*c->reale-reale*c->immaginaria)/(pow(reale,2)+pow(c->immaginaria,2)));
+    return new C_cartesiano((reale*c->reale+immaginaria*c->immaginaria)/(pow(c->reale,2)+pow(c->immaginaria,2)),(immaginaria*c->reale-reale*c->immaginaria)/(pow(c->reale,2)+pow(c->immaginaria,2)));
   }
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp= static_cast<const C_polare*>(n);

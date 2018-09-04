@@ -5,14 +5,28 @@
 int main(){
   std::string input;
   std::cin>>input;
-  Complesso* tmp=new C_cartesiano();
-  parser<Complesso> controller(input, tmp);
-  controller.print(controller.getStart());
-  Dato* result=parser<Complesso>::resolve(controller.getStart());
+  Componente* tmp=new Componente();
+  tmp->setFreq(50);
+  tmp->setVolt(220);
+  Dato *result= nullptr;
+  try {
+      parser<Componente> controller(input, tmp);
+      //controller.print(controller.getStart());
+      delete tmp;
+      result = parser<Componente>::resolve(controller.getStart());
+      std::cout<<result->toString()<<std::endl;
+  }
+  catch (const syntax_exception& se){
+      delete tmp;
+      se.print();
+  }
 
-    std::cout << "typeid" << typeid(*tmp).name() << '\n';
-  delete tmp;
-  std::cout<<result->toString()<<std::endl;
+  catch (const logic_exception& le){
+      delete tmp;
+      le.print();
+  }
   std::cout<<"hello"<<std::endl;
   return 0;
+
+
 }

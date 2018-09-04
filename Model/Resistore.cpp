@@ -9,14 +9,26 @@ Resistore::Resistore(double r){
     resistenza = r;
   else
     throw logic_exception("Inizializzato con valore negativo");
-  Componente::setImp(impedenza());
+  try {
+    Componente::setImp(impedenza());
+  }
+  catch (const exception& error){
+    throw;
+  }
 }
 
 Resistore::Resistore(std::string s){
   auto pos=s.find('R');
   if(pos==0){
     resistenza=std::stod(s.substr(1));
-    Componente::setImp(impedenza());
+//    if(resistenza<=0)
+//      throw syntax_exception("Valore di resistenza errato");
+    try {
+      Componente::setImp(impedenza());
+    }
+    catch (const exception& error){
+      throw;
+    }
   }
   else
     throw syntax_exception("La stringa non inizia con il carattere R"); //gestire eccezione errore di sintassi
