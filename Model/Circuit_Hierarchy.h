@@ -19,7 +19,7 @@ public:
     Componente* create(std::string) const;
 
 //    C_cartesiano impEquivalente() const ;
-    C_cartesiano Corrente_totale(const C_cartesiano&) const ;
+    //C_cartesiano Corrente_totale(const C_cartesiano&) const ;
 
 };
 

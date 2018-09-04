@@ -32,10 +32,12 @@ Componente* Circuit_Hierarchy::create(std::string s) const{
 //    return res->impedenza();
 //}
 
-C_cartesiano Circuit_Hierarchy::Corrente_totale(const C_cartesiano& impEq) const{
-    if(Componente::getVolt() != 0){
-        C_cartesiano v=C_cartesiano(Componente::getVolt());
-        return *((&impEq)->operator/(&v));
-    }
-    return 0;
-}
+// C_cartesiano Circuit_Hierarchy::Corrente_totale(const C_cartesiano& impEq) const{
+//     if(Componente::getVolt() != 0){
+//         C_cartesiano v=C_cartesiano(Componente::getVolt());
+//         return *((&impEq)->operator/(&v));
+//     }
+//     else{
+//       throw syntax_exception("voltaggio uguale a 0");
+//     }
+// }

@@ -23,6 +23,8 @@ private:
   Complesso* conv_complesso;
   double conv_raz;
 
+  bool check_string(std::string) const;
+
   //void inizia_sessione();
 
 public:

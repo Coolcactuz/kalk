@@ -16,6 +16,13 @@ controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_c
   //inizia_sessione();
 }
 
+void controller::check_string(std::string s){
+  std::size_t found = ().find_first_not_of("+*%/-^(),<abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890");
+  if(found != std::string::npos){
+    throw syntax_exception("La stringa contiene caratteri speciali");
+  }
+}
+
 controller::~controller(){
 
   if(cv){
@@ -41,6 +48,10 @@ void controller::data_GUI_to_controller(QString s){
 
   try{
 
+    std::string stringa_da_controllare = from_gui.toUtf8().constData();
+
+    check_string(stringa_da_controllare);
+
     Dato* tmp = 0;
 
     switch (tipo_corrente){
@@ -49,7 +60,7 @@ void controller::data_GUI_to_controller(QString s){
       {
         tmp = new Raz(); //oggetto fittizio per il parser
         parser<Raz> pr(from_gui.toUtf8().constData(), tmp);
-        oggetto_corrente = pr.resolve();
+        oggetto_corrente = pr.resolve(pr.getStart());
         conv_raz = (double) (*(static_cast<Raz*> (oggetto_corrente)));
 
       }
@@ -59,7 +70,7 @@ void controller::data_GUI_to_controller(QString s){
       {
         tmp = new C_cartesiano();  //oggetto fittizio per il parser
         parser<Complesso> pcomplesso(from_gui.toUtf8().constData(), tmp);
-        oggetto_corrente = pcomplesso.resolve();
+        oggetto_corrente = pcomplesso.resolve(pcomplesso.getStart());
         conv_complesso = (static_cast<Complesso*> (oggetto_corrente))->converti();
 
       }
@@ -69,7 +80,7 @@ void controller::data_GUI_to_controller(QString s){
       {
         tmp = new tupla(); //oggetto fittizio per il parser
         parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
-        oggetto_corrente = pt.resolve();
+        oggetto_corrente = pt.resolve(pt.getStart());
 
       }
       break;
@@ -78,7 +89,7 @@ void controller::data_GUI_to_controller(QString s){
       {
         tmp = new Condensatore(); //oggetto fittizio per il parser
         parser<Componente> pcomponente(from_gui.toUtf8().constData(), tmp);
-        oggetto_corrente = pcomponente.resolve();
+        oggetto_corrente = pcomponente.resolve(pcomponente.getStart());
 
       }
       break;
@@ -86,12 +97,14 @@ void controller::data_GUI_to_controller(QString s){
 
     delete tmp;
   }
-  catch(syntax_exception se){
-    delete tmp;
+  catch(const syntax_exception & se){
+    if(tmp)
+      delete tmp;
     //visualizza errore sintassi
   }
-  catch(logic_exception le){
-    delete tmp;
+  catch(const logic_exception & le){
+    if(tmp)
+      delete tmp;
     //errore logico
   }
 
