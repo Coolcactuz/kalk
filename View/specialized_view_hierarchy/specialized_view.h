@@ -4,6 +4,7 @@
 //#include "../items/KalkButton.h"
 #include "../items/KalkPlainTextEdit.h"
 #include "../items/KalkHelpWindow.h"
+#include "../items/KalkExceptionAlert.h"
 
 #include <QLabel>
 #include <QWidget>

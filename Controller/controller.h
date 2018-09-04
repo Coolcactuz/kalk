@@ -5,7 +5,7 @@
 #include "../Model/parser.h"
 
 #include <string>
-#include <stdlib>
+#include <stdlib.h>
 
 #include <QObject>
 
