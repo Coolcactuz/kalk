@@ -32,6 +32,8 @@ void KalkHelpWindow::set_aiuto_raz() const{
   testo_aiuto->appendPlainText("\n1) inserire l operando sotto forma di stringa");
   testo_aiuto->appendPlainText("\n2) premere il tasto enter");
   testo_aiuto->appendPlainText("\n3) premere il tasto relativo all operatore");
+  testo_aiuto->appendPlainText("\n\nNB: attenzione, se si vuole eseguire una sequenza di operazioni speciali bisogna sempre premere prima il tasto ENTER e poi");
+  testo_aiuto->appendPlainText("\nquello dell'operazione speciale");
 }
 
 
@@ -41,7 +43,7 @@ void KalkHelpWindow::set_aiuto_complesso() const{
   testo_aiuto->appendPlainText("\n\nModi per esprimere un Complesso Polare:");
   testo_aiuto->appendPlainText("\n1) x<y -> dove x >= 0  decimale o no, y con parte decimale o senza (es. 2.3<4)");
   testo_aiuto->appendPlainText("\nModi per esprimere un Complesso Cartesiano:");
-  testo_aiuto->appendPlainText("\n1) x+iy -> dove x e y possono essere positivi, negativi, con parte decimale o senza (es. 3+i7)");
+  testo_aiuto->appendPlainText("\n1) x+yi -> dove x e y possono essere positivi, negativi, con parte decimale o senza (es. 3+i7)");
   testo_aiuto->appendPlainText("\n2) x -> x può essere positivo o negativo, con parte decimale o senza");
   testo_aiuto->appendPlainText("\nNota Bene 1: la semplice scrittura di un numero x viene interpretata come Complesso Cartesiano");
   testo_aiuto->appendPlainText("\nNota Bene 2: non vi possono essere spaziature");
@@ -57,6 +59,8 @@ void KalkHelpWindow::set_aiuto_complesso() const{
   testo_aiuto->appendPlainText("\n1) inserire l operando sotto forma di stringa");
   testo_aiuto->appendPlainText("\n2) premere il tasto enter");
   testo_aiuto->appendPlainText("\n3) premere il tasto relativo all operatore");
+  testo_aiuto->appendPlainText("\n\nNB: attenzione, se si vuole eseguire una sequenza di operazioni speciali bisogna sempre premere prima il tasto ENTER e poi");
+  testo_aiuto->appendPlainText("\nquello dell'operazione speciale");
 }
 
 void KalkHelpWindow::set_aiuto_circuito() const{
@@ -73,6 +77,7 @@ void KalkHelpWindow::set_aiuto_circuito() const{
   testo_aiuto->appendPlainText("\n\nI seguenti operatori sono inseribili direttamente nella stringa che si vuol elaborare:");
   testo_aiuto->appendPlainText("\n1) serie (+)");
   testo_aiuto->appendPlainText("\n1) parallelo (/)");
+  testo_aiuto->appendPlainText("\n\nNB: usare i due spinbox per cambiare i valori relativi alla frequenza e al voltaggio.");
 }
 
 void KalkHelpWindow::set_aiuto_tupla() const{

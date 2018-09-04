@@ -1,6 +1,7 @@
 #include "controller.h"
 
-controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_corrente(0), from_gui(""){
+controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_corrente(0), from_gui(""),
+                          conv_complesso(0), conv_raz(0.0){
   QObject::connect(cv, SIGNAL(inviaTipo(int)), this, SLOT(defineTC(int)));
   QObject::connect(cv, SIGNAL(inviaStringa(QString)), this, SLOT(data_GUI_to_controller(QString)));
 
@@ -25,6 +26,10 @@ controller::~controller(){
     delete oggetto_corrente;
   }
 
+  if(conv_complesso){
+    delete conv_complesso;
+  }
+
 }
 
 void controller::defineTC(int tc){
@@ -35,51 +40,61 @@ void controller::data_GUI_to_controller(QString s){
   from_gui = s;
 
   try{
+
+    Dato* tmp = 0;
+
     switch (tipo_corrente){
 
       case 1:
       {
-        Raz* tmp = new Raz();
+        tmp = new Raz(); //oggetto fittizio per il parser
         parser<Raz> pr(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pr.resolve();
-        delete tmp;
+        conv_raz = (double) (*(static_cast<Raz*> (oggetto_corrente)));
+
       }
       break;
 
       case 2:
       {
-        Complesso* tmp = new C_cartesiano();
+        tmp = new C_cartesiano();  //oggetto fittizio per il parser
         parser<Complesso> pcomplesso(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pcomplesso.resolve();
-        delete tmp;
+        conv_complesso = (static_cast<Complesso*> (oggetto_corrente))->converti();
+
       }
       break;
 
       case 3:
       {
-        tupla* tmp = new tupla();
+        tmp = new tupla(); //oggetto fittizio per il parser
         parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pt.resolve();
-        delete tmp;
+
       }
       break;
 
       default:
       {
-        Componente* tmp = new Condensatore();
+        tmp = new Condensatore(); //oggetto fittizio per il parser
         parser<Componente> pcomponente(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pcomponente.resolve();
-        delete tmp;
+
       }
       break;
     }
+
+    delete tmp;
   }
   catch(syntax_exception se){
+    delete tmp;
     //visualizza errore sintassi
   }
   catch(logic_exception le){
+    delete tmp;
     //errore logico
   }
+
 
   emit data_controller_to_GUI(QString(oggetto_corrente->toString()));
 
@@ -109,7 +124,7 @@ void controller::soraz_logic(int i){
     break;
 
     default:
-      emit data_controller_to_GUI(QString((double) (*aux)));
+      emit data_controller_to_GUI(QString(conv_raz));
     break;
 
   }
@@ -128,10 +143,12 @@ void controller::socomplesso_logic(int i){
 
     case -4:
     {
-      Complesso* result_conversione = aux->converti();
-      QString result_stringa = result_conversione->toString();
-      delete result_conversione;
-      emit data_controller_to_GUI(result_stringa);
+      if(conv_complesso){
+        emit data_controller_to_GUI(QString(conv_complesso->toString()));
+      }
+      else{
+        //eccezione sintassi premuto converti senza avere creato oggetto
+      }
     }
     break;
 

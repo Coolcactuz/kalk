@@ -20,6 +20,9 @@ private:
   Dato* oggetto_corrente;
   QString from_gui;
 
+  Complesso* conv_complesso;
+  double conv_raz;
+
   //void inizia_sessione();
 
 public:

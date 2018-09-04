@@ -33,7 +33,7 @@ C_cartesiano* C_cartesiano::operator+ (const Numero* n)const {
     else if(dynamic_cast<const C_polare*>(n)){
       const C_polare* cp=static_cast<const C_polare*>(n);
       const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-      C_cartesiano* result=this->operator+(aux);
+      C_cartesiano* result = operator+(aux);
       delete aux;
       return result;
     }
@@ -49,7 +49,7 @@ C_cartesiano* C_cartesiano::operator- (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-    C_cartesiano* result=this->operator-(aux);
+    C_cartesiano* result = operator-(aux);
     delete aux;
     return result;
   }
@@ -65,7 +65,7 @@ C_cartesiano* C_cartesiano::operator* (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp=static_cast<const C_polare*>(n);
     const C_cartesiano* aux=static_cast<const C_cartesiano*>(cp->converti());
-    C_cartesiano* result=this->operator*(aux);
+    C_cartesiano* result = operator*(aux);
     delete aux;
     return result;
   }
@@ -81,7 +81,7 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
   else if(dynamic_cast<const C_polare*>(n)){
     const C_polare* cp= static_cast<const C_polare*>(n);
     const C_cartesiano* aux= static_cast<const C_cartesiano*>(cp->converti());
-    C_cartesiano* result=this->operator/(aux);
+    C_cartesiano* result = operator/(aux);
     delete aux;
     return result;
   }
@@ -104,7 +104,7 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
 bool C_cartesiano::operator== (const Dato& d)const{
     try {
         auto aux = dynamic_cast<const C_cartesiano &>(d);
-        return this->reale == aux.reale && this->immaginaria == aux.immaginaria;
+        return reale == aux.reale && immaginaria == aux.immaginaria;
     }
     catch(const std::bad_cast& error){
         return false;
