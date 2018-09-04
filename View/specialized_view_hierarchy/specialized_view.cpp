@@ -3,7 +3,7 @@
 specialized_view::specialized_view(): type_title(new QLabel(this)), help(new QPushButton("SERVE AIUTO?", this)),
   lower(new QHBoxLayout()), display(new KalkPlainTextEdit(this)), external_layout(new QVBoxLayout(this)),
   header(new QHBoxLayout()),  upper(new QVBoxLayout()), go_back(new QPushButton("BACK", this)),
-  generic_keyboard(new QGridLayout()), help_window(0){
+  generic_keyboard(new QGridLayout()), help_window(0), exception_handling(0){
 
   external_layout->addLayout(header);
   external_layout->addLayout(upper);
@@ -66,6 +66,26 @@ void specialized_view::specops_raz(){
   }
 }
 
+void specialized_view::handle_exception(QString s, bool b){
+
+  if(exception_handling){
+    delete exception_handling;
+  }
+
+  if(b){
+    display->clear();
+    exception_handling = new KalkExceptionAlert(s);
+    exception_handling->show();
+  }
+  else{
+    exception_handling = new KalkExceptionAlert(s, false);
+    QObject::connect(exception_handling, SIGNAL(emergenza1()), this, SIGNAL(emergenza2()));
+    exception_handling->show();
+  }
+}
+
+
+
 void specialized_view::specops_complesso(){
   KalkButton* aux = qobject_cast<KalkButton*>(sender());
 
@@ -88,6 +108,8 @@ void specialized_view::helpRaz(){
   help_window->set_aiuto_raz();
 
   //hide();
+
+  handle_exception(QString("ciao"), true);
 
   help_window->showMaximized();
 }
@@ -132,5 +154,9 @@ void specialized_view::helpTupla(){
 specialized_view::~specialized_view(){
   if(help_window){
     delete help_window;
+  }
+
+  if(exception_handling){
+    delete exception_handling;
   }
 }

@@ -35,6 +35,7 @@ private:
   QPushButton* go_back;
   QGridLayout* generic_keyboard;
   KalkHelpWindow* help_window;
+  KalkExceptionAlert* exception_handling;
 
 
 public:
@@ -54,6 +55,8 @@ signals:
   void specialized_view_inviaVolt(double);
   void specialized_view_inviaFreq(double);
 
+  void emergenza2();
+
 private slots:
   void raccogli_testo_corrente();
 
@@ -67,7 +70,7 @@ private slots:
 
 public slots:
   void mostra_result(QString) const;
-
+  void handle_exception(QString, bool);
 };
 
 #endif

@@ -13,7 +13,10 @@ controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_c
 
 
   QObject::connect(this, SIGNAL(data_controller_to_GUI(QString)), cv, SIGNAL(inviaResult(QString)));
-  //inizia_sessione();
+
+  QObject::connect(this, SIGNAL(CtV_exception(QString, bool)), cv, SIGNAL(pass_exception(QString, bool)));
+
+  QObject::connect(cv, SIGNAL(emergenza3()), this, SLOT(gestisci_emergenza()));
 }
 
 void controller::check_string(std::string s){
@@ -21,6 +24,22 @@ void controller::check_string(std::string s){
   if(found != std::string::npos){
     throw syntax_exception("La stringa contiene caratteri speciali");
   }
+}
+
+void controller::gestisci_emergenza(){
+  if(cv){
+    delete cv;
+  }
+
+  if(oggetto_corrente){
+    delete oggetto_corrente;
+  }
+
+  if(conv_complesso){
+    delete conv_complesso;
+  }
+
+  std::exit(1);
 }
 
 controller::~controller(){
@@ -47,12 +66,9 @@ void controller::data_GUI_to_controller(QString s){
   from_gui = s;
 
   try{
-
-    std::string stringa_da_controllare = from_gui.toUtf8().constData();
-
-    check_string(stringa_da_controllare);
-
     Dato* tmp = 0;
+    std::string stringa_da_controllare = from_gui.toUtf8().constData();
+    check_string(stringa_da_controllare);
 
     switch (tipo_corrente){
 
@@ -62,7 +78,6 @@ void controller::data_GUI_to_controller(QString s){
         parser<Raz> pr(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pr.resolve(pr.getStart());
         conv_raz = (double) (*(static_cast<Raz*> (oggetto_corrente)));
-
       }
       break;
 
@@ -72,7 +87,6 @@ void controller::data_GUI_to_controller(QString s){
         parser<Complesso> pcomplesso(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pcomplesso.resolve(pcomplesso.getStart());
         conv_complesso = (static_cast<Complesso*> (oggetto_corrente))->converti();
-
       }
       break;
 
@@ -81,7 +95,6 @@ void controller::data_GUI_to_controller(QString s){
         tmp = new tupla(); //oggetto fittizio per il parser
         parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pt.resolve(pt.getStart());
-
       }
       break;
 
@@ -90,27 +103,24 @@ void controller::data_GUI_to_controller(QString s){
         tmp = new Condensatore(); //oggetto fittizio per il parser
         parser<Componente> pcomponente(from_gui.toUtf8().constData(), tmp);
         oggetto_corrente = pcomponente.resolve(pcomponente.getStart());
-
       }
       break;
     }
 
     delete tmp;
+
+    emit data_controller_to_GUI(QString(oggetto_corrente->toString()));
   }
   catch(const syntax_exception & se){
     if(tmp)
       delete tmp;
-    //visualizza errore sintassi
+    emit CtV_exception(QString(se.print()), true);
   }
   catch(const logic_exception & le){
     if(tmp)
       delete tmp;
-    //errore logico
+    emit CtV_exception(QString(le.print()), false);
   }
-
-
-  emit data_controller_to_GUI(QString(oggetto_corrente->toString()));
-
 }
 
 void controller::soraz_logic(int i){

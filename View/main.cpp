@@ -9,5 +9,6 @@ int main(int argn, char ** args){
 
 	controller_view c;
 
+
 	app.exec();
 }

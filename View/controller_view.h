@@ -46,6 +46,10 @@ signals:
   void controller_view_inviaFreq(double);
   void controller_view_inviaVolt(double);
 
+  void pass_exception(QString, bool);
+
+  void emergenza3();
+
 private slots:
 
   void createSpecialized(int);

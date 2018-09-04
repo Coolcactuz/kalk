@@ -49,6 +49,9 @@ void controller_view::createSpecialized(int i){
 
   QObject::connect(this, SIGNAL(inviaResult(QString)), SpecializedV, SLOT(mostra_result(QString)));
 
+  QObject::connect(this, SIGNAL(pass_exception(QString, bool)), SpecializedV, SLOT(handle_exception(QString, bool)));
+  QObject::connect(SpecializedV, SIGNAL(emergenza2()), this, SIGNAL(emergenza3()));
+
   StartupV->close();
   delete StartupV;
   StartupV = 0;

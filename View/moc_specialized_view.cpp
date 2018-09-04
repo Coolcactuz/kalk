@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'specialized_view.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,15 +12,17 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'specialized_view.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_specialized_view_t {
-    QByteArrayData data[16];
-    char stringdata0[226];
+    QByteArrayData data[17];
+    char stringdata0[243];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,7 +46,8 @@ QT_MOC_LITERAL(11, 167, 7), // "helpRaz"
 QT_MOC_LITERAL(12, 175, 13), // "helpComplesso"
 QT_MOC_LITERAL(13, 189, 12), // "helpCircuito"
 QT_MOC_LITERAL(14, 202, 9), // "helpTupla"
-QT_MOC_LITERAL(15, 212, 13) // "mostra_result"
+QT_MOC_LITERAL(15, 212, 13), // "mostra_result"
+QT_MOC_LITERAL(16, 226, 16) // "handle_exception"
 
     },
     "specialized_view\0back\0\0inviaQS\0"
@@ -53,7 +56,8 @@ QT_MOC_LITERAL(15, 212, 13) // "mostra_result"
     "specialized_view_inviaFreq\0"
     "raccogli_testo_corrente\0specops_raz\0"
     "specops_complesso\0helpRaz\0helpComplesso\0"
-    "helpCircuito\0helpTupla\0mostra_result"
+    "helpCircuito\0helpTupla\0mostra_result\0"
+    "handle_exception"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,7 +67,7 @@ static const uint qt_meta_data_specialized_view[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -71,22 +75,23 @@ static const uint qt_meta_data_specialized_view[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   84,    2, 0x06 /* Public */,
-       3,    1,   85,    2, 0x06 /* Public */,
-       4,    1,   88,    2, 0x06 /* Public */,
-       5,    1,   91,    2, 0x06 /* Public */,
-       6,    1,   94,    2, 0x06 /* Public */,
-       7,    1,   97,    2, 0x06 /* Public */,
+       1,    0,   89,    2, 0x06 /* Public */,
+       3,    1,   90,    2, 0x06 /* Public */,
+       4,    1,   93,    2, 0x06 /* Public */,
+       5,    1,   96,    2, 0x06 /* Public */,
+       6,    1,   99,    2, 0x06 /* Public */,
+       7,    1,  102,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,  100,    2, 0x08 /* Private */,
-       9,    0,  101,    2, 0x08 /* Private */,
-      10,    0,  102,    2, 0x08 /* Private */,
-      11,    0,  103,    2, 0x08 /* Private */,
-      12,    0,  104,    2, 0x08 /* Private */,
-      13,    0,  105,    2, 0x08 /* Private */,
-      14,    0,  106,    2, 0x08 /* Private */,
-      15,    1,  107,    2, 0x0a /* Public */,
+       8,    0,  105,    2, 0x08 /* Private */,
+       9,    0,  106,    2, 0x08 /* Private */,
+      10,    0,  107,    2, 0x08 /* Private */,
+      11,    0,  108,    2, 0x08 /* Private */,
+      12,    0,  109,    2, 0x08 /* Private */,
+      13,    0,  110,    2, 0x08 /* Private */,
+      14,    0,  111,    2, 0x08 /* Private */,
+      15,    1,  112,    2, 0x0a /* Public */,
+      16,    2,  115,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -105,6 +110,7 @@ static const uint qt_meta_data_specialized_view[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool,    2,    2,
 
        0        // eod
 };
@@ -129,6 +135,7 @@ void specialized_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 11: _t->helpCircuito(); break;
         case 12: _t->helpTupla(); break;
         case 13: _t->mostra_result((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 14: _t->handle_exception((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -138,36 +145,42 @@ void specialized_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
             typedef void (specialized_view::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::back)) {
                 *result = 0;
+                return;
             }
         }
         {
             typedef void (specialized_view::*_t)(QString );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::inviaQS)) {
                 *result = 1;
+                return;
             }
         }
         {
             typedef void (specialized_view::*_t)(int );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::inviaSORaz)) {
                 *result = 2;
+                return;
             }
         }
         {
             typedef void (specialized_view::*_t)(int );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::inviaSOComplesso)) {
                 *result = 3;
+                return;
             }
         }
         {
             typedef void (specialized_view::*_t)(double );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::specialized_view_inviaVolt)) {
                 *result = 4;
+                return;
             }
         }
         {
             typedef void (specialized_view::*_t)(double );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&specialized_view::specialized_view_inviaFreq)) {
                 *result = 5;
+                return;
             }
         }
     }
@@ -175,7 +188,7 @@ void specialized_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
 
 const QMetaObject specialized_view::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_specialized_view.data,
-      qt_meta_data_specialized_view,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_specialized_view,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -186,7 +199,7 @@ const QMetaObject *specialized_view::metaObject() const
 
 void *specialized_view::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_specialized_view.stringdata0))
         return static_cast<void*>(const_cast< specialized_view*>(this));
     return QWidget::qt_metacast(_clname);
@@ -198,13 +211,13 @@ int specialized_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }
@@ -212,41 +225,42 @@ int specialized_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void specialized_view::back()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
 void specialized_view::inviaQS(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void specialized_view::inviaSORaz(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void specialized_view::inviaSOComplesso(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void specialized_view::specialized_view_inviaVolt(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
 void specialized_view::specialized_view_inviaFreq(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
+QT_WARNING_POP
 QT_END_MOC_NAMESPACE

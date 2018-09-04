@@ -5,6 +5,7 @@
 #include "../Model/parser.h"
 
 #include <string>
+#include <stdlib>
 
 #include <QObject>
 
@@ -36,6 +37,8 @@ signals:
 
   void data_controller_to_GUI(QString);
 
+  void CtV_exception(QString, bool);
+
 private slots:
 
   void defineTC(int);
@@ -46,6 +49,8 @@ private slots:
 
   void circuito_cambia_volt(double);
   void circuito_cambia_freq(double);
+
+  void gestisci_emergenza(){}
 };
 
 #endif
