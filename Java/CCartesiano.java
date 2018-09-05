@@ -51,7 +51,7 @@ class CCartesiano extends Complesso{
     return result;
   }
 
-  public Numero somma(Numero n){
+  public Numero somma(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
       CCartesiano result = new CCartesiano(reale + aux.reale, immaginaria + aux.immaginaria);
@@ -65,14 +65,12 @@ class CCartesiano extends Complesso{
       return result;
     }
     else{
-      //----------------
-      //GESTIRE ECCEZIONE-> tipi incompatibili
-      //-----------------
-      return this;
+      throw new KalkException("tipi incompatibili", false);
+      //return this;
     }
   }
 
-  public Numero differenza(Numero n){
+  public Numero differenza(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
       CCartesiano result = new CCartesiano(reale - aux.reale, immaginaria - aux.immaginaria);
@@ -86,14 +84,11 @@ class CCartesiano extends Complesso{
       return result;
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE->tipi incompatibili
-      //-------------------
-      return this;
+      throw new KalkException("tipi incompatibili", false);
     }
   }
 
-  public Numero moltiplicazione(Numero n){
+  public Numero moltiplicazione(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
       CCartesiano result = new CCartesiano((reale * aux.reale) - (immaginaria * aux.immaginaria), (immaginaria * aux.reale) + (reale * aux.immaginaria));
@@ -107,14 +102,11 @@ class CCartesiano extends Complesso{
       return result;
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE->tipi incompatibili
-      //-------------------
-      return this;
+      throw new KalkException("tipi incompatibili", false);
     }
   }
 
-  public Numero divisione(Numero n){
+  public Numero divisione(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
       double r = ((reale * aux.reale) + (immaginaria * aux.immaginaria)) / (Math.pow(aux.reale, 2) + Math.pow(aux.immaginaria, 2));
@@ -130,18 +122,13 @@ class CCartesiano extends Complesso{
       return result;
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE->tipi incompatibili
-      //-------------------
-      return this;
+    throw new KalkException("tipi incompatibili", false);
     }
   }
 
-  public boolean equals(Object obj){
+  public boolean equals(Object obj) throws KalkException{
     if(!(obj instanceof CCartesiano)){
-      //---------------
-      //GESTIRE eccezione
-      //-----------------
+      throw new KalkException("cast fallito", false);
     }
 
     CCartesiano aux = (CCartesiano) obj;

@@ -1,5 +1,5 @@
 public class Use{
-  public static void main(String args[]){
+  public static void main(String args[]) throws KalkException{
 
     // -------------TUPLA-------------------------
     //    a)costruttore di default

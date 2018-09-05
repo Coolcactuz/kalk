@@ -62,24 +62,24 @@ class Componente extends Dato{
     return freq;
   }
 
-  public static void setVolt(double v){
+  public static void setVolt(double v) throws KalkException{
     if(v >= 0){
       volt = v;
     }
     else{
-      System.out.println("volt negativi");
+      throw new KalkException("volt negativi");
       //---------------
       //GESTIRE ECCEZIONE
       //---------------
     }
   }
 
-  public static void setFreq(double f){
+  public static void setFreq(double f) throws KalkException{
     if(f >= 0){
       freq = f;
     }
     else{
-      System.out.println("frequenza negativa");
+      throw new KalkException("frequenza negativa");
       //---------------
       //GESTIRE ECCEZIONE
       //---------------
@@ -105,9 +105,9 @@ class Componente extends Dato{
   }
   */
 
-  public boolean equals(Object obj){
+  public boolean equals(Object obj) throws KalkException{
     if(!(obj instanceof Componente)){
-      System.out.println("Componente.equals()->obj non è istanza di Componente");
+      throw new KalkException("Componente.equals()->obj non è istanza di Componente", false);
       //---------------
       //GESTIRE ECCEZIONE
       //---------------
