@@ -284,7 +284,7 @@ class Tupla extends Dato{
     dati.add(d);
   }
 
-  public void erase(){
+  public void erase() throws KalkException{
     int numeroElementi = metadati.size();
 
     if(numeroElementi == 0){
@@ -309,7 +309,7 @@ class Tupla extends Dato{
   }
 
 
-  public Tupla intersezione(Tupla t){
+  public Tupla intersezione(Tupla t) throws KalkException{
 
     Tupla res = new Tupla();
 
@@ -326,7 +326,7 @@ class Tupla extends Dato{
     return res;
   }
 
-  public Tupla differenza(Tupla t){
+  public Tupla differenza(Tupla t) throws KalkException{
     Tupla res = new Tupla();
 
     Iterator<String> it1 = metadati.iterator();
@@ -356,7 +356,7 @@ class Tupla extends Dato{
     return res;
   }
 
-  public Tupla join(Tupla t){
+  public Tupla join(Tupla t) throws KalkException{
     Tupla aux = new Tupla();
     aux.metadati = (Vector<String>) metadati.clone();
     aux.dati = (Vector<String>) dati.clone();

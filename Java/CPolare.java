@@ -54,7 +54,7 @@ class CPolare extends Complesso{
     }
   }
 
-  public CPolare(){
+  public CPolare() throws KalkException{
     this(0, 0);
   }
 
@@ -66,14 +66,14 @@ class CPolare extends Complesso{
     return result;
   }
 
-  public Complesso coniugato(){
+  public Complesso coniugato() throws KalkException{
     CPolare result = new CPolare(modulo, -fase);
     return result;
   }
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof CPolare)){
-      throw new KalkException("cast fallito", false);
+      return false;
     }
 
     CPolare aux = (CPolare) obj;
@@ -91,7 +91,7 @@ class CPolare extends Complesso{
     return result;
   }
 
-  public Numero somma(Numero n){
+  public Numero somma(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
       CCartesiano cc = (CCartesiano) (converti());

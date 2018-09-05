@@ -40,14 +40,14 @@ class Componente extends Dato{
     return imp;
   }
 
-  public Componente serie(Componente c){
+  public Componente serie(Componente c) throws KalkException{
     CCartesiano impThis = impedenza();
     CCartesiano impParameter = c.impedenza();
     Componente result = new Componente(((CCartesiano) impThis.somma(impParameter)));
     return result;
   }
 
-  public Componente parallelo(Componente c){
+  public Componente parallelo(Componente c) throws KalkException{
     CCartesiano impThis = impedenza();
     CCartesiano impParameter = c.impedenza();
     Componente result = new Componente(((CCartesiano) (impThis.moltiplicazione(impParameter)).divisione(impThis.somma(impParameter))));
@@ -105,12 +105,9 @@ class Componente extends Dato{
   }
   */
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof Componente)){
-      throw new KalkException("Componente.equals()->obj non è istanza di Componente", false);
-      //---------------
-      //GESTIRE ECCEZIONE
-      //---------------
+      return false;
     }
 
     Componente aux = (Componente) obj;

@@ -48,7 +48,7 @@ class Raz extends Numero{
     semplifica();
   }
 
-  public Raz(double d){
+  public Raz(double d) throws KalkException{
     int i = 1;
 
     while((d - (Math.floor(d * Math.pow(10, i)) / Math.pow(10, i))) != 0){
@@ -64,7 +64,7 @@ class Raz extends Numero{
     den = aux.getDen();
   }
 
-  public Raz(){
+  public Raz() throws KalkException{
     this(0,1);
   }
 
@@ -73,7 +73,7 @@ class Raz extends Numero{
     return result;
   }
 
-  public Raz potenza(int exp){
+  public Raz potenza(int exp) throws KalkException{
     if(exp == 0){
       Raz result = new Raz(1, 1);
       return result;
@@ -113,7 +113,7 @@ class Raz extends Numero{
     }
   }
 
-  public Raz reciproco(){
+  public Raz reciproco() throws KalkException{
     Raz result = new Raz(den, num);
     return result;
   }
@@ -194,10 +194,9 @@ class Raz extends Numero{
     den = aux.den;
   }*/
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof Raz)){
-      throw new KalkException("cast fallito", false);
-      //gestire eccezione
+      return false;
     }
 
     Raz aux = (Raz) obj;

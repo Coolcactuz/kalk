@@ -50,12 +50,8 @@ class Resistore extends Componente{
   }
   */
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof Resistore)){
-      throw new KalkException("Resistore.equals()-> obj non e' istanza di Resistore", false);
-      //------------------
-      //GESTIRE ECCEZIONE
-      //------------------
       return false;
     }
 

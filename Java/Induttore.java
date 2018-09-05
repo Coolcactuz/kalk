@@ -52,12 +52,9 @@ class Induttore extends Componente{
   }
   */
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof Induttore)){
-      throw new KalkException("Induttore.equals()-> obj non e' istanza di Induttore", false);
-      //-------------------
-      //GESTIRE ECCEZIONE
-      //-------------------
+      return false;
     }
 
     Induttore aux = (Induttore) obj;

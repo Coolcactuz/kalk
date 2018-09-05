@@ -51,12 +51,9 @@ class Condensatore extends Componente{
   }
   */
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof Condensatore)){
-      throw new KalkException("Condensatore.equals()-> obj non e' instanza di Condensatore", false);
-      //-------------------
-      //GESTIRE ECCEZIONE
-      //-------------------
+      return false;
     }
 
     Condensatore aux = (Condensatore) obj;

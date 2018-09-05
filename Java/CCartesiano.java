@@ -39,7 +39,7 @@ class CCartesiano extends Complesso{
     this(0, 0);
   }
 
-  public Complesso converti(){
+  public Complesso converti() throws KalkException{
     double f = Math.sqrt(Math.pow(reale, 2) + Math.pow(immaginaria, 2));
     double m = Math.toDegrees(Math.atan(immaginaria / reale));
     CPolare result = new CPolare(f, m);
@@ -126,9 +126,9 @@ class CCartesiano extends Complesso{
     }
   }
 
-  public boolean equals(Object obj) throws KalkException{
+  public boolean equals(Object obj){
     if(!(obj instanceof CCartesiano)){
-      throw new KalkException("cast fallito", false);
+      return false;
     }
 
     CCartesiano aux = (CCartesiano) obj;
