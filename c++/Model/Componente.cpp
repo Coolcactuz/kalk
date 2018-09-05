@@ -11,7 +11,7 @@ Componente::Componente(C_cartesiano& c){
     try{
         setImp(c);
     }
-    catch(const exception& error){
+    catch(const syntax_exception& se){
         throw;
     }
 }
@@ -20,11 +20,11 @@ Componente::Componente(std::string s) {
     try {
         auto pos = s.find('Z');
         if (pos == 0)
-            setImp(std::stod(s.substr(1)));
+            setImp(toDouble(s.substr(1)));
         else
             throw syntax_exception("La stringa non inizia con il carattere Z");
     }
-    catch(const exception& error){
+    catch(const syntax_exception& se){
         throw;
     }
 }
@@ -69,35 +69,28 @@ bool Componente::operator== (const Dato& d) const{
        return false;
    }
 }
-//
-//Componente& Componente::operator= (const Dato& d){
-//    try{
-//        auto aux= dynamic_cast<const Componente&>(d);
-//        setImp(aux.impedenza());
-//        return *this;
-//    }
-//    catch (const std::bad_cast &error){
-//        std::cout << "tipi incompatibili" << std::endl;
-//    }
-//}
 
 Componente* Componente::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Componente*>(a);
     auto r=dynamic_cast<const Componente*>(b);
     if(l && r){
-        switch(o) {
-            case '+':
-              return l->operator+(r);
-            break;
+        try {
+            switch (o) {
+                case '+':
+                    return l->operator+(r);
 
-            case '/':
-              return l->operator/(r);
-            break;
+                case '/':
+                    return l->operator/(r);
 
-            default:
-                throw syntax_exception("Operatore inesistente");
-            break;
-
+                default:
+                    throw syntax_exception("Operatore inesistente");
+            }
+        }
+        catch(const syntax_exception& se){
+            throw ;
+        }
+        catch(const logic_exception& le){
+            throw ;
         }
     }
     else

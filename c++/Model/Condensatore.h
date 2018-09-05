@@ -1,7 +1,3 @@
-//
-// Created by luca on 10/01/18.
-//
-
 #ifndef KALK_CONDENSATORE_H
 #define KALK_CONDENSATORE_H
 
@@ -17,7 +13,6 @@ public:
     Condensatore();
 
     bool operator== (const Dato&) const;
-//    Condensatore& operator= (const Dato&);
 
     std::string toString() const;
     double getCapacita() const;

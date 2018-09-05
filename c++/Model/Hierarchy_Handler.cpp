@@ -1,7 +1,3 @@
-//
-// Created by luca on 02/08/18.
-//
-
 #include "Hierarchy_Handler.h"
 
 
@@ -12,14 +8,17 @@ Hierarchy_Handler::Hierarchy_Handler():class_operators(){
 
 void Hierarchy_Handler::add_operator(char c){
   if(!is_operator(c)) class_operators.push_back(c);
-  else
-    throw(0); //gestire eccezione "operatore già presente"
 }
 
 void Hierarchy_Handler::remove_operator(char c){
-    for (auto cit=class_operators.cbegin(); cit!=class_operators.cend(); ++cit) {
-        if (c==*cit) class_operators.erase(cit);
-        --cit;
+    if(is_operator(c)) {
+        bool eliminato=false;
+        for (auto cit = class_operators.cbegin(); !eliminato && cit != class_operators.cend(); ++cit) {
+            if (c == *cit) {
+                class_operators.erase(cit);
+                eliminato=true;
+            }
+        }
     }
 }
 
@@ -39,12 +38,5 @@ bool Hierarchy_Handler::operator==(Hierarchy_Handler& h) const{
     if(cit1!=class_operators.cend() || cit2!=h.class_operators.cend())
         return false;
     return true;
-    //    return class_operators==h.class_operators;
 }
 
-
-
-//
-//bool Hierarchy_Handler::operator!=(Hierarchy_Handler& h) const{
-//    return !(class_operators==h.class_operators);
-//}

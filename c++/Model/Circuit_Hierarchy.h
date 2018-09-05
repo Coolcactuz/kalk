@@ -1,7 +1,3 @@
-//
-// Created by luca on 01/08/18.
-//
-
 #ifndef KALK_CIRCUIT_HIERARCHY_H
 #define KALK_CIRCUIT_HIERARCHY_H
 
@@ -17,10 +13,6 @@ private:
 public:
     Circuit_Hierarchy();
     Componente* create(std::string) const;
-
-//    C_cartesiano impEquivalente() const ;
-    //C_cartesiano Corrente_totale(const C_cartesiano&) const ;
-
 };
 
 

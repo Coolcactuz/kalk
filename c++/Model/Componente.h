@@ -1,7 +1,3 @@
-//
-// Created by luca on 03/01/18.
-//
-
 #ifndef KALK_COMPONENTE_H
 #define KALK_COMPONENTE_H
 
@@ -23,7 +19,6 @@ public:
     Componente* operator+(const Componente*) const;
     Componente* operator/(const Componente*) const;
     bool operator== (const Dato&) const;
-//    Componente& operator= (const Dato&);
 
     std::string toString() const;
     static double getVolt();

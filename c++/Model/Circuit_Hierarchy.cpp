@@ -16,28 +16,18 @@ void Circuit_Hierarchy::load_operators() {
 }
 
 Componente* Circuit_Hierarchy::create(std::string s) const{
-    if(s.find('Z')!=-1)
-        return new Componente(s);
-    if(s.find('R')!=-1)
-        return new Resistore(s);
-    if(s.find('L')!=-1)
-        return new Induttore(s);
-    if(s.find('C')!=-1)
-        return new Condensatore(s);
-    throw(0); //gestire eccezione errore tipo
+    try {
+        if (s.find('Z') != -1)
+            return new Componente(s);
+        if (s.find('R') != -1)
+            return new Resistore(s);
+        if (s.find('L') != -1)
+            return new Induttore(s);
+        if (s.find('C') != -1)
+            return new Condensatore(s);
+        throw syntax_exception("errore di sintassi"); //gestire eccezione errore tipo
+    }
+    catch (const syntax_exception& se){
+        throw ;
+    }
 }
-
-//C_cartesiano Circuit_Hierarchy::impEquivalente () const {
-//    Componente* res = static_cast<Componente*>(parser<Componente>::resolve(circuit.getStart()));
-//    return res->impedenza();
-//}
-
-// C_cartesiano Circuit_Hierarchy::Corrente_totale(const C_cartesiano& impEq) const{
-//     if(Componente::getVolt() != 0){
-//         C_cartesiano v=C_cartesiano(Componente::getVolt());
-//         return *((&impEq)->operator/(&v));
-//     }
-//     else{
-//       throw syntax_exception("voltaggio uguale a 0");
-//     }
-// }
