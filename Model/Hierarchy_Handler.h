@@ -1,7 +1,3 @@
-//
-// Created by luca on 02/08/18.
-//
-
 #ifndef KALK_HIERARCHY_HANDLER_H
 #define KALK_HIERARCHY_HANDLER_H
 
@@ -25,7 +21,6 @@ public:
     virtual bool is_operator(char) const;
     virtual Dato* create(std::string)const =0;
     bool operator==(Hierarchy_Handler&) const;
-//    bool operator!=(Hierarchy_Handler&) const;
 };
 
 

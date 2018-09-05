@@ -1,7 +1,3 @@
-//
-// Created by luca on 10/01/18.
-//
-
 #ifndef KALK_INDUTTANZA_H
 #define KALK_INDUTTANZA_H
 
@@ -17,7 +13,6 @@ public:
     Induttore();
 
     bool operator== (const Dato&) const;
-//    Induttore& operator= (const Dato&);
 
     std::string toString() const;
     double getInduttanza() const;
