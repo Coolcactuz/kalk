@@ -117,8 +117,8 @@ class CCartesiano extends Complesso{
   public Numero divisione(Numero n){
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
-      double r = ((reale * aux.reale) + (immaginaria * aux.immaginaria)) / (Math.pow(reale, 2) + Math.pow(aux.immaginaria, 2));
-      double i = ((immaginaria * aux.reale) - (reale * aux.immaginaria)) / (Math.pow(reale, 2) + Math.pow(aux.immaginaria, 2));
+      double r = ((reale * aux.reale) + (immaginaria * aux.immaginaria)) / (Math.pow(aux.reale, 2) + Math.pow(aux.immaginaria, 2));
+      double i = ((immaginaria * aux.reale) - (reale * aux.immaginaria)) / (Math.pow(aux.reale, 2) + Math.pow(aux.immaginaria, 2));
       CCartesiano result = new CCartesiano(r, i);
       return result;
     }
