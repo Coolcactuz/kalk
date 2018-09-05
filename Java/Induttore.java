@@ -54,10 +54,7 @@ class Induttore extends Componente{
 
   public boolean equals(Object obj){
     if(!(obj instanceof Induttore)){
-      System.out.println("Induttore.equals()-> obj non e' istanza di Induttore");
-      //-------------------
-      //GESTIRE ECCEZIONE
-      //-------------------
+      return false;
     }
 
     Induttore aux = (Induttore) obj;

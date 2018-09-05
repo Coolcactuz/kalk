@@ -40,14 +40,14 @@ class Componente extends Dato{
     return imp;
   }
 
-  public Componente serie(Componente c){
+  public Componente serie(Componente c) throws KalkException{
     CCartesiano impThis = impedenza();
     CCartesiano impParameter = c.impedenza();
     Componente result = new Componente(((CCartesiano) impThis.somma(impParameter)));
     return result;
   }
 
-  public Componente parallelo(Componente c){
+  public Componente parallelo(Componente c) throws KalkException{
     CCartesiano impThis = impedenza();
     CCartesiano impParameter = c.impedenza();
     Componente result = new Componente(((CCartesiano) (impThis.moltiplicazione(impParameter)).divisione(impThis.somma(impParameter))));
@@ -62,24 +62,24 @@ class Componente extends Dato{
     return freq;
   }
 
-  public static void setVolt(double v){
+  public static void setVolt(double v) throws KalkException{
     if(v >= 0){
       volt = v;
     }
     else{
-      System.out.println("volt negativi");
+      throw new KalkException("volt negativi");
       //---------------
       //GESTIRE ECCEZIONE
       //---------------
     }
   }
 
-  public static void setFreq(double f){
+  public static void setFreq(double f) throws KalkException{
     if(f >= 0){
       freq = f;
     }
     else{
-      System.out.println("frequenza negativa");
+      throw new KalkException("frequenza negativa");
       //---------------
       //GESTIRE ECCEZIONE
       //---------------
@@ -107,10 +107,7 @@ class Componente extends Dato{
 
   public boolean equals(Object obj){
     if(!(obj instanceof Componente)){
-      System.out.println("Componente.equals()->obj non è istanza di Componente");
-      //---------------
-      //GESTIRE ECCEZIONE
-      //---------------
+      return false;
     }
 
     Componente aux = (Componente) obj;

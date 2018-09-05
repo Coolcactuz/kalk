@@ -14,8 +14,8 @@
 
 
 abstract class Complesso extends Numero{
-    public abstract Complesso converti();
-    public abstract Complesso coniugato();
+    public abstract Complesso converti() throws KalkException;
+    public abstract Complesso coniugato() throws KalkException;
 
     public void printComplesso(){
       System.out.println(toString());

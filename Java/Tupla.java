@@ -36,23 +36,19 @@ class Tupla extends Dato{
 
 
   //costruttore di tupla a partire da una stringa del tipo METADATO,DATO
-  public Tupla(String s){
+  public Tupla(String s) throws KalkException{
 
     if(!(s.equals(""))){
 
       //controllo se la stringa e' corretta
       if(s.charAt(0) == ','){
-        System.out.println("la tua stringa inizia con una virgola");
-        //----------------------
-        //GESTIRE ECCEZIONE
-        //----------------------
+        //System.out.println("la tua stringa inizia con una virgola");
+        throw new KalkException("la tua stringa inizia con una virgola");
       }
 
       if(s.charAt(s.length() - 1) == ','){
-        System.out.println("la tua stringa finisce con una virgola");
-        //----------------------
-        //GESTIRE ECCEZIONE
-        //----------------------
+        //System.out.println();
+        throw new KalkException("la tua stringa finisce con una virgola");
       }
 
 
@@ -62,19 +58,14 @@ class Tupla extends Dato{
         if(s.charAt(i) == ','){
           ++commas;
           if(s.charAt(i+1) == ','){
-            System.out.println("piu' di una virgola di seguito");
-            //----------------------
-            //GESTIRE ECCEZIONE
-            //----------------------
+            //System.out.println("piu' di una virgola di seguito");
+            throw new KalkException("piu' di una virgola di seguito");
           }
         }
       }
 
       if((commas%2) == 0){
-        System.out.println("numero incorretto di virgole");
-        //----------------------
-        //GESTIRE ECCEZIONE
-        //----------------------
+        throw new KalkException("numero incorretto di virgole");
       }
       //fine dei controlli sulla stringa
       //da qui si assume che la stringa abbia una sintassi corretta
@@ -90,7 +81,7 @@ class Tupla extends Dato{
           }
 
           if(metadati.contains(s.substring(ind, aux))){
-            System.out.println("due o più metadati uguali");
+            throw new KalkException("due o più metadati uguali");
             //----------------------
             //GESTIRE ECCEZIONE
             //----------------------
@@ -106,7 +97,7 @@ class Tupla extends Dato{
 
             if((ch_tmp.toString()).matches("[^a-zA-Z0-9]")){
               //gestire eccezione carattere speciale
-              System.out.println("carattere speciale in metadato");
+              throw new KalkException("carattere speciale in metadato");
             }
 
             tmp++;
@@ -134,7 +125,7 @@ class Tupla extends Dato{
 
               if((ch_tmp.toString()).matches("[^a-zA-Z0-9]")){
                 //gestire errore sintassi
-                System.out.println("carattere speciale in dato");
+                throw new KalkException("carattere speciale in dato");
               }
 
               tmp++;
@@ -153,7 +144,7 @@ class Tupla extends Dato{
 
               if((ch_tmp.toString()).matches("[^a-zA-Z0-9]")){
                 //gestire errore sintassi
-                System.out.println("carattere speciale in dato");
+                throw new KalkException("carattere speciale in dato");
               }
 
               tmp++;
@@ -165,7 +156,7 @@ class Tupla extends Dato{
       }
 
       if(dati.size() != metadati.size()){
-        System.out.println("errore nella creazione della tupla: diverso numero tra metadati e dati");
+        throw new KalkException("errore nella creazione della tupla: diverso numero tra metadati e dati");
         //----------------------
         //GESTIRE ECCEZIONE
         //----------------------
@@ -174,7 +165,7 @@ class Tupla extends Dato{
 
   }
 
-  public Tupla(){
+  public Tupla() throws KalkException{
     this("");
   }
 
@@ -275,15 +266,15 @@ class Tupla extends Dato{
     }
   }
 
-  public void insert(String m, String d){
+  public void insert(String m, String d) throws KalkException{
     if(m.isEmpty() || d.isEmpty()){
-      System.out.println("almeno una delle due string è vuota");
+      throw new KalkException("almeno una delle due string è vuota");
       //----------------------
       //GESTIRE ECCEZIONE
       //----------------------
     }
     if(metadati.contains(m)){
-      System.out.println("metadato già presente");
+      throw new KalkException("metadato già presente");
       //----------------------
       //GESTIRE ECCEZIONE
       //----------------------
@@ -293,11 +284,11 @@ class Tupla extends Dato{
     dati.add(d);
   }
 
-  public void erase(){
+  public void erase() throws KalkException{
     int numeroElementi = metadati.size();
 
     if(numeroElementi == 0){
-      System.out.println("impossibile rimuovere elementi da tupla vuota");
+      throw new KalkException("impossibile rimuovere elementi da tupla vuota");
       //------------------
       //GESTIRE ECCEZIONE
       //------------------
@@ -318,7 +309,7 @@ class Tupla extends Dato{
   }
 
 
-  public Tupla intersezione(Tupla t){
+  public Tupla intersezione(Tupla t) throws KalkException{
 
     Tupla res = new Tupla();
 
@@ -335,7 +326,7 @@ class Tupla extends Dato{
     return res;
   }
 
-  public Tupla differenza(Tupla t){
+  public Tupla differenza(Tupla t) throws KalkException{
     Tupla res = new Tupla();
 
     Iterator<String> it1 = metadati.iterator();
@@ -365,7 +356,7 @@ class Tupla extends Dato{
     return res;
   }
 
-  public Tupla join(Tupla t){
+  public Tupla join(Tupla t) throws KalkException{
     Tupla aux = new Tupla();
     aux.metadati = (Vector<String>) metadati.clone();
     aux.dati = (Vector<String>) dati.clone();

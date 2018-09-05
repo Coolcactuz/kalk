@@ -25,9 +25,9 @@ class Raz extends Numero{
   private long num;
   private long den;
 
-  public Raz(long n, long d){
+  public Raz(long n, long d) throws KalkException{
     if(d == 0){
-      System.out.println("denominatore nullo");
+      throw new KalkException("denominatore nullo");
       //-----------------
       //GESTIRE ECCEZIONE
       //-----------------
@@ -48,7 +48,7 @@ class Raz extends Numero{
     semplifica();
   }
 
-  public Raz(double d){
+  public Raz(double d) throws KalkException{
     int i = 1;
 
     while((d - (Math.floor(d * Math.pow(10, i)) / Math.pow(10, i))) != 0){
@@ -64,7 +64,7 @@ class Raz extends Numero{
     den = aux.getDen();
   }
 
-  public Raz(){
+  public Raz() throws KalkException{
     this(0,1);
   }
 
@@ -73,7 +73,7 @@ class Raz extends Numero{
     return result;
   }
 
-  public Raz potenza(int exp){
+  public Raz potenza(int exp) throws KalkException{
     if(exp == 0){
       Raz result = new Raz(1, 1);
       return result;
@@ -113,7 +113,7 @@ class Raz extends Numero{
     }
   }
 
-  public Raz reciproco(){
+  public Raz reciproco() throws KalkException{
     Raz result = new Raz(den, num);
     return result;
   }
@@ -133,10 +133,10 @@ class Raz extends Numero{
     System.out.println(toString());
   }
 
-  public Numero somma(Numero n){
+  public Numero somma(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -145,10 +145,10 @@ class Raz extends Numero{
     return result;
   }
 
-  public Numero differenza(Numero n){
+  public Numero differenza(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -157,10 +157,10 @@ class Raz extends Numero{
     return result;
   }
 
-  public Numero moltiplicazione(Numero n){
+  public Numero moltiplicazione(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -169,10 +169,10 @@ class Raz extends Numero{
     return result;
   }
 
-  public Numero divisione(Numero n){
+  public Numero divisione(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -196,8 +196,7 @@ class Raz extends Numero{
 
   public boolean equals(Object obj){
     if(!(obj instanceof Raz)){
-      System.out.println("cast fallito");
-      //gestire eccezione
+      return false;
     }
 
     Raz aux = (Raz) obj;

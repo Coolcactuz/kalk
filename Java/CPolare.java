@@ -30,12 +30,9 @@ class CPolare extends Complesso{
     return modulo;
   }
 
-  public CPolare(double m, double f){
+  public CPolare(double m, double f) throws KalkException{
     if(m < 0){
-      //------------
-      //GESTIRE ECCEZIONE
-      //modulo negativo
-      //---------------
+    throw new KalkException("modulo negativo");
     }
     else if(m == 0){
       modulo = 0;
@@ -57,7 +54,7 @@ class CPolare extends Complesso{
     }
   }
 
-  public CPolare(){
+  public CPolare() throws KalkException{
     this(0, 0);
   }
 
@@ -69,16 +66,14 @@ class CPolare extends Complesso{
     return result;
   }
 
-  public Complesso coniugato(){
+  public Complesso coniugato() throws KalkException{
     CPolare result = new CPolare(modulo, -fase);
     return result;
   }
 
   public boolean equals(Object obj){
     if(!(obj instanceof CPolare)){
-      //---------------
-      //GESTIRE ECCEZIONE
-      //---------------
+      return false;
     }
 
     CPolare aux = (CPolare) obj;
@@ -96,7 +91,7 @@ class CPolare extends Complesso{
     return result;
   }
 
-  public Numero somma(Numero n){
+  public Numero somma(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) n;
       CCartesiano cc = (CCartesiano) (converti());
@@ -115,14 +110,11 @@ class CPolare extends Complesso{
       return result;
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE-> tipi incompatibili
-      //-------------------
-      return this;
+      throw new KalkException("tipi incompatibili", false);
     }
   }
 
-  public Numero differenza(Numero n){
+  public Numero differenza(Numero n) throws KalkException{
     if(n instanceof CCartesiano){
       CCartesiano aux = (CCartesiano) (converti());
       CCartesiano cc = (CCartesiano) n;
@@ -140,14 +132,11 @@ class CPolare extends Complesso{
       return result;
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE-> tipi incompatibili
-      //-------------------
-      return this;
+      throw new KalkException("tipi incompatibili", false);
     }
   }
 
-  public Numero moltiplicazione(Numero n){
+  public Numero moltiplicazione(Numero n) throws KalkException{
     if(n instanceof CPolare){
       CPolare cp = (CPolare) n;
 
@@ -164,14 +153,11 @@ class CPolare extends Complesso{
       return moltiplicazione(cp);
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE-> tipi incompatibili
-      //-------------------
-      return this;
+    throw new KalkException("tipi incompatibili", false);
     }
   }
 
-  public Numero divisione(Numero n){
+  public Numero divisione(Numero n) throws KalkException{
     if(n instanceof CPolare){
       CPolare cp = (CPolare) n;
 
@@ -188,10 +174,7 @@ class CPolare extends Complesso{
       return divisione(cp);
     }
     else{
-      //-------------------
-      //GESTIRE ECCEZIONE-> tipi incompatibili
-      //-------------------
-      return this;
+    throw new KalkException("tipi incompatibili", false);
     }
   }
 

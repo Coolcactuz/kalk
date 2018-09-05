@@ -1,5 +1,5 @@
 public class Use{
-  public static void main(String args[]){
+  public static void main(String args[]) throws KalkException{
 
     // -------------TUPLA-------------------------
     //    a)costruttore di default
@@ -27,7 +27,7 @@ public class Use{
 
     //Tupla t4 = new Tupla("ci ao,ciao");
     //Tupla t5 = new Tupla("ciao,c\niao");
-    Tupla t6 = new Tupla("ciao, ciao");
+    //Tupla t6 = new Tupla("ciao, ciao");
 
     t2.printTupla();
     t2.printDati();

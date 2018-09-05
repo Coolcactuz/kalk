@@ -52,10 +52,6 @@ class Resistore extends Componente{
 
   public boolean equals(Object obj){
     if(!(obj instanceof Resistore)){
-      System.out.println("Resistore.equals()-> obj non e' istanza di Resistore");
-      //------------------
-      //GESTIRE ECCEZIONE
-      //------------------
       return false;
     }
 
