@@ -25,9 +25,9 @@ class Raz extends Numero{
   private long num;
   private long den;
 
-  public Raz(long n, long d){
+  public Raz(long n, long d) throws KalkException{
     if(d == 0){
-      System.out.println("denominatore nullo");
+      throw new KalkException("denominatore nullo");
       //-----------------
       //GESTIRE ECCEZIONE
       //-----------------
@@ -133,10 +133,10 @@ class Raz extends Numero{
     System.out.println(toString());
   }
 
-  public Numero somma(Numero n){
+  public Numero somma(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -145,10 +145,10 @@ class Raz extends Numero{
     return result;
   }
 
-  public Numero differenza(Numero n){
+  public Numero differenza(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -157,10 +157,10 @@ class Raz extends Numero{
     return result;
   }
 
-  public Numero moltiplicazione(Numero n){
+  public Numero moltiplicazione(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -169,10 +169,10 @@ class Raz extends Numero{
     return result;
   }
 
-  public Numero divisione(Numero n){
+  public Numero divisione(Numero n) throws KalkException{
     if(!(n instanceof Raz)){
       //gestire eccezione
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
     }
 
     Raz aux = (Raz) n;
@@ -194,9 +194,9 @@ class Raz extends Numero{
     den = aux.den;
   }*/
 
-  public boolean equals(Object obj){
+  public boolean equals(Object obj) throws KalkException{
     if(!(obj instanceof Raz)){
-      System.out.println("cast fallito");
+      throw new KalkException("cast fallito", false);
       //gestire eccezione
     }
 
