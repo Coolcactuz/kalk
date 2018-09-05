@@ -12,8 +12,8 @@ VRazionale::VRazionale(): razionaleOp(new QGridLayout()){
   razionaleOp->addWidget(new KalkButton(13, "/", this), 1, 1);
   razionaleOp->addWidget(new KalkButton(14, "^", this), 2, 0);
   razionaleOp->addWidget(new KalkButton(-6, "sqrt", this), 2, 1);
-  razionaleOp->addWidget(new KalkButton(-7, "1/x", this), 2, 1);
-  razionaleOp->addWidget(new KalkButton(-8, "<->", this), 2, 1);
+  razionaleOp->addWidget(new KalkButton(-7, "1/x", this), 3, 0);
+  razionaleOp->addWidget(new KalkButton(-8, "<->", this), 3, 1);
 
   for(int j = 0; j < razionaleOp->count(); j++){
 

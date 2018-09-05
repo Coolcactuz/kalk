@@ -1,7 +1,6 @@
 #include "controller.h"
 
-controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_corrente(0), from_gui(""),
-                          conv_complesso(0), conv_raz(0.0){
+controller::controller(): cv(new controller_view()), tipo_corrente(0), from_gui(""), conv_complesso(0), conv_raz(0.0){
   QObject::connect(cv, SIGNAL(inviaTipo(int)), this, SLOT(defineTC(int)));
   QObject::connect(cv, SIGNAL(inviaStringa(QString)), this, SLOT(data_GUI_to_controller(QString)));
 
@@ -11,7 +10,7 @@ controller::controller(): cv(new controller_view()), tipo_corrente(0), oggetto_c
   QObject::connect(cv, SIGNAL(controller_view_inviaVolt(double)), this, SLOT(circuito_cambia_volt(double)));
   QObject::connect(cv, SIGNAL(controller_view_inviaFreq(double)), this, SLOT(circuito_cambia_freq(double)));
 
-  QObject::connect(this, SIGNAL(data_controller_to_GUI(QString)), cv, SIGNAL(inviaResult(QString))));
+  QObject::connect(this, SIGNAL(data_controller_to_GUI(QString)), cv, SIGNAL(inviaResult(QString)));
 
 
   QObject::connect(this, SIGNAL(CtV_exception(QString, bool)), cv, SIGNAL(pass_exception(QString, bool)));
@@ -31,10 +30,6 @@ void controller::gestisci_emergenza(){
     delete cv;
   }
 
-  if(oggetto_corrente){
-    delete oggetto_corrente;
-  }
-
   if(conv_complesso){
     delete conv_complesso;
   }
@@ -48,10 +43,6 @@ controller::~controller(){
     delete cv;
   }
 
-  if(oggetto_corrente){
-    delete oggetto_corrente;
-  }
-
   if(conv_complesso){
     delete conv_complesso;
   }
@@ -63,75 +54,58 @@ void controller::defineTC(int tc){
 }
 
 void controller::data_GUI_to_controller(QString s){
-  from_gui = s;
-
-  std::cout<<from_gui.toUtf8().constData()<<std::endl;
-
-  Dato* tmp = 0;
-
-  QString qstmp = "";
+  from_gui = s; //stringa ricevuta in input
+  Dato* tmp = 0;    //puntatore a oggetto fittizio per il parser
+  QString qstmp = "";   //QString per lo slot mostra_result
 
   try{
+    //controlla che la stringa non abbia caratteri speciali al suo interno
     std::string stringa_da_controllare = from_gui.toUtf8().constData();
     check_string(stringa_da_controllare);
 
-    std::cout<<"tipo corrente =" << tipo_corrente<<std::endl;
-
-    switch (tipo_corrente){
-
-      case 1:
-      {
-        tmp = new Raz(); //oggetto fittizio per il parser
-
-        std::cout<<"parser raz non ancora creato"<<std::endl;
-
-        parser<Raz> pr(from_gui.toUtf8().constData(), tmp);
-
-        std::cout<<"parser raz creato"<<std::endl;
-
-        oggetto_corrente = parser<Raz>::resolve(pr.getStart());
-
-        std::cout << "oggetto_corrente creato" << '\n';
-
-        std::cout << oggetto_corrente->toString()<<std::endl;
-
-        //conv_raz = (static_cast<Raz*>(oggetto_corrente))->double();
-        conv_raz = double(*(static_cast<Raz*>(oggetto_corrente)));
-
-        std::cout << "conversione raz creato" << '\n';
-
-        qstmp = (oggetto_corrente->toString()).c_str();
-
-      }
-      break;
-
-      case 2:
-      {
-        tmp = new C_cartesiano();  //oggetto fittizio per il parser
-         std::cout<<"parser complesso non ancora creato"<<std::endl;
+    switch(i){
+       case 1:
+        {
+        tmp = new Raz();    //inizializzazione oggetto fittizio per il parser
+        Dato* result = 0;   //puntatore all'oggetto risultato
+        parser<Raz> pr(from_gui.toUtf8().constData(), tmp);    //creazione oggetto parser
+        result = parser<Raz>::resolve(pr.getStart());   //calcolo e assegnazione del risultato
+        conv_raz = double(*(static_cast<Raz*>(result)));
+        qstmp = (result->toString()).c_str();
+        delete result;
+        }
+       break;
+       case 2:
+        {
+        tmp = new C_cartesiano();
+        Dato* result = 0;
         parser<Complesso> pcomplesso(from_gui.toUtf8().constData(), tmp);
-         std::cout<<"parser complesso creato"<<std::endl;
-        oggetto_corrente = pcomplesso.resolve(pcomplesso.getStart());
-        conv_complesso = (static_cast<Complesso*> (oggetto_corrente))->converti();
-      }
-      break;
-
-      case 3:
-      {
-        tmp = new tupla(); //oggetto fittizio per il parser
+        result = parser<Complesso>::resolve(pcomplesso.getStart());
+        conv_complesso = (static_cast<Complesso*> (result))->converti();
+        qstmp = (result->toString()).c_str();
+        delete result;
+        }
+        break;
+        case 3:
+        {
+        tmp = new tupla();
+        Dato* result = 0;
         parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
-        //oggetto_corrente = pt.resolve(pt.getStart());
-      }
-      break;
-
-      default:
-      {
-        tmp = new Condensatore(); //oggetto fittizio per il parser
+        result = parser<tupla>::resolve(pt.getStart());
+        qstmp = (result->toString()).c_str();
+        delete result;
+        }
+        break;
+        default:
+        {
+        tmp = new Condensatore();
+        Dato* result = 0;
         parser<Componente> pcomponente(from_gui.toUtf8().constData(), tmp);
-        oggetto_corrente = pcomponente.resolve(pcomponente.getStart());
-      }
-      break;
-    }
+        result = parser<Componente>::resolve(pcomponente.getStart());
+        qstmp = (result->toString()).c_str();
+        delete result;
+        }
+     }
   }
   catch(const syntax_exception & se){
     if(tmp)
@@ -146,43 +120,48 @@ void controller::data_GUI_to_controller(QString s){
 
   delete tmp;
 
-  std::cout<<"qui"<<std::endl;
-
-
-  //emit CtV_exception(QString("prova"), true);
-
   emit data_controller_to_GUI(qstmp);
 }
 
 void controller::soraz_logic(int i){
 
-  Raz* aux = dynamic_cast<Raz*>(oggetto_corrente);
+    Dato* fittizio = new Raz();
+    parser<Raz> pr(from_gui.toUtf8().constData(), fittizio);
+    delete fittizio;
+    Dato* result = parser<Raz>::resolve(pr.getStart());
 
-  if(!aux){
-    //gestire eccezione
-  }
+    Raz aux = *(static_cast<Raz*>(result));
+    delete result;
 
-  switch (i){
 
-    case -6:
-      emit data_controller_to_GUI(QString((std::to_string(aux->radice_quadrata())).c_str()));
-    break;
+    try{
+        switch (i){
 
-    case -7:
-      {
-        Raz* tmp = aux->reciproco();
-        Raz raz_obj = *tmp;
-        delete tmp;
-        emit data_controller_to_GUI(QString((raz_obj.toString()).c_str()));
-      }
-    break;
+        case -6:
+          emit data_controller_to_GUI(QString((std::to_string(aux.radice_quadrata())).c_str()));
+        break;
 
-    default:
-      emit data_controller_to_GUI(QString((std::to_string(conv_raz)).c_str()));
-    break;
+        case -7:
+          {
+            Raz* tmp = aux.reciproco();
+            Raz raz_obj = *tmp;
+            delete tmp;
+            emit data_controller_to_GUI(QString((raz_obj.toString()).c_str()));
+          }
+        break;
 
-  }
+        default:
+          emit data_controller_to_GUI(QString((std::to_string(conv_raz)).c_str()));
+        break;
+       }
+    }
 
+    catch(const syntax_exception & se){
+      emit CtV_exception(QString((se.getErrorMessage()).c_str()), true);
+    }
+    catch(const logic_exception & le){
+      emit CtV_exception(QString((le.getErrorMessage()).c_str()), false);
+    }
 }
 
 void controller::socomplesso_logic(int i){

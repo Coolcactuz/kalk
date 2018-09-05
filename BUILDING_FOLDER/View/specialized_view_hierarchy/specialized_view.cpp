@@ -60,8 +60,10 @@ void specialized_view::mostra_result(QString res){
 void specialized_view::specops_raz(){
   KalkButton* aux = qobject_cast<KalkButton*>(sender());
 
+  int intero_ausiliario = aux->getDataNumber();
+
   if(aux){
-    emit inviaSORaz(aux->getDataNumber());
+    emit inviaSORaz(intero_ausiliario);
   }
   else{
     //gestire eccezione

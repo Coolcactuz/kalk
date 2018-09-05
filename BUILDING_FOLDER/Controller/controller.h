@@ -18,7 +18,7 @@ private:
   controller_view* cv;
 
   int tipo_corrente;
-  Dato* oggetto_corrente;
+  //Dato* oggetto_corrente;
   QString from_gui;
 
   Complesso* conv_complesso;
