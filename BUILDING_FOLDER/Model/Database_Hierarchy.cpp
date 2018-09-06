@@ -16,5 +16,10 @@ void Database_Hierarchy::load_operators() {
 }
 
 tupla* Database_Hierarchy::create(std::string s) const{
-    return new tupla(s);
+    try{
+        return new tupla(s);
+    }
+    catch(const syntax_exception& se){
+        throw ;
+    }
 }

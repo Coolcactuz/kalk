@@ -13,7 +13,7 @@ C_cartesiano::C_cartesiano(std::string s){
     if(pos==-1)
         reale=toDouble(s);
     else if(pos==s.length()-1)
-        immaginaria=(pos==0?1:toDouble(s.substr(size)));
+        immaginaria=(pos==0?1:toDouble(s.substr(size,s.length()-1)));
     else
         throw syntax_exception("Invalid value"); //gestire eccezione syntax error
   }
