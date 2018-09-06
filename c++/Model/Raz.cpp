@@ -17,23 +17,18 @@ Raz::Raz():num(0),den(1){};
 Raz::Raz(std::string s){   //stringa
   try {
       if (s.find('/') == -1) {
-          double numerator=toDouble(s);
-          Raz aux(numerator);
-          num = aux.getNum();
-          den = aux.getDen();
+          num=toDouble(s);
+          den=1;
       }
       else{
           std::string::size_type found=s.find('/');
-          num=toDouble(s.substr(0,found));
+          num=toDouble(s.substr(0,found-1));
           den=toDouble(s.substr(found+1));
       }
       semplifica();
   }
   catch (const syntax_exception& se){
       throw;
-  }
-  catch (const std::exception& ex){
-      throw syntax_exception("errore di sintassi");
   }
 }
 

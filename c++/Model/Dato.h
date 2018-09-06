@@ -10,8 +10,11 @@
 class Dato{
 protected:
     static double toDouble(std::string s){
-        if(s.length()==0)
+        if(s.length()==0) {
+            std::cout<<"errore qui"<<std::endl;
             throw syntax_exception("errore di sintassi");
+        }
+        std::cout<<s<<std::endl;
         std::string::size_type size=0;
         double res=std::stod(s, &size);
         if(size==s.length())

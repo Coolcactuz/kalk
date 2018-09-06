@@ -149,7 +149,7 @@ typename parser<T>::node* parser<T>::find_father(typename parser<T>::node* wante
 template<class T>
 typename parser<T>::node* parser<T>::build_tree(std::string s){
   if(!balanced_brackets(s)) throw logic_exception("parentesi non bilanciate"); //gestire eccezione parentesi non bilanciate
-  if(s.length()==0) return new node(dynamic_cast<T*>(create(s)));
+  if(s.length()==0) throw syntax_exception("stringa vuota");
   std::string tmp= "(";
   tmp=tmp.append(s);
   tmp=tmp.append(")");
