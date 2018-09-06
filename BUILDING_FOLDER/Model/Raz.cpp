@@ -111,7 +111,16 @@ std::string Raz::toString() const{
 Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Raz*>(a);
     auto r=dynamic_cast<const Raz*>(b);
+
+    if(l){
+      std::cout << "l esiste" << '\n';
+    }
+    if(r){
+      std::cout << "r esiste" << '\n';
+    }
+
     if(l&&r){
+
         try{
             switch(o) {
                 case '+':

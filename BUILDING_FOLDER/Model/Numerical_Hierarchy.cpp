@@ -16,6 +16,17 @@ void Numerical_Hierarchy::load_operators() {
 }
 
 Complesso* Numerical_Hierarchy::create_complex(std::string s)const {
+<<<<<<< HEAD
+    auto pos=s.find('<');
+    if(pos==std::string::npos)
+        return new C_cartesiano(s);
+    return new C_polare(s);
+}
+
+Raz* Numerical_Hierarchy::create(std::string s) const{
+    return new Raz(s);
+}
+=======
     try{
         auto pos=s.find('<');
         if(pos==-1)
@@ -35,3 +46,4 @@ Raz* Numerical_Hierarchy::create(std::string s) const{
         throw;
     }
 }
+>>>>>>> 28f5b8197a4519d1d68d3f3bf17c170abf0f93fc
