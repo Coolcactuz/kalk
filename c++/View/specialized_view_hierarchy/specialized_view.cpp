@@ -18,8 +18,11 @@ specialized_view::specialized_view(): type_title(new QLabel(this)), help(new QPu
   lower->addLayout(generic_keyboard);
 
   generic_keyboard->addWidget(new KalkButton(-3, "AC", this), 0, 0);
-  generic_keyboard->addWidget(new KalkButton(-2, "DEL", this), 1, 0);
-  generic_keyboard->addWidget(new KalkButton(-1, "ENTER", this), 2, 0);
+  generic_keyboard->addWidget(new KalkButton(-2, "DEL", this), 0, 1);
+  generic_keyboard->addWidget(new KalkButton(0, "(", this), 1, 0);
+  generic_keyboard->addWidget(new KalkButton(1, ")", this), 1, 1);
+  generic_keyboard->addWidget(new KalkButton(2, ".", this), 2, 0);
+  generic_keyboard->addWidget(new KalkButton(-1, "ENTER", this), 2, 1);
 
   for(int i = 0; i < generic_keyboard->count(); i++){
     QLayoutItem* aux = generic_keyboard->itemAt(i);

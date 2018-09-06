@@ -59,6 +59,8 @@ void controller::data_GUI_to_controller(QString s){
   Dato* tmp = 0;    //puntatore a oggetto fittizio per il parser
   QString qstmp = "";   //QString per lo slot mostra_result
 
+  std::cout << from_gui.toUtf8().constData() << std::endl;
+
   try{
     //controlla che la stringa non abbia caratteri speciali al suo interno
     std::string stringa_da_controllare = from_gui.toUtf8().constData();
