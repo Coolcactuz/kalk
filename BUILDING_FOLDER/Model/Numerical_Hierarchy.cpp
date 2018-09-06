@@ -17,7 +17,7 @@ void Numerical_Hierarchy::load_operators() {
 
 Complesso* Numerical_Hierarchy::create_complex(std::string s)const {
     auto pos=s.find('<');
-    if(pos==-1)
+    if(pos==std::string::npos)
         return new C_cartesiano(s);
     return new C_polare(s);
 }
