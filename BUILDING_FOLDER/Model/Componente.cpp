@@ -11,7 +11,7 @@ Componente::Componente(C_cartesiano& c){
     try{
         setImp(c);
     }
-    catch(const exception& error){
+    catch(const syntax_exception& se){
         throw;
     }
 }

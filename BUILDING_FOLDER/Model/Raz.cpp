@@ -79,15 +79,10 @@ Raz* Raz::operator/ (const Numero *n)const {
 }
 
 Raz* Raz::operator^ (int exp)const {
-    if(exp==0){
-        return new Raz(1,1);
-    }
-    else if(exp<0){
+    if(exp==0) return new Raz(1,1);
+    if(exp<0)
         return new Raz(pow(den,exp*-1), pow(num,exp*-1));
-    }
-    else{
-        return new Raz(pow(num,exp), pow(den,exp));
-    }
+    return new Raz(pow(num,exp), pow(den,exp));
 }
 
 Raz::operator double() const{

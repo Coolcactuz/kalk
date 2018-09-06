@@ -7,8 +7,8 @@
 
 class exception{
 public:
-  std::string getErrorMessage() const {
-    return errorMessage;
+  void print() const {
+    std::cout << errorMessage << std::endl;
   }
   std::string errorMessage;
   exception(std::string s): errorMessage(s){}

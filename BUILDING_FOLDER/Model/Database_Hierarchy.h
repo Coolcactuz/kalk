@@ -1,7 +1,3 @@
-//
-// Created by luca on 01/08/18.
-//
-
 #ifndef KALK_DATABASE_HIERARCHY_H
 #define KALK_DATABASE_HIERARCHY_H
 
@@ -16,7 +12,6 @@ private:
 public:
     Database_Hierarchy();
     tupla* create(std::string) const;
-
 };
 
 
