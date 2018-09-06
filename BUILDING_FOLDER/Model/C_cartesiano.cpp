@@ -1,26 +1,28 @@
-//
-// Created by luca on 19/12/17.
-//
-
 #include "C_cartesiano.h"
 #include "C_polare.h"
 #include <cmath>
 
 C_cartesiano::C_cartesiano(double r, double i):reale(r),immaginaria(i){};
 
-C_cartesiano::C_cartesiano(const C_cartesiano& c):reale(c.reale),immaginaria(c.immaginaria){};
-
 C_cartesiano::C_cartesiano(std::string s){
   auto pos=s.find('i');
   std::string::size_type size=0;
   reale=0;
   immaginaria=0;
-  if(pos==-1)
-    reale=std::stod(s);
-  else if(pos==s.length()-1)
-    immaginaria=(pos==0?1:std::stod(s.substr(size)));
-  else
-      throw syntax_exception("Invalid value"); //gestire eccezione syntax error
+  try{
+    if(pos==-1)
+        reale=toDouble(s);
+    else if(pos==s.length()-1)
+        immaginaria=(pos==0?1:toDouble(s.substr(size)));
+    else
+        throw syntax_exception("Invalid value, 1"); //gestire eccezione syntax error
+  }
+  catch (const syntax_exception& se){
+      throw;
+  }
+  catch (const std::exception& ex){
+      throw syntax_exception("errore di sintassi 2");
+  }
 }
 
 C_cartesiano::C_cartesiano():reale(0),immaginaria(0){};
@@ -89,18 +91,6 @@ C_cartesiano* C_cartesiano::operator/ (const Numero* n)const {
       throw logic_exception("Tipo incompatibile");    //gestire eccezione di tipo incompatibile
 }
 
-//C_cartesiano& C_cartesiano::operator=(const Dato& d){
-//    try{
-//        auto aux= dynamic_cast<const C_cartesiano&>(d);
-//        reale=aux.reale;
-//        immaginaria=aux.immaginaria;
-//        return *this;
-//    }
-//    catch (const std::bad_cast &error){
-//        std::cout << "tipi incompatibili" << std::endl;
-//    }
-//}
-
 bool C_cartesiano::operator== (const Dato& d)const{
     try {
         auto aux = dynamic_cast<const C_cartesiano &>(d);
@@ -132,14 +122,3 @@ Complesso* C_cartesiano::converti() const{
     return new C_polare(f,m);
 }
 
-void C_cartesiano::stampa(std::ostream& os)const {
-    std::cout<<reale;
-    if(immaginaria<0)std::cout<< immaginaria;
-    else std::cout<<"+"<<immaginaria;
-    std::cout<<"i";
-}
-
-std::ostream& operator<<(std::ostream& os, const C_cartesiano& n){
-    n.stampa(os);
-    return os;
-}

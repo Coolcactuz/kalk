@@ -130,8 +130,7 @@ bool parser<T>::balanced_brackets(std::string s) const{
     else if (*it==')') bracket--;
     if(bracket<0) return false;
   }
-  if(bracket==0) return true;
-  return false;
+    return bracket == 0 ? true : false;
 }
 
 //trova nodo padre del nodo wanted, nell'albero (o sub albero) root
@@ -149,8 +148,8 @@ typename parser<T>::node* parser<T>::find_father(typename parser<T>::node* wante
 //costruzione albero di parsing
 template<class T>
 typename parser<T>::node* parser<T>::build_tree(std::string s){
-  if(!balanced_brackets(s)) throw(0); //gestire eccezione parentesi non bilanciate
-  //if(s.length()==0) return new node(dynamic_cast<T*>(create(s)));
+  if(!balanced_brackets(s)) throw logic_exception("parentesi non bilanciate"); //gestire eccezione parentesi non bilanciate
+  if(s.length()==0) return new node(dynamic_cast<T*>(create(s)));
   std::string tmp= "(";
   tmp=tmp.append(s);
   tmp=tmp.append(")");
@@ -165,16 +164,18 @@ typename parser<T>::node* parser<T>::build_tree(std::string s){
       std::string spoil_item(it,aux);
       T* obj_p=nullptr;
       try {
-          //std::cout<<spoil_item<<std::endl;
         obj_p=dynamic_cast<T*>(create(spoil_item));
       }
       catch(const syntax_exception& error){
-//        delete obj_p;
-//        std::cout << "catch build_tree" << '\n';
+          if(obj_p!=nullptr)
+              delete obj_p;
         throw ;
       }
-//      if(obj_p == nullptr)
-//        std::cout << "identify_literal ERROR";
+      catch(const logic_exception& error){
+          if(obj_p!=nullptr)
+              delete obj_p;
+          throw ;
+      }
       current->right=new node();
       current=current->right;
       current->op = 0;

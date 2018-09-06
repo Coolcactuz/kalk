@@ -5,15 +5,14 @@
 int main(){
   std::string input;
   std::cin>>input;
-  Componente* tmp=new Componente();
-  tmp->setFreq(50);
-  tmp->setVolt(220);
+  Complesso* tmp=new C_cartesiano();
+//  Componente::setFreq(50);
+//  Componente::setVolt(220);
   Dato *result= nullptr;
   try {
-      parser<Componente> controller(input, tmp);
-      //controller.print(controller.getStart());
+      parser<Complesso> controller(input, tmp);
       delete tmp;
-      result = parser<Componente>::resolve(controller.getStart());
+      result = parser<Complesso>::resolve(controller.getStart());
       std::cout<<result->toString()<<std::endl;
   }
   catch (const syntax_exception& se){
@@ -25,8 +24,5 @@ int main(){
       delete tmp;
       le.print();
   }
-  std::cout<<"hello"<<std::endl;
   return 0;
-
-
 }

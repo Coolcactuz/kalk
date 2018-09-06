@@ -19,12 +19,14 @@ public:
     node(T* t=nullptr, char o='\0', double p=0, node* l=nullptr, node* r=nullptr):
       obj(t), op(o), prec(p), left(l), right(r){}
     ~node(){
+        std::cout << "ora distruggo nodo" <<std::endl;
       if(left != nullptr)
         delete left;
       if(right != nullptr)
           delete right;
       if(obj != nullptr)
           delete obj;
+      std::cout << "finita distruzione nodo" <<std::endl;
     }
 
     bool operator==(node& n){
@@ -88,8 +90,10 @@ parser<T>::~parser(){
 
   std::cout << "distruttore parser" << '\n';
 
-    if(start)
+    if(start != 0){
+        std::cout << "ora distruggo start" <<std::endl;
         delete start;
+    }
 
   std::cout << "sono arrivato qua" << '\n';
 

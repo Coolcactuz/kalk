@@ -26,12 +26,13 @@ void controller::check_string(std::string s) const{
 }
 
 void controller::gestisci_emergenza(){
-  if(cv){
-    delete cv;
-  }
 
   if(conv_complesso){
     delete conv_complesso;
+  }
+
+  if(cv){
+    delete cv;
   }
 
   std::exit(1);
@@ -63,7 +64,7 @@ void controller::data_GUI_to_controller(QString s){
     std::string stringa_da_controllare = from_gui.toUtf8().constData();
     check_string(stringa_da_controllare);
 
-    switch(i){
+    switch(tipo_corrente){
        case 1:
         {
         tmp = new Raz();    //inizializzazione oggetto fittizio per il parser
@@ -72,7 +73,7 @@ void controller::data_GUI_to_controller(QString s){
         result = parser<Raz>::resolve(pr.getStart());   //calcolo e assegnazione del risultato
         conv_raz = double(*(static_cast<Raz*>(result)));
         qstmp = (result->toString()).c_str();
-        delete result;
+        //result viene distrutto automaticamente dal distruttore di parser che richiama quello di nodo
         }
        break;
        case 2:
@@ -83,19 +84,18 @@ void controller::data_GUI_to_controller(QString s){
         result = parser<Complesso>::resolve(pcomplesso.getStart());
         conv_complesso = (static_cast<Complesso*> (result))->converti();
         qstmp = (result->toString()).c_str();
-        delete result;
         }
         break;
-        case 3:
-        {
-        tmp = new tupla();
-        Dato* result = 0;
-        parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
-        result = parser<tupla>::resolve(pt.getStart());
-        qstmp = (result->toString()).c_str();
-        delete result;
-        }
-        break;
+//        case 3:
+//        {
+//        tmp = new tupla();
+//        Dato* result = 0;
+//        parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
+//        result = parser<tupla>::resolve(pt.getStart());
+//        qstmp = (result->toString()).c_str();
+//        delete result;
+//        }
+//        break;
         default:
         {
         tmp = new Condensatore();
@@ -103,9 +103,12 @@ void controller::data_GUI_to_controller(QString s){
         parser<Componente> pcomponente(from_gui.toUtf8().constData(), tmp);
         result = parser<Componente>::resolve(pcomponente.getStart());
         qstmp = (result->toString()).c_str();
-        delete result;
         }
      }
+
+    delete tmp;
+
+    emit data_controller_to_GUI(qstmp);
   }
   catch(const syntax_exception & se){
     if(tmp)
@@ -117,10 +120,6 @@ void controller::data_GUI_to_controller(QString s){
       delete tmp;
     emit CtV_exception(QString((le.getErrorMessage()).c_str()), false);
   }
-
-  delete tmp;
-
-  emit data_controller_to_GUI(qstmp);
 }
 
 void controller::soraz_logic(int i){
@@ -131,7 +130,6 @@ void controller::soraz_logic(int i){
     Dato* result = parser<Raz>::resolve(pr.getStart());
 
     Raz aux = *(static_cast<Raz*>(result));
-    delete result;
 
 
     try{
@@ -166,34 +164,33 @@ void controller::soraz_logic(int i){
 
 void controller::socomplesso_logic(int i){
 
-  Complesso* aux = dynamic_cast<Complesso*>(oggetto_corrente);
+  Dato* fittizio = new C_cartesiano();
+  parser<Complesso> pc(from_gui.toUtf8().constData(), fittizio);
+  delete fittizio;
 
-  if(!aux){
-    //gestire eccezione
-  }
+  Complesso* result = static_cast<Complesso*>(parser<Complesso>::resolve(pc.getStart()));
 
-  switch (i){
-
-    case -4:
-    {
-      if(conv_complesso){
-        emit data_controller_to_GUI(QString((conv_complesso->toString()).c_str()));
-      }
-      else{
-        //eccezione sintassi premuto converti senza avere creato oggetto
+  try{
+      switch (i){
+        case -4:
+            emit data_controller_to_GUI(QString((conv_complesso->toString()).c_str()));
+        break;
+        default:
+        {
+          Complesso* result_coniugato = result->coniugato();
+          QString stringa_coniugato = (result_coniugato->toString()).c_str();
+          delete result_coniugato;
+          emit data_controller_to_GUI(stringa_coniugato);
+        }
+        break;
       }
     }
-    break;
-
-    default:
-    {
-      Complesso* result_coniugato = aux->coniugato();
-      QString stringa_coniugato = (result_coniugato->toString()).c_str();
-      delete result_coniugato;
-      emit data_controller_to_GUI(stringa_coniugato);
+    catch(const syntax_exception & se){
+      emit CtV_exception(QString((se.getErrorMessage()).c_str()), true);
     }
-    break;
-  }
+    catch(const logic_exception & le){
+      emit CtV_exception(QString((le.getErrorMessage()).c_str()), false);
+    }
 }
 
 void controller::circuito_cambia_volt(double d){

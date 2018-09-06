@@ -11,7 +11,8 @@ KalkExceptionAlert::KalkExceptionAlert(QString qs, bool b): l(new QVBoxLayout(th
   }
   else{
     emergenza_button->setText("PREMI QUI PER CHIUDERE L'APPLICATIVO");
-    QObject::connect(emergenza_button, SIGNAL(clicked()), this, SIGNAL(emergenza1()));
+    if(QObject::connect(emergenza_button, SIGNAL(clicked()), this, SIGNAL(emergenza1())))
+        std::cout << "connessione errore logico" << std::endl;
 
   }
 

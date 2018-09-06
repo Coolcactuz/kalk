@@ -1,21 +1,31 @@
-//
-// Created by luca on 11/01/18.
-//
-
 #include "Condensatore.h"
+
 
 Condensatore::Condensatore(double c){
     if(c > 0)
         capacita = c;
     else
         throw logic_exception("Inizializzato con valore negativo");
-    Componente::setImp(impedenza());
+    try {
+        Componente::setImp(impedenza());
+    }
+    catch (const syntax_exception& se){
+        throw;
+    }
 }
 Condensatore::Condensatore(std::string s){
   auto pos=s.find('C');
   if(pos==0){
-    capacita=std::stod(s.substr(1));
-    Componente::setImp(impedenza());
+      try {
+          capacita=toDouble(s.substr(1));
+          Componente::setImp(impedenza());
+      }
+      catch (const syntax_exception& se){
+          throw;
+      }
+      catch (const std::exception& ex){
+          throw syntax_exception("errore di sintassi");
+      }
   }
   else
       throw syntax_exception("La stringa non inizia con il carattere C");
@@ -32,18 +42,6 @@ bool Condensatore::operator== (const Dato& d) const{
         return false;
     }
 }
-//
-//Condensatore& Condensatore::operator= (const Dato& d){
-//    try{
-//        auto aux= dynamic_cast<const Condensatore&>(d);
-//        capacita = aux.capacita;
-//        setImp(capacita);
-//        return *this;
-//    }
-//    catch(const std::bad_cast& error){
-//        std::cout<<"tipi incompatibili"<<std::endl;
-//    }
-//}
 
 std::string Condensatore::toString() const {
     std::string res="C"+std::to_string(getCapacita());

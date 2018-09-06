@@ -6,7 +6,12 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
+#include <iostream>
+
 class KalkExceptionAlert: public QWidget{
+
+  Q_OBJECT
+
 private:
   QVBoxLayout* l;
   QLabel* mostra_eccezione;

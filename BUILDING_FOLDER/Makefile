@@ -77,6 +77,7 @@ SOURCES       = main.cpp \
 		View/startup/startup_view.cpp moc_controller.cpp \
 		moc_controller_view.cpp \
 		moc_KalkButton.cpp \
+		moc_KalkExceptionAlert.cpp \
 		moc_KalkHelpWindow.cpp \
 		moc_KalkPlainTextEdit.cpp \
 		moc_specialized_view.cpp \
@@ -111,6 +112,7 @@ OBJECTS       = main.o \
 		moc_controller.o \
 		moc_controller_view.o \
 		moc_KalkButton.o \
+		moc_KalkExceptionAlert.o \
 		moc_KalkHelpWindow.o \
 		moc_KalkPlainTextEdit.o \
 		moc_specialized_view.o \
@@ -419,9 +421,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_controller.cpp moc_controller_view.cpp moc_KalkButton.cpp moc_KalkHelpWindow.cpp moc_KalkPlainTextEdit.cpp moc_specialized_view.cpp moc_startup_view.cpp
+compiler_moc_header_make_all: moc_controller.cpp moc_controller_view.cpp moc_KalkButton.cpp moc_KalkExceptionAlert.cpp moc_KalkHelpWindow.cpp moc_KalkPlainTextEdit.cpp moc_specialized_view.cpp moc_startup_view.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_controller.cpp moc_controller_view.cpp moc_KalkButton.cpp moc_KalkHelpWindow.cpp moc_KalkPlainTextEdit.cpp moc_specialized_view.cpp moc_startup_view.cpp
+	-$(DEL_FILE) moc_controller.cpp moc_controller_view.cpp moc_KalkButton.cpp moc_KalkExceptionAlert.cpp moc_KalkHelpWindow.cpp moc_KalkPlainTextEdit.cpp moc_specialized_view.cpp moc_startup_view.cpp
 moc_controller.cpp: View/controller_view.h \
 		View/startup/startup_view.h \
 		View/items/KalkButton.h \
@@ -470,6 +472,9 @@ moc_controller_view.cpp: View/startup/startup_view.h \
 
 moc_KalkButton.cpp: View/items/KalkButton.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/server2/2/2015/nvettore/Documents/kalk/BUILDING_FOLDER -I/server2/2/2015/nvettore/Documents/kalk/BUILDING_FOLDER -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/items/KalkButton.h -o moc_KalkButton.cpp
+
+moc_KalkExceptionAlert.cpp: View/items/KalkExceptionAlert.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/server2/2/2015/nvettore/Documents/kalk/BUILDING_FOLDER -I/server2/2/2015/nvettore/Documents/kalk/BUILDING_FOLDER -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/items/KalkExceptionAlert.h -o moc_KalkExceptionAlert.cpp
 
 moc_KalkHelpWindow.cpp: View/items/KalkHelpWindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/server2/2/2015/nvettore/Documents/kalk/BUILDING_FOLDER -I/server2/2/2015/nvettore/Documents/kalk/BUILDING_FOLDER -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/items/KalkHelpWindow.h -o moc_KalkHelpWindow.cpp
@@ -762,6 +767,9 @@ moc_controller_view.o: moc_controller_view.cpp
 
 moc_KalkButton.o: moc_KalkButton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkButton.o moc_KalkButton.cpp
+
+moc_KalkExceptionAlert.o: moc_KalkExceptionAlert.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkExceptionAlert.o moc_KalkExceptionAlert.cpp
 
 moc_KalkHelpWindow.o: moc_KalkHelpWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_KalkHelpWindow.o moc_KalkHelpWindow.cpp

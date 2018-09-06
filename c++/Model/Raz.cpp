@@ -1,17 +1,11 @@
-//
-// Created by luca on 07/12/17.
-//
 #include "Raz.h"
 #include <cmath>
 
 //costruttori
-//Raz::Raz(int n):num(n),den(1){}; //1 parametro intero
 
 Raz::Raz(long n, long d){   //2 parametri interi
-    if(d==0){
-        //se il denominatore è 0 viene automaticamente settato a 1
+    if(d==0)
         d = 1;
-    }
     else if(n==0){num=0,den=1;}
     else if(d<0){num=n*(-1); den=d*(-1);}
     else{num=n; den=d;}
@@ -21,22 +15,28 @@ Raz::Raz(long n, long d){   //2 parametri interi
 Raz::Raz():num(0),den(1){};
 
 Raz::Raz(std::string s){   //stringa
-  std::string::size_type size=0;
-  double numerator=std::stod(s,&size);
-  if(s.find('/')==-1){
-    if(size!=s.length())
-          throw syntax_exception("Costruzione oggetto fallita");
-    Raz aux(numerator);
-    num=aux.getNum();
-    den=aux.getDen();
+  try {
+      if (s.find('/') == -1) {
+          double numerator=toDouble(s);
+          Raz aux(numerator);
+          num = aux.getNum();
+          den = aux.getDen();
+      }
+      else{
+          std::string::size_type found=s.find('/');
+          num=toDouble(s.substr(0,found));
+          den=toDouble(s.substr(found+1));
+      }
+      semplifica();
   }
-  else{
-    double denominator=std::stod(s,&size+1);
-    if(size!=s.length()) throw syntax_exception("Costruzione oggetto fallita"); //gestire eccezione syntax error
-    num=numerator;
-    den=denominator;
+  catch (const syntax_exception& se){
+      throw;
+  }
+  catch (const std::exception& ex){
+      throw syntax_exception("errore di sintassi");
   }
 }
+
 
 Raz::Raz(double d){ //1 parametro decimale
     int i=1;
@@ -85,8 +85,8 @@ Raz* Raz::operator^ (int exp)const {
     return new Raz(pow(num,exp), pow(den,exp));
 }
 
-Raz::operator double() const{  //nb: metodi const
-    return num/den;
+Raz::operator double() const{
+    return static_cast<double>(num)/ static_cast<double>(den);
 }
 
 bool Raz::operator== (const Dato& d)const{
@@ -99,26 +99,9 @@ bool Raz::operator== (const Dato& d)const{
     }
 }
 
-//Raz& Raz::operator=(const Dato& d){
-//    try{
-//        auto aux= dynamic_cast<const Raz&>(d);
-//        num=aux.num;
-//        den=aux.den;
-//        return *this;
-//    }
-//    catch (const std::bad_cast &error){
-//        std::cout << "tipi incompatibili" << std::endl;
-//    }
-//}
-
-std::ostream& operator << (std::ostream& os, const Raz& r){
-    os<<r.getNum()<<"/"<<r.getDen();
-    return os;
-}
 //
 
 //metodi
-
 
 std::string Raz::toString() const{
     std::string res= std::to_string(getNum())+"/"+std::to_string(getDen());
@@ -129,21 +112,27 @@ Raz* Raz::solve_operation(const Dato* a, const Dato* b, char o){
     auto l=dynamic_cast<const Raz*>(a);
     auto r=dynamic_cast<const Raz*>(b);
     if(l&&r){
-        switch(o) {
-            case '+':
-                return l->operator+(r);
-            case '-':
-                return l->operator-(r);
-            case '*':
-                return l->operator*(r);
-            case '/':
-                return l->operator/(r);
-            case '^':
-                return l->operator^(double(*dynamic_cast<const Raz*>(r)));
-//            case '#':
-//                return new Raz(r->radice_quadrata());
-            default:
-                throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
+        try{
+            switch(o) {
+                case '+':
+                    return l->operator+(r);
+                case '-':
+                    return l->operator-(r);
+                case '*':
+                    return l->operator*(r);
+                case '/':
+                    return l->operator/(r);
+                case '^':
+                    return l->operator^(double(*dynamic_cast<const Raz*>(r)));
+                default:
+                    throw syntax_exception("Operatore non valido"); //gestire eccezione operatore errato
+            }
+        }
+        catch (const syntax_exception& se){
+            throw;
+        }
+        catch (const logic_exception& le){
+            throw;
         }
     }
     else
@@ -182,3 +171,22 @@ long double Raz::radice_quadrata()const {
     else
         throw logic_exception("radice di numero negativo");
 }
+
+
+
+
+//      double numerator = std::stod(s, &size);
+//      if (s.find('/') == -1) {
+//          if (size != s.length())
+//              throw syntax_exception("Costruzione oggetto fallita");
+//          Raz aux(numerator);
+//          num = aux.getNum();
+//          den = aux.getDen();
+//      }
+//      else {
+//          double denominator = std::stod(s, &size + 1);
+//          if (size != s.length())
+//              throw syntax_exception("Costruzione oggetto fallita"); //gestire eccezione syntax error
+//          num = numerator;
+//          den = denominator;
+//      }

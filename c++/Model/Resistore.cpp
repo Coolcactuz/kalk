@@ -1,18 +1,14 @@
-//
-// Created by luca on 03/01/18.
-//
-
 #include "Resistore.h"
 
 Resistore::Resistore(double r){
-  if(r > 0)
+  if(r >= 0)
     resistenza = r;
   else
     throw logic_exception("Inizializzato con valore negativo");
   try {
     Componente::setImp(impedenza());
   }
-  catch (const exception& error){
+  catch (const syntax_exception& se){
     throw;
   }
 }
@@ -20,14 +16,15 @@ Resistore::Resistore(double r){
 Resistore::Resistore(std::string s){
   auto pos=s.find('R');
   if(pos==0){
-    resistenza=std::stod(s.substr(1));
-//    if(resistenza<=0)
-//      throw syntax_exception("Valore di resistenza errato");
     try {
+      resistenza=toDouble(s.substr(1));
       Componente::setImp(impedenza());
     }
-    catch (const exception& error){
+    catch (const syntax_exception& se){
       throw;
+    }
+    catch (const std::exception& ex){
+      throw syntax_exception("errore di sintassi");
     }
   }
   else
@@ -54,18 +51,6 @@ std::string Resistore::toString() const{
 double Resistore::getResistenza() const{
   return resistenza;
 }
-
-//Resistore& Resistore::operator= (const Dato& d) {
-//  try {
-//    auto aux = dynamic_cast<const Resistore &>(d);
-//    resistenza = aux.resistenza;
-//    setImp(resistenza);
-//    return *this;
-//  }
-//  catch (const std::bad_cast &error){
-//    std::cout << "tipi incompatibili" << std::endl;
-//  }
-//}
 
 C_cartesiano Resistore::impedenza() const{
     return C_cartesiano(resistenza);

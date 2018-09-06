@@ -1,7 +1,3 @@
-//
-// Created by luca on 02/08/18.
-//
-
 #include "Hierarchy_Handler.h"
 
 
@@ -17,9 +13,14 @@ void Hierarchy_Handler::add_operator(char c){
 }
 
 void Hierarchy_Handler::remove_operator(char c){
-    for (auto cit=class_operators.cbegin(); cit!=class_operators.cend(); ++cit) {
-        if (c==*cit) class_operators.erase(cit);
-        --cit;
+    if(is_operator(c)) {
+        bool eliminato=false;
+        for (auto cit = class_operators.cbegin(); !eliminato && cit != class_operators.cend(); ++cit) {
+            if (c == *cit) {
+                class_operators.erase(cit);
+                eliminato=true;
+            }
+        }
     }
 }
 
