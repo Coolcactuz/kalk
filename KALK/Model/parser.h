@@ -46,7 +46,6 @@ public:
   bool operator==(const parser<T>&);
   bool operator!=(const parser<T>&);
 
-  node* build_tree(std::string ="\0");
   static Dato* resolve(node*);
   void print(node* =nullptr) const ;
   node* getStart() const ;
@@ -58,6 +57,8 @@ private:
   node* start;
   Hierarchy_Handler* handler;
 
+  
+  node* build_tree(std::string ="\0");
   Hierarchy_Handler* check_handler(Dato*);
 
 protected:
