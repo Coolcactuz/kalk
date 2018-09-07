@@ -268,7 +268,7 @@ bool tupla::operator== (const Dato& d) const{
 std::string tupla::toString() const{
   std::string res="";
   auto cit_metadati=metadati.cbegin();
-  auto cit_dati=metadati.cbegin();
+  auto cit_dati=dati.cbegin();
   for(;cit_metadati!=metadati.cend() && cit_dati!=dati.cend(); ++cit_metadati, ++cit_dati){
     if(cit_metadati!=metadati.cbegin() && cit_dati!=dati.cbegin())
       res=res+",";

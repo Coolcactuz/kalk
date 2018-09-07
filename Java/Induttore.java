@@ -30,7 +30,7 @@ class Induttore extends Componente{
   }
 
   public CCartesiano impedenza(){
-    double aux = 2 * (Numero.pi) * (Componente.freq) * induttanza;
+    double aux = 2 * (Numero.pi) * (Componente.freq) * (induttanza/1000);
     CCartesiano result = new CCartesiano(0, aux);
     return result;
   }

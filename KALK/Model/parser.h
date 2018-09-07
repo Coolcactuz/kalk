@@ -19,6 +19,7 @@ public:
     node(T* t=nullptr, char o='\0', double p=0, node* l=nullptr, node* r=nullptr):
       obj(t), op(o), prec(p), left(l), right(r){}
     ~node(){
+	std::cout << "qui" << std::endl;
       if(left != nullptr)
         delete left;
       if(right != nullptr)
@@ -74,7 +75,7 @@ protected:
 //
 //costruttore da stringa, default=nullo
 template<class T>
-parser<T>::parser(std::string s, Dato* d): input(s){
+parser<T>::parser(std::string s, Dato* d): input(s), start(nullptr), handler(nullptr){
     if(input=="")
         throw syntax_exception("stringa vuota");
     try{
@@ -159,11 +160,15 @@ typename parser<T>::node* parser<T>::build_tree(std::string s){
   tmp=tmp.append(s);
   tmp=tmp.append(")");
   auto it=tmp.begin();
-  if(start)
-      delete start;
+  //if(start)
+      //delete start;
+
   start = nullptr;
   node* current = start;
   while(it!=tmp.end()){
+
+    std::cout << *it << std::endl;
+
     if(!(handler->is_operator(*it))){
       auto aux = it;
       while(!(handler->is_operator(*aux)) && aux!=tmp.end())
@@ -193,6 +198,7 @@ typename parser<T>::node* parser<T>::build_tree(std::string s){
     else{
       switch (*it) {
         case '(': {
+	
           node* item=new node();
           item->op=*it;
           item->prec = set_prec(*it);
@@ -222,6 +228,7 @@ typename parser<T>::node* parser<T>::build_tree(std::string s){
           }
           aux->right=nullptr;
           delete aux;
+	  aux = nullptr;
         }
         break;
 

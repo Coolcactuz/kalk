@@ -8,6 +8,6 @@ int main(int argn, char ** args){
 
 	controller c;
 
-
 	app.exec();
+
 }

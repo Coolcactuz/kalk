@@ -29,7 +29,7 @@ class Condensatore extends Componente{
   }
 
   public CCartesiano impedenza(){
-    double aux = 1 / (2 * (Numero.pi) * (Componente.freq) * capacita);
+    double aux = 1 / (2 * (Numero.pi) * (Componente.freq) * (capacita/1000));
     CCartesiano result = new CCartesiano(0, -aux);
     return result;
   }
