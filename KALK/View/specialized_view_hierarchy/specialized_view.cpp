@@ -121,7 +121,7 @@ void specialized_view::helpRaz(){
 
   //hide();
 
-  handle_exception(QString("ciao"), true);
+  //handle_exception(QString("ciao"), true);
 
   help_window->showMaximized();
 }

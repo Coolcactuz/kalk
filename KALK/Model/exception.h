@@ -4,11 +4,12 @@
 #include <iostream>
 #include <exception>
 #include <typeinfo>
+#include <string>
 
 class exception{
 public:
-  void print() const {
-    std::cout << errorMessage << std::endl;
+  std::string getErrorMessage() const {
+    return errorMessage;
   }
   std::string errorMessage;
   exception(std::string s): errorMessage(s){}

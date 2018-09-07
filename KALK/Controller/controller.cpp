@@ -88,14 +88,14 @@ void controller::data_GUI_to_controller(QString s){
         qstmp = QString(result->toString().c_str());
       }
       break;
-      // case 3:
-      // {
-      //   tmp = new tupla(); //oggetto fittizio per il parser
-      //   parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
-      //   Dato* result = parser<tupla>::resolve(pt.getStart());
-      //   qstmp = QString(result->toString().c_str());
-      // }
-      // break;
+      case 3:
+      {
+        tmp = new tupla(); //oggetto fittizio per il parser
+        parser<tupla> pt(from_gui.toUtf8().constData(), tmp);
+        Dato* result = parser<tupla>::resolve(pt.getStart());
+        qstmp = QString(result->toString().c_str());
+      }
+      break;
       default:
       {
         tmp = new Condensatore(); //oggetto fittizio per il parser
