@@ -19,9 +19,9 @@ public:
 
   int getDataNumber() const {return data_number;}
 
-  ~KalkButton(){
-    std::cout <<"distruttore di: "<< text().toUtf8().constData() << std::endl;
-  }
+  //~KalkButton(){
+    //std::cout <<"distruttore di: "<< text().toUtf8().constData() << std::endl;
+  //}
 };
 
 #endif

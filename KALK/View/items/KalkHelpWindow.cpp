@@ -77,7 +77,9 @@ void KalkHelpWindow::set_aiuto_circuito() const{
   testo_aiuto->appendPlainText("\n\nI seguenti operatori sono inseribili direttamente nella stringa che si vuol elaborare:");
   testo_aiuto->appendPlainText("\n1) serie (+)");
   testo_aiuto->appendPlainText("\n1) parallelo (/)");
-  testo_aiuto->appendPlainText("\n\nNB: usare i due spinbox per cambiare i valori relativi alla frequenza e al voltaggio.");
+  testo_aiuto->appendPlainText("\n\nNB 1: usare i due spinbox per cambiare i valori relativi alla frequenza e al voltaggio.");
+  testo_aiuto->appendPlainText("\n\nNB 2: le operazioni possono ritornare un componente generico Z, che non puo essere usato a sua volta per operazioni consecutive");
+  testo_aiuto->appendPlainText("\npena un errore di sintassi");
 }
 
 void KalkHelpWindow::set_aiuto_tupla() const{

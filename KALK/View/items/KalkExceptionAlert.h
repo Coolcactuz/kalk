@@ -19,9 +19,9 @@ private:
 public:
   KalkExceptionAlert(QString, bool = true);
 
-  ~KalkExceptionAlert(){
-	std::cout << "distruttore kalkexceptionalert" << std::endl;
-  }
+  //~KalkExceptionAlert(){
+	//std::cout << "distruttore kalkexceptionalert" << std::endl;
+  //}
 
 signals:
   void emergenza1();

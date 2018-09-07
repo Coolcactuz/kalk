@@ -19,7 +19,7 @@ public:
     node(T* t=nullptr, char o='\0', double p=0, node* l=nullptr, node* r=nullptr):
       obj(t), op(o), prec(p), left(l), right(r){}
     ~node(){
-	std::cout << "qui" << std::endl;
+	//std::cout << "qui" << std::endl;
       if(left != nullptr)
         delete left;
       if(right != nullptr)
@@ -167,7 +167,7 @@ typename parser<T>::node* parser<T>::build_tree(std::string s){
   node* current = start;
   while(it!=tmp.end()){
 
-    std::cout << *it << std::endl;
+    //std::cout << *it << std::endl;
 
     if(!(handler->is_operator(*it))){
       auto aux = it;
