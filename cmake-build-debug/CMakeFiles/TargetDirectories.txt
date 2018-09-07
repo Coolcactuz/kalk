@@ -1,3 +1,0 @@
-/home/luca/Documenti/kalk/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/luca/Documenti/kalk/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/luca/Documenti/kalk/cmake-build-debug/CMakeFiles/kalk.dir
