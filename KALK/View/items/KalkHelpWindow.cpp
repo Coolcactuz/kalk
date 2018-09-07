@@ -23,7 +23,7 @@ void KalkHelpWindow::set_aiuto_raz() const{
   testo_aiuto->appendPlainText("\n2) sottrazione");
   testo_aiuto->appendPlainText("\n3) moltiplicazione");
   testo_aiuto->appendPlainText("\n4) divisione");
-  testo_aiuto->appendPlainText("\n5) elevamento a potenza");
+  testo_aiuto->appendPlainText("\n5) elevamento a potenza (per esponenti negativi usare le parentesi)");
   testo_aiuto->appendPlainText("\n\nPer usare gli operatori:");
   testo_aiuto->appendPlainText("\na) radice quadrata (sqrt)");
   testo_aiuto->appendPlainText("\nb) reciproco (1/x)");
