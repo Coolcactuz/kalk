@@ -68,11 +68,11 @@ void KalkHelpWindow::set_aiuto_circuito() const{
   testo_aiuto->appendPlainText("\npermette infatti di effettuare operazioni tra Induttori, Condensatori, e Resistori.");
   testo_aiuto->appendPlainText("\nI selettori possono essere usati per settare la frequenza e il voltaggio.");
   testo_aiuto->appendPlainText("\n\nModi per esprimere un Induttore:");
-  testo_aiuto->appendPlainText("\n1) Lx ->  x >= 0, con parte decimale o no (es. L45)");
+  testo_aiuto->appendPlainText("\n1) Lx ->  x >= 0, con parte decimale o no, in milliHenry (es. L45)");
   testo_aiuto->appendPlainText("\nModi per esprimere un Condensatore:");
-  testo_aiuto->appendPlainText("\n1) Cx -> x >= 0 con parte decimale o senza (es. C7)");
+  testo_aiuto->appendPlainText("\n1) Cx -> x >= 0 con parte decimale o senza, in milliFaraday (es. C7)");
   testo_aiuto->appendPlainText("\nModi per esprimere un Resistore:");
-  testo_aiuto->appendPlainText("\n1) Rx -> x >= 0 con parte decimale o senza (es. R9)");
+  testo_aiuto->appendPlainText("\n1) Rx -> x >= 0 con parte decimale o senza in Ohm(es. R9)");
   testo_aiuto->appendPlainText("\nNota Bene: non vi possono essere spaziature");
   testo_aiuto->appendPlainText("\n\nI seguenti operatori sono inseribili direttamente nella stringa che si vuol elaborare:");
   testo_aiuto->appendPlainText("\n1) serie (+)");
